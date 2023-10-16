@@ -1,0 +1,54 @@
+*{
+    font-family: 'Montserrat', sans-serif;
+    color: #5f6c7b;
+}
+
+body{
+    background-color: #F4FAFF
+}
+
+.second-header{
+    font-family: 'Expletus Sans', serif;
+    color: #094067;
+}
+.section{
+    margin:20px 100px;
+    border: 2pt solid #094067;
+    border-radius: 0px 40px 0px 40px;
+    padding: 0.5% 2.5%;
+}
+
+.footer{
+    text-align: center;
+}
+
+h1{
+    font-family: 'Hind Madurai', serif;
+    text-align: center;
+    font-weight: 1000;
+    font-size: 32pt;
+    color: #094067;
+}
+
+h3{
+    color: #094067;
+}
+
+#info-personal{
+    background-color: #fffffe;
+}
+#educacion{
+    background-color: #E7F3FC;
+    ol {
+        color: #90b4ce;
+    }
+}
+#experiencia{
+    background-color: #fffffe;
+}
+#habilidades{
+    background-color: #E7F3FC;
+}
+#proyectos{
+    background-color: #fffffe;
+}
