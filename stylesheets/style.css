@@ -8,12 +8,24 @@ body{
 }
 
 .second-header{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1pt solid #094067;
+}
+.second-header img{
+    margin-top: 18px;
+    width: 35px;
+    height: 35px;
+}
+.second-header h2{
+    margin-left: 10px;
     font-family: 'Expletus Sans', serif;
     color: #094067;
 }
+
 .section{
-    margin:20px 100px;
-    border: 2pt solid #094067;
+    margin: 20px 500px;
+    border: 1pt solid #094067;
     border-radius: 0px 40px 0px 40px;
     padding: 0.5% 2.5%;
 }
@@ -34,6 +46,9 @@ h3{
     color: #094067;
 }
 
+#menu{
+    background-color: #E7F3FC;
+}
 #info-personal{
     background-color: #fffffe;
 }
@@ -51,4 +66,7 @@ h3{
 }
 #proyectos{
     background-color: #fffffe;
+}
+#contactar{
+    background-color: #E7F3FC;
 }
