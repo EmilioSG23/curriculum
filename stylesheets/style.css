@@ -2,6 +2,7 @@
     font-family: 'Montserrat', sans-serif;
     color: #5f6c7b;
     line-height: 150%;
+    text-align: justify;
 }
 
 body{
@@ -25,7 +26,7 @@ body{
 }
 
 .section{
-    margin: 20px 350px;
+    margin: 20px 1px;
     border: 1pt solid #094067;
     border-radius: 0px 40px 0px 40px;
     padding: 0.5% 2.5%;
@@ -55,8 +56,21 @@ h3{
 #menu{
     background-color: #E7F3FC;
 }
+
+main{
+    display:grid;
+    row-gap: 0.5rem;
+    column-gap: 0.5rem;
+    grid-template-areas: "I I P P"
+                         "I I P P"
+                         "E X P P"
+                         "H H P P"
+                         "C C P P";
+}
+
 #info-personal{
     background-color: #fffffe;
+    grid-area: I;
 }
 #datos-personales{
     display: flex;
@@ -66,21 +80,23 @@ h3{
     margin-left: 15pt;
 }
 #datos-personales img{
-    
-    margin-left: 50pt;
+    margin-left: 15pt;
 }
 
 #educacion{
     background-color: #E7F3FC;
+    grid-area: E;
     ol {
         color: #90b4ce;
     }
 }
 #experiencia{
     background-color: #fffffe;
+    grid-area: X;
 }
 #habilidades{
     background-color: #E7F3FC;
+    grid-area: H;
 }
 #tabla-habilidades table{
     margin: 20px;
@@ -101,9 +117,11 @@ h3{
 }
 #proyectos{
     background-color: #fffffe;
+    grid-area: P;
 }
 #contactar{
     background-color: #E7F3FC;
+    grid-area: C;
 }
 #contactar-formulario label{
     color: #094067;
