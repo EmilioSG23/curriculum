@@ -37,13 +37,30 @@
                 <img src="images/info-personal.png"  alt="">
                 <h2>Información Personal</h2>
             </div>
-            <ul>
-                <li><b>Nombre: </b>Emilio Ignacio</li>
-                <li><b>Apellido: </b>Sáenz Gómez</li>
-                <li><b>Fecha de Nacimiento: </b>23 de Octubre</li>
-                <li><b>País de Nacimiento: </b>Ecuador</li>
-                <li><b>Correo Electrónico: </b>emiliosaenz2001@gmail.com</li>
-            </ul>
+            <div id="datos-personales">
+                <div>
+                    <h3>Datos personales</h3>
+                    <ul>
+                        <li><b>Nombre: </b>Emilio Ignacio</li>
+                        <li><b>Apellido: </b>Sáenz Gómez</li>
+                        <li><b>Fecha de Nacimiento: </b>23 de Octubre</li>
+                        <li><b>País de Nacimiento: </b>Ecuador</li>
+                        <li><b>Correo Electrónico: </b>emiliosaenz2001@gmail.com</li>
+                    </ul>
+                </div>
+                <img src="https://placehold.co/150x150" alt="">
+            </div>
+            <div id="ubicacion">
+                <h3>Ubicación</h3>
+                <iframe
+                src="https://www.google.com/maps/place/Ecuador/@-1.9282922,-79.3307791,8z/data=!4m6!3m5!1s0x902387dda89a4bd5:0x9d76af04119c3702!8m2!3d-1.831239!4d-78.183406!16zL20vMDJrMWI?entry=ttu"
+                width="600"
+                height="450"
+                frameborder="0"
+                style="border:0"
+                allowfullscreen
+                ></iframe>
+            </div>
         </section>
         <section id="educacion" class="section">
             <div class="second-header">
@@ -77,14 +94,26 @@
                 <img src="images/habilidades.png"  alt="">
                 <h2>Habilidades</h2>
             </div>
-            <ul>
-                <li>Programar en lenguajes Python, Java y C++</li>
-                <li>Tengo conocimiento en base de datos, en especial SQL</li>
-                <li>Hablo los idiomas Inglés y Español</li>
-                <li>Conocimiento básico de Diseño Gráfico</li>
-                <li>Aprendizaje Rápido</li>
-                <li>Manejo bien la mecanografía</li>
-            </ul>
+            <div id="tabla-habilidades">
+                <table>
+                    <tr>
+                        <th>Programación</th>
+                        <td>Java, Python y C++</td>
+                    </tr>
+                    <tr>
+                        <th>Otros Conocimientos</th>
+                        <td>Base de datos (SQL) y Diseño Gráfico</td>
+                    </tr>
+                    <tr>
+                        <th>Idiomas</th>
+                        <td>Inglés y Español</td>
+                    </tr>
+                    <tr>
+                        <th>Otras habilidades</th>
+                        <td>Aprendizaje rápido y buen manejo de la mecanografía</td>
+                    </tr>
+                </table>
+        </div>
         </section>
         <section id="proyectos" class="section">
             <div class="second-header">
@@ -92,42 +121,42 @@
                 <h2>Proyectos</h2>
             </div>
             <p>La mayoría de proyectos en los que he participado forman parte en su mayoría del programa universitario donde me encuentro actualmente</p>
-            <section id="proyecto_poo1">
+            <section id="proyecto_poo1" class="proyecto-section">
                 <h3>Nombre Proyecto</h3>
                 <p>Descripción</p>
                 <p><b>Imágenes</b></p>
                 <p><b>Aspectos Técnicos</b></p>
                 <p><b>Créditos</b></p>
             </section>
-            <section id="proyecto_poo2">
+            <section id="proyecto_poo2" class="proyecto-section">
                 <h3>Nombre Proyecto</h3>
                 <p>Descripción</p>
                 <p><b>Imágenes</b></p>
                 <p><b>Aspectos Técnicos</b></p>
                 <p><b>Créditos</b></p>
             </section>
-            <section id="proyecto_sql">
+            <section id="proyecto_sql" class="proyecto-section">
                 <h3>Nombre Proyecto</h3>
                 <p>Descripción</p>
                 <p><b>Imágenes</b></p>
                 <p><b>Aspectos Técnicos</b></p>
                 <p><b>Créditos</b></p>
             </section>
-            <section id="proyecto_edd1">
+            <section id="proyecto_edd1" class="proyecto-section">
                 <h3>Nombre Proyecto</h3>
                 <p>Descripción</p>
                 <p><b>Imágenes</b></p>
                 <p><b>Aspectos Técnicos</b></p>
                 <p><b>Créditos</b></p>
             </section>
-            <section id="proyecto_edd2">
+            <section id="proyecto_edd2" class="proyecto-section">
                 <h3>Nombre Proyecto</h3>
                 <p>Descripción</p>
                 <p><b>Imágenes</b></p>
                 <p><b>Aspectos Técnicos</b></p>
                 <p><b>Créditos</b></p>
             </section>
-            <section id="proyecto_mips">
+            <section id="proyecto_mips" class="proyecto-section">
                 <h3>Nombre Proyecto</h3>
                 <p>Descripción</p>
                 <p><b>Imágenes</b></p>
@@ -140,6 +169,23 @@
                 <img src="images/contactar.png"  alt="">
                 <h2>Contactarme</h2>
             </div>
+            <form id="contactar-formulario">
+                <ul>
+                    <li>
+                      <label for="nombre">Nombre: </label>
+                      <input type="text" id="nombre" name="nombre" />
+                    </li>
+                    <li>
+                        <label for="telefono">Número de Teléfono: </label>
+                        <input type="number" id="telefono" name="telefono" />
+                      </li>
+                    <li>
+                      <label for="mail">Correo electrónico: </label>
+                      <input type="email" id="mail" name="user_mail" />
+                    </li>
+                    <input type="submit" value="Enviar">
+                  </ul>
+            </form>
         </section>
         <footer class="footer">
             <p>Copyright © 2023 Emilio Sáenz</p>

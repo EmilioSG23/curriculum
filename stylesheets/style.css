@@ -1,6 +1,7 @@
 *{
     font-family: 'Montserrat', sans-serif;
     color: #5f6c7b;
+    line-height: 150%;
 }
 
 body{
@@ -24,12 +25,17 @@ body{
 }
 
 .section{
-    margin: 20px 500px;
+    margin: 20px 350px;
     border: 1pt solid #094067;
     border-radius: 0px 40px 0px 40px;
     padding: 0.5% 2.5%;
 }
-
+.proyecto-section{
+    border-bottom: 1pt solid #094067;
+}
+#proyecto_mips{
+    border-bottom: none;
+}
 .footer{
     text-align: center;
 }
@@ -52,6 +58,18 @@ h3{
 #info-personal{
     background-color: #fffffe;
 }
+#datos-personales{
+    display: flex;
+    flex-direction: row;
+}
+#datos-personales h3{
+    margin-left: 15pt;
+}
+#datos-personales img{
+    
+    margin-left: 50pt;
+}
+
 #educacion{
     background-color: #E7F3FC;
     ol {
@@ -64,9 +82,35 @@ h3{
 #habilidades{
     background-color: #E7F3FC;
 }
+#tabla-habilidades table{
+    margin: 20px;
+    border-collapse: collapse;
+    border: 2pt solid #094067;
+    border-spacing: 5pt;
+}
+#tabla-habilidades td{
+    border: 2pt solid #094067;
+    padding: 1% 5%;
+}
+#tabla-habilidades th{
+    border: 2pt solid #094067;
+    background-color: #90b4ce;
+    color: #094067;
+    padding: 1%;
+    margin: 2px;
+}
 #proyectos{
     background-color: #fffffe;
 }
 #contactar{
     background-color: #E7F3FC;
+}
+#contactar-formulario label{
+    color: #094067;
+}
+#contactar-formulario input{
+    margin-left: 10pt;
+}
+#contactar-formulario li{
+    padding: 1%;
 }
