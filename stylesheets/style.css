@@ -30,6 +30,7 @@ body{
     border: 1pt solid #094067;
     border-radius: 0px 40px 0px 40px;
     padding: 0.5% 2.5%;
+    box-shadow: 0px 0px 5px 1px;
 }
 .proyecto-section{
     border-bottom: 1pt solid #094067;
@@ -131,4 +132,4 @@ main{
 }
 #contactar-formulario li{
     padding: 1%;
-}
+}   
