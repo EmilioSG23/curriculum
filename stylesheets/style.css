@@ -2,11 +2,10 @@
     font-family: 'Montserrat', sans-serif;
     color: #5f6c7b;
     line-height: 150%;
-    text-align: justify;
 }
 
 body{
-    background-color: #F4FAFF
+    background: linear-gradient(rgb(244, 250, 255),#95d3ff,#95d3ff,rgb(244, 250, 255));
 }
 
 .second-header{
@@ -26,16 +25,17 @@ body{
 }
 
 .section{
-    margin: 20px 1px;
+    margin: 10px;
     border: 1pt solid #094067;
     border-radius: 0px 40px 0px 40px;
     padding: 0.5% 2.5%;
     box-shadow: 0px 0px 5px 1px;
 }
+
 .proyecto-section{
     border-bottom: 1pt solid #094067;
 }
-#proyecto_mips{
+#proyecto_edd2{
     border-bottom: none;
 }
 .footer{
@@ -54,50 +54,55 @@ h3{
     color: #094067;
 }
 
-#menu{
-    background-color: #E7F3FC;
-}
 
 main{
     display:grid;
-    row-gap: 0.5rem;
-    column-gap: 0.5rem;
-    grid-template-areas: "I I P P"
-                         "I I P P"
-                         "E X P P"
-                         "H H P P"
-                         "C C P P";
+    row-gap: 1rem;
+    column-gap: 1rem;
+    grid-template-columns: 0.5fr repeat(4, 1fr) 0.5fr;
 }
-
+#menu{
+    grid-column: 3 / 5;
+    grid-row: 1 / 2 ;
+    background-color: #E7F3FC;
+}
 #info-personal{
-    background-color: #fffffe;
-    grid-area: I;
+    background-color: #E7F3FC;
+    grid-column: 2 / 4;
+    grid-row: 2 / 3 ;
 }
 #datos-personales{
-    display: flex;
+    display: grid;
     flex-direction: row;
+    grid-template-areas: "inf inf foto"
+                        "ubi ubi foto";
 }
-#datos-personales h3{
-    margin-left: 15pt;
+#datos-personales #info-datos-personales{
+    grid-area: inf;
 }
 #datos-personales img{
-    margin-left: 15pt;
+    margin-top: 30px;
+    border: 1pt solid black;
 }
 
 #educacion{
-    background-color: #E7F3FC;
-    grid-area: E;
+    background-color: #fffffe;
+    grid-column: 2 / 3;
+    grid-row: 3 / 4 ;
     ol {
         color: #90b4ce;
     }
 }
 #experiencia{
+    text-align: justify;
     background-color: #fffffe;
-    grid-area: X;
+    grid-column: 3 / 4;
+    grid-row: 3 / 4 ;
 }
 #habilidades{
     background-color: #E7F3FC;
-    grid-area: H;
+    grid-column: 2 / 4;
+    grid-row: 4 / 5 ;
 }
 #tabla-habilidades table{
     margin: 20px;
@@ -117,12 +122,29 @@ main{
     margin: 2px;
 }
 #proyectos{
+    text-align: justify;
     background-color: #fffffe;
-    grid-area: P;
+    grid-column: 4 / 6;
+    grid-row: 2 / 9 ;
 }
+.images-proyectos{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    row-gap: 10px;
+}
+.images-proyectos img{
+    width: 225px;
+    height: 150px;
+    padding: 0% 2%;
+}
+.images-proyectos img:hover {
+    transform: scale(1.2);
+  }
 #contactar{
-    background-color: #E7F3FC;
-    grid-area: C;
+    background-color: #fffffe;
+    grid-column: 2 / 4;
+    grid-row: 5 / 6 ;
 }
 #contactar-formulario label{
     color: #094067;
@@ -132,4 +154,4 @@ main{
 }
 #contactar-formulario li{
     padding: 1%;
-}   
+}
