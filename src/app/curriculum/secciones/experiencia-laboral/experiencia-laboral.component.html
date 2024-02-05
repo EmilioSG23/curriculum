@@ -1,17 +1,15 @@
 <section class="page-section bg-light-esg" id="experiencia">
-    <div class="container">
-        <header-section titulo = "Experiencia Laboral"
-            descripcion = "Experiencias que he hecho a lo largo de los años"/>
-        <div class = "row justify-content-center">
-            <div class = "col-md-6 col-xl-4">
-                <div class="card text-center" style="width: 25rem; ; margin-left: 10pt;" data-aos = "fade-left">
-                    <div class="card-body">
-                        <h5 class="card-title" style = "font-size: 20pt;">Riviera</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Pasante en 2019</h6>
-                        <p class="card-text">En el año 2019, tuve una experiencia laboral trabajando como pasante dentro de un restaurante, donde era ayudante de la parte del diseño gráfico de la página web, además de hacer trabajos de organización y de ofimática en general. Estuve trabajando alrededor de un mes. Tuve un excelente desempeño dentro del ámbito laboral.</p>
-                    </div>
-                </div>
+    <header-section titulo = "Experiencia Laboral"
+        descripcion = "Experiencias que he hecho a lo largo de los años"/>
+    <div class = "row justify-content-center gap-2">
+        @for (experiencia of experiencias; track experiencia.lugar){
+        <div class="card mb-5 col-sm-12 col-md-8 col-lg-8 col-xl-5 col-xxl-3 bg-secondary-esg" data-aos ="fade-right">
+            <div class="card-body bg-white text-center">
+                <h5 class="card-title" style = "font-size: 20pt;">{{experiencia.lugar}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{experiencia.ocupacion}}</h6>
+                <p class="card-text">{{experiencia.descripcion}}</p>
             </div>
         </div>
+        }
     </div>
 </section>
