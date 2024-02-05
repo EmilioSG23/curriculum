@@ -1,0 +1,20 @@
+<section class="page-section bg-light" id="educacion">
+    <div class="container">
+        <header-section titulo = "Educación"
+            descripcion = "Las instituciones educativas donde adquirí saber"/>
+        <div class="row justify-content-center gap-4">
+            @for (institucion of instituciones; track institucion.nombre){
+            <div class = "col-md-6 col-xl-4" data-aos = "fade-up">
+                <div class="card text-center educacion-item" style="width: 18rem; margin-left: 50pt;">
+                    <img src="assets/educacion/{{institucion.logo}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{institucion.nombre}}</h5>
+                        <span class="card-text">{{institucion.titulo}}</span>
+                        <p class="card-text font-300">{{institucion.tiempo}}</p>
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</section>

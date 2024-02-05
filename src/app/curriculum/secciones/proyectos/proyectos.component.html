@@ -1,0 +1,17 @@
+<section class="page-section bg-light-esg" id="portfolio">
+    <div class="container">
+        <header-section titulo = "Proyectos"
+            descripcion = "Proyectos, en su mayoría universitarios, en los que he trabajado."/>
+        <div class="row gx-4 gx-lg-4 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-3 justify-content-center my-3">
+            @for (proyecto of proyectos; track proyecto.id){
+                <proyecto id = "{{proyecto.id}}"
+                    nombre = "{{proyecto.nombre}}"
+                    link = "{{proyecto.link}}"
+                    descripcion = "{{proyecto.descripcion}}"
+                    lenguajes = "{{proyecto.lenguajes}}"
+                    usos = "{{proyecto.usos}}"
+                    imagen = "{{proyecto.imagen}}"/>
+            }
+        </div>
+    </div>
+</section>

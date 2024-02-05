@@ -1,0 +1,175 @@
+:root{
+    --main-color: #00245a;
+    --secondary-color: #5ec2fc;
+    --light-color: #dcefff;
+    --gold-color: #ffc800;
+}
+
+.text-main-esg{
+    color: var(--main-color) !important;
+}
+
+.font-400{
+    font-weight: 400;
+}
+
+/* Seccion */
+.page-section {
+    padding: 3.5rem !important;
+    border-bottom: 2pt solid;
+    border-color: gray;
+}
+
+/* Header */
+
+.bg-main-esg{
+    background-color: var(--main-color) !important;
+}
+
+.bg-secondary-esg{
+    background-color: var(--main-color) !important;
+}
+
+.bg-light-esg{
+    background-color: var(--light-color) !important;
+}
+
+.logo-esg{
+    font-size: 2em !important;
+}
+
+.navbar-esg{
+    border-bottom: 2pt solid !important;
+    border-color: var(--gold-color) !important;
+}
+
+.navbar-toggler-esg{
+    padding: 0.75rem;
+    font-size: 0.75rem;
+    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    text-transform: uppercase;
+    font-weight: 700;
+    background: transparent;
+    line-height: 1;
+    color: var(--gold-color) !important;
+    border: 1pt solid var(--gold-color);
+    border-radius: 5px;
+}
+
+/* Seccion de presentación */
+.curriculum-header{
+    border-bottom: 3pt solid;
+    border-color: var(--secondary-color);
+}
+
+.curriculum-header {
+    padding-top: 9.5rem !important;
+    padding-bottom: 3rem !important;
+}
+
+.curriculum-header .font-300{
+    font-weight: 300;
+}
+.curriculum-header .font-700{
+    font-weight: 700;
+}
+
+.curriculum-header .imagen-curriculum {
+    width: 210pt;
+    height: 270pt;
+    border: 5pt solid;
+    border-color: white !important;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px var(--secondary-color);
+}
+
+.curriculum-header.bg-curriculum {
+    background: #01172b !important;
+}
+
+.curriculum-header h1{
+    font-size: 40pt;
+    border-bottom: 1pt solid var(--gold-color);
+}
+.curriculum-header p{
+    font-size: 14pt;
+}
+
+.btn.btn-secondary-blue{
+    --bs-btn-color: #000;
+    --bs-btn-bg: var(--secondary-color);
+    --bs-btn-border-color: var(--secondary-color);
+    --bs-btn-hover-color: #000;
+    --bs-btn-hover-bg: #00a2ff;
+    --bs-btn-hover-border-color: #008fe2;
+    --bs-btn-focus-shadow-rgb: 211, 212, 213;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #0074f8;
+    --bs-btn-active-border-color: #0058bd;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #000;
+    --bs-btn-disabled-bg: var(--secondary-color);
+    --bs-btn-disabled-border-color: var(--secondary-color);
+}
+
+.mr-2 {
+    margin-right: 4pt;
+}
+
+/* Seccion ¿Quien soy? */
+.datos-container{
+    background-color: #64646400;
+}
+
+h3.datos{
+    padding-bottom: 5pt;
+    border-bottom: 1pt solid;
+    border-color: #000;
+    font-size: 25pt;
+}
+ul.datos{
+    list-style: none;
+    font-size: 15pt;
+}
+
+/* Educacion */
+.educacion-item img{
+    border: 1pt solid;
+    border-color: var(--secondary-color);
+    border-top-right-radius: 30pt;
+    border-top-left-radius: 30pt;
+}
+
+.educacion-item .card-body{
+    border: 1pt solid;
+    border-top: none;
+    border-color: var(--secondary-color);
+    background-color: #dbf2ff;
+}
+
+.educacion-item{
+    border-radius: 30pt !important;
+}
+.educacion-item .card-body span{
+    font-size: 14pt;
+}
+.educacion-item .font-300{
+    font-weight: 300;
+}
+
+.habilidades-item img{
+    height: 40pt;
+    width: 40pt;
+    transition: transform 0.3s;
+}
+.habilidades-item img:hover{
+    transform: scale(1.2);
+}
+
+.habilidades-item .border-none{
+    border: none;
+}
+
+.imagen-proyecto{
+    height: 
+}
