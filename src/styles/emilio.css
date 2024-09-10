@@ -1,8 +1,37 @@
 :root{
+    --bg-color: white;
     --main-color: #00245a;
     --secondary-color: #5ec2fc;
     --light-color: #dcefff;
     --gold-color: #ffc800;
+    --text-color: #212529;
+    --section-border-color: var(--main-color);
+    --shadow-image-curriculum-color: var(--secondary-color);
+    --btn-bg-color: var(--secondary-color);
+    --bg-card-color: white;
+    --bg-card-secondary-color: var(--main-color);
+    --bg-portafolio-item-color: white;
+    --portafolio-item-border-color: var(--main-color);
+}
+
+.dark-mode{
+    --bg-color: rgb(15, 15, 15);
+    --main-color: #00245a;
+    --secondary-color: #001d2e;
+    --light-color: #000e1a;
+    --gold-color: #ffc800;
+    --text-color: #e9e9e9;
+    --section-border-color: var(--gold-color);
+    --shadow-image-curriculum-color: #5ec2fc;
+    --btn-bg-color: #5ec2fc;
+    --bg-card-color: var(--secondary-color);
+    --bg-card-secondary-color: var(--main-color);
+    --bg-portafolio-item-color: var(--main-color);
+    --portafolio-item-border-color: var(--gold-color);
+}
+
+body{
+    color: var(--text-color) !important;
 }
 
 .text-main-esg{
@@ -30,8 +59,20 @@
     background-color: var(--secondary-color) !important;
 }
 
+.bg-esg{
+    background-color: var(--bg-color) !important;
+}
+
 .bg-light-esg{
     background-color: var(--light-color) !important;
+}
+
+.bg-card-esg{
+    background-color: var(--bg-card-color) !important;
+}
+
+.bg-card-secondary-esg{
+    background-color: var(--bg-card-secondary-color) !important;
 }
 
 .logo-esg{
@@ -80,7 +121,20 @@
     border: 5pt solid;
     border-color: white !important;
     border-radius: 15px;
-    box-shadow: 0px 0px 20px var(--secondary-color);
+    box-shadow: 0px 0px 20px var(--shadow-image-curriculum-color);
+    animation: expand-shadow 3s infinite ease-in-out;
+}
+
+@keyframes expand-shadow {
+    0% {
+        box-shadow: 0px 0px 20px var(--shadow-image-curriculum-color);
+    }
+    50% {
+        box-shadow: 0px 0px 40px var(--shadow-image-curriculum-color); /* Expansión máxima */
+    }
+    100% {
+        box-shadow: 0px 0px 20px var(--shadow-image-curriculum-color); /* Contracción de nuevo */
+    }
 }
 
 .curriculum-header.bg-curriculum {
@@ -97,7 +151,7 @@
 
 .btn.btn-secondary-blue{
     --bs-btn-color: #000;
-    --bs-btn-bg: var(--secondary-color);
+    --bs-btn-bg: var(--btn-bg-color);
     --bs-btn-border-color: var(--secondary-color);
     --bs-btn-hover-color: #000;
     --bs-btn-hover-bg: #00a2ff;
@@ -114,6 +168,10 @@
 
 .mr-2 {
     margin-right: 4pt;
+}
+
+.page-section{
+    border-color: var(--section-border-color) !important;
 }
 
 /* Seccion ¿Quien soy? */
@@ -170,6 +228,18 @@ ul.datos{
     border: none;
 }
 
-.imagen-proyecto{
-    height: 
+.portfolio-item{
+    border-color: var(--portafolio-item-border-color) !important;
 }
+
+.portfolio-item .portfolio-caption{
+    background-color: var(--bg-portafolio-item-color) !important;
+}
+
+.img-proyecto {
+    width: 600px;
+    height: 250px;
+    object-fit: cover;
+    object-position: center;
+  }
+  

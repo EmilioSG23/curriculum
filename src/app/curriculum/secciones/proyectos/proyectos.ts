@@ -62,4 +62,13 @@ export const datos = [
         usos: "Interfaces, hilos (multithreading), JavaFX, Archivos serializados.",
         imagen: "poo2.png",
     },
+    {
+        id: "laberinto_encantado",
+        nombre: "Laberinto Encantado",
+        link: "https://github.com/EmilioSG23/laberinto_encantado",
+        descripcion: "Juego multijugador cooperativo y competitivo donde 4 equipos se enfrentan entre sí para lograr salir del laberinto. También puedes ver el backend en: https://github.com/domorales/laberinto_encantado_backend/ y el desarrollo completo en: https://domorales.github.io/portfolio-momentum/",
+        lenguajes: "C#, TypeScript",
+        usos: "Unity Engine, SocketIO, WebGL",
+        imagen: "laberinto.png",
+    }
 ]

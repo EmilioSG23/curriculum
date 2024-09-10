@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,6 +7,24 @@ import { Component } from '@angular/core';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent {
+export class HeaderComponent{
+  isDarkMode = false;
+  toggleDarkMode() {
+    this.isDarkMode = !this.isDarkMode;
+    if (this.isDarkMode) {
+      this.enableDarkMode();
+    } else {
+      this.disableDarkMode();
+    }
+  }
 
+  enableDarkMode() {
+    document.body.classList.add('dark-mode');
+    localStorage.setItem('dark-mode', 'true');
+  }
+
+  disableDarkMode() {
+    document.body.classList.remove('dark-mode');
+    localStorage.setItem('dark-mode', 'false');
+  }
 }

@@ -6,7 +6,7 @@
 
 .portfolio-modal .modal-body img {
     box-shadow: 0px 0px 20px -5px black;
-  }
+}
 
 @media only screen and (max-width: 576px) {
     .portfolio-modal .modal-body h2 {
