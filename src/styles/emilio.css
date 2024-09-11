@@ -10,6 +10,7 @@
     --btn-bg-color: var(--secondary-color);
     --bg-card-color: white;
     --bg-card-secondary-color: var(--main-color);
+    --bg-item-hability-color: var(--light-color);
     --bg-portafolio-item-color: white;
     --portafolio-item-border-color: var(--main-color);
 }
@@ -26,12 +27,40 @@
     --btn-bg-color: #5ec2fc;
     --bg-card-color: var(--secondary-color);
     --bg-card-secondary-color: var(--main-color);
+    --bg-item-hability-color: var(--secondary-color);
     --bg-portafolio-item-color: var(--main-color);
     --portafolio-item-border-color: var(--gold-color);
 }
 
 body{
     color: var(--text-color) !important;
+}
+
+.toggle-mode{
+    background: white;
+    border-radius: 1000px;
+    border: none;
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    outline: none;
+    font-size: 25px;
+}
+
+.toggle-mode span{
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    background: none;
+    color: var(--main-color);
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.toggle-mode span.active{
+    background-color: var(--main-color);
+    border-radius: 1000px;
 }
 
 .text-main-esg{
@@ -46,33 +75,44 @@ body{
 .page-section {
     padding: 3.5rem !important;
     border-bottom: 2pt solid;
-    border-color: gray;
+    transition: border-bottom 0.2s ease;
 }
 
 /* Header */
 
 .bg-main-esg{
     background-color: var(--main-color) !important;
+    transition: background-color 0.2s ease, color 0.075s ease;
 }
 
 .bg-secondary-esg{
     background-color: var(--secondary-color) !important;
+    transition: background-color 0.2s ease, color 0.075s ease;
 }
 
 .bg-esg{
     background-color: var(--bg-color) !important;
+    transition: background-color 0.2s ease;
 }
 
 .bg-light-esg{
     background-color: var(--light-color) !important;
+    transition: background-color 0.2s ease, color 0.075s ease;
 }
 
 .bg-card-esg{
     background-color: var(--bg-card-color) !important;
+    transition: background-color 0.2s ease, color 0.075s ease;
 }
 
 .bg-card-secondary-esg{
     background-color: var(--bg-card-secondary-color) !important;
+    transition: background-color 0.2s ease, color 0.075s ease;
+}
+
+.bg-item-hability-esg{
+    background-color: var(--bg-item-hability-color) !important;
+    transition: background-color 0.2s ease, color 0.075s ease;
 }
 
 .logo-esg{
@@ -80,7 +120,7 @@ body{
 }
 
 .navbar-esg{
-    border-bottom: 2pt solid !important;
+    border-bottom: 3pt solid !important;
     border-color: var(--gold-color) !important;
 }
 
@@ -100,7 +140,7 @@ body{
 /* Seccion de presentación */
 .curriculum-header{
     border-bottom: 3pt solid;
-    border-color: var(--secondary-color);
+    border-color: var(--gold-color);
 }
 
 .curriculum-header {
@@ -164,6 +204,7 @@ body{
     --bs-btn-disabled-color: #000;
     --bs-btn-disabled-bg: var(--secondary-color);
     --bs-btn-disabled-border-color: var(--secondary-color);
+    border: none;
 }
 
 .mr-2 {
@@ -218,9 +259,9 @@ ul.datos{
 .habilidades-item img{
     height: 40pt;
     width: 40pt;
-    transition: transform 0.3s;
+    transition: transform 0.2s;
 }
-.habilidades-item img:hover{
+.habilidades-item .logo-habilidad:hover{
     transform: scale(1.2);
 }
 
@@ -234,6 +275,14 @@ ul.datos{
 
 .portfolio-item .portfolio-caption{
     background-color: var(--bg-portafolio-item-color) !important;
+    transition: background-color 0.2s ease, color 0.075s ease;
+}
+
+.portfolio-modal .close-modal{
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    transition: opacity 0.2s ease;
 }
 
 .img-proyecto {
