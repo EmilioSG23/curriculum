@@ -1,41 +1,26 @@
 {
   "name": "curriculum-upgrade",
-  "version": "0.0.0",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "build:prod": "ng build --configuration production --base-href /curriculum/",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "private": true,
   "dependencies": {
-    "@angular/animations": "^17.1.0",
-    "@angular/common": "^17.1.0",
-    "@angular/compiler": "^17.1.0",
-    "@angular/core": "^17.1.0",
-    "@angular/forms": "^17.1.0",
-    "@angular/platform-browser": "^17.1.0",
-    "@angular/platform-browser-dynamic": "^17.1.0",
-    "@angular/router": "^17.1.0",
-    "@fortawesome/fontawesome-free": "^6.5.1",
-    "aos": "^2.3.4",
-    "rxjs": "~7.8.0",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.14.3"
+    "@astrojs/tailwind": "^5.1.5",
+    "@fortawesome/fontawesome-free": "^6.7.2",
+    "astro": "^5.1.10",
+    "font-awesome": "^4.7.0",
+    "preact": "^10.25.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwindcss": "^3.4.17",
+    "taos": "^1.0.5"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^17.1.2",
-    "@angular/cli": "^17.1.2",
-    "@angular/compiler-cli": "^17.1.0",
-    "@types/jasmine": "~5.1.0",
-    "jasmine-core": "~5.1.0",
-    "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.2.0",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.3.2"
+    "@types/aos": "^3.0.7",
+    "@types/react": "^19.0.8"
   }
 }

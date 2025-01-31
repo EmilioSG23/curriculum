@@ -1,0 +1,55 @@
+<div class = "fixed inset-0 bg-background -z-10 pointer-events-none">
+    <div id = "stars" class = "fixed inset-0 -z-9 bg-[url('../public/stars.png')]"></div>
+    <!-- <div id = "stars" class = "fixed inset-0 -z-9 bg-[url('../public/stars.png')] degrading-2 -translate-y-52 -translate-x-24"></div> -->
+</div>
+
+<style>
+    #stars{
+        object-fit: cover;
+        background-repeat: repeat;
+        background-size: 75%;
+        filter: brightness(0) saturate(100%) contrast(100%);
+        animation: moving 100s linear infinite, degrading 10s linear infinite;
+    }
+    #stars.degrading-2{
+        animation: moving 100s linear infinite, degrading2 10s linear infinite;
+    }
+    html.dark #stars{
+        filter: brightness(1) saturate(100%) contrast(100%);
+    }
+    @media (min-width: 768px) {
+        #stars{
+            background-size: 50% 50%;
+        }
+    }
+    @keyframes moving {
+        from {
+            background-position: 0 0;
+        }
+        to {
+            background-position: 100% 0;
+        }
+    }
+    @keyframes degrading {
+        0% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.25;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    @keyframes degrading2 {
+        0% {
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+</style>

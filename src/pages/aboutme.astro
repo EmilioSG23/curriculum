@@ -1,0 +1,99 @@
+---
+import Arrow from "../components/arrow.astro"
+import Button from "../components/button.astro"
+import HeaderSection from "../components/headerSection.astro"
+
+const myBirthday = new Date(1003813200*1000)
+
+console.log(myBirthday)
+let age = (new Date().getFullYear() - myBirthday.getFullYear())
+age = myBirthday.getMonth() > new Date().getMonth() ? age - 1 : age
+
+const aboutMe = [
+    {
+        //Quien soy
+        icon: "",
+        description: `Soy un joven informático de ${age} años, 
+        dedicado hace años al mundo de la tecnología y de la programación. Durante mi recorrido en el mundo informático, 
+        he tomado diferentes desafíos pero siempre dándo lo mejor de mí para dar el mejor producto posible. En mis pasatiempos, me gusta jugar videojuegos y ver fútbol.`,
+    },
+    {
+        //Qué hago
+        icon: "",
+        description: `Desarrollo software de distintos ámbitos, desde aplicaciones móviles, aplicaciones de escritorio y webs, entre las cuales se incluyen Landing Pages,
+         Dashboards, incluso hasta un videojuego. Los productos se destacan por mantener buenas prácticas de programación y por tener un diseño atractivo, funcional y responsivo
+         para cualquier dispositivo.`,
+    },
+    {
+        //Qué he 
+        icon: "",
+        description: `Si estás interesado en trabajar conmigo, no dudes en contactarme. Estoy dispuesto a trabajar en cualquier proyecto que se me presente, me gustan mucho los desafíos.`,
+        
+    }
+]
+---
+
+<section id = "about-me" class = "mx-auto max-w-6xl my-20 text-content">
+    <Arrow side="r" color="gold"/>
+    <div class = "flex flex-col justify-center items-center">
+        <HeaderSection title = "Sobre Mí"/>
+        <div id = "cards" class="mt-10 flex justify-center w-full">
+            {aboutMe.map(({icon, description},index) => (
+                <div id = "card" class = "bg-background flex w-full mx-5 my-5 md:mx-0 h-[256px] items-center border-2 border-neon rounded-[25px]
+                    hover:bg-hover hover:scale-105 transition
+                    duration-[600ms] taos:[transform:perspective(2500px)_rotateY(100deg)] taos:invisible taos:[backface-visibility:hidden]
+                    [animation-iteration-count:infinite]" data-taos-offset="100">
+                    <div class = "border-r-2 border-neon flex justify-center items-center">
+                        sd
+                    </div>
+                    <div class = "p-4 fond-light leading-normal">
+                        <span class = "text-center text-[14px] justify-center items-center">{description}</span>
+                        {index == 2 && (
+                            <div class = "flex items-center justify-center mt-10 w-full">
+                                <Button url= "" texto = "Contáctame"/>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    #cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 48px;
+        width: 100%;
+    }
+
+    #card {
+        display: flex;
+        align-items: center;
+        width: 45%;
+    }
+
+    #card > div:first-child {
+        height: 100%;
+        padding: 16px;
+    }
+
+    #card > div:last-child {
+        flex-grow: 1;
+        padding: 16px;
+        line-height: 1.5;
+    }
+
+    #cards:has(#card:nth-child(1):nth-last-child(1)),
+    #cards:has(#card:nth-child(1):nth-last-child(2)) {
+        justify-content: center;
+    }
+    @media (max-width: 768px) {
+        #card {
+            width: 100%;
+        }
+    }
+
+</style>

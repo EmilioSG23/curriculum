@@ -1,0 +1,35 @@
+---
+const SOCIAL_MEDIA = [
+    {
+        name: 'GitHub',
+        url: 'https://github.com/EmilioSG23',
+        icon: 'github'
+    },
+    {
+        name: 'GitLab',
+        url: 'https://gitlab.com/EmilioSG23',
+        icon: 'gitlab'
+    },
+    {
+        name: 'LinkedIn',
+        url: 'https://www.linkedin.com/in/emilio-s%C3%A1enz-g%C3%B3mez-4205b02b9/',
+        icon: 'linkedin'
+    }
+]
+
+const year = new Date().getFullYear();
+---
+<footer class="bg-gray-800 text-white font-main border-t-2 border-t-gold py-5">
+    <div class="mx-auto container py-2 grid grid-cols-1 md:grid-cols-3 md:flex-row justify-between items-center">
+        <div class="order-2 md:order-1 mt-5 md:mt-0 flex-1 text-center font-extralight text-[14px]">Copyright &copy; Emilio Ignacio <b>Sáenz Gómez</b> {year}</div>
+        <div class="order-1 md:order-2 flex-1 text-center">
+            {SOCIAL_MEDIA.map(({name,url,icon}) => (
+                <a class="inline-block text-4xl bg-white text-black hover:bg-black hover:text-white hover:scale-110 hover:transition p-2 rounded-2xl mx-1"
+                href={url} aria-label={name}
+                target="_blank"
+                >
+                    <i class={`w-10 h-10 fab fa-${icon}`}></i></a>
+            ))}
+        </div>
+    </div>
+</footer>

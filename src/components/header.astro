@@ -1,0 +1,96 @@
+---
+import LanguageToogleButton from "./languageToogleButton.astro";
+import ThemeToggleButton from "./themeToggleButton.astro";
+
+---
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-[3px]">
+    <nav class="bg-black/25 text-content font-main">
+        <div class="hidden md:flex flex-wrap justify-between items-center p-6 gap-4 mx-auto max-w-4xl">
+        <ThemeToggleButton />
+        <a href="#about-me" class = "hover:scale-110 hover:text-gold transition uppercase">Sobre Mí</a>
+        <a href="#experience" class = "hover:scale-110 hover:text-gold transition uppercase">Experiencia</a>
+        <a href="#info" class = "bg-gold text-primary rounded-full p-[14px] scale-[2.5] hover:scale-[2.75] transition translate-y-4 mx-3">ESG</a>
+        <a href="#skills" class = "hover:scale-110 hover:text-gold transition uppercase">Habilidades</a>
+        <a href="#projects" class = "hover:scale-110 hover:text-gold transition uppercase">Proyectos</a>
+        <LanguageToogleButton />
+        </div>
+    </nav>
+</header>
+
+<script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (this: HTMLAnchorElement, e: Event) {
+            e.preventDefault();
+
+            const href = this.getAttribute('href');
+            if (href === null) return;
+            const targetId = href.substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement === null) return;
+            
+            // Ajusta el desplazamiento en relación con el tamaño del desplazamiento deseado
+            window.scrollTo({
+                top: targetElement.offsetTop - 100, // Ajusta la distancia aquí (100px más arriba)
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+
+
+<style>
+    header{
+        animation: 2s opening ease;
+    }
+    nav{
+        border-bottom: solid ;
+        border-image: linear-gradient(90deg, rgba(255,200,0,1) 0%, rgb(255, 255, 255) 0%, rgba(255,200,0,1) 25%) 1;
+        animation: 20s border-animation linear infinite;
+    }
+    @keyframes opening {
+        0%{
+            transform: translateY(-200%);
+        }
+        25%{
+            scale: 1.0;;
+        }
+        75%{
+            transform: translateY(0%);
+            scale: 1.1;
+        }
+        100%{
+            scale: 1.0;
+        }
+    }
+
+    @keyframes border-animation {
+        0%{
+            border-image: linear-gradient(90deg, rgba(255,200,0,1) 0%, rgb(255, 255, 255) 0%, rgba(255,200,0,1) 25%) 1;
+        }
+        12.5%{
+            border-image: linear-gradient(90deg, rgba(255,200,0,1) 0%, rgb(255, 255, 255) 25%, rgba(255,200,0,1) 50%) 1;
+        }
+        25%{
+            border-image: linear-gradient(90deg, rgba(255,200,0,1) 25%, rgb(255, 255, 255) 50%, rgba(255,200,0,1) 75%) 1;
+        }
+        37.5%{
+            border-image: linear-gradient(90deg, rgba(255,200,0,1) 50%, rgb(255, 255, 255) 75%, rgba(255,200,0,1) 100%) 1;
+        }
+        50%{
+            border-image: linear-gradient(90deg, rgba(255,200,0,1) 75%, rgb(255, 255, 255) 100%, rgba(255,200,0,1) 100%) 1;
+        }
+        62.5%{
+            border-image: linear-gradient(90deg, rgba(255,200,0,1) 50%, rgb(255, 255, 255) 75%, rgba(255,200,0,1) 100%) 1;
+        }
+        75%{
+            border-image: linear-gradient(90deg, rgba(255,200,0,1) 25%, rgb(255, 255, 255) 50%, rgba(255,200,0,1) 75%) 1;
+        }
+        87.5%{
+            border-image: linear-gradient(90deg, rgba(255,200,0,1) 0%, rgb(255, 255, 255) 25%, rgba(255,200,0,1) 50%) 1;
+        }
+        100%{
+            border-image: linear-gradient(90deg, rgba(255,200,0,1) 0%, rgb(255, 255, 255) 0%, rgba(255,200,0,1) 25%) 1;
+        }
+    }
+</style>

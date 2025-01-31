@@ -1,0 +1,106 @@
+---
+import Arrow from "../components/arrow.astro";
+import HeaderSection from "../components/headerSection.astro";
+import { SKILLS } from "../layouts/skills";
+
+const HABILIDADES_PERSONALES = ["Trabajo en Equipo", "Creatividad", "Comunicación efectiva", "Compromiso a toda hora", "Buen nivel de Inglés"]
+
+const fillList = () => {
+    let lista: string[] = [];
+
+    HABILIDADES_PERSONALES.map((habilidad) => {
+        lista.push("");
+        lista.push(habilidad);
+    });
+    const maxIndex = lista.length + 3
+    while (lista.length < maxIndex) lista.push("")
+    return lista;
+};
+
+const lista: string[] = fillList();
+---
+
+<section id = "skills" class = "mx-auto max-w-6xl my-20 text-content">
+    <Arrow side="r" color="gold"/>
+    <div class = "flex flex-col justify-center items-center">
+        <HeaderSection title = "Habilidades" />
+        <div class = "flex justify-center w-full my-5 gap-10 mt-20">
+            <div class = "flex-[3] bg-[#000823] border-2 border-[#5AE1FF] rounded-[20px]">
+                <div class = "flex justify-center items-center bg-primary text-white h-[8%] border-b-2 border-[#5AE1FF] rounded-t-[17px]">
+                    <div class = "flex-1 mx-5">Habilidades en Programación</div>
+                    <div class = "px-4 bg-white/5 h-full text-center flex items-center justify-center border-x-2 border-[#5AE1FF]"><i class = "fa fa-minus"></i></div>
+                    <div class = "px-4 bg-white/5 h-full text-center flex items-center justify-center"><i class = "fa-regular fa-window-restore"></i></div>
+                    <div class = "px-4 bg-red-600 h-full text-center flex items-center justify-center border-l-2 border-[#5AE1FF] rounded-tr-[17px]"><i class = "fa fa-x"></i></div>
+                </div>
+                <div class = "p-5 flex flex-col text-white">
+                    {SKILLS.map((skill) => (
+                        <div class="flex flex-col">
+                            <button id = "toogleContent" class = "text-[24px] font-main hover:underline self-start">
+                                <p class="">{`> ${skill["name"]}`}</p>
+                            </button>
+                            <div id = {"div-"+skill["id"]} class = "ml-8 py-2 skill-content closed grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 justify-around">
+                                {skill["values"].map((data) => (
+                                    <div class = "flex flex-col text-center justify-center items-center hover:scale-110 transition">
+                                        <img src = {`../public/habilidades/${skill["id"]}/${data["id"]}.png`}
+                                        class = "w-8 h-8" />
+                                        <p class = "font-light text-sm">{data["name"]}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+            <div class = "flex-[2] bg-[#F5F5F5] -rotate-3">
+                <div class = "flex flex-col p-5 pl-10 font-hand">
+                    <div class = "border-b border-black/25 py-1 text-red-600 font-bold text-[32px]">Habilidades Personales</div>
+                    {lista.map(( habilidad , index) => (
+                        <div class={`border-b border-black/25 py-1 text-black`}>
+                          {index%2 == 1 ?  `• ${habilidad}` : '\u00A0'}
+                        </div>
+                      ))}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .skill-content {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.2s linear, opacity 0.3s ease;
+    }
+
+    .skill-content.open {
+        max-height: 200px;
+        opacity: 1;
+    }
+
+    .closed {
+        max-height: 0;
+    }
+</style>
+
+<script>
+import { SKILLS } from "../layouts/skills";
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("button#toogleContent").forEach((button, index) => {
+        button.addEventListener("click", () => {
+            const $divContents = document.querySelectorAll("div[id^='div-']")
+            $divContents.forEach((div) => {
+                console.log("as")
+                if (div.id == `div-${SKILLS[index]["id"]}` && !div.classList.contains("open")){
+                    div.classList.add("open")
+                    div.classList.remove("close")
+                }else{
+                    div.classList.remove("open")
+                    div.classList.add("close")
+                }
+            });
+        });
+    });
+});
+</script>

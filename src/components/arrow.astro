@@ -1,0 +1,13 @@
+---
+const  {side, color} = Astro.props;
+
+const modifySide = side === "r" ? "l":"r"
+const orderLine =  side === "r" ? 1:2
+const orderArrow = side === "r" ? 2:1
+
+---
+
+<div id = "arrow" class = "flex justify-center items-center">
+    <div class = {`order-${orderLine} flex-1 bg-${color} h-1`}></div>
+    <div class = {`order-${orderArrow} h-0 w-0 border-y-[16px] border-y-transparent border-${modifySide}-[32px] border-${modifySide}-${color}`}></div>
+</div>

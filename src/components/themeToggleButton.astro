@@ -1,0 +1,40 @@
+---
+
+---
+
+<script>
+    const $sunIcon = document.getElementById('light') as HTMLElement;
+    const $moonIcon = document.getElementById('dark') as HTMLElement;
+
+    const $buttonToggle = document.getElementById('theme') as HTMLElement;
+    document.addEventListener('DOMContentLoaded', () => {
+        const theme = localStorage.getItem('theme');
+        document.querySelector('html')?.classList.toggle('dark', theme === 'dark');
+        toggleIcon(theme === 'dark');
+    });
+
+    $buttonToggle.onclick = () => {
+        const $html = document.querySelector('html');
+        if (!$html) throw new Error('No se encontró el elemento html');
+        $html.classList.toggle('dark');
+        const isDark = $html.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        toggleIcon(isDark);
+    }
+
+    function toggleIcon(isDark: boolean){
+        if(isDark){
+            $sunIcon.style.display = 'none';
+            $moonIcon.style.display = 'inline';
+        }else{
+            $sunIcon.style.display = 'inline';
+            $moonIcon.style.display = 'none';
+        }
+    }
+
+</script>
+
+<button id = "theme" class = "text-3xl w-8 h-8 hover:scale-110 hover:text-gold transition">
+    <i id = "dark" class="fas fa-moon"></i>
+    <i id = "light" class="fas fa-sun"></i>
+</button>
