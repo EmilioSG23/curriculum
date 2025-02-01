@@ -5,19 +5,59 @@ import ThemeToggleButton from "./themeToggleButton.astro";
 ---
 <header class= `fixed top-0 left-0 right-0 z-50 bg-black/25 backdrop-blur-[3px]`>
     <nav class="bg-black/25 text-white font-main">
-        <div class="hidden md:flex flex-wrap justify-between items-center p-6 gap-4 mx-auto max-w-4xl">
-        <ThemeToggleButton />
-        <a href="#about-me" class = "hover:scale-110 hover:text-gold transition uppercase">Sobre Mí</a>
-        <a href="#experience" class = "hover:scale-110 hover:text-gold transition uppercase">Experiencia</a>
-        <a href="#" class = "bg-gold text-primary rounded-full p-[14px] scale-[2.5] hover:scale-[2.75] transition translate-y-4 mx-3">ESG</a>
-        <a href="#skills" class = "hover:scale-110 hover:text-gold transition uppercase">Habilidades</a>
-        <a href="#projects" class = "hover:scale-110 hover:text-gold transition uppercase">Proyectos</a>
-        <LanguageToogleButton />
+        <div id="mobileContainer" class = "md:hidden flex flex-wrap p-6 justify-between items-center">
+            <button id="menuButton" class="text-white p-2 border border-gold rounded-md scale hover:text-gold transition">
+                <i class="fa fa-bars"></i>
+                <span>Menú</span>
+            </button>
+            <a href="#info"
+            class = "bg-gold text-primary rounded-full p-[14px] scale-[1.5] hover:scale-[1.75] transition mx-3">ESG</a>
+            <ThemeToggleButton />
+        </div>
+        <div id = "menu" class="justify-between md:items-center p-6 gap-4 mx-auto max-w-4xl">
+            <div class = "hidden md:inline"><ThemeToggleButton/></div>
+            <a href="#about-me" class = "hover:md:scale-110 hover:text-gold transition uppercase">Sobre Mí</a>
+            <a href="#experience" class = "hover:md:scale-110 hover:text-gold transition uppercase">Experiencia</a>
+            <a href="#info" class = "hidden md:inline bg-gold text-primary rounded-full p-[14px] 
+                                scale-[2] hover:scale-[2.25] lg:scale-[2.5] hover:lg:scale-[2.75] 
+                                transition translate-y-2 lg:translate-y-4 mx-3">ESG</a>
+            <a href="#skills" class = "hover:md:scale-110 hover:text-gold transition uppercase">Habilidades</a>
+            <a href="#projects" class = "hover:md:scale-110 hover:text-gold transition uppercase">Proyectos</a>
+            <LanguageToogleButton/>
         </div>
     </nav>
 </header>
 
 <script>
+    const $menuButton = document.getElementById("menuButton")
+    const $menu = document.getElementById("menu")
+
+    Array.from($menu?.children || []).map((anchor) => {
+        anchor.addEventListener("click", ()=> {$menu?.classList.remove("open")})
+    })
+
+    $menuButton?.addEventListener("click", ()=>{
+        $menu?.classList.toggle("open")
+    })
+
+    let $sections = document.querySelectorAll('section')
+    let $anchors = document.querySelectorAll('a[href^="#"]')
+
+    window.onscroll = () => {
+        $sections.forEach(section => {
+            let top = window.scrollY + (window.screen.height*0.5)
+            let offset = section.offsetTop
+            let height = section.offsetHeight
+
+            if (top >= offset && top < offset + height && section.id != "info"){
+                $anchors.forEach(anchor => {
+                    anchor.classList.remove ("active")
+                    document.querySelector(`a[href="#${section.id}"]`)?.classList.add("active")
+                })
+            }
+        })
+    }
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (this: HTMLAnchorElement, e: Event) {
             e.preventDefault();
@@ -39,6 +79,50 @@ import ThemeToggleButton from "./themeToggleButton.astro";
 
 
 <style>
+    #menu {
+        position: absolute;
+        border: solid 2pt var(--color-gold);
+        border-top: transparent;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: max-height 0.3s ease-out, opacity 0.3s ease-out, visibility 0.3s;
+    }
+
+    #menu.open {
+        opacity: 1;
+        visibility: visible;
+        max-height: 250px;
+    }
+
+    @media (min-width: 768px) {
+        #menu {
+            position: initial;
+            border: none;
+            background-color: transparent;
+            display: flex;
+            overflow: visible;
+            flex-direction: row;
+            flex-wrap: wrap;
+            max-height: none;
+            visibility: visible;
+            opacity: 1;
+            transition: none;
+        }
+    }
+
+    /* Cuando está oculto en dispositivos móviles */
+    #menu.hidden {
+        display: none;
+    }
+    
+    a.active{
+        color: var(--color-gold)
+    }
     header{
         animation: 2s opening ease;
     }
