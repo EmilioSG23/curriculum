@@ -60,8 +60,8 @@ const lista: string[] = fillList();
                 </div>
             </div>
 
-            <div class = "order-1 lg:order-2 lg:flex-[2] self-center bg-[#F5F5F5] -rotate-3 w-[80%] sm:w-[60%] md:w-[50%]
-            duration-[600ms] taos:[transform:translate3d(400px,50px,0)_scale(1.2)] taos:opacity-0 [animation-iteration-count:infinite]" data-taos-offset="200">
+            <div class = "order-1 lg:order-2 lg:flex-[2] self-center bg-[#F5F5F5] -rotate-3 w-[80%] sm:w-[60%] md:w-[50%] lg:mr-6 xl:mr-0
+            duration-[800ms] taos:[transform:perspective(2500px)_rotateX(100deg)] taos:invisible taos:[backface-visibility:hidden] [animation-iteration-count:infinite]" data-taos-offset="200">
                 <div class = "flex flex-col p-5 pl-10 font-hand">
                     <div class = "border-b border-black/25 py-1 text-red-600 font-bold text-[32px]">Habilidades Personales</div>
                     {lista.map(( habilidad , index) => (

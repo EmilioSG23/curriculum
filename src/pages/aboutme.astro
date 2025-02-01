@@ -1,6 +1,5 @@
 ---
 import Arrow from "../components/arrow.astro"
-import Button from "../components/button.astro"
 import HeaderSection from "../components/headerSection.astro"
 
 const myBirthday = new Date(1003813200*1000)
@@ -40,19 +39,23 @@ const aboutMe = [
         <HeaderSection title = "Sobre Mí"/>
         <div class="mt-10 flex flex-wrap justify-center w-full">
             {aboutMe.map(({icon, title, description},index) => (
-                <div class = "bg-background flex mx-5 my-5 h-[384px] sm:h-[256px] items-center border-2 border-neon rounded-[25px]
+                <div class = "bg-background flex mx-5 my-5 min-h-[384px] sm:min-h-[256px] items-center border-2 border-neon rounded-[25px]
                     hover:bg-hover hover:scale-105 transition w-[90%] md:w-[70%] lg:w-[45%]
                     duration-[600ms] taos:[transform:perspective(2500px)_rotateY(100deg)] taos:invisible taos:[backface-visibility:hidden]
                     [animation-iteration-count:infinite]" data-taos-offset="100">
                     <div class = "flex-[1] border-r-2 h-full w-1/2 border-neon flex flex-col justify-center items-center text-neon fill-neon">
-                        <i class = {icon + " text-[72px]"}></i>
-                        <p class = "mt-4 font-main text-center">{title}</p>
+                        <i class = {icon + " hidden sm:inline text-[72px]"}></i>
+                        <p class = "mt-4 font-main text-center sm:w-auto rotate-180 sm:rotate-0 [writing-mode:vertical-rl] sm:[writing-mode:horizontal-tb]">{title}</p>
                     </div>
                     <div class = "p-4 flex-[3] flex-col fond-light leading-normal items-center justify-center">
                         <span class = "text-center text-[12px] sm:text-[14px]">{description}</span>
                         {index == 2 && (
-                            <div class = "flex items-center justify-center w-full h-[2px] mt-6">
-                                <Button url= "" texto = "Contáctame"/>
+                            <div class = "flex justify-center items-center">
+                                <a href=""
+                                class="cursor-pointer rounded-[5px] border-2 border-content my-3 py-2 text-center w-full sm:w-1/2 h-full flex items-center justify-center
+                                hover:bg-content hover:text-background transition normal-case text-[12px] sm:text-[14px]">
+                                    Contáctame
+                                </a>
                             </div>
                         )}
                     </div>

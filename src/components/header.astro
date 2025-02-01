@@ -1,5 +1,6 @@
 ---
 import LanguageToogleButton from "./languageToogleButton.astro";
+import Logo from "./logo.astro";
 import ThemeToggleButton from "./themeToggleButton.astro";
 
 ---
@@ -10,17 +11,14 @@ import ThemeToggleButton from "./themeToggleButton.astro";
                 <i class="fa fa-bars"></i>
                 <span>Menú</span>
             </button>
-            <a href="#info"
-            class = "bg-gold text-primary rounded-full p-[14px] scale-[1.5] hover:scale-[1.75] transition mx-3">ESG</a>
-            <ThemeToggleButton />
+            <Logo />
+            
         </div>
         <div id = "menu" class="justify-between md:items-center p-6 gap-4 mx-auto max-w-4xl">
-            <div class = "hidden md:inline"><ThemeToggleButton/></div>
+            <div id ="mobileDesktop" class = "hidden md:inline"><ThemeToggleButton/></div>
             <a href="#about-me" class = "hover:md:scale-110 hover:text-gold transition uppercase">Sobre Mí</a>
             <a href="#experience" class = "hover:md:scale-110 hover:text-gold transition uppercase">Experiencia</a>
-            <a href="#info" class = "hidden md:inline bg-gold text-primary rounded-full p-[14px] 
-                                scale-[2] hover:scale-[2.25] lg:scale-[2.5] hover:lg:scale-[2.75] 
-                                transition translate-y-2 lg:translate-y-4 mx-3">ESG</a>
+            <div class = "hidden md:flex"><Logo /></div>
             <a href="#skills" class = "hover:md:scale-110 hover:text-gold transition uppercase">Habilidades</a>
             <a href="#projects" class = "hover:md:scale-110 hover:text-gold transition uppercase">Proyectos</a>
             <LanguageToogleButton/>
@@ -29,6 +27,30 @@ import ThemeToggleButton from "./themeToggleButton.astro";
 </header>
 
 <script>
+    /* Mover themeToogle */
+    const $mobileContainer = document.getElementById("mobileContainer") as HTMLElement
+    const $mobileDesktop = document.getElementById("mobileDesktop") as HTMLElement
+
+    const $toogleButton = document.getElementById("theme") as HTMLElement
+    function moveToogleButton (){
+        if (window.innerWidth < 768){
+            if ($mobileContainer && !$mobileContainer.contains($toogleButton)){
+                $mobileContainer.appendChild($toogleButton)
+                if ($mobileDesktop.contains($toogleButton)) $mobileDesktop.removeChild($toogleButton)
+            }  
+        }
+        else{
+            if ($mobileDesktop && !$mobileDesktop.contains($toogleButton)){
+                $mobileDesktop.appendChild($toogleButton)
+                if ($mobileContainer.contains($toogleButton)) $mobileContainer.removeChild($toogleButton)
+            }
+        } 
+    }
+    window.addEventListener("resize", moveToogleButton)
+    document.addEventListener("DOMContentLoaded", moveToogleButton)
+
+
+    /* Botón del menú */
     const $menuButton = document.getElementById("menuButton")
     const $menu = document.getElementById("menu")
 
@@ -40,6 +62,7 @@ import ThemeToggleButton from "./themeToggleButton.astro";
         $menu?.classList.toggle("open")
     })
 
+    /* Scroll */
     let $sections = document.querySelectorAll('section')
     let $anchors = document.querySelectorAll('a[href^="#"]')
 
@@ -115,7 +138,6 @@ import ThemeToggleButton from "./themeToggleButton.astro";
         }
     }
 
-    /* Cuando está oculto en dispositivos móviles */
     #menu.hidden {
         display: none;
     }

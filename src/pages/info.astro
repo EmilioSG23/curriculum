@@ -1,6 +1,5 @@
 ---
 import Arrow from "../components/arrow.astro";
-import Button from "../components/button.astro";
 
 ---
 
@@ -57,28 +56,26 @@ import Button from "../components/button.astro";
 
 <section id = "info" class="my-20 text-content font-main">
     <div>
-        <div class="flex items-center gap-y-5 py-20 gap-x-[64px] mx-auto max-w-6xl uppercase">
-            <div class = "flex-[2]">
-                <img src = "../public/perfil.webp" class = "w-[550px] rounded-[50px] border-[5px] border-neon
+        <div class="flex flex-col lg:flex-row items-center gap-y-5 py-20 gap-x-[64px] mx-auto max-w-6xl uppercase">
+            <div class = "order-2 lg:order-1 flex-[2] lg:ml-5 flex justify-center mt-20 lg:mt-0">
+                <img src = "../public/perfil.webp" class = "w-[80%] sm:w-[35%] lg:w-[80%] rounded-[50px] border-[5px] border-neon
                 duration-[600ms] taos:[transform:translate3d(-200px,0,0)_scale(1.2)] taos:opacity-0" data-taos-offset="200" alt = "Foto de perfil">
             </div>
-            <div class = "flex-[3] flex-col justify-start">
-                <span id = "ani-1" class = "text-[48px]"></span><br>
-                <h1 class = "font-title font-bold text-[70px] uppercase inline-block">
-                    <span id = "ani-2" class="text-neon"></span>
+            <div class = "order-1 lg:order-2 flex-[3] lg:mr-5 flex-col w-[80%] justify-start">
+                <span id = "ani-1" class = "text-[24px] sm:text-[48px]">&nbsp;</span><br>
+                <h1 class = "font-title font-bold text-[36px] sm:text-[70px] uppercase inline-block">
+                    <span id = "ani-2" class="text-neon">&nbsp;</span>
                 </h1>
                 <Arrow side = "r" color = "neon"/>
-                <div>
-                    <span id = "ani-3"  class = "text-[48px]"></span>
-                </div>
-                <div>
-                    <span id = "ani-4"  class = "text-[48px]"></span>
-                </div>
-                <div>
-                    <span id = "ani-5"  class = "inline font-extrabold text-[56px] text-neon"></span>
-                </div>
+                <div><span id = "ani-3"  class = "text-[24px] sm:text-[48px]">&nbsp;</span></div>
+                <div><span id = "ani-4"  class = "text-[24px] sm:text-[48px]">&nbsp;</span></div>
+                <div><span id = "ani-5"  class = "inline font-extrabold text-[28px] sm:text-[56px] text-neon">&nbsp;</span></div>
                 <div class = "flex items-center justify-center mt-10 w-full">
-                    <Button url= "" texto = "Descarga mi CV"/>
+                    <a href=""
+                    class="cursor-pointer rounded-[20px] p-5 border-2 border-content m-5 text-center w-full sm:w-1/2 h-full flex items-center justify-center
+                    hover:bg-content hover:text-background transition normal-case">
+                        Descarga mi CV
+                    </a>
                 </div>
             </div>
         </div>

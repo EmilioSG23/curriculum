@@ -11,31 +11,42 @@ import Layout from "../layouts/Layout.astro";
 <Layout>
     <Background />
     <div class = "flex flex-col h-full  ">
-        <header class= `fixed top-0 left-0 right-0 z-50 backdrop-blur-[3px]}`>
+        <header class= `top-0 left-0 right-0 z-50 backdrop-blur-[3px]}`>
             <nav class="bg-black/25 text-content font-main">
-                <div class="hidden md:flex flex-wrap justify-between items-center p-6 gap-4 mx-auto max-w-4xl">
-                <ThemeToggleButton />
-                <a href="/" class = "hover:scale-110 hover:text-gold transition uppercase">Sobre Mí</a>
-                <a href="/" class = "hover:scale-110 hover:text-gold transition uppercase">Experiencia</a>
-                <a href="/" class = "bg-gold text-primary rounded-full p-[14px] scale-[2.5] hover:scale-[2.75] transition translate-y-4 mx-3">ESG</a>
-                <a href="/" class = "hover:scale-110 hover:text-gold transition uppercase">Habilidades</a>
-                <a href="/" class = "hover:scale-110 hover:text-gold transition uppercase">Proyectos</a>
-                <LanguageToogleButton />
+                <div id="mobileContainer" class = "md:hidden flex flex-wrap p-6 justify-between items-center">
+                    <button id="menuButton" class="text-white p-2 border border-gold rounded-md scale hover:text-gold transition">
+                        <i class="fa fa-bars"></i>
+                        <span>Menú</span>
+                    </button>
+                    <a href="#info"
+                    class = "bg-gold text-primary rounded-full p-[14px] scale-[1.5] hover:scale-[1.75] transition mx-3">ESG</a>
+                    <ThemeToggleButton />
+                </div>
+                <div id = "menu" class="justify-between md:items-center p-6 gap-4 mx-auto max-w-4xl">
+                    <div class = "hidden md:inline"><ThemeToggleButton/></div>
+                    <a href="/" class = "hover:md:scale-110 hover:text-gold transition uppercase">Sobre Mí</a>
+                    <a href="/" class = "hover:md:scale-110 hover:text-gold transition uppercase">Experiencia</a>
+                    <a href="/" class = "hidden md:inline bg-gold text-primary rounded-full p-[14px] 
+                                        scale-[2] hover:scale-[2.25] lg:scale-[2.5] hover:lg:scale-[2.75] 
+                                        transition translate-y-2 lg:translate-y-4 mx-3">ESG</a>
+                    <a href="/" class = "hover:md:scale-110 hover:text-gold transition uppercase">Habilidades</a>
+                    <a href="/" class = "hover:md:scale-110 hover:text-gold transition uppercase">Proyectos</a>
+                    <LanguageToogleButton/>
                 </div>
             </nav>
         </header>
         <div class = "flex-grow flex justify-center items-center font-main">
             <div class="flex flex-col mx-auto max-w-6xl justify-center items-center text-content">
-                <h1 class="font-bold text-[64px]">Ooooooops!</h1>
+                <h1 class="font-bold text-[40px] sm:text-[64px]">Ooooooops!</h1>
                 <div id = "error" class = "flex flex-col text-center justify-center font-title font-extrabold uppercase my-10">
-                    <i class = "fas fa-exclamation-triangle text-red-500 border-content text-[128px]"></i>
-                    <span class = "text-[64px]">Error 404</span>
+                    <i class = "fas fa-exclamation-triangle text-red-500 border-content text-[80px] sm:text-[128px]"></i>
+                    <span class = "text-[40px] sm:text-[64px]">Error 404</span>
                 </div>
                 <div class = "flex flex-col text-center justify-center items-center">
-                    <h2>Al parecer esta página no existe</h2>
-                    <p class = "font-light">¡Pero tranquilo! Aplastando este botón podrás volver a la página principal. ¡Te espero ahí!</p>
-                    <a href="/" class="mt-10 cursor-pointer bg-neon text-background rounded-[15px] p-2 m-2 text-center w-1/2 flex items-center justify-center
-                                        gap-x-2 text-[30px]
+                    <h2 class = "font-bold text-[14px] sm:text-[24px] mx-5">Al parecer esta página no existe</h2>
+                    <p class = "font-light text-[12px] sm:text-[16px] mx-5">¡Pero tranquilo! Aplastando este botón podrás volver a la página principal. ¡Te espero ahí!</p>
+                    <a href="/" class="mt-10 cursor-pointer bg-neon text-background rounded-[15px] p-2 m-2 text-center w-[75%] sm:w-1/2 flex items-center justify-center
+                                        gap-x-2 sm:text-[28px]
                                         hover:brightness-125 hover:text-background transition">
                         <p class = "font-bold">Página Principal</p>
                     </a>
@@ -47,6 +58,17 @@ import Layout from "../layouts/Layout.astro";
 </Layout>
 
 <script>
+    const $menuButton = document.getElementById("menuButton")
+    const $menu = document.getElementById("menu")
+
+    Array.from($menu?.children || []).map((anchor) => {
+        anchor.addEventListener("click", ()=> {$menu?.classList.remove("open")})
+    })
+
+    $menuButton?.addEventListener("click", ()=>{
+        $menu?.classList.toggle("open")
+    })
+
     const $errorDiv = document.querySelector("div#error") as HTMLElement
     const errorAnimation = () => {
         setInterval(() => {
@@ -61,6 +83,46 @@ import Layout from "../layouts/Layout.astro";
 </script>
 
 <style>
+    #menu {
+        position: absolute;
+        border: solid 2pt var(--color-gold);
+        border-top: transparent;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: max-height 0.3s ease-out, opacity 0.3s ease-out, visibility 0.3s;
+    }
+
+    #menu.open {
+        opacity: 1;
+        visibility: visible;
+        max-height: 250px;
+    }
+
+    @media (min-width: 768px) {
+        #menu {
+            position: initial;
+            border: none;
+            background-color: transparent;
+            display: flex;
+            overflow: visible;
+            flex-direction: row;
+            flex-wrap: wrap;
+            max-height: none;
+            visibility: visible;
+            opacity: 1;
+            transition: none;
+        }
+    }
+
+    #menu.hidden {
+        display: none;
+    }
+
     nav{
         border-bottom: solid ;
         border-image: linear-gradient(90deg, rgba(255,200,0,1) 0%, rgb(255, 255, 255) 0%, rgba(255,200,0,1) 25%) 1;
