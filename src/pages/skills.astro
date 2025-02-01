@@ -1,7 +1,7 @@
 ---
 import Arrow from "../components/arrow.astro";
 import HeaderSection from "../components/headerSection.astro";
-import { SKILLS } from "../layouts/skills";
+import { SKILLS } from "../consts/skills";
 
 const HABILIDADES_PERSONALES = ["Trabajo en Equipo", "Creatividad", "Comunicación efectiva", "Compromiso a toda hora", "Buen nivel de Inglés"]
 
@@ -25,9 +25,11 @@ const lista: string[] = fillList();
     <div class = "flex flex-col justify-center items-center">
         <HeaderSection title = "Habilidades" />
         <div class = "flex justify-center w-full my-5 gap-10 mt-20">
-            <div class = "flex-[3] bg-[#000823] border-2 border-[#5AE1FF] rounded-[20px]">
+            <div class = "flex-[3] bg-black border-2 border-[#5AE1FF] rounded-[20px]
+            duration-[500ms] taos:[transform:perspective(2500px)_rotateX(100deg)] taos:invisible taos:[backface-visibility:hidden] [animation-iteration-count:infinite]" 
+            data-taos-offset="100">
                 <div class = "flex justify-center items-center bg-primary text-white h-[8%] border-b-2 border-[#5AE1FF] rounded-t-[17px]">
-                    <div class = "flex-1 mx-5">Habilidades en Programación</div>
+                    <div class = "flex-1 mx-5 font-main">Habilidades en Programación</div>
                     <div class = "px-4 bg-white/5 h-full text-center flex items-center justify-center border-x-2 border-[#5AE1FF]"><i class = "fa fa-minus"></i></div>
                     <div class = "px-4 bg-white/5 h-full text-center flex items-center justify-center"><i class = "fa-regular fa-window-restore"></i></div>
                     <div class = "px-4 bg-red-600 h-full text-center flex items-center justify-center border-l-2 border-[#5AE1FF] rounded-tr-[17px]"><i class = "fa fa-x"></i></div>
@@ -51,7 +53,8 @@ const lista: string[] = fillList();
                     ))}
                 </div>
             </div>
-            <div class = "flex-[2] bg-[#F5F5F5] -rotate-3">
+            <div class = "flex-[2] bg-[#F5F5F5] -rotate-3
+            duration-[600ms] taos:[transform:translate3d(400px,50px,0)_scale(1.2)] taos:opacity-0 [animation-iteration-count:infinite]" data-taos-offset="200">
                 <div class = "flex flex-col p-5 pl-10 font-hand">
                     <div class = "border-b border-black/25 py-1 text-red-600 font-bold text-[32px]">Habilidades Personales</div>
                     {lista.map(( habilidad , index) => (
@@ -84,14 +87,13 @@ const lista: string[] = fillList();
 </style>
 
 <script>
-import { SKILLS } from "../layouts/skills";
+import { SKILLS } from "../consts/skills";
 
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll("button#toogleContent").forEach((button, index) => {
         button.addEventListener("click", () => {
             const $divContents = document.querySelectorAll("div[id^='div-']")
             $divContents.forEach((div) => {
-                console.log("as")
                 if (div.id == `div-${SKILLS[index]["id"]}` && !div.classList.contains("open")){
                     div.classList.add("open")
                     div.classList.remove("close")

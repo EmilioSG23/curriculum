@@ -24,12 +24,52 @@ const year = new Date().getFullYear();
         <div class="order-2 md:order-1 mt-5 md:mt-0 flex-1 text-center font-extralight text-[14px]">Copyright &copy; Emilio Ignacio <b>Sáenz Gómez</b> {year}</div>
         <div class="order-1 md:order-2 flex-1 text-center">
             {SOCIAL_MEDIA.map(({name,url,icon}) => (
-                <a class="inline-block text-4xl bg-white text-black hover:bg-black hover:text-white hover:scale-110 hover:transition p-2 rounded-2xl mx-1"
+                <a class="social-media inline-block text-4xl bg-gray-300 text-black hover:brightness-150 transition p-2 rounded-2xl mx-1"
                 href={url} aria-label={name}
-                target="_blank"
-                >
-                    <i class={`w-10 h-10 fab fa-${icon}`}></i></a>
+                target="_blank" data-tooltip = {name}>
+                    <i class={`w-10 h-10 fab fa-${icon}`}></i>
+                </a>
             ))}
         </div>
     </div>
 </footer>
+
+<style>
+    a.social-media::before{
+        content: attr(data-tooltip);
+        text-align: center;
+        position: absolute;
+        left: 50%;
+        padding: 6px 16px 6px 16px;
+        background-color: white;
+        color: black;
+        font-size: 10px;
+        font-weight: bold;
+        line-height: 14px;
+        border-radius: 5px;
+        transform: translate(-50%, -43px);
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    a.social-media::after{
+        content: "";
+        position: absolute;
+        left: 50%;
+        height: 0;
+        width: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 10px solid white;
+        transform: translate(-50%, -20px);
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    a.social-media:hover::before{
+        opacity: 1;
+    }
+    a.social-media:hover::after{
+        opacity: 1;
+    }
+</style>

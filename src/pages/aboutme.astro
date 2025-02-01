@@ -5,7 +5,6 @@ import HeaderSection from "../components/headerSection.astro"
 
 const myBirthday = new Date(1003813200*1000)
 
-console.log(myBirthday)
 let age = (new Date().getFullYear() - myBirthday.getFullYear())
 age = myBirthday.getMonth() > new Date().getMonth() ? age - 1 : age
 
@@ -29,7 +28,7 @@ const aboutMe = [
         icon: "",
         description: `Si estás interesado en trabajar conmigo, no dudes en contactarme. Estoy dispuesto a trabajar en cualquier proyecto que se me presente, me gustan mucho los desafíos.`,
         
-    }
+    },
 ]
 ---
 
