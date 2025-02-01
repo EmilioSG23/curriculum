@@ -16,12 +16,12 @@ const EXPERIENCE = [
     <Arrow side="l" color="gold"/>
     <div class = "flex flex-col justify-center items-center">
         <HeaderSection title = "Experiencia" />
-        <div id = "" class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-center w-full">
+        <div class="mt-10 gap-5 flex flex-wrap justify-center w-full">
             {EXPERIENCE.reverse().map(({lugar, puesto, descripcion}) => (
-                <div id = "" class = "bg-background flex flex-col w-full md:mx-0 h-[312px] items-center border-2 border-neon rounded-[25px]
-                    hover:scale-105 hover:bg-hover transition
+                <div class = "bg-background flex flex-col h-[312px] items-center border-2 border-neon rounded-[25px]
+                    hover:scale-105 hover:bg-hover transition w-[80%] md:w-[45%] lg:w-[31%]
                     duration-[600ms] taos:[transform:translate3d(-200px,0,0)_scale(0.6)] taos:opacity-0 [animation-iteration-count:infinite]" data-taos-offset="100">
-                    <div class="border-b-2 border-neon w-full h-[25%] flex flex-col justify-center items-center">
+                    <div class="border-b-2 border-neon h-[25%] w-full flex flex-col justify-center items-center">
                         <h1 class = "font-bold text-neon text-[24px]">{lugar}</h1>
                         <h2 class = "text-[16px]">{puesto}</h2>
                     </div>
@@ -33,7 +33,3 @@ const EXPERIENCE = [
         </div>
     </div>
 </section>
-
-<style>
-
-</style>

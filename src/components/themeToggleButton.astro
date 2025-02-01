@@ -24,11 +24,11 @@
 
     function toggleIcon(isDark: boolean){
         if(isDark){
-            $sunIcon.style.display = 'none';
-            $moonIcon.style.display = 'inline';
+            $sunIcon.classList.add("hidden")
+            $moonIcon.classList.remove("hidden")
         }else{
-            $sunIcon.style.display = 'inline';
-            $moonIcon.style.display = 'none';
+            $sunIcon.classList.remove("hidden")
+            $moonIcon.classList.add("hidden")
         }
     }
 
@@ -36,5 +36,5 @@
 
 <button id = "theme" class = "text-3xl w-8 h-8 hover:scale-110 hover:text-gold transition">
     <i id = "dark" class="fas fa-moon"></i>
-    <i id = "light" class="fas fa-sun"></i>
+    <i id = "light" class="fas fa-sun hidden"></i>
 </button>

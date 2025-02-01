@@ -2,6 +2,7 @@ export const SKILLS = [
     {
         id: "languages",
         name: "Lenguajes de Programación",
+        shortName: "Lenguajes",
         values:[
             {
                 id: "typescript",
@@ -81,6 +82,7 @@ export const SKILLS = [
     {
         id: "frontend",
         name: "Frameworks Frontend",
+        shortName: "Frontend",
         values: [
             {
                 id: "angular",
@@ -111,6 +113,7 @@ export const SKILLS = [
     {
         id: "backend",
         name: "Frameworks Backend",
+        shortName: "Backend",
         values: [
             {
                 id: "express",
@@ -135,6 +138,7 @@ export const SKILLS = [
     {
         id: "others",
         name: "Otras herramientas",
+        shortName: "Otros",
         values: [
             {
                 id: "sql",

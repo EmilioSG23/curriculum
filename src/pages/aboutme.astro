@@ -11,22 +11,24 @@ age = myBirthday.getMonth() > new Date().getMonth() ? age - 1 : age
 const aboutMe = [
     {
         //Quien soy
-        icon: "",
+        icon: `fa-solid fa-user`,
+        title: "¿Quién soy?",
         description: `Soy un joven informático de ${age} años, 
         dedicado hace años al mundo de la tecnología y de la programación. Durante mi recorrido en el mundo informático, 
         he tomado diferentes desafíos pero siempre dándo lo mejor de mí para dar el mejor producto posible. En mis pasatiempos, me gusta jugar videojuegos y ver fútbol.`,
     },
     {
         //Qué hago
-        icon: "",
+        icon: "fa-solid fa-code",
+        title: "¿Qué hago?",
         description: `Desarrollo software de distintos ámbitos, desde aplicaciones móviles, aplicaciones de escritorio y webs, entre las cuales se incluyen Landing Pages,
          Dashboards, incluso hasta un videojuego. Los productos se destacan por mantener buenas prácticas de programación y por tener un diseño atractivo, funcional y responsivo
          para cualquier dispositivo.`,
     },
     {
-        //Qué he 
-        icon: "",
-        description: `Si estás interesado en trabajar conmigo, no dudes en contactarme. Estoy dispuesto a trabajar en cualquier proyecto que se me presente, me gustan mucho los desafíos.`,
+        icon: "fa-solid fa-envelope",
+        title: "¡Contáctame!",
+        description: `Si está interesado en contar con mis conocimientos, no dude en contactarme. Estoy dispuesto a trabajar en cualquier proyecto que se me presente, me gustan mucho los desafíos.`,
         
     },
 ]
@@ -36,19 +38,20 @@ const aboutMe = [
     <Arrow side="r" color="gold"/>
     <div class = "flex flex-col justify-center items-center">
         <HeaderSection title = "Sobre Mí"/>
-        <div id = "cards" class="mt-10 flex justify-center w-full">
-            {aboutMe.map(({icon, description},index) => (
-                <div id = "card" class = "bg-background flex w-full mx-5 my-5 md:mx-0 h-[256px] items-center border-2 border-neon rounded-[25px]
-                    hover:bg-hover hover:scale-105 transition
+        <div class="mt-10 flex flex-wrap justify-center w-full">
+            {aboutMe.map(({icon, title, description},index) => (
+                <div class = "bg-background flex mx-5 my-5 h-[384px] sm:h-[256px] items-center border-2 border-neon rounded-[25px]
+                    hover:bg-hover hover:scale-105 transition w-[90%] md:w-[70%] lg:w-[45%]
                     duration-[600ms] taos:[transform:perspective(2500px)_rotateY(100deg)] taos:invisible taos:[backface-visibility:hidden]
                     [animation-iteration-count:infinite]" data-taos-offset="100">
-                    <div class = "border-r-2 border-neon flex justify-center items-center">
-                        sd
+                    <div class = "flex-[1] border-r-2 h-full w-1/2 border-neon flex flex-col justify-center items-center text-neon fill-neon">
+                        <i class = {icon + " text-[72px]"}></i>
+                        <p class = "mt-4 font-main text-center">{title}</p>
                     </div>
-                    <div class = "p-4 fond-light leading-normal">
-                        <span class = "text-center text-[14px] justify-center items-center">{description}</span>
+                    <div class = "p-4 flex-[3] flex-col fond-light leading-normal items-center justify-center">
+                        <span class = "text-center text-[12px] sm:text-[14px]">{description}</span>
                         {index == 2 && (
-                            <div class = "flex items-center justify-center mt-10 w-full">
+                            <div class = "flex items-center justify-center w-full h-[2px] mt-6">
                                 <Button url= "" texto = "Contáctame"/>
                             </div>
                         )}
@@ -58,41 +61,3 @@ const aboutMe = [
         </div>
     </div>
 </section>
-
-<style>
-    #cards {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        gap: 48px;
-        width: 100%;
-    }
-
-    #card {
-        display: flex;
-        align-items: center;
-        width: 45%;
-    }
-
-    #card > div:first-child {
-        height: 100%;
-        padding: 16px;
-    }
-
-    #card > div:last-child {
-        flex-grow: 1;
-        padding: 16px;
-        line-height: 1.5;
-    }
-
-    #cards:has(#card:nth-child(1):nth-last-child(1)),
-    #cards:has(#card:nth-child(1):nth-last-child(2)) {
-        justify-content: center;
-    }
-    @media (max-width: 768px) {
-        #card {
-            width: 100%;
-        }
-    }
-
-</style>
