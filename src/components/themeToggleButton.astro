@@ -9,6 +9,7 @@
     const $buttonToggle = document.getElementById('theme') as HTMLElement;
     document.addEventListener('DOMContentLoaded', () => {
         const theme = localStorage.getItem('theme');
+        if (!theme) return;
         document.querySelector('html')?.classList.toggle('dark', theme === 'dark');
         toggleIcon(theme === 'dark');
     });
