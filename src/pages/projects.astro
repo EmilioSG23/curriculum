@@ -8,7 +8,7 @@ import Skills from "./skills.astro";
 const SKILLS_FLAT = SKILLS.flatMap(category => 
     category.values.map(skill => ({
         ...skill,
-        img: `public/habilidades/${category.id}/${skill.id}.png`
+        img: `habilidades/${category.id}/${skill.id}.png`
     }))
 );
 
@@ -29,7 +29,7 @@ function findSkill (id: string){
                     return (
                         <div class="flex flex-col border-2 border-neon transition w-[90%] sm:w-[70%] md:w-[45%] lg:w-[31%] mx-2 xl:mx-0
                             duration-[600ms] taos:translate-y-[100%] taos:opacity-0 [animation-iteration-count:infinite]">
-                            <img class="w-[600px] h-[250px] object-cover" src={`public/projects/${id}.png`} alt={nombre} />
+                            <img class="w-[600px] h-[250px] object-cover" src={`projects/${id}.png`} alt={nombre} />
                             <div class="flex flex-col border-t-2 border-neon bg-black/25">
                                 <span class="text-[24px] font-medium text-center text-neon">{nombre}</span>
                                 <div class="flex justify-center items-center gap-x-1 my-1">
