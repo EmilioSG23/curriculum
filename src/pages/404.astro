@@ -3,6 +3,7 @@ import Background from "../components/background.astro";
 import Footer from "../components/footer.astro";
 import Header from "../components/header.astro";
 import LanguageToogleButton from "../components/languageToogleButton.astro";
+import Logo from "../components/logo.astro";
 import ThemeToggleButton from "../components/themeToggleButton.astro";
 import Layout from "../layouts/Layout.astro";
 
@@ -11,26 +12,22 @@ import Layout from "../layouts/Layout.astro";
 <Layout>
     <Background />
     <div class = "flex flex-col h-full  ">
-        <header class= `top-0 left-0 right-0 z-50 backdrop-blur-[3px]}`>
-            <nav class="bg-black/25 text-content font-main">
-                <div id="mobileContainer" class = "md:hidden flex flex-wrap p-6 justify-between items-center">
+        <header class= `fixed top-0 left-0 right-0 z-10 bg-black/25 backdrop-blur-[3px]`>
+            <nav class="bg-black/25 text-white font-main">
+                <div id="mobileContainer" class = "md:hidden flex flex-wrap p-2 sm:p-4 justify-between items-center">
                     <button id="menuButton" class="text-white p-2 border border-gold rounded-md scale hover:text-gold transition">
                         <i class="fa fa-bars"></i>
-                        <span>Menú</span>
                     </button>
-                    <a href="#info"
-                    class = "bg-gold text-primary rounded-full p-[14px] scale-[1.5] hover:scale-[1.75] transition mx-3">ESG</a>
-                    <ThemeToggleButton />
+                    <Logo href = {import.meta.env.BASE_PATH}/>
+                    
                 </div>
-                <div id = "menu" class="justify-between md:items-center p-6 gap-4 mx-auto max-w-4xl">
-                    <div class = "hidden md:inline"><ThemeToggleButton/></div>
-                    <a href="/" class = "hover:md:scale-110 hover:text-gold transition uppercase">Sobre Mí</a>
-                    <a href="/" class = "hover:md:scale-110 hover:text-gold transition uppercase">Experiencia</a>
-                    <a href="/" class = "hidden md:inline bg-gold text-primary rounded-full p-[14px] 
-                                        scale-[2] hover:scale-[2.25] lg:scale-[2.5] hover:lg:scale-[2.75] 
-                                        transition translate-y-2 lg:translate-y-4 mx-3">ESG</a>
-                    <a href="/" class = "hover:md:scale-110 hover:text-gold transition uppercase">Habilidades</a>
-                    <a href="/" class = "hover:md:scale-110 hover:text-gold transition uppercase">Proyectos</a>
+                <div id = "menu" class="justify-between md:items-center p-6 gap-4 mx-auto max-w-4xl ">
+                    <div id ="mobileDesktop" class = "hidden md:inline"><ThemeToggleButton/></div>
+                    <a href={import.meta.env.BASE_PATH+"#about-me"} class = "hover:md:scale-110 hover:text-gold transition uppercase">Sobre Mí</a>
+                    <a href={import.meta.env.BASE_PATH+"#experience"} class = "hover:md:scale-110 hover:text-gold transition uppercase">Experiencia</a>
+                    <div class = "hidden md:flex"><Logo /></div>
+                    <a href={import.meta.env.BASE_PATH+"#skills"} class = "hover:md:scale-110 hover:text-gold transition uppercase">Habilidades</a>
+                    <a href={import.meta.env.BASE_PATH+"#projects"} class = "hover:md:scale-110 hover:text-gold transition uppercase">Proyectos</a>
                     <LanguageToogleButton/>
                 </div>
             </nav>
@@ -58,6 +55,30 @@ import Layout from "../layouts/Layout.astro";
 </Layout>
 
 <script>
+    /* Mover themeToogle */
+    const $mobileContainer = document.getElementById("mobileContainer") as HTMLElement
+    const $mobileDesktop = document.getElementById("mobileDesktop") as HTMLElement
+
+    const $toogleButton = document.getElementById("theme") as HTMLElement
+    function moveToogleButton (){
+        if (window.innerWidth < 768){
+            if ($mobileContainer && !$mobileContainer.contains($toogleButton)){
+                $mobileContainer.appendChild($toogleButton)
+                if ($mobileDesktop.contains($toogleButton)) $mobileDesktop.removeChild($toogleButton)
+            }  
+        }
+        else{
+            if ($mobileDesktop && !$mobileDesktop.contains($toogleButton)){
+                $mobileDesktop.appendChild($toogleButton)
+                if ($mobileContainer.contains($toogleButton)) $mobileContainer.removeChild($toogleButton)
+            }
+        } 
+    }
+    window.addEventListener("resize", moveToogleButton)
+    document.addEventListener("DOMContentLoaded", moveToogleButton)
+
+
+    /* Botón del menú */
     const $menuButton = document.getElementById("menuButton")
     const $menu = document.getElementById("menu")
 

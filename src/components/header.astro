@@ -4,13 +4,13 @@ import Logo from "./logo.astro";
 import ThemeToggleButton from "./themeToggleButton.astro";
 
 ---
-<header class= `fixed top-0 left-0 right-0 z-50 bg-black/25 backdrop-blur-[3px]`>
+<header class= `fixed top-0 left-0 right-0 z-10 bg-black/25 backdrop-blur-[3px]`>
     <nav class="bg-black/25 text-white font-main">
-        <div id="mobileContainer" class = "md:hidden flex flex-wrap p-6 justify-between items-center">
+        <div id="mobileContainer" class = "md:hidden flex flex-wrap p-2 sm:p-4 justify-between items-center">
             <button id="menuButton" class="text-white p-2 border border-gold rounded-md scale hover:text-gold transition">
                 <i class="fa fa-bars"></i>
             </button>
-            <Logo />
+            <Logo href = "#info"/>
             
         </div>
         <div id = "menu" class="justify-between md:items-center p-6 gap-4 mx-auto max-w-4xl">
