@@ -91,6 +91,12 @@ export const SKILLS = [
                 text: "white"
             },
             {
+                id: "astro",
+                name: "Astro",
+                color: "#e43a99",
+                text: "white"
+            },
+            {
                 id: "ionic",
                 name: "Ionic",
                 color: "#008cff",
