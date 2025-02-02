@@ -4,8 +4,8 @@ import Logo from "./logo.astro";
 import ThemeToggleButton from "./themeToggleButton.astro";
 
 ---
-<header class= `fixed top-0 left-0 right-0 z-10 bg-black/25 backdrop-blur-[3px]`>
-    <nav class="bg-black/25 text-white font-main">
+<header class= `fixed top-0 left-0 right-0 z-10 bg-black/50 backdrop-blur-[3px]`>
+    <nav class= "text-white font-main">
         <div id="mobileContainer" class = "md:hidden flex flex-wrap p-2 sm:p-4 justify-between items-center">
             <button id="menuButton" class="text-white p-2 border border-gold rounded-md scale hover:text-gold transition">
                 <i class="fa fa-bars"></i>
@@ -32,33 +32,21 @@ import ThemeToggleButton from "./themeToggleButton.astro";
 
     const $toogleButton = document.getElementById("theme") as HTMLElement
     function moveToogleButton (){
-        if (window.innerWidth < 768){
-            if ($mobileContainer && !$mobileContainer.contains($toogleButton)){
-                $mobileContainer.appendChild($toogleButton)
-                if ($mobileDesktop.contains($toogleButton)) $mobileDesktop.removeChild($toogleButton)
-            }  
-        }
-        else{
-            if ($mobileDesktop && !$mobileDesktop.contains($toogleButton)){
-                $mobileDesktop.appendChild($toogleButton)
-                if ($mobileContainer.contains($toogleButton)) $mobileContainer.removeChild($toogleButton)
-            }
-        } 
+        const parent = window.innerWidth < 768 ? $mobileContainer : $mobileDesktop;
+        if (parent && $toogleButton && $toogleButton.parentElement !== parent)
+            parent.appendChild($toogleButton);
     }
     window.addEventListener("resize", moveToogleButton)
     document.addEventListener("DOMContentLoaded", moveToogleButton)
 
 
     /* Botón del menú */
-    const $menuButton = document.getElementById("menuButton")
-    const $menu = document.getElementById("menu")
-
-    Array.from($menu?.children || []).map((anchor) => {
-        anchor.addEventListener("click", ()=> {$menu?.classList.remove("open")})
+    document.querySelectorAll("#menu a").forEach((anchor) => {
+        anchor.addEventListener("click", ()=> {document.getElementById("menu")?.classList.remove("open")})
     })
 
-    $menuButton?.addEventListener("click", ()=>{
-        $menu?.classList.toggle("open")
+    document.getElementById("menuButton")?.addEventListener("click", ()=>{
+        document.getElementById("menu")?.classList.toggle("open")
     })
 
     /* Scroll */
@@ -80,6 +68,7 @@ import ThemeToggleButton from "./themeToggleButton.astro";
         })
     }
 
+    /* Redireccionamiento de Scroll */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (this: HTMLAnchorElement, e: Event) {
             e.preventDefault();
@@ -104,7 +93,6 @@ import ThemeToggleButton from "./themeToggleButton.astro";
     #menu {
         position: absolute;
         border: solid 2pt var(--color-gold);
-        border-top: transparent;
         background-color: rgba(0, 0, 0, 0.5);
         display: flex;
         flex-direction: column;
