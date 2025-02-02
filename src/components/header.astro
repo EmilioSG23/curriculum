@@ -1,0 +1,200 @@
+---
+import LanguageToogleButton from "./languageToogleButton.astro";
+import Logo from "./logo.astro";
+import ThemeToggleButton from "./themeToggleButton.astro";
+
+---
+<header class= `fixed top-0 left-0 right-0 z-50 bg-black/25 backdrop-blur-[3px]`>
+    <nav class="bg-black/25 text-white font-main">
+        <div id="mobileContainer" class = "md:hidden flex flex-wrap p-6 justify-between items-center">
+            <button id="menuButton" class="text-white p-2 border border-gold rounded-md scale hover:text-gold transition">
+                <i class="fa fa-bars"></i>
+            </button>
+            <Logo />
+            
+        </div>
+        <div id = "menu" class="justify-between md:items-center p-6 gap-4 mx-auto max-w-4xl">
+            <div id ="mobileDesktop" class = "hidden md:inline"><ThemeToggleButton/></div>
+            <a href="#about-me" class = "hover:md:scale-110 hover:text-gold transition uppercase">Sobre Mí</a>
+            <a href="#experience" class = "hover:md:scale-110 hover:text-gold transition uppercase">Experiencia</a>
+            <div class = "hidden md:flex"><Logo /></div>
+            <a href="#skills" class = "hover:md:scale-110 hover:text-gold transition uppercase">Habilidades</a>
+            <a href="#projects" class = "hover:md:scale-110 hover:text-gold transition uppercase">Proyectos</a>
+            <LanguageToogleButton/>
+        </div>
+    </nav>
+</header>
+
+<script>
+    /* Mover themeToogle */
+    const $mobileContainer = document.getElementById("mobileContainer") as HTMLElement
+    const $mobileDesktop = document.getElementById("mobileDesktop") as HTMLElement
+
+    const $toogleButton = document.getElementById("theme") as HTMLElement
+    function moveToogleButton (){
+        if (window.innerWidth < 768){
+            if ($mobileContainer && !$mobileContainer.contains($toogleButton)){
+                $mobileContainer.appendChild($toogleButton)
+                if ($mobileDesktop.contains($toogleButton)) $mobileDesktop.removeChild($toogleButton)
+            }  
+        }
+        else{
+            if ($mobileDesktop && !$mobileDesktop.contains($toogleButton)){
+                $mobileDesktop.appendChild($toogleButton)
+                if ($mobileContainer.contains($toogleButton)) $mobileContainer.removeChild($toogleButton)
+            }
+        } 
+    }
+    window.addEventListener("resize", moveToogleButton)
+    document.addEventListener("DOMContentLoaded", moveToogleButton)
+
+
+    /* Botón del menú */
+    const $menuButton = document.getElementById("menuButton")
+    const $menu = document.getElementById("menu")
+
+    Array.from($menu?.children || []).map((anchor) => {
+        anchor.addEventListener("click", ()=> {$menu?.classList.remove("open")})
+    })
+
+    $menuButton?.addEventListener("click", ()=>{
+        $menu?.classList.toggle("open")
+    })
+
+    /* Scroll */
+    let $sections = document.querySelectorAll('section')
+    let $anchors = document.querySelectorAll('a[href^="#"]')
+
+    window.onscroll = () => {
+        $sections.forEach(section => {
+            let top = window.scrollY + (window.screen.height*0.5)
+            let offset = section.offsetTop
+            let height = section.offsetHeight
+
+            if (top >= offset && top < offset + height && section.id != "info"){
+                $anchors.forEach(anchor => {
+                    anchor.classList.remove ("active")
+                    document.querySelector(`a[href="#${section.id}"]`)?.classList.add("active")
+                })
+            }
+        })
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (this: HTMLAnchorElement, e: Event) {
+            e.preventDefault();
+
+            const href = this.getAttribute('href');
+            if (href === null) return;
+            const targetId = href.substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement === null) return;
+            
+            window.scrollTo({
+                top: targetElement.offsetTop - 100,
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+
+
+<style>
+    #menu {
+        position: absolute;
+        border: solid 2pt var(--color-gold);
+        border-top: transparent;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+        visibility: hidden;
+        transition: max-height 0.3s ease-out, opacity 0.3s ease-out, visibility 0.3s;
+    }
+
+    #menu.open {
+        opacity: 1;
+        visibility: visible;
+        max-height: 250px;
+    }
+
+    @media (min-width: 768px) {
+        #menu {
+            position: initial;
+            border: none;
+            background-color: transparent;
+            display: flex;
+            overflow: visible;
+            flex-direction: row;
+            flex-wrap: wrap;
+            max-height: none;
+            visibility: visible;
+            opacity: 1;
+            transition: none;
+        }
+    }
+
+    #menu.hidden {
+        display: none;
+    }
+    
+    a.active{
+        color: var(--color-gold)
+    }
+    header{
+        animation: 2s opening ease;
+    }
+    nav{
+        border-bottom: solid ;
+        border-image: linear-gradient(90deg, rgba(255,200,0,1) 0%, rgb(255, 255, 255) 0%, rgba(255,200,0,1) 25%) 1;
+        animation: 20s border-animation linear infinite;
+    }
+    @keyframes opening {
+        0%{
+            transform: translateY(-200%);
+        }
+        25%{
+            scale: 1.0;;
+        }
+        75%{
+            transform: translateY(0%);
+            scale: 1.1;
+        }
+        100%{
+            scale: 1.0;
+        }
+    }
+
+    @keyframes border-animation {
+        0%{
+            border-image: linear-gradient(90deg, rgba(255,200,0,1) 0%, rgb(255, 255, 255) 0%, rgba(255,200,0,1) 25%) 1;
+        }
+        12.5%{
+            border-image: linear-gradient(90deg, rgba(255,200,0,1) 0%, rgb(255, 255, 255) 25%, rgba(255,200,0,1) 50%) 1;
+        }
+        25%{
+            border-image: linear-gradient(90deg, rgba(255,200,0,1) 25%, rgb(255, 255, 255) 50%, rgba(255,200,0,1) 75%) 1;
+        }
+        37.5%{
+            border-image: linear-gradient(90deg, rgba(255,200,0,1) 50%, rgb(255, 255, 255) 75%, rgba(255,200,0,1) 100%) 1;
+        }
+        50%{
+            border-image: linear-gradient(90deg, rgba(255,200,0,1) 75%, rgb(255, 255, 255) 100%, rgba(255,200,0,1) 100%) 1;
+        }
+        62.5%{
+            border-image: linear-gradient(90deg, rgba(255,200,0,1) 50%, rgb(255, 255, 255) 75%, rgba(255,200,0,1) 100%) 1;
+        }
+        75%{
+            border-image: linear-gradient(90deg, rgba(255,200,0,1) 25%, rgb(255, 255, 255) 50%, rgba(255,200,0,1) 75%) 1;
+        }
+        87.5%{
+            border-image: linear-gradient(90deg, rgba(255,200,0,1) 0%, rgb(255, 255, 255) 25%, rgba(255,200,0,1) 50%) 1;
+        }
+        100%{
+            border-image: linear-gradient(90deg, rgba(255,200,0,1) 0%, rgb(255, 255, 255) 0%, rgba(255,200,0,1) 25%) 1;
+        }
+    }
+</style>

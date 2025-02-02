@@ -1,0 +1,24 @@
+---
+import Background from '../components/background.astro';
+import Footer from '../components/footer.astro';
+import Header from '../components/header.astro';
+import Layout from '../layouts/Layout.astro';
+import Aboutme from './aboutme.astro';
+import Experience from './experience.astro';
+import Info from './info.astro';
+import Projects from './projects.astro';
+import Skills from './skills.astro';
+---
+
+<Layout>
+	<Background />
+	<Header />
+	<div class="pt-[20px]">
+		<Info />
+		<Aboutme />
+		<Experience />
+		<Skills />
+		<Projects />
+	</div> 
+	<Footer />
+</Layout>

@@ -1,0 +1,97 @@
+---
+import Arrow from "../components/arrow.astro";
+
+---
+
+<script>
+    const textos = [
+        "Yo soy",
+        "Emilio Saenz",
+        "Desarrollador web",
+        "y móviles",
+        "< FULL STACK />"
+    ];
+
+    // Función de la animación tipo máquina de escribir
+    function typeWriterEffect(spanElement: any, text: string | any[], speed = 100) {
+        return new Promise<void>((resolve) => {
+            let i = 0;
+            spanElement.classList.add('animate-cursor');
+            spanElement.innerText = '';
+
+            const interval = setInterval(() => {
+                spanElement.innerText += text[i];
+                i++;
+
+                if (i === text.length) {
+                    clearInterval(interval);
+                    if (spanElement.id !== 'ani-5') {
+                        spanElement.classList.remove('animate-cursor');
+                    }
+                    resolve();
+                }
+            }, speed);
+        });
+    }
+
+    // Función para manejar la secuencia de animación
+    async function animateText() {
+        const elements = [
+            document.getElementById('ani-1'),
+            document.getElementById('ani-2'),
+            document.getElementById('ani-3'),
+            document.getElementById('ani-4'),
+            document.getElementById('ani-5')
+        ];
+
+        // Espera a que cada texto se anime en su respectivo <span> antes de pasar al siguiente
+        for (let i = 0; i < elements.length; i++) {
+            await typeWriterEffect(elements[i], textos[i].replace(/ /g, '\u00A0'), 100); // Esperar cada animación
+        }
+    }
+
+    // Llamada a la función al cargar la página
+    window.onload = animateText;
+</script>
+
+<section id = "info" class="my-20 text-content font-main">
+    <div>
+        <div class="flex flex-col lg:flex-row items-center gap-y-5 py-20 gap-x-[64px] mx-auto max-w-6xl uppercase">
+            <div class = "order-2 lg:order-1 flex-[2] lg:ml-5 flex justify-center mt-20 lg:mt-0">
+                <img src = "../public/perfil.webp" class = "w-[80%] sm:w-[35%] lg:w-[80%] rounded-[50px] border-[5px] border-neon
+                duration-[600ms] taos:[transform:translate3d(-200px,0,0)_scale(1.2)] taos:opacity-0" data-taos-offset="200" alt = "Foto de perfil">
+            </div>
+            <div class = "order-1 lg:order-2 flex-[3] lg:mr-5 flex-col w-[80%] justify-start">
+                <span id = "ani-1" class = "text-[24px] sm:text-[48px]">&nbsp;</span><br>
+                <h1 class = "font-title font-bold text-[36px] sm:text-[70px] uppercase inline-block">
+                    <span id = "ani-2" class="text-neon">&nbsp;</span>
+                </h1>
+                <Arrow side = "r" color = "neon"/>
+                <div><span id = "ani-3"  class = "text-[24px] sm:text-[48px]">&nbsp;</span></div>
+                <div><span id = "ani-4"  class = "text-[24px] sm:text-[48px]">&nbsp;</span></div>
+                <div><span id = "ani-5"  class = "inline font-extrabold text-[28px] sm:text-[56px] text-neon">&nbsp;</span></div>
+                <div class = "flex items-center justify-center mt-10 w-full">
+                    <a href=""
+                    class="cursor-pointer rounded-[20px] p-5 border-2 border-content m-5 text-center w-full sm:w-1/2 h-full flex items-center justify-center
+                    hover:bg-content hover:text-background transition normal-case pointer-events-none opacity-50">
+                        Descarga mi CV
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .animate-cursor{
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 5px solid var(--color-content);
+        animation: cursor .4s step-end infinite alternate;
+    }
+    @keyframes cursor {
+        50%{ border-color: transparent;}
+    }
+
+</style>

@@ -1,0 +1,106 @@
+---
+import Arrow from "../components/arrow.astro";
+import HeaderSection from "../components/headerSection.astro";
+import { PROJECTS } from "../consts/projects";
+import { SKILLS } from "../consts/skills";
+import Skills from "./skills.astro";
+
+const SKILLS_FLAT = SKILLS.flatMap(category => 
+    category.values.map(skill => ({
+        ...skill,
+        img: `../public/habilidades/${category.id}/${skill.id}.png`
+    }))
+);
+
+function findSkill (id: string){
+    const skill = SKILLS_FLAT.find(skill => skill.id === id)
+    return skill
+}
+
+---
+
+<section id = "projects" class = "mx-auto max-w-6xl my-20 text-content">
+    <Arrow side="l" color="gold"/>
+    <div class = "flex flex-col justify-center items-center">
+        <HeaderSection title = "Proyectos" />
+        <div class = "flex justify-center 2xl:w-[125%] my-5 mt-20">
+            <div class = "flex flex-wrap justify-center w-full xl:gap-x-3 2xl:gap-x-5">
+                {PROJECTS.map(({id, nombre, link, descripcion, lenguajes, usos}) => {
+                    return (
+                        <div class="flex flex-col border-2 border-neon transition w-[90%] sm:w-[70%] md:w-[45%] lg:w-[31%] mx-2 xl:mx-0
+                            duration-[600ms] taos:translate-y-[100%] taos:opacity-0 [animation-iteration-count:infinite]">
+                            <img class="w-[600px] h-[250px] object-cover" src={`../public/projects/${id}.png`} alt={nombre} />
+                            <div class="flex flex-col border-t-2 border-neon bg-black/25">
+                                <span class="text-[24px] font-medium text-center text-neon">{nombre}</span>
+                                <div class="flex justify-center items-center gap-x-1 my-1">
+                                    {lenguajes.map((language) => {
+                                        const skill = findSkill(language)
+                                        if (!skill) return
+                                        return (
+                                        <div class ="language-project relative" data-tooltip = {skill.name}
+                                            style = {`--tooltip-color: ${skill.color || "white"}; --tooltip-text: ${skill.text || "black"};`}>
+                                            <img src = {skill.img} class = "w-8 h-8"/>
+                                        </div>
+                                        )
+                                    })}
+                                </div>
+                                <div class="flex flex-row m-1 items-center justify-center">
+                                    <a href={"/"+id} class="cursor-pointer bg-neon text-background rounded-[15px] p-2 m-2 text-center sm:w-1/3 md:w-1/2 flex items-center justify-center
+                                        gap-x-2 text-[10px] sm:text-[12px]
+                                        hover:brightness-125 hover:text-background transition normal-case pointer-events-none opacity-50">
+                                        <i class="fa-solid fa-circle-info scale-125"></i>
+                                        <p>Más información</p>
+                                    </a>
+                                    <a href={link} class="cursor-pointer bg-gray-300 text-black rounded-[15px] p-2 m-2 text-center sm:w-1/3 md:w-1/2 flex items-center justify-center
+                                        gap-x-2 text-[10px] sm:text-[12px]
+                                        hover:brightness-125 transition normal-case">
+                                        <i class="fab fa-github scale-125"></i>
+                                        <p>Ver repositorio</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                })}
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    div.language-project::before{
+        content: attr(data-tooltip);
+        text-align: center;
+        position: absolute;
+        left: 50%;
+        background-color: var(--tooltip-color);
+        color: var(--tooltip-text);
+        font-size: 10px;
+        padding: 3px 10px;
+        border-radius: 20px;
+        transform: translate(-50%, 36px);
+        opacity: 0;
+        
+    }
+
+    div.language-project::after{
+        content: "";
+        position: absolute;
+        left: 50%;
+        height: 0;
+        width: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 10px solid var(--tooltip-color);
+        transform: translateX(-50%);
+        opacity: 0;
+        
+    }
+
+    div.language-project:hover::before{
+        opacity: 1;
+    }
+    div.language-project:hover::after{
+        opacity: 1;
+    }
+</style>

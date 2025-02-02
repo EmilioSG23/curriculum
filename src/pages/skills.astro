@@ -1,0 +1,124 @@
+---
+import Arrow from "../components/arrow.astro";
+import HeaderSection from "../components/headerSection.astro";
+import { SKILLS } from "../consts/skills";
+
+const HABILIDADES_PERSONALES = ["Trabajo en Equipo", "Creatividad", "Comunicación efectiva", "Compromiso a toda hora", "Buen nivel de Inglés"]
+
+const fillList = () => {
+    let lista: string[] = [];
+
+    HABILIDADES_PERSONALES.map((habilidad) => {
+        lista.push("");
+        lista.push(habilidad);
+    });
+    const maxIndex = lista.length + 3
+    while (lista.length < maxIndex) lista.push("")
+    return lista;
+};
+
+const lista: string[] = fillList();
+---
+
+<section id = "skills" class = "mx-auto max-w-6xl my-20 text-content">
+    <Arrow side="r" color="gold"/>
+    <div class = "flex flex-col justify-center items-center">
+        <HeaderSection title = "Habilidades" />
+        <div class = "flex flex-col lg:flex-row justify-center w-full my-5 gap-10 mt-20">
+            <div class = "lg:flex-[3] bg-black border-2 border-[#5AE1FF]
+            order-2 lg:order-1 w-[90%] lg:w-full min-h-[500px] self-center
+            duration-[500ms] taos:[transform:perspective(2500px)_rotateX(100deg)] taos:invisible taos:[backface-visibility:hidden] [animation-iteration-count:infinite]" 
+            data-taos-offset="100">
+                <div class = "flex justify-center items-center bg-primary text-white text-[12px] sm:text-[16px]
+                            h-[42px] border-b-2 border-[#5AE1FF]">
+                    <div class = "flex-1 mx-5 font-main">
+                        <span class="show-full">Habilidades en Programación</span>
+                        <span class="show-short">Programación</span>
+                    </div>
+                    <div class = "px-4 bg-white/5 h-full text-center flex items-center justify-center border-x-2 border-[#5AE1FF]"><i class = "fa fa-minus"></i></div>
+                    <div class = "px-4 bg-white/5 h-full text-center flex items-center justify-center"><i class = "fa-regular fa-window-restore"></i></div>
+                    <div class = "px-4 bg-red-600 h-full text-center flex items-center justify-center border-l-2 border-[#5AE1FF]"><i class = "fa fa-x"></i></div>
+                </div>
+                <div class = "p-5 flex flex-col text-white">
+                    {SKILLS.map((skill) => (
+                        <div class="flex flex-col">
+                            <button id = "toogleContent" class = "text-[16px] md:text-[24px] font-main hover:underline self-start">
+                                <p class="show-full">{`> ${skill["name"]}`}</p>
+                                <p class="show-short">{`> ${skill["shortName"]}`}</p>
+                            </button>
+                            <div id = {"div-"+skill["id"]} class = "py-2 skill-content closed grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 justify-around">
+                                {skill["values"].map((data) => (
+                                    <div class = "flex flex-col text-center justify-center items-center hover:scale-110 transition">
+                                        <img src = {`../public/habilidades/${skill["id"]}/${data["id"]}.png`}
+                                        class = "w-8 h-8" />
+                                        <p class = "font-light text-sm">{data["name"]}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <div class = "order-1 lg:order-2 lg:flex-[2] self-center bg-[#F5F5F5] -rotate-3 w-[80%] sm:w-[60%] md:w-[50%] lg:mr-6 xl:mr-0
+            duration-[800ms] taos:[transform:perspective(2500px)_rotateX(100deg)] taos:invisible taos:[backface-visibility:hidden] [animation-iteration-count:infinite]" data-taos-offset="200">
+                <div class = "flex flex-col p-5 pl-10 font-hand">
+                    <div class = "border-b border-black/25 py-1 text-red-600 font-bold text-[32px]">Habilidades Personales</div>
+                    {lista.map(( habilidad , index) => (
+                        <div class={`border-b border-black/25 py-1 text-black`}>
+                          {index%2 == 1 ?  `• ${habilidad}` : '\u00A0'}
+                        </div>
+                      ))}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .skill-content {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: max-height 0.2s linear, opacity 0.3s ease;
+    }
+
+    .skill-content.open {
+        max-height: 250px;
+        opacity: 1;
+    }
+
+    .closed {
+        max-height: 0;
+    }
+
+    @media (min-width: 520px){
+        .show-full{display:inline;}
+        .show-short{display:none;}
+    }
+    @media (max-width: 520px){
+        .show-full{display:none;}
+        .show-short{display:inline;}
+    }
+</style>
+
+<script>
+import { SKILLS } from "../consts/skills";
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("button#toogleContent").forEach((button, index) => {
+        button.addEventListener("click", () => {
+            const $divContents = document.querySelectorAll("div[id^='div-']")
+            $divContents.forEach((div) => {
+                if (div.id == `div-${SKILLS[index]["id"]}` && !div.classList.contains("open")){
+                    div.classList.add("open")
+                    div.classList.remove("close")
+                }else{
+                    div.classList.remove("open")
+                    div.classList.add("close")
+                }
+            });
+        });
+    });
+});
+</script>
