@@ -40,7 +40,7 @@ const lista: string[] = fillList();
                     <div class = "px-4 bg-red-600 h-full text-center flex items-center justify-center border-l-2 border-[#5AE1FF]"><i class = "fa fa-x"></i></div>
                 </div>
                 <div class = "p-5 flex flex-col text-white">
-                    {SKILLS.map((skill) => (
+                    {SKILLS.map((skill, index) => (
                         <div class="flex flex-col">
                             <button id = "toogleContent" class = "text-[16px] md:text-[24px] font-main hover:underline self-start">
                                 <p class="show-full">{`> ${skill["name"]}`}</p>
@@ -57,6 +57,7 @@ const lista: string[] = fillList();
                             </div>
                         </div>
                     ))}
+                    <p id = "helpSeleccion" class = "text-[12px] md:text-[16px] font-main font-extralight italic text-white/50">Selecciona una opción...</p>
                 </div>
             </div>
 
@@ -104,10 +105,12 @@ const lista: string[] = fillList();
 
 <script>
 import { SKILLS } from "../consts/skills";
+const $helpSeleccion = document.getElementById("helpSeleccion")
 
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll("button#toogleContent").forEach((button, index) => {
         button.addEventListener("click", () => {
+            $helpSeleccion?.remove()
             const $divContents = document.querySelectorAll("div[id^='div-']")
             $divContents.forEach((div) => {
                 if (div.id == `div-${SKILLS[index]["id"]}` && !div.classList.contains("open")){
