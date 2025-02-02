@@ -1,7 +1,6 @@
 ---
 import Background from "../components/background.astro";
 import Footer from "../components/footer.astro";
-import Header from "../components/header.astro";
 import LanguageToogleButton from "../components/languageToogleButton.astro";
 import Logo from "../components/logo.astro";
 import ThemeToggleButton from "../components/themeToggleButton.astro";
@@ -12,22 +11,22 @@ import Layout from "../layouts/Layout.astro";
 <Layout>
     <Background />
     <div class = "flex flex-col h-full  ">
-        <header class= `fixed top-0 left-0 right-0 z-10 bg-black/25 backdrop-blur-[3px]`>
+        <header class= `top-0 left-0 right-0 z-10 bg-black/25 backdrop-blur-[3px]`>
             <nav class="bg-black/25 text-white font-main">
                 <div id="mobileContainer" class = "md:hidden flex flex-wrap p-2 sm:p-4 justify-between items-center">
                     <button id="menuButton" class="text-white p-2 border border-gold rounded-md scale hover:text-gold transition">
                         <i class="fa fa-bars"></i>
                     </button>
-                    <Logo href = {import.meta.env.BASE_PATH}/>
+                    <Logo/>
                     
                 </div>
                 <div id = "menu" class="justify-between md:items-center p-6 gap-4 mx-auto max-w-4xl ">
                     <div id ="mobileDesktop" class = "hidden md:inline"><ThemeToggleButton/></div>
-                    <a href={import.meta.env.BASE_PATH+"#about-me"} class = "hover:md:scale-110 hover:text-gold transition uppercase">Sobre Mí</a>
-                    <a href={import.meta.env.BASE_PATH+"#experience"} class = "hover:md:scale-110 hover:text-gold transition uppercase">Experiencia</a>
+                    <a href="/#about-me" class = "hover:md:scale-110 hover:text-gold transition uppercase">Sobre Mí</a>
+                    <a href="/#experience" class = "hover:md:scale-110 hover:text-gold transition uppercase">Experiencia</a>
                     <div class = "hidden md:flex"><Logo /></div>
-                    <a href={import.meta.env.BASE_PATH+"#skills"} class = "hover:md:scale-110 hover:text-gold transition uppercase">Habilidades</a>
-                    <a href={import.meta.env.BASE_PATH+"#projects"} class = "hover:md:scale-110 hover:text-gold transition uppercase">Proyectos</a>
+                    <a href="/#skills" class = "hover:md:scale-110 hover:text-gold transition uppercase">Habilidades</a>
+                    <a href="/#projects" class = "hover:md:scale-110 hover:text-gold transition uppercase">Proyectos</a>
                     <LanguageToogleButton/>
                 </div>
             </nav>
