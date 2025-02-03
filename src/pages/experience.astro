@@ -15,18 +15,18 @@ const EXPERIENCE = [
 <section id = "experience" class = "mx-auto max-w-6xl my-20 text-content">
     <Arrow color="gold"/>
     <div class = "flex flex-col justify-center items-center">
-        <HeaderSection title = "Experiencia" />
+        <HeaderSection title = "Experiencia" section = "experience"/>
         <div class="mt-10 gap-5 flex flex-wrap justify-center w-full">
-            {EXPERIENCE.reverse().map(({lugar, puesto, descripcion}) => (
+            {EXPERIENCE.reverse().map(({lugar, puesto, descripcion}, index) => (
                 <div class = "bg-background flex flex-col min-h-[312px] items-center border-2 border-neon rounded-[25px]
                     hover:scale-105 hover:bg-hover transition w-[80%] md:w-[45%] lg:w-[31%]
                     duration-[600ms] taos:[transform:translate3d(-200px,0,0)_scale(0.6)] taos:opacity-0 [animation-iteration-count:infinite]" data-taos-offset="100">
                     <div class="border-b-2 border-neon h-[25%] w-full flex flex-col justify-center items-center">
                         <h1 class = "font-bold text-neon text-[24px]">{lugar}</h1>
-                        <h2 class = "text-[16px]">{puesto}</h2>
+                        <h2 class = "text-[16px]" data-section = "experience" data-value = {`exp-${EXPERIENCE.length-index}.rol`}>{puesto}</h2>
                     </div>
                     <div class = "p-4 leading-normal min-h-[60px]">
-                        <span class = "text-center text-[14px]">{descripcion}</span>
+                        <span class = "text-center text-[14px]" data-section = "experience" data-value = {`exp-${EXPERIENCE.length-index}.description`}>{descripcion}</span>
                     </div>
                 </div>
             ))}

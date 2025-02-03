@@ -1,6 +1,4 @@
 ---
-import Arrow from "../components/arrow.astro";
-
 ---
 
 <script>
@@ -42,7 +40,7 @@ import Arrow from "../components/arrow.astro";
             }
         }
     }
-    window.onload = animateText;
+    //window.onload = animateText;
 </script>
 
 <section id = "info" class="my-20 text-content font-main">
@@ -51,19 +49,20 @@ import Arrow from "../components/arrow.astro";
             <img src = "perfil.webp" class = "w-[80%] sm:w-[35%] lg:w-[80%] rounded-[50px] border-[5px] border-neon
             duration-[600ms] taos:[transform:translate3d(-200px,0,0)_scale(1.2)] taos:opacity-0" data-taos-offset="200" alt = "Foto de perfil">
         </div>
-        <div class = "order-1 lg:order-2 flex-[3] lg:mr-5 flex-col w-[80%] justify-start">
-            <span id = "ani-1" class = "text-[24px] sm:text-[48px]">&nbsp;</span><br>
+        <div class = "order-1 lg:order-2 flex-[3] lg:mr-5 flex-col w-[80%] text-center lg:text-left lg:justify-start
+        duration-[600ms] taos:[transform:scale(0.6)] taos:opacity-0 [animation-iteration-count:infinite]" data-taos-offset="100">
+            <span id = "ani-1" class = "text-[24px] sm:text-[48px]" data-section="info" data-value="ani-1">Yo soy</span><br>
             <h1 class = "font-title font-bold text-[36px] sm:text-[70px] uppercase inline-block">
-                <span id = "ani-2" class="text-neon">&nbsp;</span>
+                <span id = "ani-2" class="text-neon">Emilio Sáenz</span>
             </h1>
             <div class = {`h-[4px] w-full bg-neon`}></div>
-            <div><span id = "ani-3"  class = "text-[24px] sm:text-[48px]">&nbsp;</span></div>
-            <div><span id = "ani-4"  class = "text-[24px] sm:text-[48px]">&nbsp;</span></div>
-            <div><span id = "ani-5"  class = "inline font-extrabold text-[28px] sm:text-[56px] text-neon">&nbsp;</span></div>
+            <div><span id = "ani-3"  class = "text-[24px] sm:text-[48px]" data-section="info" data-value="ani-3">Desarrollador</span></div>
+            <div><span id = "ani-4"  class = "text-[24px] sm:text-[48px]" data-section="info" data-value="ani-4">Web y Móviles</span></div>
+            <div><span id = "ani-5"  class = "inline font-extrabold text-[28px] sm:text-[56px] text-neon">{"< FULL STACK />"}</span></div>
             <div class = "flex items-center justify-center mt-10 w-full">
                 <a href=""
                 class="cursor-pointer rounded-[20px] p-5 border-2 border-content m-5 text-center w-full sm:w-1/2 h-full flex items-center justify-center
-                hover:bg-content hover:text-background transition normal-case pointer-events-none opacity-50">
+                hover:bg-content hover:text-background transition normal-case pointer-events-none opacity-50" data-section="info" data-value="download-cv">
                     Descarga mi CV
                 </a>
             </div>

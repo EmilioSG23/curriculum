@@ -1,11 +1,51 @@
 ---
 
 ---
+<button id = "languageToggle" class = "relative text-2xl hover:scale-110 transition">
+    <img id = "spanishToggle" src = "flags/es.png" data-language = "es"
+        class = "activeToggle border rounded-full border-white bg-white">
+    <img id = "englishToggle" src = "flags/en.png" data-language = "en"
+        class = "inactiveToggle border rounded-full border-white bg-white">
+</button>
 
 <script>
+    const $spanishToggle = document.getElementById("spanishToggle") as HTMLImageElement
+    const $englishToggle = document.getElementById("englishToggle") as HTMLImageElement
 
+    function toggleLanguage(language: string){
+        const isSpanish = language === "es";
+        $spanishToggle.classList.toggle("activeToggle", isSpanish);
+        $spanishToggle.classList.toggle("inactiveToggle", !isSpanish);
+        $englishToggle.classList.toggle("activeToggle", !isSpanish);
+        $englishToggle.classList.toggle("inactiveToggle", isSpanish);
+        changeLanguage(language)
+    }
+
+    async function changeLanguage (language:string){
+        document.documentElement.lang = language
+        const request = await fetch(`languages/${language}.json`)
+        const texts = await request.json()
+        const textsToChange = document.querySelectorAll("[data-section]")
+        textsToChange.forEach((textToChange) => {
+            const section = (textToChange as HTMLElement).dataset.section
+            const value = (textToChange as HTMLElement).dataset.value
+            if (section && value) {
+                textToChange.innerHTML = texts[section][value]
+            }
+        })
+    }
+
+    document.getElementById("languageToggle")?.addEventListener("click", () => {
+        toggleLanguage(document.querySelector("#languageToggle .inactiveToggle")?.getAttribute("data-language") || "es")
+    })
+    toggleLanguage(document.documentElement.lang || "es")
 </script>
 
-<button id = "theme" class = "text-2xl hover:scale-105 hover:text-gold">
-    <i class="fas fa-question"></i>
-</button>
+<style>
+    .activeToggle{
+        @apply w-10 h-10 relative z-[11]
+    }
+    .inactiveToggle{
+        @apply w-6 h-6 z-10 absolute left-5 -bottom-2
+    }
+</style>

@@ -1,0 +1,61 @@
+{
+    "info": {
+        "download-cv": "Download my CV",
+        "ani-1": "I am",
+        "ani-3": "Web and Mobile",
+        "ani-4": "Developer"
+    },
+    "about-me": {
+        "title": "About Me",
+        "info-1.title": "Who am I?",
+        "info-1.description": "I am a 23-year-old computer scientist, dedicated for years to the world of technology and programming. Throughout my journey in the IT field, I have taken on different challenges, always giving my best to deliver the best possible product.",
+        "info-2.title": "What do I do?",
+        "info-2.description": "I develop software in various fields, including mobile applications, desktop applications, and websites. These range from Landing Pages and Dashboards to even a video game. My products stand out for following good programming practices and having an attractive, functional, and responsive design for any device.",
+        "info-3.title": "Contact Me!",
+        "info-3.description": "If you are interested in my expertise, do not hesitate to contact me. I am willing to work on any project that comes my way—I love challenges.",
+        "contact": "Contact Me"
+    },
+    "experience": {
+        "title": "Experience",
+        "exp-1.rol": "Intern in 2019",
+        "exp-1.description": "In 2019, I had a work experience as an intern at a restaurant, where I assisted in the graphic design of the website, as well as performing organizational and general office tasks. I worked there for about a month."
+    },
+    "skills": {
+        "title": "Skills",
+        "window.title.full": "Programming Skills",
+        "windows.title.short": "Programming",
+        "skill-languages.title.full": "Programming Languages",
+        "skill-languages.title.short": "Languages",
+        "skill-frontend.title.full": "Frontend Frameworks",
+        "skill-frontend.title.short": "Frontend",
+        "skill-backend.title.full": "Backend Frameworks",
+        "skill-backend.title.short": "Backend",
+        "skill-others.title.full": "Other Tools",
+        "skill-others.title.short": "Others",
+        "window-select": "Select an option...",
+        "personal-skills.title": "Personal Skills",
+        "personal-skill-1": "Teamwork",
+        "personal-skill-2": "Creativity",
+        "personal-skill-3": "Effective Communication",
+        "personal-skill-4": "Commitment at All Times",
+        "personal-skill-5": "Good English Proficiency"
+    },
+    "projects": {
+        "title": "Projects",
+        "more-info": "More information",
+        "see-repo": "View repository",
+        "project-dashboard.name": "Dashboard",
+        "project-landing.name": "Landing",
+        "project-mpa.name": "MPA",
+        "project-flex-travel.name": "Flex & Travel",
+        "project-catalogo.name": "Video Game Catalog",
+        "project-visualizador.name": "File Viewer",
+        "project-rover.name": "Rover Simulator",
+        "project-laberinto_encantado.name": "Enchanted Maze"
+    },
+    "404": {
+    "not-found": "It looks like this page doesn't exist",
+    "go-back": "But don't worry! By clicking this button, you can go back to the main page. I'll be waiting for you there!",
+    "main-page": "Main Page"
+}
+}

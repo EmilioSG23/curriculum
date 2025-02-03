@@ -22,12 +22,12 @@ import Layout from "../layouts/Layout.astro";
                 </div>
                 <div id = "menu" class="justify-between md:items-center p-6 gap-4 mx-auto max-w-4xl ">
                     <div id ="mobileDesktop" class = "hidden md:inline"><ThemeToggleButton/></div>
-                    <a href="/curriculum/#about-me" class = "hover:md:scale-110 hover:text-gold transition uppercase">Sobre Mí</a>
-                    <a href="/curriculum/#experience" class = "hover:md:scale-110 hover:text-gold transition uppercase">Experiencia</a>
+                    <a href="/curriculum/#about-me" class = "hover:md:scale-110 hover:text-gold transition uppercase" data-section="about-me" data-value="title">Sobre Mí</a>
+                    <a href="/curriculum/#experience" class = "hover:md:scale-110 hover:text-gold transition uppercase" data-section="experience" data-value="title">Experiencia</a>
                     <div class = "hidden md:flex"><Logo /></div>
-                    <a href="/curriculum/#skills" class = "hover:md:scale-110 hover:text-gold transition uppercase">Habilidades</a>
-                    <a href="/curriculum/#projects" class = "hover:md:scale-110 hover:text-gold transition uppercase">Proyectos</a>
-                    <LanguageToogleButton/>
+                    <a href="/curriculum/#skills" class = "hover:md:scale-110 hover:text-gold transition uppercase" data-section="skills" data-value="title">Habilidades</a>
+                    <a href="/curriculum/#projects" class = "hover:md:scale-110 hover:text-gold transition uppercase" data-section="projects" data-value="title">Proyectos</a>
+                    <div class = "self-center"><LanguageToogleButton/></div>
                 </div>
             </nav>
         </header>
@@ -39,12 +39,12 @@ import Layout from "../layouts/Layout.astro";
                     <span class = "text-[40px] sm:text-[64px]">Error 404</span>
                 </div>
                 <div class = "flex flex-col text-center justify-center items-center">
-                    <h2 class = "font-bold text-[14px] sm:text-[24px] mx-5">Al parecer esta página no existe</h2>
-                    <p class = "font-light text-[12px] sm:text-[16px] mx-5">¡Pero tranquilo! Aplastando este botón podrás volver a la página principal. ¡Te espero ahí!</p>
+                    <h2 class = "font-bold text-[14px] sm:text-[24px] mx-5" data-section = "404" data-value = "not-found">Al parecer esta página no existe</h2>
+                    <p class = "font-light text-[12px] sm:text-[16px] mx-5" data-section = "404" data-value = "go-back">¡Pero tranquilo! Aplastando este botón podrás volver a la página principal. ¡Te espero ahí!</p>
                     <a href="/curriculum/" class="mt-10 cursor-pointer bg-neon text-background rounded-[15px] p-2 m-2 text-center w-[75%] sm:w-1/2 flex items-center justify-center
                                         gap-x-2 sm:text-[28px]
                                         hover:brightness-125 hover:text-background transition">
-                        <p class = "font-bold">Página Principal</p>
+                        <p class = "font-bold" data-section = "404" data-value = "main-page">Página Principal</p>
                     </a>
                 </div>
             </div>
