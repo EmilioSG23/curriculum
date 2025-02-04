@@ -97,6 +97,12 @@ export const SKILLS = [
                 text: "white"
             },
             {
+                id: "react",
+                name: "React",
+                color: "#61dafb",
+                text: "black"
+            },
+            {
                 id: "ionic",
                 name: "Ionic",
                 color: "#008cff",
@@ -169,6 +175,12 @@ export const SKILLS = [
                 name: "Illustrator",
                 color: "#ff7c00",
                 text: "#270b00"
+            },
+            {
+                id: "figma",
+                name: "Figma",
+                color: "gray",
+                text: "white"
             },
             {
                 id: "visual-studio",
