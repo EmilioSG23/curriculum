@@ -18,7 +18,9 @@
     "experience": {
         "title": "Experience",
         "exp-1.rol": "Intern in 2019",
-        "exp-1.description": "In 2019, I had a work experience as an intern at a restaurant, where I assisted in the graphic design of the website, as well as performing organizational and general office tasks. I worked there for about a month."
+        "exp-1.description": "In 2019, I had a work experience as an intern at a restaurant, where I assisted in the graphic design of the website, as well as performing organizational and general office tasks. I worked there for about a month.",
+        "exp-2.rol": "Mobile Developer in 2024",
+        "exp-2.description": "As part of my community service internship, I participated in the Midi Espol project, where I contributed to the development of the interactive educational game 'Mi Rutina.' I developed new game levels and implemented a communication mechanism to a dashboard to collect the results obtained by the children."
     },
     "skills": {
         "title": "Skills",

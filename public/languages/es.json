@@ -18,7 +18,9 @@
     "experience":{
         "title": "Experiencia",
         "exp-1.rol": "Pasante en 2019",
-        "exp-1.description": "En el año 2019, tuve una experiencia laboral trabajando como pasante dentro de un restaurante, donde era ayudante de la parte del diseño gráfico de la página web, además de hacer trabajos de organización y de ofimática en general. Estuve trabajando alrededor de un mes."
+        "exp-1.description": "En el año 2019, tuve una experiencia laboral trabajando como pasante dentro de un restaurante, donde era ayudante de la parte del diseño gráfico de la página web, además de hacer trabajos de organización y de ofimática en general. Estuve trabajando alrededor de un mes.",
+        "exp-2.rol": "Desarrollador móvil en 2024",
+        "exp-2.description": "Como parte de mis prácticas de vinculación, participé en el proyecto Midi Espol, donde apoyé en la parte de desarrollo del juego interactivo educativo 'Mi Rutina', en el cual desarrollé nuevos niveles del juego. Además, implementé el mecanismo de comunicación a un dashboard para poder recopilar los resultados obtenidos por los niños."
     },
     "skills":{
         "title": "Habilidades",
