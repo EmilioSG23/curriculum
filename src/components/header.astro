@@ -1,11 +1,11 @@
 ---
-import LanguageToogleButton from "./languageToogleButton.astro";
-import Logo from "./logo.astro";
-import ThemeToggleButton from "./themeToggleButton.astro";
+import LanguageToogleButton from "./LanguageToggleButton.astro";
+import Logo from "./Logo.astro";
+import ThemeToggleButton from "./ThemeToggleButton.astro";
 
 ---
-<header class= `fixed top-0 left-0 right-0 z-10 bg-black/50 backdrop-blur-[3px]`>
-    <nav class= "text-white font-main">
+<header class= `fixed top-0 left-0 right-0 z-10 backdrop-blur-[3px] border-b-[4px]`>
+    <nav class= "text-white font-main bg-black/50">
         <div id="mobileContainer" class = "md:hidden flex flex-wrap p-2 sm:p-4 justify-between items-center">
             <button id="menuButton" class="text-white p-2 border border-gold rounded-md scale hover:text-gold transition">
                 <i class="fa fa-bars"></i>
@@ -65,10 +65,10 @@ import ThemeToggleButton from "./themeToggleButton.astro";
             let offset = section.offsetTop
             let height = section.offsetHeight
 
-            if (top >= offset && top < offset + height && section.id != "info"){
+            if (top >= offset && top < offset + height){
                 $anchors.forEach(anchor => {
                     anchor.classList.remove ("active")
-                    document.querySelector(`a[href="#${section.id}"]`)?.classList.add("active")
+                    if (section.id != "info") document.querySelector(`a[href="#${section.id}"]`)?.classList.add("active")
                 })
             }
         })
@@ -139,12 +139,9 @@ import ThemeToggleButton from "./themeToggleButton.astro";
         color: var(--color-gold)
     }
     header{
-        animation: 2s opening ease;
-    }
-    nav{
-        border-bottom: solid ;
+        border-bottom: solid 8px;
         border-image: linear-gradient(90deg, rgba(255,200,0,1) 0%, rgb(255, 255, 255) 0%, rgba(255,200,0,1) 25%) 1;
-        animation: 20s border-animation linear infinite;
+        animation: 2s opening ease, 20s border-animation linear infinite;
     }
     @keyframes opening {
         0%{

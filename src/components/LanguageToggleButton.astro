@@ -1,11 +1,13 @@
 ---
 
 ---
-<button id = "languageToggle" class = "relative text-2xl hover:scale-110 transition">
+<button id = "languageToggle" class = "relative text-2xl hover:scale-110 transition group
+    [&>*]:border-2 [&>*]:rounded-full [&>*]:border-white [&>*]:bg-white
+    [&>*]:hover:bg-gold [&>*]:hover:border-gold">
     <img id = "spanishToggle" src = "flags/es.png" data-language = "es"
-        class = "activeToggle border rounded-full border-white bg-white">
+        class = "activeToggle ">
     <img id = "englishToggle" src = "flags/en.png" data-language = "en"
-        class = "inactiveToggle border rounded-full border-white bg-white">
+        class = "inactiveToggle">
 </button>
 
 <script>
