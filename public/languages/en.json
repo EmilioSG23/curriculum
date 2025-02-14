@@ -25,7 +25,7 @@
     "skills": {
         "title": "Skills",
         "window.title.full": "Programming Skills",
-        "windows.title.short": "Programming",
+        "window.title.short": "Programming",
         "skill-languages.title.full": "Programming Languages",
         "skill-languages.title.short": "Languages",
         "skill-frontend.title.full": "Frontend Frameworks",

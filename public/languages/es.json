@@ -25,7 +25,7 @@
     "skills":{
         "title": "Habilidades",
         "window.title.full": "Habilidades en Programación",
-        "windows.title.short": "Programación",
+        "window.title.short": "Programación",
         "skill-languages.title.full": "Lenguajes de Programación",
         "skill-languages.title.short": "Lenguajes",
         "skill-frontend.title.full": "Frameworks Frontend",

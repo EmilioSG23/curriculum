@@ -25,7 +25,7 @@ function findSkill (id: string){
                 {PROJECTS.map(({id, nombre, link, descripcion, lenguajes, usos}) => {
                     return (
                         <div class="flex flex-col border-2 border-neon transition w-[90%] sm:w-[70%] md:w-[45%] lg:w-[31%] mx-2 xl:mx-0
-                            duration-[600ms] taos:translate-y-[100%] taos:opacity-0 [animation-iteration-count:infinite]">
+                            duration-[600ms] taos:translate-x-[-100%] taos:opacity-0 [animation-iteration-count:infinite]">
                             <img loading="lazy" class="w-[600px] h-[250px] object-cover" src={`projects/${id}.webp`} alt={nombre} />
                             <div class="flex flex-col border-t-2 border-neon bg-black/25">
                                 <span class="text-[24px] font-medium text-center text-neon" data-section="projects" data-value={`project-${id}.name`}>{nombre}</span>
