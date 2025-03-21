@@ -1,48 +1,51 @@
 ---
 import Arrow from "../components/Arrow.astro";
 import HeaderSection from "../components/HeaderSection.astro";
+import { useT } from "../i18n/utils";
+
+const t = useT(Astro.url)
 
 const EXPERIENCE = [
     {
         lugar: "Riviera",
-        puesto: "Ayudante de Diseño Gráfico",
-		  tiempo: "2019",
-        descripcion: "En el año 2019, tuve una experiencia laboral trabajando como pasante dentro de un restaurante, donde era ayudante de la parte del diseño gráfico de la página web, además de hacer trabajos de organización y de ofimática en general. Estuve trabajando alrededor de un mes.",
-    },
+        puesto: "experience.exp-1.rol",
+		  tiempo: "experience.exp-1.time",
+        descripcion: "experience.exp-1.description"
+	},
     {
         lugar: "Espol (MIDI)",
-        puesto: "Desarrollador Móvil",
-		  tiempo: "2024",
-        descripcion: "Como parte de mis prácticas de vinculación, participé en el proyecto Midi Espol, donde apoyé en la parte de desarrollo del juego interactivo educativo 'Mi Rutina', en el cual desarrollé nuevos niveles del juego. Además, implementé el mecanismo de comunicación a un dashboard para poder recopilar los resultados obtenidos por los niños."
-    },{
+        puesto: "experience.exp-2.rol",
+		  tiempo: "experience.exp-2.time",
+        descripcion: "experience.exp-2.description"
+	},{
 		lugar: "Solinal",
-		puesto: "Desarrollador Web",
-		tiempo: "2025 - actualidad",
-		descripcion: "Como parte de mis prácticas empresariales, integré el grupo de desarrolladores web para el proyecto Etiquetas de la empresa Solinal."
-	 }
+		puesto: "experience.exp-3.rol",
+		tiempo: "experience.exp-3.time",
+		descripcion: "experience.exp-3.description"
+	}
 ]
 
 ---
 
 <section id = "experience" class = "mx-auto max-w-6xl my-20 text-content">
-    <Arrow color="gold"/>
-    <div class = "flex flex-col justify-center items-center">
-        <HeaderSection title = "Experiencia" section = "experience"/>
-        <div class="mt-10 gap-5 flex flex-wrap justify-center w-full">
-            {EXPERIENCE.reverse().map(({lugar, puesto, tiempo, descripcion}, index) => (
-                <div class = "bg-background flex flex-col min-h-[312px] items-center border-2 border-neon rounded-[25px]
-                    hover:scale-105 hover:bg-hover transition w-[80%] md:w-[45%] lg:w-[31%]
-                    duration-[600ms] taos:[transform:translate3d(-200px,0,0)_scale(0.6)] taos:opacity-0 [animation-iteration-count:infinite]" data-taos-offset="100">
-                    <div class="border-b-2 border-neon h-[25%] w-full flex flex-col justify-center items-center py-4">
-                        <h1 class = "font-bold text-neon text-[24px]">{lugar}</h1>
-                        <h2 class = "text-[16px]" data-section = "experience" data-value = {`exp-${EXPERIENCE.length-index}.rol`}>{puesto}</h2>
-                        <small class = "text-[12px] opacity-75" data-section = "experience" data-value = {`exp-${EXPERIENCE.length-index}.time`}>{tiempo}</small>
-                    </div>
-                    <div class = "p-4 leading-normal min-h-[60px]">
-                        <span class = "text-center text-[14px]" data-section = "experience" data-value = {`exp-${EXPERIENCE.length-index}.description`}>{descripcion}</span>
-                    </div>
-                </div>
-            ))}
-        </div>
-    </div>
+	<Arrow color="gold"/>
+	<div class = "flex flex-col justify-center items-center">
+		<HeaderSection title = "experience.title"/>
+		<div class="mt-10 gap-5 flex flex-wrap justify-center w-full">
+			{EXPERIENCE.reverse().map(({lugar, puesto, tiempo, descripcion}) => (
+				<div class = "bg-background flex flex-col min-h-[312px] items-center border-2 border-neon rounded-[25px]
+					hover:scale-105 hover:bg-hover transition w-[80%] md:w-[45%] lg:w-[31%]
+					duration-[600ms] taos:[transform:translate3d(-200px,0,0)_scale(0.6)] taos:opacity-0 [animation-iteration-count:infinite]" data-taos-offset="100">
+					<div class="border-b-2 border-neon h-[25%] w-full flex flex-col justify-center items-center py-4">
+						<h1 class = "font-bold text-neon text-[24px]">{lugar}</h1>
+						<h2 class = "text-[16px]" data-translate={puesto}>{t(puesto)}</h2>
+						<small class = "text-[12px] opacity-75" data-translate={tiempo}>{t(tiempo)}</small>
+					</div>
+					<div class = "p-4 leading-normal min-h-[60px]">
+						<span class = "text-center text-[14px]" data-translate={descripcion}>{t(descripcion)}</span>
+					</div>
+				</div>
+			))}
+		</div>
+	</div>
 </section>

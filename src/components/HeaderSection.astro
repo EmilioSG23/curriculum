@@ -1,9 +1,13 @@
 ---
-const {title, section} = Astro.props;
+import { useT } from '../i18n/utils';
+
+const t = useT()
+const {title} = Astro.props;
 ---
 
 <h1 class = "font-main font-extrabold text-center
 text-[32px] sm:text-[48px] md:text-[64px] text-content uppercase 
 border-b-2 border-neon
 delay-[300ms] duration-[600ms] taos:scale-[0.6] taos:opacity-0 [animation-iteration-count:infinite]" data-taos-offset="100"
-data-section = {`${section}`} data-value = "title">{title}</h1>
+data-translate = {title}
+>{t(title)}</h1>

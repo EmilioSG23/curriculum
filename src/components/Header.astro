@@ -1,7 +1,10 @@
 ---
+import { useT } from "../i18n/utils";
 import LanguageToogleButton from "./LanguageToggleButton.astro";
 import Logo from "./Logo.astro";
 import ThemeToggleButton from "./ThemeToggleButton.astro";
+
+const t = useT()
 
 ---
 <header class= `fixed top-0 left-0 right-0 z-10 backdrop-blur-[3px] border-b-[4px]`>
@@ -17,15 +20,11 @@ import ThemeToggleButton from "./ThemeToggleButton.astro";
         [&>a]:w-[96px] [&>div#logo]:w-[96px] lg:[&>a]:w-[128px] lg:[&>div#logo]:w-[128px] md:[&>a]:text-[14px] lg:[&>a]:text-[16px]
         justify-between items-center text-center">
             <div id ="mobileDesktop" class = "hidden md:inline"><ThemeToggleButton/></div>
-            <a href="#about-me" class = "hover:md:scale-110 hover:text-gold transition"
-            data-section="about-me" data-value="title">Sobre Mí</a>
-            <a href="#experience" class = "hover:md:scale-110 hover:text-gold transition"
-            data-section="experience" data-value="title">Experiencia</a>
-            <div id ="logo" class = "hidden md:flex justify-center"><Logo /></div>
-            <a href="#skills" class = "hover:md:scale-110 hover:text-gold transition"
-            data-section="skills" data-value="title">Habilidades</a>
-            <a href="#projects" class = "hover:md:scale-110 hover:text-gold transition "
-            data-section="projects" data-value="title">Proyectos</a>
+				<a href="#about-me" data-translate="about-me.title" class = "hover:md:scale-110 hover:text-gold transition">{t("about-me.title")}</a>
+				<a href="#experience" data-translate="experience.title" class = "hover:md:scale-110 hover:text-gold transition">{t("experience.title")}</a>
+				<div id ="logo" class = "hidden md:flex justify-center"><Logo /></div>
+				<a href="#skills" data-translate="skills.title" class = "hover:md:scale-110 hover:text-gold transition">{t("skills.title")}</a>
+				<a href="#projects" data-translate="projects.title" class = "hover:md:scale-110 hover:text-gold transition ">{t("projects.title")}</a>
             <div class = "self-center"><LanguageToogleButton/></div>
         </div>
     </nav>
@@ -141,22 +140,17 @@ import ThemeToggleButton from "./ThemeToggleButton.astro";
     header{
         border-bottom: solid 8px;
         border-image: linear-gradient(90deg, rgba(255,200,0,1) 0%, rgb(255, 255, 255) 0%, rgba(255,200,0,1) 25%) 1;
-        animation: 2s opening ease, 20s border-animation linear infinite;
+        animation: 20s border-animation linear infinite;
     }
     @keyframes opening {
-        0%{
-            transform: translateY(-200%);
-        }
-        25%{
-            scale: 1.0;;
-        }
-        75%{
-            transform: translateY(0%);
-            scale: 1.1;
-        }
-        100%{
-            scale: 1.0;
-        }
+		from {
+			max-width: 0;
+			opacity: 0;
+		}
+		to {
+			max-width: 1000px; /* o cualquier valor que sea adecuado para tu diseño */
+			opacity: 1;
+		}
     }
 
     @keyframes border-animation {

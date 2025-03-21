@@ -27,13 +27,10 @@
         document.documentElement.lang = language
         const request = await fetch(`languages/${language}.json`)
         const texts = await request.json()
-        const textsToChange = document.querySelectorAll("[data-section]")
+        const textsToChange = document.querySelectorAll("[data-translate]")
         textsToChange.forEach((textToChange) => {
-            const section = (textToChange as HTMLElement).dataset.section
-            const value = (textToChange as HTMLElement).dataset.value
-            if (section && value) {
-                textToChange.innerHTML = texts[section][value]
-            }
+            const key = (textToChange as HTMLElement).dataset.translate
+            if (key) textToChange.innerHTML = texts[key]
         })
     }
 

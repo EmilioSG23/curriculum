@@ -1,6 +1,9 @@
 ---
 import Arrow from "../components/Arrow.astro"
 import HeaderSection from "../components/HeaderSection.astro"
+import { useT } from '../i18n/utils';
+
+const t = useT(Astro.url)
 
 const myBirthday = new Date(1003813200*1000)
 
@@ -10,58 +13,53 @@ age = myBirthday.getMonth() > new Date().getMonth() ? age - 1 : age
 const aboutMe = [
     {
         icon: `fa-solid fa-user`,
-        title: "¿Quién soy?",
-        description: `Soy un joven informático de ${age} años, 
-        dedicado hace años al mundo de la tecnología y de la programación. Durante mi recorrido en el mundo informático, 
-        he tomado diferentes desafíos pero siempre dándo lo mejor de mí para dar el mejor producto posible.`,
+        title: "about-me.info-1.title",
+        description: `about-me.info-1.description`,
     },
     {
         icon: "fa-solid fa-code",
-        title: "¿Qué hago?",
-        description: `Desarrollo software de distintos ámbitos, desde aplicaciones móviles, aplicaciones de escritorio y webs, entre las cuales se incluyen Landing Pages,
-         Dashboards, incluso hasta un videojuego. Los productos se destacan por mantener buenas prácticas de programación y por tener un diseño atractivo, funcional y responsivo
-         para cualquier dispositivo.`,
+        title: "about-me.info-2.title",
+        description: `about-me.info-2.description`,
     },
     {
         icon: "fa-solid fa-envelope",
-        title: "¡Contáctame!",
-        description: `Si está interesado en contar con mis conocimientos, no dude en contactarme. Estoy dispuesto a trabajar en cualquier proyecto que se me presente, 
-        me gustan mucho los desafíos.`,
+        title: "about-me.info-3.title",
+        description: `about-me.info-3.description`,
         
     },
 ]
 ---
 
 <section id = "about-me" class = "mx-auto max-w-6xl my-20 text-content border-t-1 border-gold">
-    <Arrow color="gold"/>
-    <div class = "flex flex-col justify-center items-center">
-        <HeaderSection title = "Sobre Mí" section = "about-me"/>
-        <div class="mt-10 flex flex-wrap justify-center w-full">
-            {aboutMe.map(({icon, title, description},index) => (
-                <div class = "bg-background flex mx-5 my-5 min-h-[256px] items-center border-2 border-neon rounded-[25px]
-                    hover:bg-hover hover:scale-105 transition w-[90%] md:w-[70%] lg:w-[45%]
-                    duration-[600ms] taos:[transform:perspective(2500px)_rotateY(100deg)] taos:invisible taos:[backface-visibility:hidden]
-                    [animation-iteration-count:infinite]" data-taos-offset="100">
-                    <div class = "flex-[1] border-r-2 h-full w-1/2 border-neon flex flex-col justify-center items-center text-neon fill-neon">
-                        <i class = {icon + " hidden sm:inline text-[72px]"}></i>
-                        <p class = "mt-4 font-main text-center sm:w-auto rotate-180 sm:rotate-0 [writing-mode:vertical-rl] sm:[writing-mode:horizontal-tb]"
-                        data-section = "about-me" data-value = {`info-${index+1}.title`}>{title}</p>
-                    </div>
-                    <div class = "p-4 flex-[3] flex-col fond-light leading-normal items-center justify-center">
-                        <span class = "text-center text-[12px] sm:text-[14px]" data-section = "about-me" data-value = {`info-${index+1}.description`}>{description}</span>
-                        {index == 2 && (
-                            <div class = "flex justify-center items-center">
-                                <a href=""
-                                class="cursor-pointer rounded-[5px] border-2 border-content my-3 py-2 text-center w-full sm:w-1/2 h-full flex items-center justify-center
-                                hover:bg-content hover:text-background transition normal-case text-[12px] sm:text-[14px] pointer-events-none opacity-50"
-                                data-section = "about-me" data-value = {`contact`}>
-                                    Contáctame
-                                </a>
-                            </div>
-                        )}
-                    </div>
-                </div>
-            ))}
-        </div>
-    </div>
+	<Arrow color="gold"/>
+	<div class = "flex flex-col justify-center items-center">
+		<HeaderSection title = "about-me.title"/>
+		<div class="mt-10 flex flex-wrap justify-center w-full">
+			{aboutMe.map(({icon, title, description},index) => (
+				<div class = "bg-background flex mx-5 my-5 min-h-[256px] items-center border-2 border-neon rounded-[25px]
+					hover:bg-hover hover:scale-105 transition w-[90%] md:w-[70%] lg:w-[45%]
+					duration-[600ms] taos:[transform:perspective(2500px)_rotateY(100deg)] taos:invisible taos:[backface-visibility:hidden]
+					[animation-iteration-count:infinite]" data-taos-offset="100">
+					<div class = "flex-[1] border-r-2 h-full w-1/2 border-neon flex flex-col justify-center items-center text-neon fill-neon">
+						<i class = {icon + " hidden sm:inline text-[72px]"}></i>
+						<p class = "mt-4 font-main text-center sm:w-auto rotate-180 sm:rotate-0 [writing-mode:vertical-rl] sm:[writing-mode:horizontal-tb]"
+						data-translate={title}>{t(title)}</p>
+					</div>
+					<div class = "p-4 flex-[3] flex-col fond-light leading-normal items-center justify-center">
+						<span class = "text-center text-[12px] sm:text-[14px]" data-translate={description}>{t(description)}</span>
+						{index == 2 && (
+							<div class = "flex justify-center items-center">
+								<a href=""
+								class="cursor-pointer rounded-[5px] border-2 border-content my-3 py-2 text-center w-full sm:w-1/2 h-full flex items-center justify-center
+								hover:bg-content hover:text-background transition normal-case text-[12px] sm:text-[14px] pointer-events-none opacity-50"
+								data-translate="about-me.contact">
+									{t("about-me.contact")}
+								</a>
+							</div>
+						)}
+					</div>
+				</div>
+			))}
+		</div>
+	</div>
 </section>
