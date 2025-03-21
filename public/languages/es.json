@@ -1,63 +1,76 @@
 {
-    "info": {
-        "download-cv": "Descarga mi CV",
-        "ani-1": "Yo soy",
-        "ani-3": "Desarrollador",
-        "ani-4": "Web y Móviles"
-    },
-    "about-me":{
-        "title": "Sobre Mí",
-        "info-1.title": "¿Quién soy?",
-        "info-1.description": "Soy un joven informático de 23 años, dedicado hace años al mundo de la tecnología y de la programación. Durante mi recorrido en el mundo informático, he tomado diferentes desafíos pero siempre dándo lo mejor de mí para dar el mejor producto posible.",
-        "info-2.title": "¿Qué hago?",
-        "info-2.description": "Desarrollo software de distintos ámbitos, desde aplicaciones móviles, aplicaciones de escritorio y webs, entre las cuales se incluyen Landing Pages, Dashboards, incluso hasta un videojuego. Los productos se destacan por mantener buenas prácticas de programación y por tener un diseño atractivo, funcional y responsivo para cualquier dispositivo.",
-        "info-3.title": "¡Contáctame!",
-        "info-3.description": "Si está interesado en contar con mis conocimientos, no dude en contactarme. Estoy dispuesto a trabajar en cualquier proyecto que se me presente, me gustan mucho los desafíos.",
-        "contact": "Contáctame"
-    },
-    "experience":{
-        "title": "Experiencia",
-        "exp-1.rol": "Pasante en 2019",
-        "exp-1.description": "En el año 2019, tuve una experiencia laboral trabajando como pasante dentro de un restaurante, donde era ayudante de la parte del diseño gráfico de la página web, además de hacer trabajos de organización y de ofimática en general. Estuve trabajando alrededor de un mes.",
-        "exp-2.rol": "Desarrollador Móvil en 2024",
-        "exp-2.description": "Como parte de mis prácticas de vinculación, participé en el proyecto Midi Espol, donde apoyé en la parte de desarrollo del juego interactivo educativo 'Mi Rutina', en el cual desarrollé nuevos niveles del juego. Además, implementé el mecanismo de comunicación a un dashboard para poder recopilar los resultados obtenidos por los niños."
-    },
-    "skills":{
-        "title": "Habilidades",
-        "window.title.full": "Habilidades en Programación",
-        "window.title.short": "Programación",
-        "skill-languages.title.full": "Lenguajes de Programación",
-        "skill-languages.title.short": "Lenguajes",
-        "skill-frontend.title.full": "Frameworks Frontend",
-        "skill-frontend.title.short": "Frontend",
-        "skill-backend.title.full": "Frameworks Backend",
-        "skill-backend.title.short": "Backend",
-        "skill-others.title.full": "Otras Herramientas",
-        "skill-others.title.short": "Otros",
-        "window-select": "Selecciona una opción...",
-        "personal-skills.title": "Habilidades personales",
-        "personal-skill-1": "Trabajo en Equipo",
-        "personal-skill-2": "Creatividad",
-        "personal-skill-3": "Comunicación efectiva",
-        "personal-skill-4": "Compromiso a toda hora",
-        "personal-skill-5": "Buen nivel de Inglés"
-    },
-    "projects":{
-        "title": "Proyectos",
-        "more-info": "Más información",
-        "see-repo": "Ver repositorio",
-        "project-dashboard.name": "Dashboard",
-        "project-landing.name": "Landing",
-        "project-mpa.name": "MPA",
-        "project-flex-travel.name": "Flex & Travel",
-        "project-catalogo.name": "Catálogo de Videojuegos",
-        "project-visualizador.name": "Visualizador de Archivos",
-        "project-rover.name": "Simulador de Róvers",
-        "project-laberinto_encantado.name": "Laberinto Encantado"
-    },
-    "404":{
-        "not-found": "Al parecer esta página no existe",
-        "go-back": "¡Pero tranquilo! Aplastando este botón podrás volver a la página principal. ¡Te espero ahí!",
-        "main-page": "Página Principal"
-    }
+	"info": {
+		"download-cv": "Descarga mi CV",
+		"ani-1": "Yo soy",
+		"ani-3": "Desarrollador",
+		"ani-4": "Web y Móviles"
+	},
+	"about-me": {
+		"title": "Sobre Mí",
+		"info-1.title": "¿Quién soy?",
+		"info-1.description": "Soy un joven informático de 23 años, dedicado hace años al mundo de la tecnología y de la programación. Durante mi recorrido en el mundo informático, he tomado diferentes desafíos pero siempre dándo lo mejor de mí para dar el mejor producto posible.",
+		"info-2.title": "¿Qué hago?",
+		"info-2.description": "Desarrollo software de distintos ámbitos, desde aplicaciones móviles, aplicaciones de escritorio y webs, entre las cuales se incluyen Landing Pages, Dashboards, incluso hasta un videojuego. Los productos se destacan por mantener buenas prácticas de programación y por tener un diseño atractivo, funcional y responsivo para cualquier dispositivo.",
+		"info-3.title": "¡Contáctame!",
+		"info-3.description": "Si está interesado en contar con mis conocimientos, no dude en contactarme. Estoy dispuesto a trabajar en cualquier proyecto que se me presente, me gustan mucho los desafíos.",
+		"contact": "Contáctame"
+	},
+	"experience": {
+		"title": "Experiencia",
+		"exp-1.rol": "Ayudante Diseño Gráfico",
+		"exp-1.time": "2019",
+		"exp-1.description": "En el año 2019, tuve una experiencia laboral trabajando como pasante dentro de un restaurante, donde era ayudante de la parte del diseño gráfico de la página web, además de hacer trabajos de organización y de ofimática en general. Estuve trabajando alrededor de un mes.",
+		"exp-2.rol": "Desarrollador Móvil",
+		"exp-2.time": "2024",
+		"exp-2.description": "Como parte de mis prácticas de vinculación, participé en el proyecto Midi Espol, donde apoyé en la parte de desarrollo del juego interactivo educativo 'Mi Rutina', en el cual desarrollé nuevos niveles del juego. Además, implementé el mecanismo de comunicación a un dashboard para poder recopilar los resultados obtenidos por los niños.",
+		"exp-3.rol": "Desarrollador Web",
+		"exp-3.time": "2025 - actualidad",
+		"exp-3.description": "Como parte de mis prácticas empresariales, integré el grupo de desarrolladores web para el proyecto Etiquetas de la empresa Solinal."
+	},
+	"skills": {
+		"title": "Habilidades",
+		"window.title.full": "Habilidades en Programación",
+		"window.title.short": "Programación",
+		"skill-languages.title.full": "Lenguajes de Programación",
+		"skill-languages.title.short": "Lenguajes",
+		"skill-frontend.title.full": "Frameworks Frontend",
+		"skill-frontend.title.short": "Frontend",
+		"skill-backend.title.full": "Frameworks Backend",
+		"skill-backend.title.short": "Backend",
+		"skill-others.title.full": "Otras Herramientas",
+		"skill-others.title.short": "Otros",
+		"window-select": "Selecciona una opción...",
+		"personal-skills.title": "Habilidades personales",
+		"personal-skill-1": "Trabajo en Equipo",
+		"personal-skill-2": "Creatividad",
+		"personal-skill-3": "Comunicación efectiva",
+		"personal-skill-4": "Compromiso a toda hora",
+		"personal-skill-5": "Buen nivel de Inglés"
+	},
+	"projects": {
+		"title": "Proyectos",
+		"more-info": "Más información",
+		"see-repo": "Ver repositorio",
+		"project-dashboard.name": "Dashboard",
+		"project-dashboard.description": "Página web que indica la temperatura, precipitaciones, rayos UV y otros datos posibles de los próximos 5 días de una ciudad del Ecuador. Cuenta con un selector de provincia y ciudades para su visualización. Además, muestra el monitoreo de amenazas de inundación que pueden ocurrir en el país. Estos datos son recopilados de https://www.gestionderiesgos.gob.ec/monitoreo-de-inundaciones/ mediante el mecanismo CORS para su uso didáctico.",
+		"project-landing.name": "Landing",
+		"project-landing.description": "Página de Landing referentes a videojuegos, basándose en plataformas como Steam. Lo relevante es el diseño de la página web. No cuenta con funcionalidad interna.",
+		"project-mpa.name": "MPA",
+		"project-mpa.description": "Proyecto en equipo realizado en Angular que presenta estadísticas de Speedrun (pasarse rápido un juego). La idea principal del proyecto está en el uso del framework Angular para la creación de componentes compartidos, interfaces y conexión a una base de datos Firebase.",
+		"project-flex-travel.name": "Flex & Travel",
+		"project-flex-travel.description": "Proyecto para aplicaciones móviles, centrado en impulsar el turismo en negocios de todo tipo. Se trabajó tanto la parte del Frontend, como la parte del Backend por separado. Para ver el backend del proyecto, visitar: https://github.com/Fausto-Briones/LP-Proyecto2.",
+		"project-catalogo.name": "Catálogo de Videojuegos",
+		"project-catalogo.description": "El proyecto consiste en simular un catálogo de videojuegos estilo Steam, donde se hace uso de Estructuras de Datos como las listas circulares enlazadas. Además, hay dos vistas: una para el usuario y otra para el administrador. Por último, existen diversas formas de búsqueda de videojuegos.",
+		"project-visualizador.name": "Visualizador de Archivos",
+		"project-visualizador.description": "Consiste en visualizar los archivos de una manera más general, donde el tamaño de un archivo o directorio ocupará más o menos espacio en el visualizador. El comportamiento del programa está basado en árboles multicaminos. Tiene dos modos de visualización: uno por archivos y otro por extensiones de archivo.",
+		"project-rover.name": "Simulación de Rovers",
+		"project-rover.description": "Este proyecto consiste en un simulador de dos róvers en Marte, uno solar y otro eólico. Hay cráteres en Marte donde se encuentran materias que serán sensadas. El usuario mediante comandos, se puede mover alrededor del planeta, puede planificar rutas, entre otros. Además, se pueden usar los dos róvers al mismo tiempo gracias al multithreading.",
+		"project-laberinto_encantado.name": "Laberinto Encantado",
+		"project-laberinto_encantado.description": "Juego multijugador cooperativo y competitivo donde 4 equipos se enfrentan entre sí para lograr salir del laberinto. También puedes ver el backend en: https://github.com/domorales/laberinto_encantado_backend/ y el desarrollo completo en: https://domorales.github.io/portfolio-momentum/"
+	},
+	"404": {
+		"not-found": "Al parecer esta página no existe",
+		"go-back": "¡Pero tranquilo! Aplastando este botón podrás volver a la página principal. ¡Te espero ahí!",
+		"main-page": "Página Principal"
+	}
 }
