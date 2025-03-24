@@ -2,6 +2,9 @@
 import Background from '../components/Background.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import { ClientRouter } from 'astro:transitions';
+
+import '../styles/global.css'
 ---
 <!doctype html>
 <html lang="es" class = "dark">
@@ -15,6 +18,7 @@ import Header from '../components/Header.astro';
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+		<ClientRouter />
 	</head>
 	<body class = "transition">
 		<Header />
@@ -26,27 +30,8 @@ import Header from '../components/Header.astro';
 </html>
 
 <style>
-	@import '@fortawesome/fontawesome-free/css/all.min.css';
-	@tailwind base;
-	@tailwind components;
-	@layer base{
-		:root{
-			--color-primary: #00245a;
-			--color-gold: #ffc800;
-			--color-background: white;
-			--color-content: #000000;
-			--color-neon: #000823;
-			--color-hover: #c2edf7;
-		}
-		.dark{
-			--color-background: #000823; 
-			--color-content: #ffffff;
-			--color-neon: #5AE1FF;
-			--color-hover: #0d152e;
-		}
-	}	
-	html,
-	body {
+	@import url('https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap');
+	html {
 		margin: 0;
 		width: 100%;
 		height: 100%;

@@ -1,0 +1,62 @@
+@import "tailwindcss";
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+@plugin "@midudev/tailwind-animations";
+@plugin "taos/plugin";
+
+@tailwind utilities;
+
+/*@font-face {
+	font-family: "Just Another Hand";
+	font-style: normal;
+	font-weight: normal;
+	src: url("./fonts/Just Another Hand.ttf") format("truetype");
+}*/
+
+@font-face {
+	font-family: "Cascadia";
+	font-style: normal;
+	font-weight: normal;
+	src: url("./fonts/Cascadia.ttf") format("truetype");
+}
+
+@layer base {
+	:root {
+		--color-primary: #00245a;
+		--color-gold: #ffc800;
+		--color-background: white;
+		--color-content: #000000;
+		--color-neon: #000823;
+		--color-hover: #c2edf7;
+	}
+	.dark {
+		--color-background: #000823;
+		--color-content: #ffffff;
+		--color-neon: #5ae1ff;
+		--color-hover: #0d152e;
+	}
+}
+
+@layer theme {
+	@theme default {
+		--color-primary: "var(--color-primary)";
+		--color-gold: "var(--color-primary)";
+		--color-background: "var(--color-primary)";
+		--color-content: "var(--color-primary)";
+		--color-neon: "var(--color-primary)";
+		--color-hover: "var(--color-primary)";
+
+		--font-main: "JetBrains Mono", monospace;
+		--font-title: monospace, "Inter", sans-serif;
+		--font-hand: "Just Another Hand", "cursive";
+		--font-content: ;
+	}
+}
+
+::-webkit-scrollbar {
+	display: none;
+}
+
+html {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}

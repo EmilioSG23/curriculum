@@ -1,11 +1,10 @@
 ---
-
 ---
 <button id = "languageToggle" class = "relative text-2xl hover:scale-110 transition group
     [&>*]:border-2 [&>*]:rounded-full [&>*]:border-white [&>*]:bg-white
-    [&>*]:hover:bg-gold [&>*]:hover:border-gold">
+    [&>*]:group-hover:bg-gold [&>*]:group-hover:border-gold cursor-pointer">
     <img id = "spanishToggle" src = "/curriculum/flags/es.png" data-language = "es"
-        class = "activeToggle ">
+        class = "activeToggle">
     <img id = "englishToggle" src = "/curriculum/flags/en.png" data-language = "en"
         class = "inactiveToggle">
 </button>
@@ -42,9 +41,9 @@
 
 <style>
     .activeToggle{
-        @apply w-10 h-10 relative z-[11]
+        @apply w-[40px] h-[40px] relative z-[11]
     }
     .inactiveToggle{
-        @apply w-6 h-6 z-10 absolute left-5 -bottom-2
+        @apply w-[24px] h-[24px] z-10 absolute left-[20px] -bottom-[8px]
     }
 </style>

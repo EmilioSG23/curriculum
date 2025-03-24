@@ -16,22 +16,22 @@ export const PROJECTS = [
 		lenguajes: ["html", "css"],
 		usos: "Uso de HTML para la estructuración de la página, CSS para el estilo",
 	},
-	{
+	/*{
 		id: "mpa",
 		nombre: "projects.project-mpa.name",
 		link: "https://axcelvillagran.github.io/mpa/",
 		descripcion: "projects.project-mpa.description",
 		lenguajes: ["typescript", "html", "angular"],
 		usos: "Uso del framework Angular para el diseño del Frontend, que se basa en el lenguaje TypeScript",
-	},
-	{
+	},*/
+	/*{
 		id: "flex-travel",
 		nombre: "projects.project-flex-travel.name",
 		link: "https://github.com/AxcelVillagran/FrontendLP",
 		descripcion: "projects.project-flex-travel.description",
 		lenguajes: ["javascript", "dart", "flutter", "express"],
 		usos: "Uso del framework Flutter para Frontend, Express para Backend.",
-	},
+	},*/
 	{
 		id: "catalogo",
 		nombre: "projects.project-catalogo.name",

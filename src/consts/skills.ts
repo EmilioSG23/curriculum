@@ -86,12 +86,6 @@ export const SKILLS = [
 		shortName: "skills.skill-frontend.title.short",
 		values: [
 			{
-				id: "angular",
-				name: "Angular",
-				color: "#d32a2d",
-				text: "white",
-			},
-			{
 				id: "astro",
 				name: "Astro",
 				color: "#e43a99",
@@ -102,6 +96,18 @@ export const SKILLS = [
 				name: "React",
 				color: "#61dafb",
 				text: "black",
+			},
+			{
+				id: "angular",
+				name: "Angular",
+				color: "#d32a2d",
+				text: "white",
+			},
+			{
+				id: "tailwind",
+				name: "Tailwind CSS",
+				color: "#36b7f0",
+				text: "white",
 			},
 			{
 				id: "ionic",

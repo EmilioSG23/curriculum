@@ -1,9 +1,9 @@
 ---
 
 ---
-<button id="theme" class="text-3xl w-8 h-8 hover:scale-110 hover:text-gold transition">
+<button id="theme" class="text-3xl w-8 h-8 hover:scale-110 hover:text-gold transition cursor-pointer">
     <i id="dark" class="fas fa-moon"></i>
-    <i id="light" class="fas fa-sun hidden"></i>
+    <i id="light" class="fas fa-sun hidden!"></i>
 </button>
 
 <script>
@@ -25,7 +25,7 @@
     });
 
     function toggleIcon(isDark: boolean) {
-        $sunIcon.classList.toggle('hidden', isDark);
-        $moonIcon.classList.toggle('hidden', !isDark);
+        $sunIcon.classList.toggle('hidden!', isDark);
+        $moonIcon.classList.toggle('hidden!', !isDark);
     }
 </script>

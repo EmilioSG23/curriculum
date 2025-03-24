@@ -29,41 +29,6 @@ const t = useT()
 </Layout>
 
 <script>
-    /* Mover themeToogle */
-    const $mobileContainer = document.getElementById("mobileContainer") as HTMLElement
-    const $mobileDesktop = document.getElementById("mobileDesktop") as HTMLElement
-
-    const $toogleButton = document.getElementById("theme") as HTMLElement
-    function moveToogleButton (){
-        if (window.innerWidth < 768){
-            if ($mobileContainer && !$mobileContainer.contains($toogleButton)){
-                $mobileContainer.appendChild($toogleButton)
-                if ($mobileDesktop.contains($toogleButton)) $mobileDesktop.removeChild($toogleButton)
-            }  
-        }
-        else{
-            if ($mobileDesktop && !$mobileDesktop.contains($toogleButton)){
-                $mobileDesktop.appendChild($toogleButton)
-                if ($mobileContainer.contains($toogleButton)) $mobileContainer.removeChild($toogleButton)
-            }
-        } 
-    }
-    window.addEventListener("resize", moveToogleButton)
-    document.addEventListener("DOMContentLoaded", moveToogleButton)
-
-
-    /* Botón del menú */
-    const $menuButton = document.getElementById("menuButton")
-    const $menu = document.getElementById("menu")
-
-    Array.from($menu?.children || []).map((anchor) => {
-        anchor.addEventListener("click", ()=> {$menu?.classList.remove("open")})
-    })
-
-    $menuButton?.addEventListener("click", ()=>{
-        $menu?.classList.toggle("open")
-    })
-
     const $errorDiv = document.querySelector("div#error") as HTMLElement
     const errorAnimation = () => {
         setInterval(() => {
