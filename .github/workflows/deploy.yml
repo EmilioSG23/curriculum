@@ -32,13 +32,8 @@ jobs:
          - name: Install Rollup manually
            run: npm install --save-dev rollup@latest
 
-         - name: Build Astro site
-           run: npm run build
-
-         - name: Upload artifact
-           uses: actions/upload-pages-artifact@v2
-           with:
-              path: ./dist
+         - name: Install, build, and upload your site
+           uses: withastro/action@v3
 
    deploy:
       needs: build
