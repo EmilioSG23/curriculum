@@ -52,7 +52,18 @@
 }
 
 ::-webkit-scrollbar {
-	display: none;
+	position: absolute;
+	width: 0.5rem;
+	background: var(--color-primary);
+}
+
+::-webkit-scrollbar-track {
+	background: var(--color-primary);
+}
+
+::-webkit-scrollbar-thumb {
+	background: #5ae1ff;
+	border-radius: 10px;
 }
 
 html {
