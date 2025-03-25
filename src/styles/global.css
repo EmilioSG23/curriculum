@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @import "@fortawesome/fontawesome-free/css/all.min.css";
 @plugin "@midudev/tailwind-animations";
-@plugin "taos/plugin";
 
 @tailwind utilities;
 

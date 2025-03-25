@@ -6,8 +6,8 @@ const {title} = Astro.props;
 ---
 
 <h1 class = "font-main font-extrabold text-center
-text-[32px] sm:text-[48px] md:text-[64px] text-content uppercase
-border-b-2 border-neon
-duration-[600ms] taos:scale-[0.6] taos:opacity-0 [animation-iteration-count:infinite]" data-taos-offset="100"
-data-translate = {title}
+	text-[32px] sm:text-[48px] md:text-[64px] text-content uppercase
+	border-b-2 border-neon
+	animate-fade-in timeline-view animate-range-[15%_30%]"
+	data-translate = {title}
 >{t(title)}</h1>

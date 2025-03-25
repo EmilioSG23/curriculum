@@ -19,25 +19,25 @@ function findSkill (id: string){
 }
 
 ---
-<section id = "projects" class = "mx-auto max-w-6xl my-20 text-content">
+<section id = "projects" class = "max-w-6xl mx-auto my-20 text-content">
 	<Arrow color="gold"/>
-	<div class = "flex flex-col justify-center items-center">
+	<div class = "flex flex-col items-center justify-center">
 		<HeaderSection title = "projects.title"/>
 		<div class = "flex justify-center 2xl:w-[125%] my-5 mt-20">
 			<div class = "flex flex-wrap justify-center w-full xl:gap-x-3 2xl:gap-x-5">
 				{PROJECTS.map(({id, nombre, link, descripcion, lenguajes, usos}) => {
 					return (
 						<article class="flex flex-col border-2 border-neon transition w-[90%] sm:w-[70%] md:w-[45%] lg:w-[31%] mx-2 xl:mx-0
-							duration-[600ms] taos:translate-x-[-100%] taos:opacity-0 [animation-iteration-count:infinite]">
-							<div class="relative group w-full h-full overflow-hidden">
+							animate-fade-in-up timeline-view animate-range-[10%_30%]">
+							<div class="relative w-full h-full overflow-hidden group">
 								<img loading="lazy" class="w-[600px] h-[250px] object-cover group-hover:scale-110 transition" src={`projects/${id}.webp`} alt={nombre} />
-								<div class="absolute inset-0 p-2 bg-primary/75 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-									<span class="text-white text-xs sm:text-sm font-semibold" data-translate={descripcion}>{t(descripcion)}</span>
+								<div class="absolute inset-0 flex items-center justify-center p-2 transition-opacity duration-300 opacity-0 bg-primary/75 group-hover:opacity-100">
+									<span class="text-xs font-semibold text-white sm:text-sm" data-translate={descripcion}>{t(descripcion)}</span>
 								</div>
 							</div>
-							<div class="flex flex-col border-t-2 border-neon bg-black/25 py-2">
+							<div class="flex flex-col py-2 border-t-2 border-neon bg-black/25">
 								<span class="text-[24px] font-medium text-center text-neon" data-translate={nombre}>{t(nombre)}</span>
-								<div class="flex justify-center items-center gap-x-1 my-1">
+								<div class="flex items-center justify-center my-1 gap-x-1">
 									{lenguajes.map((language) => {
 										const skill = findSkill(language)
 										if (!skill) return null;
@@ -61,19 +61,19 @@ function findSkill (id: string){
 										)
 									})}
 								</div>
-								<div class="flex flex-row m-1 items-center justify-center">
+								<div class="flex flex-row items-center justify-center m-1">
 									{/* 
 									<a href={"/"+id} class="cursor-pointer bg-neon text-background rounded-[15px] p-2 m-2 text-center sm:w-1/3 md:w-1/2 flex items-center justify-center
 										gap-x-2 text-[10px] sm:text-[12px]
 										hover:brightness-125 hover:text-background transition normal-case pointer-events-none opacity-50">
-										<i class="fa-solid fa-circle-info scale-125"></i>
+										<i class="scale-125 fa-solid fa-circle-info"></i>
 										<span data-translate="projects.more-info">{t("projects.more-info")}</span>
 									</a>
 									*/}
 									<a href={link} class="cursor-pointer bg-gray-300 text-black rounded-[15px] p-2 m-2 text-center sm:w-1/3 md:w-1/2 flex items-center justify-center
 										gap-x-2 text-[10px] sm:text-[12px]
 										hover:brightness-125 transition normal-case">
-										<i class="fab fa-github scale-125"></i>
+										<i class="scale-125 fab fa-github"></i>
 													 <span data-translate="projects.see-repo">{t("projects.see-repo")}</span>
 									</a>
 								</div>

@@ -27,15 +27,15 @@ const EXPERIENCE = [
 
 ---
 
-<section id = "experience" class = "mx-auto max-w-6xl my-20 text-content">
+<section id = "experience" class = "max-w-6xl mx-auto my-20 text-content">
 	<Arrow color="gold"/>
-	<div class = "flex flex-col justify-center items-center">
+	<div class = "flex flex-col items-center justify-center">
 		<HeaderSection title = "experience.title"/>
-		<div class="mt-10 gap-5 flex flex-wrap justify-center w-full">
+		<div class="flex flex-wrap justify-center w-full gap-5 mt-10">
 			{EXPERIENCE.reverse().map(({lugar, puesto, tiempo, descripcion}) => (
 				<article class = "bg-background flex flex-col min-h-[312px] items-center border-2 border-neon rounded-[25px]
-					hover:scale-105 hover:bg-hover transition w-[80%] md:w-[45%] lg:w-[31%]
-					duration-[600ms] taos:opacity-0 [animation-iteration-count:infinite] font-content" data-taos-offset="100">
+					hover:scale-105 hover:bg-hover transition w-[80%] md:w-[45%] lg:w-[31%] font-content
+					animate-fade-in-right timeline-view animate-range-[15%_35%]">
 					<div class="border-b-2 border-neon h-[25%] w-full flex flex-col justify-center items-center py-4">
 						<h1 class = "font-bold text-neon text-[24px]">{lugar}</h1>
 						<h2 class = "text-[16px]" data-translate={puesto}>{t(puesto)}</h2>

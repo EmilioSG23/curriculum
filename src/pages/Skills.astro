@@ -16,15 +16,14 @@ const HABILIDADES_PERSONALES = [
 
 ---
 
-<section id = "skills" class = "mx-auto max-w-6xl my-20 text-content">
+<section id = "skills" class = "max-w-6xl mx-auto my-20 text-content">
 	<Arrow color="gold"/>
-	<div class = "flex flex-col justify-center items-center">
+	<div class = "flex flex-col items-center justify-center">
 		<HeaderSection title = "skills.title" data-translate="skills.title"/>
-		<div class = "flex flex-col lg:flex-row justify-center w-full my-5 gap-10 mt-20">
+		<div class = "flex flex-col justify-center w-full gap-10 my-5 mt-20 lg:flex-row">
 			<div class = "lg:flex-[3] bg-black border-2 border-[#5AE1FF]
 			order-2 lg:order-1 w-[90%] lg:w-full min-h-[550px] self-center overflow-hidden rounded-[12px]
-			duration-[600ms] taos:opacity-0 [animation-iteration-count:infinite]" 
-			data-taos-offset="100">
+			animate-expand-vertically timeline-view animate-range-[15%_35%]">
 				<div class = "flex justify-center items-center bg-primary text-white text-[12px] sm:text-[16px]
 							h-[42px] border-b-2 border-[#5AE1FF]">
 					<div class = "flex-1 mx-5 font-main">
@@ -32,22 +31,22 @@ const HABILIDADES_PERSONALES = [
 						<span class="show-short" data-translate="skills.window.title.short">{t("skills.window.title.short")}</span>
 					</div>
 					<div class = "px-4 bg-white/5 h-full text-center flex items-center justify-center border-x-2 border-[#5AE1FF]"><i class = "fa fa-minus"></i></div>
-					<div class = "px-4 bg-white/5 h-full text-center flex items-center justify-center"><i class = "fa-regular fa-window-restore"></i></div>
+					<div class = "flex items-center justify-center h-full px-4 text-center bg-white/5"><i class = "fa-regular fa-window-restore"></i></div>
 					<div class = "px-4 bg-red-600 h-full text-center flex items-center justify-center border-l-2 border-[#5AE1FF]"><i class = "fa fa-x"></i></div>
 				</div>
-				<div class = "p-5 flex flex-col text-white">
+				<div class = "flex flex-col p-5 text-white">
 					{SKILLS.map((skill) => (
 						<div class="flex flex-col">
 							<button id = "toogleContent" class = "text-[16px] md:text-[24px] font-main hover:underline self-start cursor-pointer">
 								<span class="show-full">{"> "}<span data-translate={skill["name"]}>{t(`${skill["name"]}`)}</span></span>
 								<span class="show-short">{"> "}<span  data-translate={skill["shortName"]}>{t(`${skill["shortName"]}`)}</span></span>
 							</button>
-							<div id = {"div-"+skill["id"]} class = "py-2 skill-content closed grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 justify-around">
+							<div id = {"div-"+skill["id"]} class = "grid justify-around grid-cols-3 gap-3 py-2 skill-content closed sm:grid-cols-4 md:grid-cols-5">
 								{skill["values"].map((data) => (
-									<div class = "flex flex-col text-center justify-center items-center hover:scale-110 transition">
+									<div class = "flex flex-col items-center justify-center text-center transition hover:scale-110">
 										<img loading="lazy" src = {`habilidades/${skill["id"]}/${data["id"]}.png`}
 										class = "w-8 h-8" />
-										<p class = "font-light text-sm">{data["name"]}</p>
+										<p class = "text-sm font-light">{data["name"]}</p>
 									</div>
 								))}
 							</div>
@@ -59,7 +58,7 @@ const HABILIDADES_PERSONALES = [
 			</div>
 
 			<div class = "order-1 lg:order-2 lg:flex-[2] self-center bg-[#F5F5F5] -rotate-3 w-[80%] sm:w-[60%] md:w-[50%] lg:mr-6 xl:mr-0
-			duration-[600ms] taos:opacity-0 [animation-iteration-count:infinite]" data-taos-offset="200">
+				animate-expand-vertically timeline-view animate-range-[15%_35%]">
 				<div class = "flex flex-col p-5 sm:px-10 font-hand text-[18px]">
 					<h3 class = "border-y border-black/25 py-1 text-red-600 text-[36px] sm:text-[52px]"data-translate="skills.personal-skills.title">{t("skills.personal-skills.title")}</h3>
 					<div class = "text-[24px] sm:text-[32px]">

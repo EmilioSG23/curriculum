@@ -1,6 +1,6 @@
 ---
 import { useT } from "../i18n/utils";
-const t = useT(Astro.url)
+const t = useT()
 ---
 <script>
     const textos = [
@@ -48,10 +48,10 @@ const t = useT(Astro.url)
 	<div class="flex flex-col lg:flex-row items-center gap-y-5 py-20 gap-x-[64px] mx-auto max-w-6xl uppercase">
 		<div class = "order-2 lg:order-1 flex-[2] lg:ml-5 flex justify-center mt-20 lg:mt-0">
 			<img src = "perfil.webp" class = "w-[80%] sm:w-[35%] lg:w-[80%] rounded-[50px] border-[5px] border-neon
-			duration-[600ms] taos:[transform:translate3d(-200px,0,0)_scale(1.2)] taos:opacity-0" data-taos-offset="200" alt = "Foto de perfil">
+			duration-[600ms]" alt = "Foto de perfil de Emilio Sáenz">
 		</div>
 		<div class = "order-1 lg:order-2 flex-[3] lg:mr-5 flex-col w-[80%] text-center lg:text-left lg:justify-start
-		duration-[600ms] taos:[transform:scale(0.6)] taos:opacity-0 [animation-iteration-count:infinite]" data-taos-offset="100">
+		duration-[600ms]">
 			<span id = "ani-1" class = "text-[24px] sm:text-[48px]" data-translate="info.ani-1">{t("info.ani-1")}</span><br>
 			<h1 class = "font-title font-bold text-[36px] sm:text-[70px] uppercase inline-block">
 				<span id = "ani-2" class="text-neon">Emilio Sáenz</span>
@@ -60,7 +60,7 @@ const t = useT(Astro.url)
 			<div><span id = "ani-3"  class = "text-[24px] sm:text-[48px]" data-translate="info.ani-3">{t("info.ani-3")}</span></div>
 			<div><span id = "ani-4"  class = "text-[24px] sm:text-[48px]" data-translate="info.ani-4">{t("info.ani-4")}</span></div>
 			<div><span id = "ani-5"  class = "inline font-extrabold text-[28px] sm:text-[56px] text-neon">{"< FULL STACK />"}</span></div>
-			<div class = "flex items-center justify-center mt-10 w-full">
+			<div class = "flex items-center justify-center w-full mt-10">
 				<a href="CurriculumVitae - Emilio Saenz.pdf" download = "CurriculumVitae - Emilio Saenz.pdf"
 				class="bg-background cursor-pointer rounded-[20px] p-5 border-2 border-content m-5 text-center w-full sm:w-1/2 h-full flex items-center justify-center
 				hover:bg-content hover:text-background transition normal-case gap-x-3">
