@@ -41,6 +41,7 @@
 	"skills.personal-skill-5": "Buen nivel de Inglés",
 	"projects.title": "Proyectos",
 	"projects.more-info": "Más información",
+	"projects.visit-page": "Visitar página",
 	"projects.see-repo": "Ver repositorio",
 	"projects.project-dashboard.name": "Dashboard",
 	"projects.project-dashboard.description": "Página web que indica la temperatura, precipitaciones, rayos UV y otros datos posibles de los próximos 5 días de una ciudad del Ecuador. Cuenta con un selector de provincia y ciudades para su visualización. Además, muestra el monitoreo de amenazas de inundación que pueden ocurrir en el país. Estos datos son recopilados de https://www.gestionderiesgos.gob.ec/monitoreo-de-inundaciones/ mediante el mecanismo CORS para su uso didáctico.",

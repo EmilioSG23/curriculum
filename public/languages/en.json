@@ -41,6 +41,7 @@
 	"skills.personal-skill-5": "Good English Proficiency",
 	"projects.title": "Projects",
 	"projects.more-info": "More information",
+	"projects.visit-page": "Visit page",
 	"projects.see-repo": "View repository",
 	"projects.project-dashboard.name": "Dashboard",
 	"projects.project-dashboard.description": "A website that shows the temperature, precipitation, UV rays, and other possible data for the next 5 days of a city in Ecuador. It includes a selector for provinces and cities for visualization. It also displays flood threat monitoring that could occur in the country. These data are gathered from https://www.gestionderiesgos.gob.ec/monitoreo-de-inundaciones/ via CORS for educational purposes.",

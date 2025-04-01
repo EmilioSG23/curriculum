@@ -38,8 +38,8 @@ const HABILIDADES_PERSONALES = [
 					{SKILLS.map((skill) => (
 						<div class="flex flex-col">
 							<button id = "toogleContent" class = "text-[16px] md:text-[24px] font-main hover:underline self-start cursor-pointer">
-								<span class="show-full">{"> "}<span data-translate={skill["name"]}>{t(`${skill["name"]}`)}</span></span>
-								<span class="show-short">{"> "}<span  data-translate={skill["shortName"]}>{t(`${skill["shortName"]}`)}</span></span>
+								<span class="show-full">{"> "}<span data-translate={skill["name"]}>{t(`${skill["name"] as keyof typeof t}`)}</span></span>
+								<span class="show-short">{"> "}<span  data-translate={skill["shortName"]}>{t(`${skill["shortName"] as keyof typeof t}`)}</span></span>
 							</button>
 							<div id = {"div-"+skill["id"]} class = "grid justify-around grid-cols-3 gap-3 py-2 skill-content closed sm:grid-cols-4 md:grid-cols-5">
 								{skill["values"].map((data) => (
@@ -64,7 +64,7 @@ const HABILIDADES_PERSONALES = [
 					<div class = "text-[24px] sm:text-[32px]">
 						{HABILIDADES_PERSONALES.map((habilidad) => (
 							<div class={`border-b border-black/25 py-1 text-black`}>
-							<span>{"• "}<span  data-translate={habilidad}>{t(habilidad)}</span></span>
+							<span>{"• "}<span  data-translate={habilidad}>{t(habilidad as keyof typeof t)}</span></span>
 							</div>
 						))}
 					{Array.from({ length: 3 }).map((_, i) => (

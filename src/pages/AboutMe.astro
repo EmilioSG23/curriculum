@@ -3,7 +3,7 @@ import Arrow from "../components/Arrow.astro"
 import HeaderSection from "../components/HeaderSection.astro"
 import { useT } from '../i18n/utils';
 
-const t = useT(Astro.url)
+const t = useT()
 
 const myBirthday = new Date(1003813200*1000)
 
@@ -42,10 +42,10 @@ const aboutMe = [
 					<div class = "flex-[1] border-r-2 h-full w-1/2 border-neon flex flex-col justify-center items-center text-neon fill-neon">
 						<i class = {icon + " hidden! sm:inline! text-[72px]"}></i>
 						<p class = "mt-4 font-main text-center sm:w-auto rotate-180 sm:rotate-0 [writing-mode:vertical-rl] sm:[writing-mode:horizontal-tb]"
-						data-translate={title}>{t(title)}</p>
+						data-translate={title}>{t(title as keyof typeof t)}</p>
 					</div>
 					<div class = "font-content p-4 flex-[3] flex-col fond-light leading-normal items-center justify-center">
-						<span class = "text-center text-[12px] sm:text-[14px]" data-translate={description}>{t(description)}</span>
+						<span class = "text-center text-[12px] sm:text-[14px]" data-translate={description}>{t(description as keyof typeof t)}</span>
 						{index == 2 && (
 							<div class = "flex items-center justify-center">
 								<a href=""
