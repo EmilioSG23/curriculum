@@ -1,0 +1,142 @@
+---
+import { SKILLS } from "@/consts/skills";
+import { useT } from "@/i18n/utils";
+
+const t = useT();
+const { skills } = Astro.props;
+---
+
+<div
+	class="lg:flex-[3] bg-black border-2 border-[#5AE1FF]
+			order-2 lg:order-1 w-[90%] lg:w-full min-h-[550px] self-center overflow-hidden rounded-[12px]"
+	data-aos="flip-down"
+>
+	<div
+		class="flex justify-center items-center bg-primary text-white text-[12px] sm:text-[16px]
+							h-[42px] border-b-2 border-[#5AE1FF]"
+	>
+		<div class="flex-1 mx-5 font-main">
+			<span class="show-full" data-translate="skills.window.title.full"
+				>{t("skills.window.title.full")}</span
+			>
+			<span class="show-short" data-translate="skills.window.title.short"
+				>{t("skills.window.title.short")}</span
+			>
+		</div>
+		<div
+			class="px-4 bg-white/5 h-full text-center flex items-center justify-center border-x-2 border-[#5AE1FF]"
+		>
+			<i class="fa fa-minus"></i>
+		</div>
+		<div class="flex items-center justify-center h-full px-4 text-center bg-white/5">
+			<i class="fa-regular fa-window-restore"></i>
+		</div>
+		<div
+			class="px-4 bg-red-600 h-full text-center flex items-center justify-center border-l-2 border-[#5AE1FF]"
+		>
+			<i class="fa fa-x"></i>
+		</div>
+	</div>
+	<div class="flex flex-col p-5 text-white">
+		{
+			SKILLS.map((skill) => (
+				<div class="flex flex-col">
+					<button
+						id="toogleContent"
+						class="text-[16px] md:text-[24px] font-main hover:underline self-start cursor-pointer"
+					>
+						<span class="show-full">
+							{"> "}
+							<span data-translate={skill["name"]}>{t(`${skill["name"] as keyof typeof t}`)}</span>
+						</span>
+						<span class="show-short">
+							{"> "}
+							<span data-translate={skill["shortName"]}>
+								{t(`${skill["shortName"] as keyof typeof t}`)}
+							</span>
+						</span>
+					</button>
+					<div
+						id={"div-" + skill["id"]}
+						class="grid justify-around grid-cols-3 gap-3 py-2 skill-content closed sm:grid-cols-4 md:grid-cols-5"
+					>
+						{skill["values"].map((data) => (
+							<div class="flex flex-col items-center justify-center text-center transition hover:scale-110">
+								<img
+									loading="lazy"
+									src={`habilidades/${skill["id"]}/${data["id"]}.png`}
+									class="w-8 h-8"
+								/>
+								<p class="text-sm font-light">{data["name"]}</p>
+							</div>
+						))}
+					</div>
+				</div>
+			))
+		}
+		<p
+			id="helpSeleccion"
+			class="text-[12px] md:text-[16px] font-main font-extralight italic text-white/50"
+			data-translate="skills.window-select"
+		>
+			{t("skills.window-select")}
+		</p>
+	</div>
+</div>
+
+<style>
+	.skill-content {
+		max-height: 0;
+		opacity: 0;
+		overflow: hidden;
+		transition:
+			max-height 0.2s linear,
+			opacity 0.3s ease;
+	}
+
+	.skill-content.open {
+		max-height: 250px;
+		opacity: 1;
+	}
+
+	.closed {
+		max-height: 0;
+	}
+
+	@media (min-width: 520px) {
+		.show-full {
+			display: inline;
+		}
+		.show-short {
+			display: none;
+		}
+	}
+	@media (max-width: 520px) {
+		.show-full {
+			display: none;
+		}
+		.show-short {
+			display: inline;
+		}
+	}
+</style>
+
+<script>
+	import { SKILLS } from "@/consts/skills";
+
+	const $helpSeleccion = document.getElementById("helpSeleccion");
+
+	document.addEventListener("DOMContentLoaded", () => {
+		document.querySelectorAll("button#toogleContent").forEach((button, index) => {
+			button.addEventListener("click", () => {
+				$helpSeleccion?.remove();
+				const $divContents = document.querySelectorAll("div[id^='div-']");
+				$divContents.forEach((div) => {
+					const isCurrentDiv = div.id === `div-${SKILLS[index]["id"]}`;
+					div.classList.toggle("open", isCurrentDiv && !div.classList.contains("open"));
+					div.classList.toggle("close", !isCurrentDiv || div.classList.contains("open"));
+				});
+			});
+		});
+	});
+</script>

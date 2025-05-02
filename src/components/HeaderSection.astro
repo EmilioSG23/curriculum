@@ -1,13 +1,16 @@
 ---
-import { useT } from '../i18n/utils';
+import { useT } from "../i18n/utils";
 
-const t = useT()
-const {title} = Astro.props;
+const t = useT();
+const { title } = Astro.props;
 ---
 
-<h1 class = "font-main font-extrabold text-center
+<h1
+	class="font-main font-extrabold text-center
 	text-[32px] sm:text-[48px] md:text-[64px] text-content uppercase
-	border-b-2 border-neon
-	animate-fade-in timeline-view animate-range-[15%_30%]"
-	data-translate = {title}
->{t(title)}</h1>
+	border-b-2 border-neon"
+	data-aos="fade"
+	data-translate={title}
+>
+	{t(title)}
+</h1>

@@ -48,6 +48,8 @@
 		--font-title: monospace, "Inter", sans-serif;
 		--font-hand: "Just Another Hand", "cursive";
 		--font-content: ;
+
+		--breakpoint-xs: 320px;
 	}
 }
 

@@ -1,7 +1,8 @@
 ---
-import Arrow from "../components/Arrow.astro"
-import HeaderSection from "../components/HeaderSection.astro"
-import { useT } from '../i18n/utils';
+import AboutMeItem from "@components/Items/AboutMeItem.astro";
+import Arrow from "@components/Arrow.astro"
+import HeaderSection from "@components/HeaderSection.astro"
+import { useT } from '@/i18n/utils';
 
 const t = useT()
 
@@ -36,28 +37,7 @@ const aboutMe = [
 		<HeaderSection title = "about-me.title"/>
 		<div class="flex flex-wrap justify-center w-full mt-10">
 			{aboutMe.map(({icon, title, description},index) => (
-				<article class = "bg-background flex mx-5 my-5 min-h-[256px] items-center border-2 border-neon rounded-[25px]
-					hover:bg-hover hover:scale-105 transition w-[90%] md:w-[70%] lg:w-[45%]
-					animate-flip-in-x  timeline-view animate-range-[15%_35%]">
-					<div class = "flex-[1] border-r-2 h-full w-1/2 border-neon flex flex-col justify-center items-center text-neon fill-neon">
-						<i class = {icon + " hidden! sm:inline! text-[72px]"}></i>
-						<p class = "mt-4 font-main text-center sm:w-auto rotate-180 sm:rotate-0 [writing-mode:vertical-rl] sm:[writing-mode:horizontal-tb]"
-						data-translate={title}>{t(title as keyof typeof t)}</p>
-					</div>
-					<div class = "font-content p-4 flex-[3] flex-col fond-light leading-normal items-center justify-center">
-						<span class = "text-center text-[12px] sm:text-[14px]" data-translate={description}>{t(description as keyof typeof t)}</span>
-						{index == 2 && (
-							<div class = "flex items-center justify-center">
-								<a href=""
-								class="cursor-pointer rounded-[5px] border-2 border-content my-3 py-2 text-center w-full sm:w-1/2 h-full flex items-center justify-center
-								hover:bg-content hover:text-background transition normal-case text-[12px] sm:text-[14px] pointer-events-none opacity-50"
-								data-translate="about-me.contact">
-									{t("about-me.contact")}
-								</a>
-							</div>
-						)}
-					</div>
-				</article>
+				<AboutMeItem icon = {icon} title = {title} description = {description} hasButton = {index === 2} />
 			))}
 		</div>
 	</div>

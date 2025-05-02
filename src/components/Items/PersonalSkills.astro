@@ -1,0 +1,37 @@
+---
+import { useT } from "@/i18n/utils";
+
+const t = useT();
+const { skills } = Astro.props;
+---
+
+<div
+	class="order-1 lg:order-2 lg:flex-[2] self-center bg-[#F5F5F5] -rotate-3 w-[80%] sm:w-[60%] md:w-[50%] lg:mr-6 xl:mr-0"
+	data-aos="flip-down"
+>
+	<div class="flex flex-col p-5 sm:px-10 font-hand text-[18px]">
+		<h3
+			class="border-y border-black/25 py-1 text-red-600 text-[36px] sm:text-[52px]"
+			data-translate="skills.personal-skills.title"
+		>
+			{t("skills.personal-skills.title")}
+		</h3>
+		<div class="text-[24px] sm:text-[32px]">
+			{
+				skills.map((habilidad) => (
+					<div class={`border-b border-black/25 py-1 text-black`}>
+						<span>
+							{"• "}
+							<span data-translate={habilidad}>{t(habilidad as keyof typeof t)}</span>
+						</span>
+					</div>
+				))
+			}
+			{
+				Array.from({ length: 3 }).map((_, i) => (
+					<div class={`border-b border-black/25 py-1 text-black`}>{"\u00A0"}</div>
+				))
+			}
+		</div>
+	</div>
+</div>
