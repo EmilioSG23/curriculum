@@ -48,7 +48,7 @@ export const SKILLS = [
 				color: "#3d9bd5",
 				text: "white",
 			},
-			{
+			/*{
 				id: "php",
 				name: "PhP",
 				color: "#4f82b9",
@@ -59,19 +59,19 @@ export const SKILLS = [
 				name: "Ruby",
 				color: "#cc0700",
 				text: "white",
-			},
+			},*/
 			{
 				id: "dart",
 				name: "Dart",
 				color: "#00b8f8",
 				text: "white",
 			},
-			{
+			/*{
 				id: "rust",
 				name: "Rust",
 				color: "gray",
 				text: "white",
-			},
+			},*/
 			{
 				id: "c_sharp",
 				name: "C#",
@@ -109,7 +109,7 @@ export const SKILLS = [
 				color: "#36b7f0",
 				text: "white",
 			},
-			{
+			/*{
 				id: "ionic",
 				name: "Ionic",
 				color: "#008cff",
@@ -120,7 +120,7 @@ export const SKILLS = [
 				name: "Flutter",
 				color: "#00c6fd",
 				text: "white",
-			},
+			},*/
 			{
 				id: "unity",
 				name: "Unity",
@@ -189,9 +189,9 @@ export const SKILLS = [
 				color: "gray",
 				text: "white",
 			},
-			{
-				id: "visual-studio",
-				name: "Visual Studio",
+			/*{
+				id: "vs-code",
+				name: "Visual Studio Code",
 				color: "#007acf",
 				text: "white",
 			},
@@ -206,7 +206,7 @@ export const SKILLS = [
 				name: "JavaFX",
 				color: "#ff8b00",
 				text: "white",
-			},
+			},*/
 		],
 	},
 ];
