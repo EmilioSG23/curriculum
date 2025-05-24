@@ -24,7 +24,7 @@ function delayClass(index: number) {
 ---
 
 <article
-	class=`flex flex-col border-2 border-neon transition w-[90%] sm:w-[70%] md:w-[45%] lg:w-[31%] mx-2 xl:mx-0 ${delayClass(index)}`
+	class=`flex flex-col border-2 border-neon transition w-[90%] sm:w-[70%] md:w-[45%] lg:w-[31%] mx-2 xl:mx-0 ${delayClass(index%3)}`
 	data-aos="fade-up"
 >
 	<div class="relative w-full h-full overflow-hidden group">
