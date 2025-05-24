@@ -1,70 +1,94 @@
 ---
 import { useT } from "../i18n/utils";
-const t = useT()
+const t = useT();
 ---
+
 <script>
-    const textos = [
-        "Yo soy",
-        "Emilio Saenz",
-        "Desarrollador web",
-        "y móviles",
-        "< FULL STACK />"
-    ];
+	const textos = ["Yo soy", "Emilio Saenz", "Desarrollador web", "y móviles", "< FULL STACK />"];
 
-    function typeWriterEffect(spanElement: any, text: string | any[], speed = 100) {
-        return new Promise<void>((resolve) => {
-            let i = 0;
-            spanElement.classList.add('animate-cursor');
-            spanElement.innerText = '';
+	function typeWriterEffect(spanElement: any, text: string | any[], speed = 100) {
+		return new Promise<void>((resolve) => {
+			let i = 0;
+			spanElement.classList.add("animate-cursor");
+			spanElement.innerText = "";
 
-            const interval = setInterval(() => {
-                spanElement.innerText += text[i];
-                i++;
+			const interval = setInterval(() => {
+				spanElement.innerText += text[i];
+				i++;
 
-                if (i === text.length) {
-                    clearInterval(interval);
-                    if (spanElement.id !== 'ani-5') {
-                        spanElement.classList.remove('animate-cursor');
-                    }
-                    resolve();
-                }
-            }, speed);
-        });
-    }
+				if (i === text.length) {
+					clearInterval(interval);
+					if (spanElement.id !== "ani-5") {
+						spanElement.classList.remove("animate-cursor");
+					}
+					resolve();
+				}
+			}, speed);
+		});
+	}
 
-    async function animateText() {
-        const elements = ['ani-1', 'ani-2', 'ani-3', 'ani-4', 'ani-5'];
-        for (let i = 0; i < elements.length; i++) {
-            const element = document.getElementById(elements[i]);
-            if (element) {
-                await typeWriterEffect(element, textos[i].replace(/ /g, '\u00A0'), 100);
-            }
-        }
-    }
-    //window.onload = animateText;
+	async function animateText() {
+		const elements = ["ani-1", "ani-2", "ani-3", "ani-4", "ani-5"];
+		for (let i = 0; i < elements.length; i++) {
+			const element = document.getElementById(elements[i]);
+			if (element) {
+				await typeWriterEffect(element, textos[i].replace(/ /g, "\u00A0"), 100);
+			}
+		}
+	}
+	//window.onload = animateText;
 </script>
 
-<section id = "info" class="my-5 text-content font-main">
-	<div class="flex flex-col lg:flex-row items-center gap-y-5 py-20 gap-x-[64px] mx-auto max-w-6xl uppercase">
-		<div class = "order-2 lg:order-1 flex-[2] lg:ml-5 flex justify-center mt-20 lg:mt-0">
-			<img src = "perfil.webp" class = "w-[80%] sm:w-[35%] lg:w-[80%] rounded-[50px] border-[5px] border-neon
-			animate-fade-in" alt = "Foto de perfil de Emilio Sáenz">
+<section id="info" class="my-5 text-content font-main">
+	<div
+		class="flex flex-col md:flex-row items-center gap-y-5 py-20 gap-x-[64px] mx-auto max-w-6xl uppercase"
+	>
+		<div class="flex-1 md:h-full md:flex-[2] lg:ml-5 flex justify-center px-5">
+			<img
+				src="perfil.webp"
+				class="w-full xxs:w-[80%] xs:w-[60%] md:w-full rounded-[40px] xs:rounded-[50px] border-[5px] border-neon
+			animate-fade-in"
+				alt="Foto de perfil de Emilio Sáenz"
+			/>
 		</div>
-		<div class = "order-1 lg:order-2 flex-[3] lg:mr-5 flex-col w-[80%] text-center lg:text-left lg:justify-start
-			animate-fade-in">
-			<span id = "ani-1" class = "text-[24px] sm:text-[48px]" data-translate="info.ani-1">{t("info.ani-1")}</span><br>
-			<h1 class = "font-title font-bold text-[36px] sm:text-[70px] uppercase inline-block">
-				<span id = "ani-2" class="text-neon">Emilio Sáenz</span>
+		<div
+			class="h-full flex-1 md:flex-[3] md:mr-5 flex-col w-[80%] text-center justify-center items-center md:text-left md:justify-start
+			animate-fade-in"
+		>
+			<span id="ani-1" class="info-normal" data-translate="info.ani-1">{t("info.ani-1")}</span><br
+			/>
+			<h1
+				class="font-title font-bold text-[30px] xxs:text-[36px] xs:text-[50px] lg:text-[70px] uppercase inline-block"
+			>
+				<span id="ani-2" class="text-neon">Emilio Sáenz</span>
 			</h1>
-			<div class = {`h-[4px] w-full bg-neon`}></div>
-			<div><span id = "ani-3"  class = "text-[24px] sm:text-[48px]" data-translate="info.ani-3">{t("info.ani-3")}</span></div>
-			<div><span id = "ani-4"  class = "text-[24px] sm:text-[48px]" data-translate="info.ani-4">{t("info.ani-4")}</span></div>
-			<div><span id = "ani-5"  class = "inline font-extrabold text-[28px] sm:text-[56px] text-neon">{"< FULL STACK />"}</span></div>
-			<div class = "flex items-center justify-center w-full mt-10">
-				<a href="CurriculumVitae - Emilio Saenz.pdf" download = "CurriculumVitae - Emilio Saenz.pdf"
-				class="bg-background cursor-pointer rounded-[20px] p-5 border-2 border-content m-5 text-center w-full sm:w-1/2 h-full flex items-center justify-center
-				hover:bg-content hover:text-background transition normal-case gap-x-3">
-					<i class = "fa fa-download text-[20px]"></i><span data-section="info" data-value="download-cv" data-translate="info.download-cv">{t("info.download-cv")}</span>
+			<div class={`h-[4px] w-full bg-neon my-1`}></div>
+			<div>
+				<span id="ani-3" class="info-normal" data-translate="info.ani-3">{t("info.ani-3")}</span>
+			</div>
+			<div>
+				<span id="ani-4" class="info-normal" data-translate="info.ani-4">{t("info.ani-4")}</span>
+			</div>
+			<div>
+				<span
+					id="ani-5"
+					class="inline font-extrabold text-[24px] xxs:text-[28px] xs:text-[36px] lg:text-[56px] text-neon"
+					>{"< FULL STACK />"}</span
+				>
+			</div>
+			<div class="flex items-center justify-center w-full mt-10">
+				<a
+					href="CurriculumVitae - Emilio Saenz.pdf"
+					download="CurriculumVitae - Emilio Saenz.pdf"
+					class="bg-background cursor-pointer rounded-[10px] xxs:rounded-[20px] p-3 xxs:p-5 border-2 border-content xs:m-5 text-center
+					w-full sm:w-3/4 lg:w-1/2 h-full flex items-center justify-center
+					hover:bg-content hover:text-background transition normal-case gap-x-3 text-[12px] xxs:text-[16px] lg:text-[20px]"
+				>
+					<i class="fa fa-download"></i><span
+						data-section="info"
+						data-value="download-cv"
+						data-translate="info.download-cv">{t("info.download-cv")}</span
+					>
 				</a>
 			</div>
 		</div>
@@ -72,15 +96,16 @@ const t = useT()
 </section>
 
 <style>
-    .animate-cursor{
-        width: 100%;
-        white-space: nowrap;
-        overflow: hidden;
-        border-right: 5px solid var(--color-content);
-        animation: cursor .4s step-end infinite alternate;
-    }
-    @keyframes cursor {
-        50%{ border-color: transparent;}
-    }
-
+	.animate-cursor {
+		width: 100%;
+		white-space: nowrap;
+		overflow: hidden;
+		border-right: 5px solid var(--color-content);
+		animation: cursor 0.4s step-end infinite alternate;
+	}
+	@keyframes cursor {
+		50% {
+			border-color: transparent;
+		}
+	}
 </style>
