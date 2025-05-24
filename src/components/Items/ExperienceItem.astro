@@ -3,13 +3,15 @@ import { useT } from "@/i18n/utils";
 
 const t = useT();
 const { index, lugar, puesto, tiempo, descripcion } = Astro.props;
+
+function delayClass(index: number) {
+	if (index === 0) return "md:delay-300";
+	if (index === 1) return "md:delay-150";
+	return "md:delay-0";
+}
 ---
 
-<div
-	class="min-h-[312px] w-[80%] md:w-[45%] lg:w-[31%]"
-	data-aos="fade-right"
-	data-aos-delay={300 - (index % 3) * 150}
->
+<div class=`min-h-[312px] w-[80%] md:w-[45%] lg:w-[31%] ${delayClass(index)}` data-aos="fade-right">
 	<article
 		class="bg-background flex flex-col items-center border-2 border-neon rounded-[25px]
 					hover:scale-105 hover:bg-hover transition font-content h-full"
