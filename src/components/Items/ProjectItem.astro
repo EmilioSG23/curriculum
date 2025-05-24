@@ -3,7 +3,7 @@ import { SKILLS } from "@/consts/skills";
 import { useT } from "@/i18n/utils";
 
 const t = useT();
-const { id, nombre, link, github, descripcion, lenguajes, usos } = Astro.props;
+const { index, id, nombre, link, github, descripcion, lenguajes, usos } = Astro.props;
 
 const SKILLS_FLAT = SKILLS.flatMap((category) =>
 	category.values.map((skill) => ({
@@ -20,6 +20,7 @@ function findSkill(id: string) {
 <article
 	class="flex flex-col border-2 border-neon transition w-[90%] sm:w-[70%] md:w-[45%] lg:w-[31%] mx-2 xl:mx-0"
 	data-aos="fade-up"
+	data-aos-delay={(index % 3) * 150}
 >
 	<div class="relative w-full h-full overflow-hidden group">
 		<img
@@ -42,7 +43,7 @@ function findSkill(id: string) {
 		>
 		<div class="flex items-center justify-center my-1 gap-x-1">
 			{
-				lenguajes.map((language) => {
+				lenguajes.map((language: string) => {
 					const skill = findSkill(language);
 					if (!skill) return null;
 					return (
