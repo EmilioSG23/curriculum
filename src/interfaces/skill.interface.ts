@@ -3,6 +3,7 @@ export interface SkillValue {
 	name: string;
 	color: string;
 	text: string;
+	display: boolean;
 }
 
 export interface Skill {
