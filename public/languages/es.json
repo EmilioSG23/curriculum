@@ -44,7 +44,7 @@
 	"projects.visit-page": "Visitar página",
 	"projects.see-repo": "Ver repositorio",
 	"projects.project-dashboard.name": "Dashboard",
-	"projects.project-dashboard.description": "Página web que indica la temperatura, precipitaciones, rayos UV y otros datos posibles de los próximos 5 días de una ciudad del Ecuador. Cuenta con un selector de provincia y ciudades para su visualización. Además, muestra el monitoreo de amenazas de inundación que pueden ocurrir en el país. Estos datos son recopilados de https://www.gestionderiesgos.gob.ec/monitoreo-de-inundaciones/ mediante el mecanismo CORS para su uso didáctico.",
+	"projects.project-dashboard.description": "Página web que indica la temperatura, precipitaciones, rayos UV y otros datos posibles de los próximos 5 días de una ciudad del Ecuador. Cuenta con un selector de provincia y ciudades para su visualización. Además, muestra el monitoreo de amenazas de inundación que pueden ocurrir en el país. Estos datos son recopilados de <a class='underline font-bold' target='_blank' href = 'https://www.gestionderiesgos.gob.ec/monitoreo-de-inundaciones/'>https://www.gestionderiesgos.gob.ec/monitoreo-de-inundaciones/</a> mediante el mecanismo CORS para su uso didáctico.",
 	"projects.project-landing.name": "Landing",
 	"projects.project-landing.description": "Página de Landing referentes a videojuegos, basándose en plataformas como Steam. Lo relevante es el diseño de la página web. No cuenta con funcionalidad interna.",
 	"projects.project-mpa.name": "MPA",
@@ -58,7 +58,7 @@
 	"projects.project-rover.name": "Simulación de Rovers",
 	"projects.project-rover.description": "Este proyecto consiste en un simulador de dos róvers en Marte, uno solar y otro eólico. Hay cráteres en Marte donde se encuentran materias que serán sensadas. El usuario mediante comandos, se puede mover alrededor del planeta, puede planificar rutas, entre otros. Además, se pueden usar los dos róvers al mismo tiempo gracias al multithreading.",
 	"projects.project-laberinto_encantado.name": "Laberinto Encantado",
-	"projects.project-laberinto_encantado.description": "Juego multijugador cooperativo y competitivo donde 4 equipos se enfrentan entre sí para lograr salir del laberinto. También puedes ver el backend en: https://github.com/domorales/laberinto_encantado_backend/ y el desarrollo completo en: https://domorales.github.io/portfolio-momentum/",
+	"projects.project-laberinto_encantado.description": "Juego multijugador cooperativo y competitivo donde 4 equipos se enfrentan entre sí para lograr salir del laberinto. <br/> Puedes visitar estos dos sitios: <br/><!--<b>Backend:</b> <a class='underline font-bold' target='_blank' href = 'https://github.com/domorales/laberinto_encantado_backend'>https://github.com/domorales/laberinto_encantado_backend</a><br/>--> <b>Desarrollo Completo:</b> <a class='underline font-bold' target='_blank' href='https://domorales.github.io/portfolio-momentum/'>https://domorales.github.io/portfolio-momentum/</a>",
 	"404.not-found": "Al parecer esta página no existe",
 	"404.go-back": "¡Pero tranquilo! Aplastando este botón podrás volver a la página principal. ¡Te espero ahí!",
 	"404.main-page": "Página Principal"

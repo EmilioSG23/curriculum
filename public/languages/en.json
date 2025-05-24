@@ -44,7 +44,7 @@
 	"projects.visit-page": "Visit page",
 	"projects.see-repo": "View repository",
 	"projects.project-dashboard.name": "Dashboard",
-	"projects.project-dashboard.description": "A website that shows the temperature, precipitation, UV rays, and other possible data for the next 5 days of a city in Ecuador. It includes a selector for provinces and cities for visualization. It also displays flood threat monitoring that could occur in the country. These data are gathered from https://www.gestionderiesgos.gob.ec/monitoreo-de-inundaciones/ via CORS for educational purposes.",
+	"projects.project-dashboard.description": "A website that shows the temperature, precipitation, UV rays, and other possible data for the next 5 days of a city in Ecuador. It includes a selector for provinces and cities for visualization. It also displays flood threat monitoring that could occur in the country. These data are gathered from <a class='underline font-bold' href = 'https://www.gestionderiesgos.gob.ec/monitoreo-de-inundaciones/'>https://www.gestionderiesgos.gob.ec/monitoreo-de-inundaciones/</a> via CORS for educational purposes.",
 	"projects.project-landing.name": "Landing",
 	"projects.project-landing.description": "A landing page related to video games, inspired by platforms like Steam. The main focus is on the website design. It does not have internal functionality.",
 	"projects.project-mpa.name": "MPA",
@@ -58,7 +58,7 @@
 	"projects.project-rover.name": "Rover Simulator",
 	"projects.project-rover.description": "This project simulates two rovers on Mars, one solar and the other wind-powered. There are craters on Mars where materials will be sensed. The user can move around the planet using commands, plan routes, among other things. The two rovers can be used simultaneously thanks to multithreading.",
 	"projects.project-laberinto_encantado.name": "Enchanted Maze",
-	"projects.project-laberinto_encantado.description": "A cooperative and competitive multiplayer game where 4 teams face each other to escape the maze. You can also check the backend at: https://github.com/domorales/laberinto_encantado_backend/ and the full development at: https://domorales.github.io/portfolio-momentum/",
+	"projects.project-laberinto_encantado.description": "A cooperative and competitive multiplayer game where 4 teams face each other to escape the maze. <br/> You can visit these two sites: <br/><!--<b>Backend:</b> <a class='underline font-bold' target='_blank' href='https://github.com/domorales/laberinto_encantado_backend'>https://github.com/domorales/laberinto_encantado_backend</a><br/>--> <b>Full Development:</b> <a class='underline font-bold' target='_blank' href='https://domorales.github.io/portfolio-momentum/'>https://domorales.github.io/portfolio-momentum/</a>",
 	"404.not-found": "It looks like this page doesn't exist",
 	"404.go-back": "But don't worry! By clicking this button, you can go back to the main page. I'll be waiting for you there!",
 	"404.main-page": "Main Page"

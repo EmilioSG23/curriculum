@@ -15,12 +15,17 @@ const SKILLS_FLAT = SKILLS.flatMap((category) =>
 function findSkill(id: string) {
 	return SKILLS_FLAT.find((skill) => skill.id === id);
 }
+
+function delayClass(index: number) {
+	if (index === 0) return "md:delay-0";
+	if (index === 1) return "md:delay-150";
+	return "md:delay-300";
+}
 ---
 
 <article
-	class="flex flex-col border-2 border-neon transition w-[90%] sm:w-[70%] md:w-[45%] lg:w-[31%] mx-2 xl:mx-0"
+	class=`flex flex-col border-2 border-neon transition w-[90%] sm:w-[70%] md:w-[45%] lg:w-[31%] mx-2 xl:mx-0 ${delayClass(index)}`
 	data-aos="fade-up"
-	data-aos-delay={(index % 3) * 150}
 >
 	<div class="relative w-full h-full overflow-hidden group">
 		<img
@@ -32,9 +37,11 @@ function findSkill(id: string) {
 		<div
 			class="absolute inset-0 flex items-center justify-center p-2 transition-opacity duration-300 opacity-0 bg-primary/75 group-hover:opacity-100"
 		>
-			<span class="text-xs font-semibold text-white sm:text-sm" data-translate={descripcion}
-				>{t(descripcion as keyof typeof t)}</span
-			>
+			<span
+				set:html={t(descripcion as keyof typeof t)}
+				class="text-xs font-semibold text-white sm:text-sm"
+				data-translate={descripcion}
+			/>
 		</div>
 	</div>
 	<div class="flex flex-col py-2 border-t-2 border-neon bg-black/25">
@@ -48,11 +55,11 @@ function findSkill(id: string) {
 					if (!skill) return null;
 					return (
 						<div class="relative group">
-							<img loading="lazy" src={skill.img} class="w-8 h-8" />
+							<img loading="lazy" src={skill.img} class="w-8 h-8 hover:scale-110 transition" />
 							<span
 								class={`z-[1] absolute text-center left-1/2 -translate-x-1/2 translate-y-2
 													text-[10px] py-1 px-3 rounded-[20px] opacity-0
-													group-hover:opacity-100 transition`}
+													group-hover:opacity-100 transition pointer-events-none`}
 								style={`background-color: ${skill.color || "white"}; color: ${skill.text || "black"};`}
 							>
 								{skill.name}
