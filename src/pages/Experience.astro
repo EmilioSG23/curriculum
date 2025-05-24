@@ -4,38 +4,46 @@ import Arrow from "../components/Arrow.astro";
 import HeaderSection from "../components/HeaderSection.astro";
 import { useT } from "../i18n/utils";
 
-const t = useT()
+const t = useT();
 
 const EXPERIENCE = [
-    {
-        lugar: "Riviera",
-        puesto: "experience.exp-1.rol",
-		  tiempo: "experience.exp-1.time",
-        descripcion: "experience.exp-1.description"
+	{
+		lugar: "Riviera",
+		puesto: "experience.exp-1.rol",
+		tiempo: "experience.exp-1.time",
+		descripcion: "experience.exp-1.description",
 	},
-    {
-        lugar: "Espol (MIDI)",
-        puesto: "experience.exp-2.rol",
-		  tiempo: "experience.exp-2.time",
-        descripcion: "experience.exp-2.description"
-	},{
+	{
+		lugar: "Espol (MIDI)",
+		puesto: "experience.exp-2.rol",
+		tiempo: "experience.exp-2.time",
+		descripcion: "experience.exp-2.description",
+	},
+	{
 		lugar: "Solinal",
 		puesto: "experience.exp-3.rol",
 		tiempo: "experience.exp-3.time",
-		descripcion: "experience.exp-3.description"
-	}
-]
-
+		descripcion: "experience.exp-3.description",
+	},
+];
 ---
 
-<section id = "experience" class = "max-w-6xl mx-auto my-20 text-content">
-	<Arrow color="gold"/>
-	<div class = "flex flex-col items-center justify-center">
-		<HeaderSection title = "experience.title"/>
+<section id="experience" class="max-w-6xl mx-auto my-20 text-content">
+	<Arrow color="gold" />
+	<div class="flex flex-col items-center justify-center">
+		<HeaderSection title="experience.title" />
 		<div class="flex flex-wrap justify-center w-full gap-5 mt-10">
-			{EXPERIENCE.reverse().map(({lugar, puesto, tiempo, descripcion}) => (
-				<ExperienceItem lugar = {lugar} puesto = {puesto} tiempo = {tiempo} descripcion = {descripcion} />
-			))}
+			{
+				EXPERIENCE.reverse().map(({ lugar, puesto, tiempo, descripcion }, index) => (
+					<ExperienceItem
+						index={index}
+						lugar={lugar}
+						puesto={puesto}
+						tiempo={tiempo}
+						descripcion={descripcion}
+					/>
+				))
+			}
 		</div>
 	</div>
 </section>

@@ -2,10 +2,14 @@
 import { useT } from "@/i18n/utils";
 
 const t = useT();
-const { lugar, puesto, tiempo, descripcion } = Astro.props;
+const { index, lugar, puesto, tiempo, descripcion } = Astro.props;
 ---
 
-<div class="min-h-[312px] w-[80%] md:w-[45%] lg:w-[31%]" data-aos="fade-right">
+<div
+	class="min-h-[312px] w-[80%] md:w-[45%] lg:w-[31%]"
+	data-aos="fade-right"
+	data-aos-delay={300 - (index % 3) * 150}
+>
 	<article
 		class="bg-background flex flex-col items-center border-2 border-neon rounded-[25px]
 					hover:scale-105 hover:bg-hover transition font-content h-full"
