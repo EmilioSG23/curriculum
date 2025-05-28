@@ -1,44 +1,48 @@
 ---
 import AboutMeItem from "@components/Items/AboutMeItem.astro";
-import Arrow from "@components/Arrow.astro"
-import HeaderSection from "@components/HeaderSection.astro"
-import { useT } from '@/i18n/utils';
+import Arrow from "@components/Arrow.astro";
+import HeaderSection from "@components/HeaderSection.astro";
+import { getAge, useT } from "@/i18n/utils";
 
-const t = useT()
+const t = useT();
 
-const myBirthday = new Date(1003813200*1000)
-
-let age = (new Date().getFullYear() - myBirthday.getFullYear())
-age = myBirthday.getMonth() > new Date().getMonth() ? age - 1 : age
+const age = getAge();
 
 const aboutMe = [
-    {
-        icon: `fa-solid fa-user`,
-        title: "about-me.info-1.title",
-        description: `about-me.info-1.description`,
-    },
-    {
-        icon: "fa-solid fa-code",
-        title: "about-me.info-2.title",
-        description: `about-me.info-2.description`,
-    },
-    {
-        icon: "fa-solid fa-envelope",
-        title: "about-me.info-3.title",
-        description: `about-me.info-3.description`,
-        
-    },
-]
+	{
+		icon: "fa-solid fa-use",
+		title: "about-me.info-1.title",
+		description: "about-me.info-1.description",
+	},
+	{
+		icon: "fa-solid fa-code",
+		title: "about-me.info-2.title",
+		description: "about-me.info-2.description",
+	},
+	{
+		icon: "fa-solid fa-envelope",
+		title: "about-me.info-3.title",
+		description: "about-me.info-3.description",
+	},
+];
 ---
 
-<section id = "about-me" class = "max-w-6xl mx-auto my-20 text-content">
-	<Arrow color="gold"/>
-	<div class = "flex flex-col items-center justify-center">
-		<HeaderSection title = "about-me.title"/>
+<section id="about-me" class="max-w-6xl mx-auto my-20 text-content">
+	<Arrow color="gold" />
+	<div class="flex flex-col items-center justify-center">
+		<HeaderSection title="about-me.title" />
 		<div class="flex flex-wrap justify-center w-full mt-10">
-			{aboutMe.map(({icon, title, description},index) => (
-				<AboutMeItem icon = {icon} title = {title} description = {description} hasButton = {index === 2} />
-			))}
+			{
+				aboutMe.map(({ icon, title, description }, index) => (
+					<AboutMeItem
+						icon={icon}
+						title={title}
+						description={description}
+						hasButton={index === 2}
+						age={age}
+					/>
+				))
+			}
 		</div>
 	</div>
 </section>

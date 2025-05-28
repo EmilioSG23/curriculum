@@ -1,49 +1,62 @@
 ---
+
 ---
-<button id = "languageToggle" class = "relative text-2xl hover:scale-110 transition group
+
+<button
+	id="languageToggle"
+	class="relative text-2xl hover:scale-110 transition group
     [&>*]:border-2 [&>*]:rounded-full [&>*]:border-white [&>*]:bg-white
-    [&>*]:group-hover:bg-gold [&>*]:group-hover:border-gold cursor-pointer">
-    <img id = "spanishToggle" src = "/curriculum/flags/es.png" data-language = "es"
-        class = "activeToggle">
-    <img id = "englishToggle" src = "/curriculum/flags/en.png" data-language = "en"
-        class = "inactiveToggle">
+    [&>*]:group-hover:bg-gold [&>*]:group-hover:border-gold cursor-pointer"
+>
+	<img id="spanishToggle" src="/curriculum/flags/es.png" data-language="es" class="activeToggle" />
+	<img
+		id="englishToggle"
+		src="/curriculum/flags/en.png"
+		data-language="en"
+		class="inactiveToggle"
+	/>
 </button>
 
 <script>
-    const $spanishToggle = document.getElementById("spanishToggle") as HTMLImageElement
-    const $englishToggle = document.getElementById("englishToggle") as HTMLImageElement
+	import { getAge } from "@/i18n/utils";
 
-    function toggleLanguage(language: string){
-        const isSpanish = language === "es";
-        $spanishToggle.classList.toggle("activeToggle", isSpanish);
-        $spanishToggle.classList.toggle("inactiveToggle", !isSpanish);
-        $englishToggle.classList.toggle("activeToggle", !isSpanish);
-        $englishToggle.classList.toggle("inactiveToggle", isSpanish);
-        changeLanguage(language)
-    }
+	const $spanishToggle = document.getElementById("spanishToggle") as HTMLImageElement;
+	const $englishToggle = document.getElementById("englishToggle") as HTMLImageElement;
 
-    async function changeLanguage (language:string){
-        document.documentElement.lang = language
-        const request = await fetch(`languages/${language}.json`)
-        const texts = await request.json()
-        const textsToChange = document.querySelectorAll("[data-translate]")
-        textsToChange.forEach((textToChange) => {
-            const key = (textToChange as HTMLElement).dataset.translate
-            if (key) textToChange.innerHTML = texts[key]
-        })
-    }
+	function toggleLanguage(language: string) {
+		const isSpanish = language === "es";
+		$spanishToggle.classList.toggle("activeToggle", isSpanish);
+		$spanishToggle.classList.toggle("inactiveToggle", !isSpanish);
+		$englishToggle.classList.toggle("activeToggle", !isSpanish);
+		$englishToggle.classList.toggle("inactiveToggle", isSpanish);
+		changeLanguage(language);
+	}
 
-    document.getElementById("languageToggle")?.addEventListener("click", () => {
-        toggleLanguage(document.querySelector("#languageToggle .inactiveToggle")?.getAttribute("data-language") || "es")
-    })
-    toggleLanguage(document.documentElement.lang || "es")
+	async function changeLanguage(language: string) {
+		document.documentElement.lang = language;
+		const request = await fetch(`languages/${language}.json`);
+		const texts = await request.json();
+		const textsToChange = document.querySelectorAll("[data-translate]");
+		textsToChange.forEach((textToChange) => {
+			const key = (textToChange as HTMLElement).dataset.translate;
+			if (key) textToChange.innerHTML = texts[key].replace("{{age}}", String(getAge()));
+		});
+	}
+
+	document.getElementById("languageToggle")?.addEventListener("click", () => {
+		toggleLanguage(
+			document.querySelector("#languageToggle .inactiveToggle")?.getAttribute("data-language") ||
+				"es"
+		);
+	});
+	toggleLanguage(document.documentElement.lang || "es");
 </script>
 
 <style>
-    .activeToggle{
-        @apply w-[40px] h-[40px] relative z-[11]
-    }
-    .inactiveToggle{
-        @apply w-[24px] h-[24px] z-10 absolute left-[20px] -bottom-[8px]
-    }
+	.activeToggle {
+		@apply w-[40px] h-[40px] relative z-[11];
+	}
+	.inactiveToggle {
+		@apply w-[24px] h-[24px] z-10 absolute left-[20px] -bottom-[8px];
+	}
 </style>

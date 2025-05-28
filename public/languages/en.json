@@ -5,7 +5,7 @@
 	"info.ani-4": "Developer",
 	"about-me.title": "About Me",
 	"about-me.info-1.title": "Who am I?",
-	"about-me.info-1.description": "I am a 23-year-old computer scientist, dedicated for years to the world of technology and programming. Throughout my journey in the IT field, I have taken on different challenges, always giving my best to deliver the best possible product.",
+	"about-me.info-1.description": "I am a {{age}}-year-old computer scientist, dedicated for years to the world of technology and programming. Throughout my journey in the IT field, I have taken on different challenges, always giving my best to deliver the best possible product.",
 	"about-me.info-2.title": "What do I do?",
 	"about-me.info-2.description": "I develop software in various fields, including mobile applications, desktop applications, and websites. These range from Landing Pages and Dashboards to even a video game. My products stand out for following good programming practices and having an attractive, functional, and responsive design for any device.",
 	"about-me.info-3.title": "Contact Me!",

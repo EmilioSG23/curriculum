@@ -2,7 +2,7 @@
 import { useT } from "@/i18n/utils";
 
 const t = useT();
-const { icon, title, description, hasButton } = Astro.props;
+const { icon, title, description, hasButton, age } = Astro.props;
 ---
 
 <div class="min-h-[256px] w-[90%] md:w-[70%] lg:w-[45%] m-5" data-aos="flip-right">
@@ -25,7 +25,7 @@ const { icon, title, description, hasButton } = Astro.props;
 			class="font-content p-4 flex-[3] flex-col fond-light leading-normal items-center justify-center"
 		>
 			<span class="text-center text-[12px] sm:text-[14px]" data-translate={description}
-				>{t(description as keyof typeof t)}</span
+				>{t(description as keyof typeof t, { age })}</span
 			>
 			{
 				hasButton && (

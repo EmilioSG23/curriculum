@@ -5,7 +5,7 @@
 	"info.ani-4": "Web y Móviles",
 	"about-me.title": "Sobre Mí",
 	"about-me.info-1.title": "¿Quién soy?",
-	"about-me.info-1.description": "Soy un joven informático de 23 años, dedicado hace años al mundo de la tecnología y de la programación. Durante mi recorrido en el mundo informático, he tomado diferentes desafíos pero siempre dándo lo mejor de mí para dar el mejor producto posible.",
+	"about-me.info-1.description": "Soy un joven informático de {{age}} años, dedicado hace años al mundo de la tecnología y de la programación. Durante mi recorrido en el mundo informático, he tomado diferentes desafíos pero siempre dándo lo mejor de mí para dar el mejor producto posible.",
 	"about-me.info-2.title": "¿Qué hago?",
 	"about-me.info-2.description": "Desarrollo software de distintos ámbitos, desde aplicaciones móviles, aplicaciones de escritorio y webs, entre las cuales se incluyen Landing Pages, Dashboards, incluso hasta un videojuego. Los productos se destacan por mantener buenas prácticas de programación y por tener un diseño atractivo, funcional y responsivo para cualquier dispositivo.",
 	"about-me.info-3.title": "¡Contáctame!",
