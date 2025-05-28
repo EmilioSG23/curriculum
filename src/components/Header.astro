@@ -38,21 +38,23 @@ const toPath = (path: string) => {
 				class="hover:md:scale-110 hover:text-gold transition">{t("about-me.title")}</a
 			>
 			<a
+				href={toPath("#projects")}
+				data-translate="projects.title"
+				class="hover:md:scale-110 hover:text-gold transition">{t("projects.title")}</a
+			>
+
+			<div id="logo" class="hidden md:flex justify-center"><Logo /></div>
+			<a
 				href={toPath("#experience")}
 				data-translate="experience.title"
 				class="hover:md:scale-110 hover:text-gold transition">{t("experience.title")}</a
 			>
-			<div id="logo" class="hidden md:flex justify-center"><Logo /></div>
 			<a
 				href={toPath("#skills")}
 				data-translate="skills.title"
 				class="hover:md:scale-110 hover:text-gold transition">{t("skills.title")}</a
 			>
-			<a
-				href={toPath("#projects")}
-				data-translate="projects.title"
-				class="hover:md:scale-110 hover:text-gold transition">{t("projects.title")}</a
-			>
+
 			<div class="self-center"><LanguageToogleButton /></div>
 		</div>
 	</nav>
