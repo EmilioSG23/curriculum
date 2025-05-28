@@ -23,6 +23,8 @@
 	const $spanishToggle = document.getElementById("spanishToggle") as HTMLImageElement;
 	const $englishToggle = document.getElementById("englishToggle") as HTMLImageElement;
 
+	const initialLang = navigator.language;
+
 	function toggleLanguage(language: string) {
 		const isSpanish = language === "es";
 		$spanishToggle.classList.toggle("activeToggle", isSpanish);
@@ -46,10 +48,10 @@
 	document.getElementById("languageToggle")?.addEventListener("click", () => {
 		toggleLanguage(
 			document.querySelector("#languageToggle .inactiveToggle")?.getAttribute("data-language") ||
-				"es"
+				initialLang
 		);
 	});
-	toggleLanguage(document.documentElement.lang || "es");
+	toggleLanguage(document.documentElement.lang || initialLang);
 </script>
 
 <style>
