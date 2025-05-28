@@ -1,31 +1,35 @@
 ---
 
 ---
-<button id="theme" class="text-3xl w-8 h-8 hover:scale-110 hover:text-gold transition cursor-pointer">
-    <i id="dark" class="fas fa-moon"></i>
-    <i id="light" class="fas fa-sun hidden!"></i>
+
+<button
+	id="theme"
+	class="text-3xl w-8 h-8 hover:scale-110 hover:text-gold transition cursor-pointer"
+>
+	<i id="dark" class="fas fa-moon"></i>
+	<i id="light" class="fas fa-sun hidden!"></i>
 </button>
 
 <script>
-    const $sunIcon = document.getElementById('light') as HTMLElement;
-    const $moonIcon = document.getElementById('dark') as HTMLElement;
-    const $buttonToggle = document.getElementById('theme') as HTMLElement;
+	const $sunIcon = document.getElementById("light") as HTMLElement;
+	const $moonIcon = document.getElementById("dark") as HTMLElement;
+	const $buttonToggle = document.getElementById("theme") as HTMLElement;
 
-    const theme = localStorage.getItem('theme') || 'dark';
-    const isDark = theme === 'dark';
-    
-    document.documentElement.classList.toggle('dark', isDark);
-    toggleIcon(isDark);
+	const theme = localStorage.getItem("theme") || "dark";
+	const isDark = theme === "dark";
 
-    $buttonToggle.addEventListener('click', () => {
-        const $html = document.documentElement;
-        const isDark = $html.classList.toggle('dark');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        toggleIcon(isDark);
-    });
+	document.documentElement.classList.toggle("dark", isDark);
+	toggleIcon(isDark);
 
-    function toggleIcon(isDark: boolean) {
-        $sunIcon.classList.toggle('hidden!', isDark);
-        $moonIcon.classList.toggle('hidden!', !isDark);
-    }
+	$buttonToggle.addEventListener("click", () => {
+		const $html = document.documentElement;
+		const isDark = $html.classList.toggle("dark");
+		localStorage.setItem("theme", isDark ? "dark" : "light");
+		toggleIcon(isDark);
+	});
+
+	function toggleIcon(isDark: boolean) {
+		$sunIcon.classList.toggle("hidden!", isDark);
+		$moonIcon.classList.toggle("hidden!", !isDark);
+	}
 </script>

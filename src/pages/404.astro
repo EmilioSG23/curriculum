@@ -2,25 +2,38 @@
 import { useT } from "../i18n/utils";
 import Layout from "../layouts/Layout.astro";
 
-const t = useT()
-
+const t = useT();
 ---
+
 <Layout>
-	<div class = "flex flex-col min-h-[843px]">
-		<div class = "flex-grow flex justify-center items-center font-main">
+	<div class="flex flex-col min-h-[843px]">
+		<div class="flex-grow flex justify-center items-center font-main">
 			<div class="flex flex-col mx-auto max-w-6xl justify-center items-center text-content">
 				<h1 class="font-bold text-[40px] sm:text-[64px]">Ooooooops!</h1>
-				<div id = "error" class = "flex flex-col text-center justify-center font-title font-extrabold uppercase my-10">
-					<i class = "fas fa-exclamation-triangle text-red-500 border-content text-[80px] sm:text-[128px]"></i>
-					<span class = "text-[40px] sm:text-[64px]">Error 404</span>
+				<div
+					id="error"
+					class="flex flex-col text-center justify-center font-title font-extrabold uppercase my-10"
+				>
+					<i
+						class="fas fa-exclamation-triangle text-red-500 border-content text-[80px] sm:text-[128px]"
+					></i>
+					<span class="text-[40px] sm:text-[64px]">Error 404</span>
 				</div>
-				<div class = "flex flex-col text-center justify-center items-center">
-					<h2 class = "font-bold text-[14px] sm:text-[24px] mx-5" data-translate="404.not-found">{t("404.not-found")}</h2>
-					<p class = "font-light text-[12px] sm:text-[16px] mx-5" data-translate="404.go-back">{t("404.go-back")}</p>
-					<a href="/curriculum/" class="mt-10 cursor-pointer bg-neon text-background rounded-[15px] p-2 m-2 text-center w-[75%] sm:w-1/2 flex items-center justify-center
+				<div class="flex flex-col text-center justify-center items-center">
+					<h2 class="font-bold text-[14px] sm:text-[24px] mx-5" data-translate="404.not-found">
+						{t("404.not-found")}
+					</h2>
+					<p class="font-light text-[12px] sm:text-[16px] mx-5" data-translate="404.go-back">
+						{t("404.go-back")}
+					</p>
+					<a
+						href="/curriculum/"
+						class="mt-10 cursor-pointer bg-neon text-background rounded-[15px] p-2 m-2 text-center w-[75%] sm:w-1/2 flex items-center justify-center
 										gap-x-2 sm:text-[28px]
-										hover:brightness-125 hover:text-background transition" data-translate="404.main-page">
-						<p class = "font-bold">{t("404.main-page")}</p>
+										hover:brightness-125 hover:text-background transition"
+						data-translate="404.main-page"
+					>
+						<p class="font-bold">{t("404.main-page")}</p>
 					</a>
 				</div>
 			</div>
@@ -29,62 +42,71 @@ const t = useT()
 </Layout>
 
 <script>
-    const $errorDiv = document.querySelector("div#error") as HTMLElement
-    const errorAnimation = () => {
-        setInterval(() => {
-            if ($errorDiv && $errorDiv.style.visibility === "hidden") {
-                $errorDiv.style.visibility = "visible";
-            } else {
-                $errorDiv.style.visibility = "hidden";
-            }
-        }, 500);
-    }
-    errorAnimation()
+	const $errorDiv = document.querySelector("div#error") as HTMLElement;
+	const errorAnimation = () => {
+		setInterval(() => {
+			if ($errorDiv && $errorDiv.style.visibility === "hidden") {
+				$errorDiv.style.visibility = "visible";
+			} else {
+				$errorDiv.style.visibility = "hidden";
+			}
+		}, 500);
+	};
+	errorAnimation();
 </script>
 
 <style>
-    #menu {
-        position: absolute;
-        border: solid 2pt var(--color-gold);
-        border-top: transparent;
-        background-color: rgba(0, 0, 0, 0.5);
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        max-height: 0;
-        opacity: 0;
-        visibility: hidden;
-        transition: max-height 0.3s ease-out, opacity 0.3s ease-out, visibility 0.3s;
-    }
+	#menu {
+		position: absolute;
+		border: solid 2pt var(--color-gold);
+		border-top: transparent;
+		background-color: rgba(0, 0, 0, 0.5);
+		display: flex;
+		flex-direction: column;
+		overflow: hidden;
+		max-height: 0;
+		opacity: 0;
+		visibility: hidden;
+		transition:
+			max-height 0.3s ease-out,
+			opacity 0.3s ease-out,
+			visibility 0.3s;
+	}
 
-    #menu.open {
-        opacity: 1;
-        visibility: visible;
-        max-height: 250px;
-    }
+	#menu.open {
+		opacity: 1;
+		visibility: visible;
+		max-height: 250px;
+	}
 
-    @media (min-width: 768px) {
-        #menu {
-            position: initial;
-            border: none;
-            background-color: transparent;
-            display: flex;
-            overflow: visible;
-            flex-direction: row;
-            flex-wrap: wrap;
-            max-height: none;
-            visibility: visible;
-            opacity: 1;
-            transition: none;
-        }
-    }
+	@media (min-width: 768px) {
+		#menu {
+			position: initial;
+			border: none;
+			background-color: transparent;
+			display: flex;
+			overflow: visible;
+			flex-direction: row;
+			flex-wrap: wrap;
+			max-height: none;
+			visibility: visible;
+			opacity: 1;
+			transition: none;
+		}
+	}
 
-    #menu.hidden {
-        display: none;
-    }
+	#menu.hidden {
+		display: none;
+	}
 
-    nav{
-        border-bottom: solid ;
-        border-image: linear-gradient(90deg, rgba(255,200,0,1) 0%, rgb(255, 255, 255) 0%, rgba(255,200,0,1) 25%) 1;
-    }
+	nav {
+		border-bottom: solid;
+		border-image: linear-gradient(
+				90deg,
+				rgba(255, 200, 0, 1) 0%,
+				rgb(255, 255, 255) 0%,
+				rgba(255, 200, 0, 1) 25%
+			)
+			1;
+	}
 </style>
