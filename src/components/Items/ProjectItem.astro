@@ -125,10 +125,7 @@ function delayClass(index: number) {
 </article>
 
 <script>
-	const isInComputer =
-		navigator.platform.includes("Win") ||
-		navigator.platform.includes("Mac") ||
-		navigator.platform.includes("Linux");
+	const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
 	let actualLanguagesDisplayed = -1;
 
@@ -138,7 +135,7 @@ function delayClass(index: number) {
 		const $descriptionImages = document.querySelectorAll("img[id$='-image']");
 
 		$descriptionButtons.forEach((button, index) => {
-			if (!isInComputer) {
+			if (isMobile) {
 				button.classList.remove("hidden");
 				return;
 			}
@@ -152,7 +149,7 @@ function delayClass(index: number) {
 	}
 
 	function showProjectsLanguages() {
-		if (isInComputer) return;
+		if (!isMobile) return;
 		const $languagesProjects = document.querySelectorAll("img#language-project");
 		const $languagesSpanName = document.querySelectorAll("span#language-span-content");
 		const $languagesSpanArrow = document.querySelectorAll("span#language-span-arrow");
