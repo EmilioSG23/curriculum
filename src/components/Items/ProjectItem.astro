@@ -29,13 +29,17 @@ function delayClass(index: number) {
 >
 	<div class="relative w-full h-full overflow-hidden group">
 		<img
+			id={`project-${index}-image`}
 			loading="lazy"
 			class="w-[600px] h-[250px] object-cover group-hover:scale-110 transition"
 			src={`projects/${id}.webp`}
 			alt={nombre}
 		/>
 		<div
-			class="absolute inset-0 flex items-center justify-center p-2 transition-opacity duration-300 opacity-0 bg-primary/75 group-hover:opacity-100"
+			id={`project-${index}-description`}
+			class="absolute inset-0 flex items-center justify-center p-2 pointer-events-none
+			transition-opacity duration-300 opacity-0 bg-primary/75
+			group-hover:opacity-100 group-hover:pointer-events-auto"
 		>
 			<span
 				set:html={t(descripcion as keyof typeof t)}
@@ -45,9 +49,16 @@ function delayClass(index: number) {
 		</div>
 	</div>
 	<div class="flex flex-col py-2 border-t-2 border-neon bg-black/25">
-		<span class="text-[24px] font-medium text-center text-neon" data-translate={nombre}
-			>{t(nombre as keyof typeof t)}</span
-		>
+		<div class="text-center flex items-center justify-center gap-x-2">
+			<span class="text-[24px] font-medium text-center text-neon" data-translate={nombre}
+				>{t(nombre as keyof typeof t)}
+			</span>
+			<button
+				id=`project-${index}-info-button`
+				class="hidden translate-y-[2px] cursor-pointer size-5 text-[8px] rounded-full border border-neon text-neon"
+				><i class="fas fa-info"></i>
+			</button>
+		</div>
 		<div class="flex items-center justify-center my-1 gap-x-1">
 			{
 				lenguajes.map((language: string) => {
@@ -55,8 +66,14 @@ function delayClass(index: number) {
 					if (!skill) return null;
 					return (
 						<div class="relative group">
-							<img loading="lazy" src={skill.img} class="w-8 h-8 hover:scale-110 transition" />
+							<img
+								id="language-project"
+								loading="lazy"
+								src={skill.img}
+								class="w-8 h-8 hover:scale-110 transition"
+							/>
 							<span
+								id="language-span-content"
 								class={`z-[1] absolute text-center left-1/2 -translate-x-1/2 translate-y-2
 													text-[10px] py-1 px-3 rounded-[20px] opacity-0
 													group-hover:opacity-100 transition pointer-events-none`}
@@ -65,6 +82,7 @@ function delayClass(index: number) {
 								{skill.name}
 							</span>
 							<span
+								id="language-span-arrow"
 								class={`z-[1] absolute left-1/2 -translate-x-1/2 -top-2 w-0 h-0 translate-y-10
 														border-l-[8px] border-l-transparent 
 														border-r-[8px] border-r-transparent 
@@ -105,3 +123,56 @@ function delayClass(index: number) {
 		</div>
 	</div>
 </article>
+
+<script>
+	const isInComputer =
+		navigator.platform.includes("Win") ||
+		navigator.platform.includes("Mac") ||
+		navigator.platform.includes("Linux");
+
+	let actualLanguagesDisplayed = -1;
+
+	function showProjectsDescriptions() {
+		const $descriptionButtons = document.querySelectorAll("button[id$='-info-button']");
+		const $descriptionProjects = document.querySelectorAll("div[id$='-description']");
+		const $descriptionImages = document.querySelectorAll("img[id$='-image']");
+
+		$descriptionButtons.forEach((button, index) => {
+			if (!isInComputer) {
+				button.classList.remove("hidden");
+				return;
+			}
+
+			button.addEventListener("click", () => {
+				$descriptionProjects[index]?.classList.toggle("opacity-100");
+				$descriptionProjects[index]?.classList.toggle("pointer-events-auto");
+				$descriptionImages[index]?.classList.toggle("scale-110");
+			});
+		});
+	}
+
+	function showProjectsLanguages() {
+		if (isInComputer) return;
+		const $languagesProjects = document.querySelectorAll("img#language-project");
+		const $languagesSpanName = document.querySelectorAll("span#language-span-content");
+		const $languagesSpanArrow = document.querySelectorAll("span#language-span-arrow");
+
+		$languagesProjects.forEach((img, index) => {
+			img.addEventListener("click", () => {
+				$languagesSpanArrow.forEach((arrow) => arrow.classList.remove("opacity-100"));
+				$languagesSpanName.forEach((name) => name.classList.remove("opacity-100"));
+
+				if (actualLanguagesDisplayed !== index) {
+					actualLanguagesDisplayed = index;
+					$languagesSpanArrow[index]?.classList.add("opacity-100");
+					$languagesSpanName[index]?.classList.add("opacity-100");
+				} else {
+					actualLanguagesDisplayed = -1;
+				}
+			});
+		});
+	}
+
+	document.addEventListener("DOMContentLoaded", showProjectsDescriptions);
+	document.addEventListener("DOMContentLoaded", showProjectsLanguages);
+</script>
