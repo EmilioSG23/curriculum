@@ -53,7 +53,7 @@ export const SKILLS = [
 				name: "C",
 				color: "#3d9bd5",
 				text: "white",
-				display: false,
+				display: true,
 			},
 			{
 				id: "php",
@@ -174,6 +174,13 @@ export const SKILLS = [
 				text: "black",
 				display: false,
 			},
+			{
+				id: "springboot",
+				name: "Springboot",
+				color: "#8bc34a",
+				text: "white",
+				display: true,
+			},
 		],
 	},
 	{
@@ -221,7 +228,7 @@ export const SKILLS = [
 				name: "Visual Studio Code",
 				color: "#007acf",
 				text: "white",
-				display: false,
+				display: true,
 			},
 			{
 				id: "netbeans",
