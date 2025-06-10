@@ -15,16 +15,10 @@ const SKILLS_FLAT = SKILLS.flatMap((category) =>
 function findSkill(id: string) {
 	return SKILLS_FLAT.find((skill) => skill.id === id);
 }
-
-function delayClass(index: number) {
-	if (index === 0) return "md:delay-0";
-	if (index === 1) return "md:delay-150";
-	return "md:delay-300";
-}
 ---
 
 <article
-	class=`flex flex-col border-2 border-neon transition w-[90%] sm:w-[70%] md:w-[45%] lg:w-[31%] mx-2 xl:mx-0 ${delayClass(index%3)}`
+	class=`project-item flex flex-col border-2 border-neon transition w-[90%] sm:w-[70%] md:w-[45%] lg:w-[31%] mx-2 xl:mx-0`
 	data-aos="fade-up"
 >
 	<div class="relative w-full h-full overflow-hidden group">

@@ -32,3 +32,26 @@ const t = useT();
 		</div>
 	</div>
 </section>
+
+<script>
+	function delayClass(index: number): string {
+		const base = "delay-0";
+
+		const mdIndex = index % 2;
+		const md = mdIndex === 0 ? "md:delay-0" : "md:delay-150";
+
+		const lgIndex = index % 3;
+		const lg = lgIndex === 0 ? "lg:delay-0" : lgIndex === 1 ? "lg:delay-150" : "lg:delay-300";
+
+		return `${base} ${md} ${lg}`;
+	}
+
+	function applyDelayClass() {
+		const $projectArticles = document.querySelectorAll("article.project-item");
+
+		$projectArticles.forEach((projectArticle, index) => {
+			projectArticle.classList.add(...delayClass(index).split(" "));
+		});
+	}
+	document.addEventListener("DOMContentLoaded", applyDelayClass);
+</script>
