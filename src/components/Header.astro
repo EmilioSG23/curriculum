@@ -11,7 +11,7 @@ const toPath = (path: string) => {
 };
 ---
 
-<header class=`text-white sticky top-0 left-0 right-0 z-10 backdrop-blur-[3px] border-b-[4px]`>
+<header class=`text-white sticky top-0 left-0 right-0 z-10 backdrop-blur-[3px]`>
 	<nav class="font-main bg-primary/50">
 		<div
 			id="mobileContainer"
@@ -19,7 +19,7 @@ const toPath = (path: string) => {
 		>
 			<button
 				id="menuButton"
-				class="p-1 xs:p-2 border border-gold rounded-md scale hover:text-gold transition"
+				class="p-1 xs:p-2 border border-gold rounded-md scale hover:text-gold transition cursor-pointer"
 			>
 				<i class="fa fa-bars"></i>
 			</button>
@@ -58,6 +58,10 @@ const toPath = (path: string) => {
 			<div class="self-center"><LanguageToogleButton /></div>
 		</div>
 	</nav>
+	<div
+		class="relative bg-gold h-1 left-1/2 -translate-x-1/2 origin-center w-0 animate-border-extension"
+	>
+	</div>
 </header>
 
 <script>
@@ -174,8 +178,5 @@ const toPath = (path: string) => {
 
 	a.active {
 		color: var(--color-gold);
-	}
-	header {
-		border-bottom: solid 4px var(--color-gold);
 	}
 </style>

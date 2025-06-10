@@ -51,7 +51,7 @@
 	--breakpoint-xs: 420px;
 	--breakpoint-xxs: 320px;
 
-	--animate-border-extension: border-init 1s forwards;
+	--animate-border-extension: border-init 1.25s forwards;
 
 	@keyframes border-init {
 		to {
