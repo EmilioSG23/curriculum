@@ -15,15 +15,79 @@
 	html.dark #stars {
 		filter: brightness(1) saturate(100%) contrast(100%);
 	}
+
+	@media (max-width: 1024px) {
+		#stars {
+			background-size: 140%;
+		}
+	}
+
+	@media (max-width: 768px) {
+		#stars {
+			background-size: 200%;
+		}
+	}
+
+	@media (max-width: 640px) {
+		#stars {
+			background-size: 250%;
+		}
+	}
+
+	@media (max-width: 480px) {
+		#stars {
+			background-size: 350%;
+		}
+	}
+	@media (max-width: 320px) {
+		#stars {
+			background-size: 500%;
+		}
+	}
+
 	@keyframes moving {
-		0% {
+		from,
+		to {
 			background-position: 0 0;
 		}
 		50% {
 			background-position: 1000% 0;
 		}
-		100% {
-			background-position: 0 0;
+	}
+
+	@media (max-width: 1024px) {
+		@keyframes moving {
+			from,
+			to {
+				background-position: 0 0;
+			}
+			50% {
+				background-position: 700% 0;
+			}
+		}
+	}
+
+	@media (max-width: 768px) {
+		@keyframes moving {
+			from,
+			to {
+				background-position: 0 0;
+			}
+			50% {
+				background-position: 400% 0;
+			}
+		}
+	}
+
+	@media (max-width: 480px) {
+		@keyframes moving {
+			from,
+			to {
+				background-position: 0 0;
+			}
+			50% {
+				background-position: 250% 0;
+			}
 		}
 	}
 	@keyframes degrading {
@@ -35,17 +99,6 @@
 		}
 		100% {
 			opacity: 1;
-		}
-	}
-	@keyframes degrading2 {
-		0% {
-			opacity: 0;
-		}
-		50% {
-			opacity: 1;
-		}
-		100% {
-			opacity: 0;
 		}
 	}
 </style>
