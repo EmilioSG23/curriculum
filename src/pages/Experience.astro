@@ -47,3 +47,27 @@ const EXPERIENCE = [
 		</div>
 	</div>
 </section>
+
+<script>
+	function delayClass(index: number): string {
+		const base = "delay-0";
+
+		const mdIndex = index % 2;
+		const md = mdIndex === 0 ? "md:delay-150" : "md:delay-0";
+
+		const lgIndex = index % 3;
+		const lg = lgIndex === 0 ? "lg:delay-300" : lgIndex === 1 ? "lg:delay-150" : "lg:delay-0";
+
+		return `${base} ${md} ${lg}`;
+	}
+
+	function applyDelayClass() {
+		const $experienceArticles = document.querySelectorAll("div.experience-item");
+		console.log($experienceArticles);
+
+		$experienceArticles.forEach((experience, index) => {
+			experience.classList.add(...delayClass(index).split(" "));
+		});
+	}
+	document.addEventListener("DOMContentLoaded", applyDelayClass);
+</script>
