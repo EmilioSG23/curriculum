@@ -35,22 +35,28 @@
 	}
 }
 
-@layer theme {
-	@theme default {
-		--color-primary: "var(--color-primary)";
-		--color-gold: "var(--color-primary)";
-		--color-background: "var(--color-primary)";
-		--color-content: "var(--color-primary)";
-		--color-neon: "var(--color-primary)";
-		--color-hover: "var(--color-primary)";
+@theme {
+	--color-primary: "var(--color-primary)";
+	--color-gold: "var(--color-primary)";
+	--color-background: "var(--color-primary)";
+	--color-content: "var(--color-primary)";
+	--color-neon: "var(--color-primary)";
+	--color-hover: "var(--color-primary)";
 
-		--font-main: "JetBrains Mono", monospace;
-		--font-title: monospace, "Inter", sans-serif;
-		--font-hand: "Just Another Hand", "cursive";
-		--font-content: ;
+	--font-main: "JetBrains Mono", monospace;
+	--font-title: monospace, "Inter", sans-serif;
+	--font-hand: "Just Another Hand", "cursive";
+	--font-content: ;
 
-		--breakpoint-xs: 420px;
-		--breakpoint-xxs: 320px;
+	--breakpoint-xs: 420px;
+	--breakpoint-xxs: 320px;
+
+	--animate-border-extension: border-init 1s forwards;
+
+	@keyframes border-init {
+		to {
+			width: 100%;
+		}
 	}
 }
 
