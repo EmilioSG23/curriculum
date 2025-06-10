@@ -5,12 +5,28 @@ const t = useT();
 const { title } = Astro.props;
 ---
 
-<h1
-	class="font-main font-extrabold text-center
-	text-[32px] sm:text-[48px] md:text-[64px] text-content uppercase
-	border-b-2 border-neon"
-	data-aos="fade"
-	data-translate={title}
->
-	{t(title)}
-</h1>
+<div class="relative">
+	<h1
+		class="font-main font-extrabold text-center
+		text-[32px] sm:text-[48px] md:text-[64px] text-content uppercase"
+		data-aos="fade"
+		data-translate={title}
+	>
+		{t(title)}
+	</h1>
+	<span
+		class="absolute bg-neon h-1 left-1/2 -translate-x-1/2 origin-center w-0"
+		data-aos="border-init"></span>
+</div>
+<style>
+	[data-aos="border-init"] {
+		width: 0%;
+		transition:
+			width 1s ease-out,
+			opacity 0.5s ease-out;
+
+		&.aos-animate {
+			width: 100%;
+		}
+	}
+</style>
