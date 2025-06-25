@@ -50,13 +50,22 @@ export const PROJECTS = [
 		lenguajes: ["java", "javafx"],
 		usos: "JavaFX, Archivos serializados",
 	},
-	{
+	/*{
 		id: "rover",
 		nombre: "projects.project-rover.name",
 		github: "https://github.com/JamesMalave/Proyecto-POO-G2",
 		descripcion: "projects.project-rover.description",
 		lenguajes: ["java", "javafx"],
 		usos: "Interfaces, hilos (multithreading), JavaFX, Archivos serializados.",
+	},*/
+	{
+		id: "minecraft-api",
+		nombre: "projects.project-minecraft-api.name",
+		link: "https://minecraftapi-5h0j.onrender.com/",
+		github: "https://github.com/EmilioSG23/MinecraftAPI",
+		descripcion: "projects.project-minecraft-api.description",
+		lenguajes: ["react", "tailwind", "javascript", "express", "typescript"],
+		usos: "React, Express",
 	},
 	{
 		id: "laberinto_encantado",
@@ -64,7 +73,7 @@ export const PROJECTS = [
 		link: "https://emiliosg23.github.io/laberinto_encantado",
 		github: "https://github.com/EmilioSG23/laberinto_encantado",
 		descripcion: "projects.project-laberinto_encantado.description",
-		lenguajes: ["c_sharp", "typescript", "unity"],
+		lenguajes: ["c_sharp", "typescript", "unity", "express"],
 		usos: "Unity Engine, SocketIO, WebGL",
 	},
 ];

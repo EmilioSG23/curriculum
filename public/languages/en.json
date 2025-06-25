@@ -59,6 +59,8 @@
 	"projects.project-rover.description": "This project simulates two rovers on Mars, one solar and the other wind-powered. There are craters on Mars where materials will be sensed. The user can move around the planet using commands, plan routes, among other things. The two rovers can be used simultaneously thanks to multithreading.",
 	"projects.project-laberinto_encantado.name": "Enchanted Maze",
 	"projects.project-laberinto_encantado.description": "A cooperative and competitive multiplayer game where 4 teams face each other to escape the maze. <br/> You can visit these two sites: <br/><!--<b>Backend:</b> <a class='underline font-bold' target='_blank' href='https://github.com/domorales/laberinto_encantado_backend'>https://github.com/domorales/laberinto_encantado_backend</a><br/>--> <b>Full Development:</b> <a class='underline font-bold' target='_blank' href='https://domorales.github.io/portfolio-momentum/'>https://domorales.github.io/portfolio-momentum/</a>",
+	"projects.project-minecraft-api.name": "Minecraft API",
+	"projects.project-minecraft-api.description": "Web application and API for Minecraft based on data provided by the game itself and by <a class='font-bold underline' href='https://minecraft.wiki/' target='_blank'>Minecraft Wiki</a>. This application was built with React, Vite, Tailwind CSS, and JavaScript, while the API runs on Express and TypeScript.",
 	"404.not-found": "It looks like this page doesn't exist",
 	"404.go-back": "But don't worry! By clicking this button, you can go back to the main page. I'll be waiting for you there!",
 	"404.main-page": "Main Page"

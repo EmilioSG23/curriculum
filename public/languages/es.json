@@ -59,6 +59,8 @@
 	"projects.project-rover.description": "Este proyecto consiste en un simulador de dos róvers en Marte, uno solar y otro eólico. Hay cráteres en Marte donde se encuentran materias que serán sensadas. El usuario mediante comandos, se puede mover alrededor del planeta, puede planificar rutas, entre otros. Además, se pueden usar los dos róvers al mismo tiempo gracias al multithreading.",
 	"projects.project-laberinto_encantado.name": "Laberinto Encantado",
 	"projects.project-laberinto_encantado.description": "Juego multijugador cooperativo y competitivo donde 4 equipos se enfrentan entre sí para lograr salir del laberinto. <br/> Puedes visitar estos dos sitios: <br/><!--<b>Backend:</b> <a class='underline font-bold' target='_blank' href = 'https://github.com/domorales/laberinto_encantado_backend'>https://github.com/domorales/laberinto_encantado_backend</a><br/>--> <b>Desarrollo Completo:</b> <a class='underline font-bold' target='_blank' href='https://domorales.github.io/portfolio-momentum/'>https://domorales.github.io/portfolio-momentum/</a>",
+	"projects.project-minecraft-api.name": "Minecraft API",
+	"projects.project-minecraft-api.description": "Aplicación web y API de Minecraft tomando como base datos dados por el mismo juego y por <a class='font-bold underline' href='https://minecraft.wiki/' target='_blank'>Minecraft Wiki</a>. Esta aplicación fue trabajada con React, Vite, Tailwind CSS y JavaScript, mientras que la API funciona con Express y TypeScript.",
 	"404.not-found": "Al parecer esta página no existe",
 	"404.go-back": "¡Pero tranquilo! Aplastando este botón podrás volver a la página principal. ¡Te espero ahí!",
 	"404.main-page": "Página Principal"
