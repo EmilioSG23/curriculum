@@ -55,7 +55,7 @@
 	"projects.project-catalogo.name": "Video Game Catalog",
 	"projects.project-catalogo.description": "The project simulates a video game catalog similar to Steam, using data structures like circular linked lists. It also has two views: one for users and another for administrators. Additionally, there are various methods to search for video games.",
 	"projects.project-fileviewer.name": "File Viewer",
-	"projects.project-fileviewer.description": "This project allows you to visualize files in a more general way, where the size of a file or directory will take up more or less space in the viewer. The program's behavior is based on multi-path trees. It has two modes of visualization: one by files and another by file extensions.",
+	"projects.project-fileviewer.description": "File viewer that graphically represents the structure of a directory based on the size of its files, using multiway trees. It allows viewing by files, extensions, types, or executables. Custom data structures (ADTs) were implemented.<br/> <b>NOTE:</b> This project is a refactored version of an earlier one, to which I no longer have access due to permission restrictions.",
 	"projects.project-rover.name": "Rover Simulator",
 	"projects.project-rover.description": "This project simulates two rovers on Mars, one solar and the other wind-powered. There are craters on Mars where materials will be sensed. The user can move around the planet using commands, plan routes, among other things. The two rovers can be used simultaneously thanks to multithreading.",
 	"projects.project-laberinto_encantado.name": "Enchanted Maze",

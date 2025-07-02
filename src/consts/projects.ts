@@ -45,7 +45,7 @@ export const PROJECTS = [
 	{
 		id: "fileviewer",
 		nombre: "projects.project-fileviewer.name",
-		download: "",
+		download: "https://mega.nz/file/SkgzESQJ#qvLfAekP0V-i9n1XJ_hO6hTTYSGKA0oPnwJOFm9UOz0",
 		github: "https://github.com/EmilioSG23/FileViewer",
 		descripcion: "projects.project-fileviewer.description",
 		lenguajes: ["java", "javafx"],

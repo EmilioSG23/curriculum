@@ -55,7 +55,7 @@
 	"projects.project-catalogo.name": "Catálogo de Videojuegos",
 	"projects.project-catalogo.description": "El proyecto consiste en simular un catálogo de videojuegos estilo Steam, donde se hace uso de Estructuras de Datos como las listas circulares enlazadas. Además, hay dos vistas: una para el usuario y otra para el administrador. Por último, existen diversas formas de búsqueda de videojuegos.",
 	"projects.project-fileviewer.name": "Visualizador de Archivos",
-	"projects.project-fileviewer.description": "Consiste en visualizar los archivos de una manera más general, donde el tamaño de un archivo o directorio ocupará más o menos espacio en el visualizador. El comportamiento del programa está basado en árboles multicaminos. Tiene dos modos de visualización: uno por archivos y otro por extensiones de archivo.",
+	"projects.project-fileviewer.description": "Visualizador de archivos que representa gráficamente la estructura de un directorio según el tamaño de sus archivos, usando árboles multicaminos. Permite visualizar por archivos, extensiones, tipos o ejecutables. Se implementaron TDAs propios.<br/> <b>NOTA:</b> Este proyecto es una refactorización de una versión anterior a la que no tengo acceso por falta de permisos.",
 	"projects.project-rover.name": "Simulación de Rovers",
 	"projects.project-rover.description": "Este proyecto consiste en un simulador de dos róvers en Marte, uno solar y otro eólico. Hay cráteres en Marte donde se encuentran materias que serán sensadas. El usuario mediante comandos, se puede mover alrededor del planeta, puede planificar rutas, entre otros. Además, se pueden usar los dos róvers al mismo tiempo gracias al multithreading.",
 	"projects.project-laberinto_encantado.name": "Laberinto Encantado",
