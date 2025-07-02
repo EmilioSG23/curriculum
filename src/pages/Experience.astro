@@ -63,7 +63,6 @@ const EXPERIENCE = [
 
 	function applyDelayClass() {
 		const $experienceArticles = document.querySelectorAll("div.experience-item");
-		console.log($experienceArticles);
 
 		$experienceArticles.forEach((experience, index) => {
 			experience.classList.add(...delayClass(index).split(" "));

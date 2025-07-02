@@ -69,7 +69,7 @@ function findSkill(id: string) {
 							<span
 								id="language-span-content"
 								class={`z-[1] absolute text-center left-1/2 -translate-x-1/2 translate-y-2
-													text-[10px] py-1 px-3 rounded-[20px] opacity-0
+													text-[10px] py-1 px-3 rounded-[20px] opacity-0 whitespace-nowrap
 													group-hover:opacity-100 transition pointer-events-none`}
 								style={`background-color: ${skill.color || "white"}; color: ${skill.text || "black"};`}
 							>
@@ -133,21 +133,19 @@ function findSkill(id: string) {
 </article>
 
 <script>
-	const isMobile = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+	const isMobile = !window.matchMedia("(pointer: fine)").matches;
 
 	let actualLanguagesDisplayed = -1;
 
 	function showProjectsDescriptions() {
+		if (!isMobile) return;
+
 		const $descriptionButtons = document.querySelectorAll("button[id$='-info-button']");
 		const $descriptionProjects = document.querySelectorAll("div[id$='-description']");
 		const $descriptionImages = document.querySelectorAll("img[id$='-image']");
 
 		$descriptionButtons.forEach((button, index) => {
-			if (isMobile) {
-				button.classList.remove("hidden");
-				return;
-			}
-
+			button.classList.remove("hidden");
 			button.addEventListener("click", () => {
 				$descriptionProjects[index]?.classList.toggle("opacity-100");
 				$descriptionProjects[index]?.classList.toggle("pointer-events-auto");
@@ -158,6 +156,7 @@ function findSkill(id: string) {
 
 	function showProjectsLanguages() {
 		if (!isMobile) return;
+
 		const $languagesProjects = document.querySelectorAll("img#language-project");
 		const $languagesSpanName = document.querySelectorAll("span#language-span-content");
 		const $languagesSpanArrow = document.querySelectorAll("span#language-span-arrow");
