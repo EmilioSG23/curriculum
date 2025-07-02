@@ -136,6 +136,7 @@ function findSkill(id: string) {
 	const isMobile = !window.matchMedia("(pointer: fine)").matches;
 
 	let actualLanguagesDisplayed = -1;
+	let actualDescriptionDisplayed = -1;
 
 	function showProjectsDescriptions() {
 		if (!isMobile) return;
@@ -146,10 +147,31 @@ function findSkill(id: string) {
 
 		$descriptionButtons.forEach((button, index) => {
 			button.classList.remove("hidden");
+
 			button.addEventListener("click", () => {
-				$descriptionProjects[index]?.classList.toggle("opacity-100");
-				$descriptionProjects[index]?.classList.toggle("pointer-events-auto");
-				$descriptionImages[index]?.classList.toggle("scale-110");
+				// Ocultar todas las descripciones si se está seleccionando una nueva
+				$descriptionProjects.forEach((desc, i) => {
+					if (i !== index) {
+						desc.classList.remove("opacity-100");
+						desc.classList.remove("pointer-events-auto");
+						$descriptionImages[i]?.classList.remove("scale-110");
+					}
+				});
+
+				// Toggle de la seleccionada
+				const wasOpen = actualDescriptionDisplayed === index;
+
+				if (!wasOpen) {
+					$descriptionProjects[index]?.classList.add("opacity-100");
+					$descriptionProjects[index]?.classList.add("pointer-events-auto");
+					$descriptionImages[index]?.classList.add("scale-110");
+					actualDescriptionDisplayed = index;
+				} else {
+					$descriptionProjects[index]?.classList.remove("opacity-100");
+					$descriptionProjects[index]?.classList.remove("pointer-events-auto");
+					$descriptionImages[index]?.classList.remove("scale-110");
+					actualDescriptionDisplayed = -1;
+				}
 			});
 		});
 	}
