@@ -42,10 +42,16 @@ export function useT() {
 
 export function getAge() {
 	const timestamp = 1003813200;
-	const myBirthday = new Date(timestamp * 1000);
+	const birthday = new Date(timestamp * 1000);
+	const today = new Date();
 
-	let age = new Date().getFullYear() - myBirthday.getFullYear();
-	age = myBirthday.getMonth() > new Date().getMonth() ? age - 1 : age;
+	let age = today.getFullYear() - birthday.getFullYear();
+
+	const hasBirthdayPassed =
+		today.getMonth() > birthday.getMonth() ||
+		(today.getMonth() === birthday.getMonth() && today.getDate() >= birthday.getDate());
+
+	if (!hasBirthdayPassed) age--;
 
 	return age;
 }
