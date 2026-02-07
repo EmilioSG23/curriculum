@@ -2,13 +2,26 @@
 import { useT } from "@/i18n/utils";
 
 const t = useT();
-const { index, lugar, puesto, tiempo, descripcion } = Astro.props;
+const {
+	index,
+	lugar,
+	puesto,
+	tiempo,
+	descripcion,
+	className = "",
+	collapsed = false,
+	dataIndex,
+} = Astro.props;
 ---
 
-<div class=`experience-item min-h-[312px] w-[80%] md:w-[45%] lg:w-[31%]` data-aos="fade-right">
+<div
+	class={`experience-item w-[80%] md:w-[45%] lg:w-[31%] ${collapsed ? "collapsed" : ""} ${className}`}
+	data-index={dataIndex}
+	data-aos="fade-right"
+>
 	<article
 		class="bg-background flex flex-col items-center border-2 border-neon rounded-[25px]
-					hover:scale-105 hover:bg-hover transition font-content h-full"
+					hover:scale-105 hover:bg-hover transition font-content h-full min-h-[312px]"
 	>
 		<div
 			class="border-b-2 border-neon h-[25%] w-full flex flex-col justify-center items-center py-4"

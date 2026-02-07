@@ -1,10 +1,9 @@
 ---
-import ProjectItem from "@/components/Items/ProjectItem.astro";
-import Arrow from "../components/Arrow.astro";
-import HeaderSection from "../components/HeaderSection.astro";
-import { PROJECTS } from "../consts/projects";
-import { useT } from "../i18n/utils";
-
+import ProjectItem from "@/components/projects/ProjectItem.astro";
+import Arrow from "@/shared/components/Arrow.astro";
+import HeaderSection from "@/shared/components/HeaderSection.astro";
+import { PROJECTS } from "@/consts/projects";
+import { useT } from "@/i18n/utils";
 const t = useT();
 ---
 
@@ -28,7 +27,7 @@ const t = useT();
 								lenguajes={lenguajes}
 								usos={usos}
 							/>
-						)
+						),
 					)
 				}
 			</div>
