@@ -1,5 +1,7 @@
+import type { Skill } from "@/interfaces/skill.interface";
+
 /* eslint-disable */
-export const SKILLS = [
+export const SKILLS: Skill[] = [
 	{
 		id: "languages",
 		name: "skills.skill-languages.title.full",

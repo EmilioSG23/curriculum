@@ -1,6 +1,8 @@
 /* eslint-disable */
 
-export const EXPERIENCE = [
+import type { Experience } from "@/interfaces/experience.interface";
+
+export const EXPERIENCE: Experience[] = [
 	{
 		lugar: "PackVip S.A.S.",
 		puesto: "experience.exp-4.rol",

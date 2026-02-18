@@ -1,5 +1,7 @@
+import type { Project } from "@/interfaces/project.interface";
+
 /*eslint-disable */
-export const PROJECTS = [
+export const PROJECTS: Project[] = [
 	{
 		id: "laberinto_encantado",
 		nombre: "projects.project-laberinto_encantado.name",
