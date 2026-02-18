@@ -24,6 +24,9 @@
     "@types/aos": "^3.0.7",
     "@types/node": "^22.13.0",
     "@types/react": "^19.0.8",
+    "@typescript-eslint/eslint-plugin": "^8.56.0",
+    "@typescript-eslint/parser": "^8.56.0",
+    "eslint-plugin-astro": "^1.6.0",
     "standard": "^17.1.2"
   },
   "eslintConfig": {

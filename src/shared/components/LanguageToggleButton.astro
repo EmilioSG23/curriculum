@@ -43,12 +43,14 @@
 			const key = (textToChange as HTMLElement).dataset.translate;
 			if (key) textToChange.innerHTML = texts[key].replace("{{age}}", String(getAge()));
 		});
+		const event = new CustomEvent("languagechange", { detail: { language } });
+		document.dispatchEvent(event);
 	}
 
 	document.getElementById("languageToggle")?.addEventListener("click", () => {
 		toggleLanguage(
 			document.querySelector("#languageToggle .inactiveToggle")?.getAttribute("data-language") ||
-				initialLang
+				initialLang,
 		);
 	});
 	toggleLanguage(document.documentElement.lang || initialLang);
