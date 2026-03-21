@@ -4,27 +4,27 @@ import type { Experience } from "@/interfaces/experience.interface";
 
 export const EXPERIENCE: Experience[] = [
 	{
-		lugar: "PackVip S.A.S.",
-		puesto: "experience.exp-4.rol",
-		tiempo: "experience.exp-4.time",
-		descripcion: "experience.exp-4.description",
+		place: "PackVip S.A.S.",
+		position: "experience.exp-4.rol",
+		time: "experience.exp-4.time",
+		description: "experience.exp-4.description",
 	},
 	{
-		lugar: "Solinal",
-		puesto: "experience.exp-3.rol",
-		tiempo: "experience.exp-3.time",
-		descripcion: "experience.exp-3.description",
+		place: "Solinal",
+		position: "experience.exp-3.rol",
+		time: "experience.exp-3.time",
+		description: "experience.exp-3.description",
 	},
 	{
-		lugar: "Espol (MIDI)",
-		puesto: "experience.exp-2.rol",
-		tiempo: "experience.exp-2.time",
-		descripcion: "experience.exp-2.description",
+		place: "Espol (MIDI)",
+		position: "experience.exp-2.rol",
+		time: "experience.exp-2.time",
+		description: "experience.exp-2.description",
 	},
 	{
-		lugar: "Riviera",
-		puesto: "experience.exp-1.rol",
-		tiempo: "experience.exp-1.time",
-		descripcion: "experience.exp-1.description",
+		place: "Riviera",
+		position: "experience.exp-1.rol",
+		time: "experience.exp-1.time",
+		description: "experience.exp-1.description",
 	},
 ];

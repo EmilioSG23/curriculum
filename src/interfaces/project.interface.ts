@@ -1,10 +1,10 @@
 export interface Project {
 	id: string;
-	nombre: string;
+	name: string;
 	link?: string;
 	download?: string;
 	github: string;
-	descripcion: string;
-	lenguajes: string[];
-	usos: string;
+	description: string;
+	technologies: string[];
+	uses: string;
 }

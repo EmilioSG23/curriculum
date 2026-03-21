@@ -5,7 +5,7 @@
 	"info.ani-4": "Developer",
 	"about-me.title": "About Me",
 	"about-me.info-1.title": "Who am I?",
-	"about-me.info-1.description": "I am a {{age}}-year-old computer scientist, dedicated for years to the world of technology and programming. Throughout my journey in the IT field, I have taken on different challenges, always giving my best to deliver the best possible product.",
+	"about-me.info-1.description": "Computer scientist dedicated for years to the world of technology and programming. Throughout my journey in the IT field, I have taken on different challenges, always giving my best to deliver the best possible product.",
 	"about-me.info-2.title": "What do I do?",
 	"about-me.info-2.description": "I develop software in various fields, including mobile applications, desktop applications, and websites. These range from Landing Pages and Dashboards to even a video game. My products stand out for following good programming practices and having an attractive, functional, and responsive design for any device.",
 	"about-me.info-3.title": "Contact Me!",
@@ -64,7 +64,7 @@
 	"projects.project-laberinto_encantado.name": "Enchanted Maze",
 	"projects.project-laberinto_encantado.description": "A cooperative and competitive multiplayer game where 4 teams face each other to escape the maze. <br/> You can visit these two sites: <br/><!--<b>Backend:</b> <a class='underline font-bold' target='_blank' href='https://github.com/domorales/laberinto_encantado_backend'>https://github.com/domorales/laberinto_encantado_backend</a><br/>--> <b>Full Development:</b> <a class='underline font-bold' target='_blank' href='https://domorales.github.io/portfolio-momentum/'>https://domorales.github.io/portfolio-momentum/</a>",
 	"projects.project-minecraft-api.name": "Minecraft API",
-	"projects.project-minecraft-api.description": "Web application and API for Minecraft based on data provided by the game itself and by <a class='font-bold underline' href='https://minecraft.wiki/' target='_blank'>Minecraft Wiki</a>. This application was built with React, Vite, Tailwind CSS, and JavaScript, while the API runs on Express and TypeScript.",
+	"projects.project-minecraft-api.description": "Web application and API for Minecraft based on data provided by the game itself and by <a class='font-bold underline' href='https://minecraft.wiki/' target='_blank'>Minecraft Wiki</a>. This application was built with NextJS, React,Tailwind CSS, and TypeScript, , which also includes documentation in OpenAPI format.",
 	"404.not-found": "It looks like this page doesn't exist",
 	"404.go-back": "But don't worry! By clicking this button, you can go back to the main page. I'll be waiting for you there!",
 	"404.main-page": "Main Page"

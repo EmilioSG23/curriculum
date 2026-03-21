@@ -2,7 +2,7 @@
 import { useT } from "@/i18n/utils";
 
 const t = useT();
-const { lugar, puesto, tiempo, descripcion, className = "", dataIndex } = Astro.props;
+const { place, position, time, description, className = "", dataIndex } = Astro.props;
 ---
 
 <div class="w-full flex gap-x-8" data-aos="fade-right">
@@ -16,17 +16,17 @@ const { lugar, puesto, tiempo, descripcion, className = "", dataIndex } = Astro.
 					hover:bg-hover transition font-content h-full gap-y-4 py-4 px-6"
 		>
 			<div class="w-full flex flex-col">
-				<h1 class="font-bold text-neon text-[24px]">{lugar}</h1>
-				<h2 class="text-[20px] font-bold" data-translate={puesto}>
-					{t(puesto as keyof typeof t)}
+				<h1 class="font-bold text-neon text-[24px]">{place}</h1>
+				<h2 class="text-[20px] font-bold" data-translate={position}>
+					{t(position as keyof typeof t)}
 				</h2>
-				<small class="text-[16px] opacity-75" data-translate={tiempo}
-					>{t(tiempo as keyof typeof t)}</small
+				<small class="text-[16px] opacity-75" data-translate={time}
+					>{t(time as keyof typeof t)}</small
 				>
 			</div>
 			<div class="leading-normal w-full">
-				<span class="text-[14px]" data-translate={descripcion}
-					>{t(descripcion as keyof typeof t)}</span
+				<span class="text-[14px]" data-translate={description}
+					>{t(description as keyof typeof t)}</span
 				>
 			</div>
 		</article>

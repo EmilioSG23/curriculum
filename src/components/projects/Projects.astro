@@ -15,17 +15,17 @@ const t = useT();
 			<div class="flex flex-wrap justify-center w-full xl:gap-x-3 2xl:gap-x-5">
 				{
 					PROJECTS.map(
-						({ id, nombre, link, download, github, descripcion, lenguajes, usos }, index) => (
+						({ id, name, link, download, github, description, technologies, uses }, index) => (
 							<ProjectItem
 								index={index}
 								id={id}
-								nombre={nombre}
+								name={name}
 								download={download}
 								link={link}
 								github={github}
-								descripcion={descripcion}
-								lenguajes={lenguajes}
-								usos={usos}
+								description={description}
+								technologies={technologies}
+								uses={uses}
 							/>
 						),
 					)

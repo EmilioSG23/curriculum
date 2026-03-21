@@ -1,6 +1,6 @@
 export interface Experience {
-	lugar: string;
-	puesto: string;
-	tiempo: string;
-	descripcion: string;
+	place: string;
+	position: string;
+	time: string;
+	description: string;
 }

@@ -148,6 +148,13 @@ export const SKILLS: Skill[] = [
 				text: "black",
 				display: true,
 			},
+			{
+				id: "nextjs",
+				name: "NextJS",
+				color: "white",
+				text: "black",
+				display: true,
+			},
 		],
 	},
 	{

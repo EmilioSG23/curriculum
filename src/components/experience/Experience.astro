@@ -18,13 +18,13 @@ const t = useT();
 				class="flex flex-col items-center w-full gap-5 mt-10 collapsed overflow-hidden transition-all p-6"
 			>
 				{
-					EXPERIENCE.map(({ lugar, puesto, tiempo, descripcion }, index) => (
+					EXPERIENCE.map(({ place, position, time, description }, index) => (
 						<ExperienceItem
 							index={index}
-							lugar={lugar}
-							puesto={puesto}
-							tiempo={tiempo}
-							descripcion={descripcion}
+							place={place}
+							position={position}
+							time={time}
+							description={description}
 						/>
 					))
 				}
