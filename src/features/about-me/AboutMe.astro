@@ -1,8 +1,7 @@
 ---
+import Section from "@/components/sections/Section.astro";
+import AboutMeItem from "@/features/about-me/AboutMeItem.astro";
 import { getAge, useT } from "@/i18n/utils";
-import Arrow from "@/shared/components/Arrow.astro";
-import HeaderSection from "@/shared/components/HeaderSection.astro";
-import AboutMeItem from "./AboutMeItem.astro";
 
 const t = useT();
 
@@ -27,22 +26,18 @@ const aboutMe = [
 ];
 ---
 
-<section id="about-me" class="max-w-6xl mx-auto my-20 text-content">
-	<Arrow color="gold" />
-	<div class="flex flex-col items-center justify-center">
-		<HeaderSection title="about-me.title" />
-		<div class="flex flex-wrap justify-center w-full mt-10">
-			{
-				aboutMe.map(({ icon, title, description }, index) => (
-					<AboutMeItem
-						icon={icon}
-						title={title}
-						description={description}
-						hasButton={index === 2}
-						age={age}
-					/>
-				))
-			}
-		</div>
+<Section id="about-me">
+	<div class="flex flex-wrap justify-center w-full mt-10">
+		{
+			aboutMe.map(({ icon, title, description }, index) => (
+				<AboutMeItem
+					icon={icon}
+					title={title}
+					description={description}
+					hasButton={index === 2}
+					age={age}
+				/>
+			))
+		}
 	</div>
-</section>
+</Section>

@@ -1,10 +1,9 @@
 ---
+import Section from "@/components/sections/Section.astro";
+import PersonalSkills from "@/features/skills/PersonalSkills.astro";
+import TerminalSkill from "@/features/skills/TerminalSkill.astro";
+import { SKILLS } from "@/features/skills/data";
 import { useT } from "@/i18n/utils";
-import Arrow from "@/shared/components/Arrow.astro";
-import HeaderSection from "@/shared/components/HeaderSection.astro";
-import PersonalSkills from "./PersonalSkills.astro";
-import TerminalSkill from "./TerminalSkill.astro";
-import { SKILLS } from "./data";
 
 const t = useT();
 
@@ -17,13 +16,9 @@ const HABILIDADES_PERSONALES = [
 ];
 ---
 
-<section id="skills" class="max-w-6xl mx-auto my-20 text-content">
-	<Arrow color="gold" />
-	<div class="flex flex-col items-center justify-center">
-		<HeaderSection title="skills.title" data-translate="skills.title" />
-		<div class="flex flex-col justify-center w-full gap-10 my-5 mt-20 lg:flex-row">
-			<TerminalSkill skills={SKILLS} />
-			<PersonalSkills skills={HABILIDADES_PERSONALES} />
-		</div>
+<Section id="skills">
+	<div class="flex flex-col justify-center w-full gap-10 my-5 mt-20 lg:flex-row">
+		<TerminalSkill skills={SKILLS} />
+		<PersonalSkills skills={HABILIDADES_PERSONALES} />
 	</div>
-</section>
+</Section>

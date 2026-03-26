@@ -1,39 +1,36 @@
 ---
-import ProjectItem from "./ProjectItem.astro";
-import Arrow from "@/shared/components/Arrow.astro";
-import HeaderSection from "@/shared/components/HeaderSection.astro";
-import { PROJECTS } from "./data";
+import ProjectItem from "@/features/projects/ProjectItem.astro";
+import Arrow from "@/components/sections/Arrow.astro";
+import HeaderSection from "@/components/sections/HeaderSection.astro";
+import { PROJECTS } from "@/features/projects/data";
 import { useT } from "@/i18n/utils";
+import Section from "@/components/sections/Section.astro";
 const t = useT();
 ---
 
-<section id="projects" class="max-w-6xl mx-auto my-20 text-content">
-	<Arrow color="gold" />
-	<div class="flex flex-col items-center justify-center">
-		<HeaderSection title="projects.title" />
-		<div class="flex justify-center 2xl:w-[125%] my-5 mt-20">
-			<div class="flex flex-wrap justify-center w-full xl:gap-x-3 2xl:gap-x-5">
-				{
-					PROJECTS.map(
-						({ id, name, link, download, github, description, technologies, uses }, index) => (
-							<ProjectItem
-								index={index}
-								id={id}
-								name={name}
-								download={download}
-								link={link}
-								github={github}
-								description={description}
-								technologies={technologies}
-								uses={uses}
-							/>
-						),
-					)
-				}
-			</div>
+<Section id="projects">
+	<div class="flex justify-center 2xl:w-[125%] my-5 mt-20">
+		<div class="flex flex-wrap justify-center w-full xl:gap-x-3 2xl:gap-x-5">
+			{
+				PROJECTS.map(
+					({ id, name, link, download, github, description, technologies, uses }, index) => (
+						<ProjectItem
+							index={index}
+							id={id}
+							name={name}
+							download={download}
+							link={link}
+							github={github}
+							description={description}
+							technologies={technologies}
+							uses={uses}
+						/>
+					),
+				)
+			}
 		</div>
 	</div>
-</section>
+</Section>
 
 <script>
 	function delayClass(index: number): string {

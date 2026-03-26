@@ -1,4 +1,4 @@
-import type { Experience } from "./types";
+import type { Experience } from "@/features/experience/types";
 
 /* eslint-disable */
 export const EXPERIENCE: Experience[] = [
