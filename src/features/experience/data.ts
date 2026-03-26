@@ -1,7 +1,6 @@
+import type { Experience } from "./types";
+
 /* eslint-disable */
-
-import type { Experience } from "@/interfaces/experience.interface";
-
 export const EXPERIENCE: Experience[] = [
 	{
 		place: "PackVip S.A.S.",

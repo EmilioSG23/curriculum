@@ -1,4 +1,4 @@
-import type { Project } from "@/interfaces/project.interface";
+import type { Project } from "@/features/projects/types";
 
 /*eslint-disable */
 export const PROJECTS: Project[] = [
@@ -20,22 +20,6 @@ export const PROJECTS: Project[] = [
 		technologies: ["nextjs", "react", "tailwind", "typescript", "vercel"],
 		uses: "React, Express",
 	},
-	/*{
-		id: "mpa",
-		name: "projects.project-mpa.name",
-		github: "https://axcelvillagran.github.io/mpa/",
-		description: "projects.project-mpa.description",
-		technologies: ["typescript", "html", "angular"],
-		uses: "Uso del framework Angular para el diseño del Frontend, que se basa en el lenguaje TypeScript",
-	},*/
-	/*{
-		id: "flex-travel",
-		name: "projects.project-flex-travel.name",
-		github: "https://github.com/AxcelVillagran/FrontendLP",
-		description: "projects.project-flex-travel.description",
-		technologies: ["javascript", "dart", "flutter", "express"],
-		uses: "Uso del framework Flutter para Frontend, Express para Backend.",
-	},*/
 	{
 		id: "dashboard",
 		name: "projects.project-dashboard.name",
@@ -63,14 +47,6 @@ export const PROJECTS: Project[] = [
 		technologies: ["java", "javafx", "scene-builder"],
 		uses: "JavaFX, Archivos serializados",
 	},
-	/*{
-		id: "rover",
-		name: "projects.project-rover.name",
-		github: "https://github.com/JamesMalave/Proyecto-POO-G2",
-		description: "projects.project-rover.description",
-		technologies: ["java", "javafx"],
-		uses: "Interfaces, hilos (multithreading), JavaFX, Archivos serializados.",
-	},*/
 	{
 		id: "catalogo",
 		name: "projects.project-catalogo.name",

@@ -1,6 +1,6 @@
 ---
-import type { Skill } from "@/interfaces/skill.interface";
 import { useT } from "@/i18n/utils";
+import type { Skill } from "@/features/skills/types";
 
 const t = useT();
 const { skills } = Astro.props;
@@ -8,12 +8,12 @@ const { skills } = Astro.props;
 
 <div
 	class="lg:flex-[3] bg-black border-2 border-[#5AE1FF]
-			order-2 lg:order-1 w-[90%] lg:w-full min-h-[550px] self-center overflow-hidden rounded-[12px]"
+				order-2 lg:order-1 w-[90%] lg:w-full min-h-[550px] self-center overflow-hidden rounded-[12px]"
 	data-aos="flip-down"
 >
 	<div
 		class="flex justify-center items-center bg-primary text-white text-[12px] sm:text-[16px]
-							h-[42px] border-b-2 border-[#5AE1FF]"
+						h-[42px] border-b-2 border-[#5AE1FF]"
 	>
 		<div class="flex-1 mx-5 font-main">
 			<span class="show-full" data-translate="skills.window.title.full"
@@ -125,7 +125,7 @@ const { skills } = Astro.props;
 </style>
 
 <script>
-	import { SKILLS } from "@/consts/skills";
+	import { SKILLS } from "./data";
 
 	const $helpSeleccion = document.getElementById("helpSeleccion");
 
