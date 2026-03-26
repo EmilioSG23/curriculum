@@ -8,7 +8,7 @@ const { index, id, name, download, link, github, description, technologies, uses
 const SKILLS_FLAT = SKILLS.flatMap((category) =>
 	category.values.map((skill) => ({
 		...skill,
-		img: `skills/${category.id}/${skill.id}.png`,
+		img: `skills/${category.id}/${skill.id}.webp`,
 	})),
 );
 
