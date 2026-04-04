@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "@fortawesome/fontawesome-free/css/all.min.css";
+@import "aos/dist/aos.css";
 @plugin "@midudev/tailwind-animations";
 
 @tailwind utilities;
@@ -38,7 +39,7 @@
 
 	--font-main: "JetBrains Mono", monospace;
 	--font-title: monospace, "Inter", sans-serif;
-	--font-hand: "Just Another Hand", "cursive";
+	--font-hand: "Just Another Hand", cursive;
 	--font-content: ;
 
 	--breakpoint-xs: 420px;

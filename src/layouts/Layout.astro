@@ -10,8 +10,6 @@ import {
 	SITE_NAME,
 	WEBSITE_SCHEMA,
 } from "@/utils/seo";
-import { ClientRouter } from "astro:transitions";
-
 import "@/styles/global.css";
 
 interface Props {
@@ -69,13 +67,19 @@ const schemas = JSON.stringify([PERSON_SCHEMA, WEBSITE_SCHEMA]);
 			href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
 			rel="stylesheet"
 		/>
-		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-		<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 		<script>
 			import AOS from "aos";
-			AOS.init({ duration: 600, offset: 200 });
+
+			const initAOS = () => {
+				AOS.init({ duration: 600, offset: 200, once: true });
+			};
+
+			if (document.readyState === "loading") {
+				document.addEventListener("DOMContentLoaded", initAOS, { once: true });
+			} else {
+				initAOS();
+			}
 		</script>
-		<ClientRouter />
 	</head>
 	<body class="transition">
 		<Background />
