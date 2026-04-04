@@ -3,9 +3,15 @@ import { useT } from "@/i18n/utils";
 import Layout from "@/layouts/Layout.astro";
 
 const t = useT();
+
+const seo = {
+	title: "Pagina no encontrada",
+	description: "La pagina solicitada no existe dentro del portafolio de Emilio Saenz.",
+	noindex: true,
+};
 ---
 
-<Layout>
+<Layout {...seo}>
 	<div class="flex flex-col min-h-[737px]">
 		<div class="flex-grow flex justify-center items-center font-main">
 			<div class="flex flex-col mx-auto max-w-6xl justify-center items-center text-content">

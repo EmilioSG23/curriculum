@@ -2,19 +2,58 @@
 import Background from "@/components/Background.astro";
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
+import { DEFAULT_SEO, getAbsoluteUrl, getCanonicalUrl, SITE_NAME } from "@/utils/seo";
 import { ClientRouter } from "astro:transitions";
 
 import "@/styles/global.css";
+
+interface Props {
+	title?: string;
+	description?: string;
+	image?: string;
+	noindex?: boolean;
+	canonical?: string;
+}
+
+const {
+	title = DEFAULT_SEO.title,
+	description = DEFAULT_SEO.description,
+	image = DEFAULT_SEO.image,
+	noindex = false,
+	canonical,
+} = Astro.props;
+
+const currentUrl = canonical ?? getCanonicalUrl(Astro.url.pathname);
+const pageTitle = title === SITE_NAME ? title : `${title} | ${SITE_NAME}`;
+const imageUrl = getAbsoluteUrl(image);
+const robots = noindex ? "noindex, nofollow" : "index, follow";
 ---
 
 <!doctype html>
 <html lang="es" class="dark">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type="image/svg+xml" href="/curriculum/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Portafolio Web - Emilio Sáenz</title>
+		<title>{pageTitle}</title>
+		<meta name="description" content={description} />
+		<meta name="robots" content={robots} />
+		<meta name="theme-color" content="#000823" />
+		<link rel="canonical" href={currentUrl} />
+
+		<meta property="og:type" content={DEFAULT_SEO.type} />
+		<meta property="og:locale" content="es_ES" />
+		<meta property="og:site_name" content={SITE_NAME} />
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={currentUrl} />
+		<meta property="og:image" content={imageUrl} />
+
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={pageTitle} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={imageUrl} />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
