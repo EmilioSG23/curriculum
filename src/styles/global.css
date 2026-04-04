@@ -9,7 +9,15 @@
 	font-style: normal;
 	font-weight: 400;
 	font-display: swap;
-	src: url("./fonts/JetBrainsMono-Regular.woff2") format("woff2");
+	src: url("./fonts/JetBrainsMono-Regular.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "JetBrains Mono";
+	font-style: italic;
+	font-weight: 400;
+	font-display: swap;
+	src: url("./fonts/JetBrainsMono-Italic.woff2") format("woff2");
 }
 
 @font-face {
@@ -17,7 +25,7 @@
 	font-style: normal;
 	font-weight: 700;
 	font-display: swap;
-	src: url("./fonts/JetBrainsMono-Bold.woff2") format("woff2");
+	src: url("./fonts/JetBrainsMono-Bold.ttf") format("truetype");
 }
 
 @font-face {
@@ -94,6 +102,10 @@ html {
 	@apply text-[20px] xxs:text-[24px] xs:text-[36px] lg:text-[48px];
 }
 
+.font-main {
+	font-style: normal;
+}
+
 :focus-visible {
 	outline: 2px solid var(--color-gold);
 	outline-offset: 3px;
@@ -148,4 +160,4 @@ html {
 		opacity: 1;
 		transform: none;
 	}
-	}
+}
