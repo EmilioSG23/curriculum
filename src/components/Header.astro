@@ -65,72 +65,68 @@ const toPath = (path: string) => {
 </header>
 
 <script>
-	/* Mover themeToogle */
-	const $mobileContainer = document.getElementById("mobileContainer") as HTMLElement;
-	const $mobileDesktop = document.getElementById("mobileDesktop") as HTMLElement;
+	function moveToggleButton() {
+		const mobileContainer = document.getElementById("mobileContainer");
+		const mobileDesktop = document.getElementById("mobileDesktop");
+		const toggleButton = document.getElementById("theme");
+		const parent = window.innerWidth < 768 ? mobileContainer : mobileDesktop;
 
-	const $toogleButton = document.getElementById("theme") as HTMLElement;
-	function moveToogleButton() {
-		const parent = window.innerWidth < 768 ? $mobileContainer : $mobileDesktop;
-		if (parent && $toogleButton && $toogleButton.parentElement !== parent)
-			parent.appendChild($toogleButton);
+		if (parent && toggleButton && toggleButton.parentElement !== parent) {
+			parent.appendChild(toggleButton);
+		}
 	}
-	window.addEventListener("resize", moveToogleButton);
-	document.addEventListener("DOMContentLoaded", moveToogleButton);
 
-	/* Botón del menú */
-	document.querySelectorAll("#menu a").forEach((anchor) => {
-		anchor.addEventListener("click", () => {
-			document.getElementById("menu")?.classList.remove("open");
+	function updateActiveSection() {
+		const sections = Array.from(document.querySelectorAll<HTMLElement>("section"));
+		const anchors = Array.from(document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]'));
+		const top = window.scrollY + window.innerHeight * 0.25;
+
+		let activeId = "";
+		sections.forEach((section) => {
+			if (top >= section.offsetTop && top < section.offsetTop + section.offsetHeight) {
+				activeId = section.id;
+			}
 		});
-	});
 
-	document.getElementById("menuButton")?.addEventListener("click", () => {
-		document.getElementById("menu")?.classList.toggle("open");
-	});
+		anchors.forEach((anchor) => {
+			anchor.classList.toggle("active", activeId !== "info" && anchor.getAttribute("href") === `#${activeId}`);
+		});
+	}
 
-	/* Scroll */
-	document.addEventListener("astro:page-load", () => {
-		let $sections = document.querySelectorAll("section");
-		let $anchors = document.querySelectorAll('a[href^="#"]');
+	function setupHeaderInteractions() {
+		const menu = document.getElementById("menu");
+		const menuButton = document.getElementById("menuButton");
+		const anchors = Array.from(document.querySelectorAll<HTMLAnchorElement>('#menu a, a[href^="#"]'));
 
-		window.onscroll = () => {
-			$sections.forEach((section) => {
-				let top = window.scrollY + window.screen.height * 0.25;
-				let offset = section.offsetTop;
-				let height = section.offsetHeight;
+		moveToggleButton();
+		updateActiveSection();
 
-				if (top >= offset && top < offset + height) {
-					$anchors.forEach((anchor) => {
-						anchor.classList.remove("active");
-						if (section.id != "info")
-							document.querySelector(`a[href="#${section.id}"]`)?.classList.add("active");
-					});
-				}
-			});
-		};
-	});
+		menuButton?.addEventListener("click", () => {
+			menu?.classList.toggle("open");
+		});
 
-	/* Redireccionamiento de Scroll */
-	document.addEventListener("astro:page-load", () => {
-		document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-			anchor.addEventListener("click", function (this: HTMLAnchorElement, e: Event) {
-				e.preventDefault();
+		anchors.forEach((anchor) => {
+			anchor.onclick = (event) => {
+				menu?.classList.remove("open");
 
-				const href = this.getAttribute("href");
-				if (href === null) return;
-				const targetId = href.substring(1);
-				const targetElement = document.getElementById(targetId);
+				const href = anchor.getAttribute("href");
+				if (!href?.startsWith("#")) return;
 
-				if (targetElement === null) return;
+				event.preventDefault();
+				const targetElement = document.getElementById(href.slice(1));
+				if (!targetElement) return;
 
 				window.scrollTo({
 					top: targetElement.offsetTop - 100,
 					behavior: "smooth",
 				});
-			});
+			};
 		});
-	});
+	}
+
+	window.addEventListener("resize", moveToggleButton);
+	window.addEventListener("scroll", updateActiveSection, { passive: true });
+	document.addEventListener("DOMContentLoaded", setupHeaderInteractions, { once: true });
 </script>
 
 <style>

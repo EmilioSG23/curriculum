@@ -48,7 +48,8 @@ function findSkill(id: string) {
 				>{t(name as keyof typeof t)}
 			</span>
 			<button
-				id=`project-${index}-info-button`
+				data-project-info-button
+				data-project-index={index}
 				class="hidden translate-y-[2px] cursor-pointer size-5 text-[8px] rounded-full border border-neon text-neon"
 				><i class="fas fa-info"></i>
 			</button>
@@ -61,13 +62,13 @@ function findSkill(id: string) {
 					return (
 						<div class="relative group">
 							<img
-								id="language-project"
+								data-language-project
 								loading="lazy"
 								src={skill.img}
 								class="w-8 h-8 hover:scale-110 transition"
 							/>
 							<span
-								id="language-span-content"
+								data-language-span-content
 								class={`z-[1] absolute text-center left-1/2 -translate-x-1/2 translate-y-2
 											text-[10px] py-1 px-3 rounded-[20px] opacity-0 whitespace-nowrap
 											group-hover:opacity-100 transition pointer-events-none`}
@@ -76,7 +77,7 @@ function findSkill(id: string) {
 								{skill.name}
 							</span>
 							<span
-								id="language-span-arrow"
+								data-language-span-arrow
 								class={`z-[1] absolute left-1/2 -translate-x-1/2 -top-2 w-0 h-0 translate-y-10
 											border-l-[8px] border-l-transparent 
 											border-r-[8px] border-r-transparent 
@@ -134,74 +135,3 @@ function findSkill(id: string) {
 		</div>
 	</div>
 </article>
-
-<script>
-	const isMobile = !window.matchMedia("(pointer: fine)").matches;
-
-	let actualLanguagesDisplayed = -1;
-	let actualDescriptionDisplayed = -1;
-
-	function showProjectsDescriptions() {
-		if (!isMobile) return;
-
-		const $descriptionButtons = document.querySelectorAll("button[id$='-info-button']");
-		const $descriptionProjects = document.querySelectorAll("div[id$='-description']");
-		const $descriptionImages = document.querySelectorAll("img[id$='-image']");
-
-		$descriptionButtons.forEach((button, index) => {
-			button.classList.remove("hidden");
-
-			button.addEventListener("click", () => {
-				// Ocultar todas las descripciones si se está seleccionando una nueva
-				$descriptionProjects.forEach((desc, i) => {
-					if (i !== index) {
-						desc.classList.remove("opacity-100");
-						desc.classList.remove("pointer-events-auto");
-						$descriptionImages[i]?.classList.remove("scale-110");
-					}
-				});
-
-				// Toggle de la seleccionada
-				const wasOpen = actualDescriptionDisplayed === index;
-
-				if (!wasOpen) {
-					$descriptionProjects[index]?.classList.add("opacity-100");
-					$descriptionProjects[index]?.classList.add("pointer-events-auto");
-					$descriptionImages[index]?.classList.add("scale-110");
-					actualDescriptionDisplayed = index;
-				} else {
-					$descriptionProjects[index]?.classList.remove("opacity-100");
-					$descriptionProjects[index]?.classList.remove("pointer-events-auto");
-					$descriptionImages[index]?.classList.remove("scale-110");
-					actualDescriptionDisplayed = -1;
-				}
-			});
-		});
-	}
-
-	function showProjectsLanguages() {
-		if (!isMobile) return;
-
-		const $languagesProjects = document.querySelectorAll("img#language-project");
-		const $languagesSpanName = document.querySelectorAll("span#language-span-content");
-		const $languagesSpanArrow = document.querySelectorAll("span#language-span-arrow");
-
-		$languagesProjects.forEach((img, index) => {
-			img.addEventListener("click", () => {
-				$languagesSpanArrow.forEach((arrow) => arrow.classList.remove("opacity-100"));
-				$languagesSpanName.forEach((name) => name.classList.remove("opacity-100"));
-
-				if (actualLanguagesDisplayed !== index) {
-					actualLanguagesDisplayed = index;
-					$languagesSpanArrow[index]?.classList.add("opacity-100");
-					$languagesSpanName[index]?.classList.add("opacity-100");
-				} else {
-					actualLanguagesDisplayed = -1;
-				}
-			});
-		});
-	}
-
-	document.addEventListener("DOMContentLoaded", showProjectsDescriptions);
-	document.addEventListener("DOMContentLoaded", showProjectsLanguages);
-</script>

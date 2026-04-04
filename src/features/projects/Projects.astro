@@ -33,6 +33,9 @@ const t = useT();
 </Section>
 
 <script>
+	let activeLanguageIndex = -1;
+	let activeDescriptionIndex = -1;
+
 	function delayClass(index: number): string {
 		const base = "delay-0";
 
@@ -52,5 +55,55 @@ const t = useT();
 			projectArticle.classList.add(...delayClass(index).split(" "));
 		});
 	}
-	document.addEventListener("DOMContentLoaded", applyDelayClass);
+
+	function setupProjectInteractions() {
+		if (window.matchMedia("(pointer: fine)").matches) return;
+
+		const descriptionButtons = Array.from(
+			document.querySelectorAll<HTMLButtonElement>("[data-project-info-button]"),
+		);
+		const descriptionProjects = Array.from(document.querySelectorAll<HTMLElement>("div[id$='-description']"));
+		const descriptionImages = Array.from(document.querySelectorAll<HTMLElement>("img[id$='-image']"));
+		const languageProjects = Array.from(document.querySelectorAll<HTMLElement>("[data-language-project]"));
+		const languageNames = Array.from(
+			document.querySelectorAll<HTMLElement>("[data-language-span-content]"),
+		);
+		const languageArrows = Array.from(
+			document.querySelectorAll<HTMLElement>("[data-language-span-arrow]"),
+		);
+
+		descriptionButtons.forEach((button, index) => {
+			button.classList.remove("hidden");
+			button.onclick = () => {
+				descriptionProjects.forEach((description, currentIndex) => {
+					const isCurrent = currentIndex === index && activeDescriptionIndex !== index;
+					description.classList.toggle("opacity-100", isCurrent);
+					description.classList.toggle("pointer-events-auto", isCurrent);
+					descriptionImages[currentIndex]?.classList.toggle("scale-110", isCurrent);
+				});
+
+				activeDescriptionIndex = activeDescriptionIndex === index ? -1 : index;
+			};
+		});
+
+		languageProjects.forEach((image, index) => {
+			image.onclick = () => {
+				const nextIndex = activeLanguageIndex === index ? -1 : index;
+				languageArrows.forEach((arrow, currentIndex) => {
+					arrow.classList.toggle("opacity-100", currentIndex === nextIndex);
+				});
+				languageNames.forEach((name, currentIndex) => {
+					name.classList.toggle("opacity-100", currentIndex === nextIndex);
+				});
+				activeLanguageIndex = nextIndex;
+			};
+		});
+	}
+
+	function initProjects() {
+		applyDelayClass();
+		setupProjectInteractions();
+	}
+
+	document.addEventListener("DOMContentLoaded", initProjects, { once: true });
 </script>
