@@ -65,6 +65,10 @@
 	"projects.project-laberinto_encantado.description": "Juego multijugador cooperativo y competitivo donde 4 equipos se enfrentan entre sí para lograr salir del laberinto. <br/> Puedes visitar estos dos sitios: <br/><!--<b>Backend:</b> <a class='underline font-bold' target='_blank' href = 'https://github.com/domorales/laberinto_encantado_backend'>https://github.com/domorales/laberinto_encantado_backend</a><br/>--> <b>Desarrollo Completo:</b> <a class='underline font-bold' target='_blank' href='https://domorales.github.io/portfolio-momentum/'>https://domorales.github.io/portfolio-momentum/</a>",
 	"projects.project-minecraft-api.name": "Minecraft API",
 	"projects.project-minecraft-api.description": "Aplicación web y API de Minecraft tomando como base datos dados por el mismo juego y por <a class='font-bold underline' href='https://minecraft.wiki/' target='_blank'>Minecraft Wiki</a>. Esta aplicación fue trabajada con NextJS, React, Tailwind CSS y TypeScript, la cual incluye también documentación en formato OpenAPI.",
+	"seo.title": "Desarrollador Full Stack",
+	"seo.description": "Portafolio de Emilio Saenz, desarrollador full stack enfocado en aplicaciones web, moviles y de escritorio con experiencia en frontend, backend y despliegue.",
+	"404.title": "Pagina no encontrada",
+	"404.description": "La pagina solicitada no existe dentro del portafolio de Emilio Saenz.",
 	"404.not-found": "Al parecer esta página no existe",
 	"404.go-back": "¡Pero tranquilo! Aplastando este botón podrás volver a la página principal. ¡Te espero ahí!",
 	"404.main-page": "Página Principal"

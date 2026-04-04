@@ -1,17 +1,19 @@
 ---
 import { useT } from "@/i18n/utils";
+import { ui } from "@/i18n/ui";
 import Layout from "@/layouts/Layout.astro";
 
 const t = useT();
+const seoText = ui.en;
 
 const seo = {
-	title: "Pagina no encontrada",
-	description: "La pagina solicitada no existe dentro del portafolio de Emilio Saenz.",
+	title: seoText["404.title"],
+	description: seoText["404.description"],
 	noindex: true,
 };
 ---
 
-<Layout {...seo}>
+<Layout {...seo} seoTitleKey="404.title" seoDescriptionKey="404.description">
 	<div class="flex flex-col min-h-[737px]">
 		<div class="flex-grow flex justify-center items-center font-main">
 			<div class="flex flex-col mx-auto max-w-6xl justify-center items-center text-content">

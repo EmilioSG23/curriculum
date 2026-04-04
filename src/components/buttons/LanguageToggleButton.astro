@@ -34,7 +34,13 @@
 	const $spanishToggle = document.getElementById("spanishToggle") as HTMLImageElement;
 	const $englishToggle = document.getElementById("englishToggle") as HTMLImageElement;
 
-	const initialLang = navigator.language;
+	const getStoredLanguage = () => {
+		const storedLanguage = localStorage.getItem("language");
+		if (storedLanguage === "es" || storedLanguage === "en") return storedLanguage;
+		return navigator.language.startsWith("es") ? "es" : "en";
+	};
+
+	const initialLang = getStoredLanguage();
 
 	function toggleLanguage(language: string) {
 		const isSpanish = language === "es";
@@ -46,6 +52,7 @@
 	}
 
 	async function changeLanguage(language: string) {
+		localStorage.setItem("language", language);
 		document.documentElement.lang = language;
 		const request = await fetch(`languages/${language}.json`);
 		const texts = await request.json();
@@ -64,7 +71,7 @@
 				initialLang,
 		);
 	});
-	toggleLanguage(document.documentElement.lang || initialLang);
+	toggleLanguage(initialLang);
 </script>
 
 <style>

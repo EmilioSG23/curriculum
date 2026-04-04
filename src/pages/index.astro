@@ -5,15 +5,17 @@ import Info from "@/features/info/Info.astro";
 import Projects from "@/features/projects/Projects.astro";
 import Skills from "@/features/skills/Skills.astro";
 import Layout from "@/layouts/Layout.astro";
+import { ui } from "@/i18n/ui";
+
+const seoText = ui.en;
 
 const seo = {
-	title: "Emilio Saenz | Desarrollador Full Stack",
-	description:
-		"Portafolio de Emilio Saenz, desarrollador full stack con experiencia en aplicaciones web, moviles y de escritorio, enfocado en frontend, backend y despliegue.",
+	title: seoText["seo.title"],
+	description: seoText["seo.description"],
 };
 ---
 
-<Layout {...seo}>
+<Layout {...seo} seoTitleKey="seo.title" seoDescriptionKey="seo.description">
 	<Info />
 	<AboutMe />
 	<Projects />

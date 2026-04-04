@@ -6,9 +6,11 @@ import {
 	DEFAULT_SEO,
 	getAbsoluteUrl,
 	getCanonicalUrl,
+	getLocaleCode,
+	getWebsiteSchema,
 	PERSON_SCHEMA,
+	SITE_BASE_PATH,
 	SITE_NAME,
-	WEBSITE_SCHEMA,
 } from "@/utils/seo";
 import "@/styles/global.css";
 
@@ -18,6 +20,8 @@ interface Props {
 	image?: string;
 	noindex?: boolean;
 	canonical?: string;
+	seoTitleKey?: string;
+	seoDescriptionKey?: string;
 }
 
 const {
@@ -26,13 +30,16 @@ const {
 	image = DEFAULT_SEO.image,
 	noindex = false,
 	canonical,
+	seoTitleKey = "seo.title",
+	seoDescriptionKey = "seo.description",
 } = Astro.props;
 
 const currentUrl = canonical ?? getCanonicalUrl(Astro.url.pathname);
-const pageTitle = title === SITE_NAME ? title : `${title} | ${SITE_NAME}`;
+const pageTitle = title === SITE_NAME ? title : `${SITE_NAME} | ${title}`;
 const imageUrl = getAbsoluteUrl(image);
 const robots = noindex ? "noindex, nofollow" : "index, follow";
-const schemas = JSON.stringify([PERSON_SCHEMA, WEBSITE_SCHEMA]);
+const seoDefaultLanguage = "en";
+const schemas = JSON.stringify([PERSON_SCHEMA, getWebsiteSchema(seoDefaultLanguage)]);
 ---
 
 <!doctype html>
@@ -49,7 +56,7 @@ const schemas = JSON.stringify([PERSON_SCHEMA, WEBSITE_SCHEMA]);
 		<link rel="canonical" href={currentUrl} />
 
 		<meta property="og:type" content={DEFAULT_SEO.type} />
-		<meta property="og:locale" content="es_ES" />
+		<meta property="og:locale" content={getLocaleCode(seoDefaultLanguage)} />
 		<meta property="og:site_name" content={SITE_NAME} />
 		<meta property="og:title" content={pageTitle} />
 		<meta property="og:description" content={description} />
@@ -60,8 +67,70 @@ const schemas = JSON.stringify([PERSON_SCHEMA, WEBSITE_SCHEMA]);
 		<meta name="twitter:title" content={pageTitle} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={imageUrl} />
-		<script type="application/ld+json" set:html={schemas}></script>
-		<script>
+		<script type="application/ld+json" set:html={schemas} />
+		<script
+			define:vars={{
+				seoBasePath: SITE_BASE_PATH,
+				seoTitleKey,
+				seoDescriptionKey,
+				seoSiteName: SITE_NAME,
+				seoDefaultTitle: pageTitle,
+				seoDefaultDescription: description,
+				seoPersonSchema: PERSON_SCHEMA,
+				seoLocaleMap: { es: getLocaleCode("es"), en: getLocaleCode("en") },
+				seoDefaultLanguage,
+			}}
+		>
+			const getSeoLanguage = () => {
+				const lang = localStorage.getItem("language") || seoDefaultLanguage;
+				return lang in seoLocaleMap ? lang : "es";
+			};
+
+			const applySeo = async (language) => {
+				const response = await fetch(`${seoBasePath}languages/${language}.json`);
+				if (!response.ok) return;
+
+				const texts = await response.json();
+				const title = `Emilio Sáenz | ${texts[seoTitleKey] || seoDefaultTitle}`;
+				const description = texts[seoDescriptionKey] || seoDefaultDescription;
+				const locale = seoLocaleMap[language] || seoLocaleMap.es;
+				document.title = title;
+
+				const metaDescription = document.querySelector('meta[name="description"]');
+				const metaOgLocale = document.querySelector('meta[property="og:locale"]');
+				const metaOgTitle = document.querySelector('meta[property="og:title"]');
+				const metaOgDescription = document.querySelector('meta[property="og:description"]');
+				const metaTwitterTitle = document.querySelector('meta[name="twitter:title"]');
+				const metaTwitterDescription = document.querySelector('meta[name="twitter:description"]');
+				const jsonLd = document.querySelector('script[type="application/ld+json"]');
+
+				if (metaDescription) metaDescription.setAttribute("content", description);
+				if (metaOgLocale) metaOgLocale.setAttribute("content", locale);
+				if (metaOgTitle) metaOgTitle.setAttribute("content", title);
+				if (metaOgDescription) metaOgDescription.setAttribute("content", description);
+				if (metaTwitterTitle) metaTwitterTitle.setAttribute("content", title);
+				if (metaTwitterDescription) metaTwitterDescription.setAttribute("content", description);
+
+				if (jsonLd) {
+					jsonLd.textContent = JSON.stringify([
+						seoPersonSchema,
+						{
+							"@context": "https://schema.org",
+							"@type": "WebSite",
+							name: seoSiteName,
+							url: `${window.location.origin}${seoBasePath}`,
+							inLanguage: language,
+							description,
+						},
+					]);
+				}
+			};
+
+			const storedLanguage = localStorage.getItem("language");
+			if (storedLanguage === "es" || storedLanguage === "en") {
+				document.documentElement.lang = storedLanguage;
+			}
+
 			const initScrollAnimations = () => {
 				const animatedElements = Array.from(document.querySelectorAll<HTMLElement>("[data-aos]"));
 				if (animatedElements.length === 0) return;
@@ -94,6 +163,14 @@ const schemas = JSON.stringify([PERSON_SCHEMA, WEBSITE_SCHEMA]);
 				window.addEventListener("resize", requestUpdate);
 				document.addEventListener("languagechange", requestUpdate);
 			};
+
+			applySeo(getSeoLanguage());
+			document.addEventListener("languagechange", (event) => {
+				const language = event.detail?.language;
+				if (language === "es" || language === "en") {
+					applySeo(language);
+				}
+			});
 
 			if (document.readyState === "loading") {
 				document.addEventListener("DOMContentLoaded", initScrollAnimations, { once: true });
