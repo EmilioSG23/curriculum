@@ -11,13 +11,6 @@
 	src: url("./fonts/Just Another Hand.ttf") format("truetype");
 }*/
 
-@font-face {
-	font-family: "Cascadia";
-	font-style: normal;
-	font-weight: normal;
-	src: url("./fonts/Cascadia.ttf") format("truetype");
-}
-
 @layer base {
 	:root {
 		--color-primary: #00245a;

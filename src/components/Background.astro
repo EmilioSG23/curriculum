@@ -8,9 +8,10 @@
 		object-fit: cover;
 		background-size: 80%;
 		filter: brightness(0) saturate(100%) contrast(100%);
+		will-change: background-position, opacity;
 		animation:
-			moving 300s linear infinite,
-			degrading 10s ease-out infinite;
+			moving 420s linear infinite,
+			degrading 18s ease-in-out infinite;
 	}
 	html.dark #stars {
 		filter: brightness(1) saturate(100%) contrast(100%);
@@ -25,6 +26,7 @@
 	@media (max-width: 768px) {
 		#stars {
 			background-size: 200%;
+			animation-duration: 520s, 24s;
 		}
 	}
 
@@ -37,6 +39,7 @@
 	@media (max-width: 480px) {
 		#stars {
 			background-size: 350%;
+			animation-duration: 620s, 30s;
 		}
 	}
 	@media (max-width: 320px) {
@@ -95,10 +98,17 @@
 			opacity: 1;
 		}
 		50% {
-			opacity: 0.25;
+			opacity: 0.55;
 		}
 		100% {
 			opacity: 1;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		#stars {
+			animation: none;
+			background-position: 0 0;
 		}
 	}
 </style>
