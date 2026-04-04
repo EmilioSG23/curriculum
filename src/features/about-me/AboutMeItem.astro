@@ -13,7 +13,7 @@ const { icon, title, description, hasButton, age } = Astro.props;
 		<div
 			class="flex-[1] border-r-2 h-full w-1/2 border-neon flex flex-col justify-center items-center text-neon fill-neon"
 		>
-			<i class={icon + " hidden! sm:inline! text-[72px]"}></i>
+			<i class={icon + " hidden! sm:inline! text-[72px]"} aria-hidden="true"></i>
 			<p
 				class="mt-4 font-main text-center sm:w-auto rotate-180 sm:rotate-0 [writing-mode:vertical-rl] sm:[writing-mode:horizontal-tb]"
 				data-translate={title}
@@ -30,14 +30,14 @@ const { icon, title, description, hasButton, age } = Astro.props;
 			{
 				hasButton && (
 					<div class="flex items-center justify-center">
-						<a
-							href=""
-							class="cursor-pointer rounded-[5px] border-2 border-content my-3 py-2 text-center w-full sm:w-1/2 h-full flex items-center justify-center
-														hover:bg-content hover:text-background transition normal-case text-[12px] sm:text-[14px] pointer-events-none opacity-50"
+						<span
+							aria-disabled="true"
+							class="rounded-[5px] border-2 border-content my-3 py-2 text-center w-full sm:w-1/2 h-full flex items-center justify-center
+														normal-case text-[12px] sm:text-[14px] opacity-50"
 							data-translate="about-me.contact"
 						>
 							{t("about-me.contact")}
-						</a>
+						</span>
 					</div>
 				)
 			}

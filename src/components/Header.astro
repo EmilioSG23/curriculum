@@ -11,17 +11,21 @@ const toPath = (path: string) => {
 };
 ---
 
-<header class=`text-white sticky top-0 left-0 right-0 z-10 backdrop-blur-[3px]`>
-	<nav class="font-main bg-primary/50">
+	<header class=`text-white sticky top-0 left-0 right-0 z-10 backdrop-blur-[3px]`>
+	<nav class="font-main bg-primary/50" aria-label="Navegacion principal">
 		<div
 			id="mobileContainer"
 			class="md:hidden flex flex-wrap px-2 xs:p-2 sm:p-4 justify-between items-center"
 		>
 			<button
 				id="menuButton"
+				type="button"
+				aria-label="Abrir menu de navegacion"
+				aria-controls="menu"
+				aria-expanded="false"
 				class="p-1 xs:p-2 border border-gold rounded-md scale hover:text-gold transition cursor-pointer"
 			>
-				<i class="fa fa-bars"></i>
+				<i class="fa fa-bars" aria-hidden="true"></i>
 			</button>
 			<Logo />
 		</div>
@@ -103,11 +107,13 @@ const toPath = (path: string) => {
 
 		menuButton?.addEventListener("click", () => {
 			menu?.classList.toggle("open");
+			menuButton.setAttribute("aria-expanded", String(menu?.classList.contains("open") ?? false));
 		});
 
 		anchors.forEach((anchor) => {
 			anchor.onclick = (event) => {
 				menu?.classList.remove("open");
+				menuButton?.setAttribute("aria-expanded", "false");
 
 				const href = anchor.getAttribute("href");
 				if (!href?.startsWith("#")) return;

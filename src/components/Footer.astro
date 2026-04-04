@@ -36,7 +36,6 @@ const year = new Date().getFullYear();
 						aria-label={name}
 						target="_blank"
 						rel="noopener noreferrer"
-						role="tooltip"
 						class="relative group inline-block text-4xl bg-gray-300 text-black hover:brightness-150 transition p-2 rounded-2xl mx-1"
 					>
 						<i
@@ -44,8 +43,10 @@ const year = new Date().getFullYear();
 								"w-10 h-10": true,
 								[`fab fa-${icon}`]: true,
 							}}
+							aria-hidden="true"
 						/>
 						<span
+							aria-hidden="true"
 							class="absolute left-1/2 -translate-x-1/2 -top-8 
 								bg-white text-black text-xs font-bold 
 								py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition pointer-events-none"
@@ -53,6 +54,7 @@ const year = new Date().getFullYear();
 							{name}
 						</span>
 						<span
+							aria-hidden="true"
 							class="absolute left-1/2 -translate-x-1/2 -top-2 w-0 h-0 
 								border-l-[8px] border-l-transparent 
 								border-r-[8px] border-r-transparent 
