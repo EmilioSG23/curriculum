@@ -25,21 +25,22 @@
 
 	@media (max-width: 768px) {
 		#stars {
-			background-size: 200%;
-			animation-duration: 520s, 24s;
+			background-size: 180%;
+			background-position: center top;
+			will-change: opacity;
+			animation: degrading 20s ease-in-out infinite;
 		}
 	}
 
 	@media (max-width: 640px) {
 		#stars {
-			background-size: 250%;
+			background-size: 220%;
 		}
 	}
 
 	@media (max-width: 480px) {
 		#stars {
-			background-size: 350%;
-			animation-duration: 620s, 30s;
+			background-size: 280%;
 		}
 	}
 

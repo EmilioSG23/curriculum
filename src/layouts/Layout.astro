@@ -61,23 +61,44 @@ const schemas = JSON.stringify([PERSON_SCHEMA, WEBSITE_SCHEMA]);
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={imageUrl} />
 		<script type="application/ld+json" set:html={schemas}></script>
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link
-			href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
-			rel="stylesheet"
-		/>
 		<script>
-			import AOS from "aos";
+			const initScrollAnimations = () => {
+				const animatedElements = Array.from(document.querySelectorAll<HTMLElement>("[data-aos]"));
+				if (animatedElements.length === 0) return;
 
-			const initAOS = () => {
-				AOS.init({ duration: 600, offset: 200, once: true });
+				let ticking = false;
+
+				const updateAnimations = () => {
+					const triggerLine = window.scrollY + window.innerHeight;
+
+					animatedElements.forEach((element) => {
+						const offset = Number(element.dataset.aosOffset || 200);
+						const elementTop = element.getBoundingClientRect().top + window.scrollY;
+						const isVisible = triggerLine - offset >= elementTop;
+
+						element.classList.add("aos-init");
+						element.classList.toggle("aos-animate", isVisible);
+					});
+
+					ticking = false;
+				};
+
+				const requestUpdate = () => {
+					if (ticking) return;
+					ticking = true;
+					window.requestAnimationFrame(updateAnimations);
+				};
+
+				updateAnimations();
+				window.addEventListener("scroll", requestUpdate, { passive: true });
+				window.addEventListener("resize", requestUpdate);
+				document.addEventListener("languagechange", requestUpdate);
 			};
 
 			if (document.readyState === "loading") {
-				document.addEventListener("DOMContentLoaded", initAOS, { once: true });
+				document.addEventListener("DOMContentLoaded", initScrollAnimations, { once: true });
 			} else {
-				initAOS();
+				initScrollAnimations();
 			}
 		</script>
 	</head>
@@ -90,7 +111,6 @@ const schemas = JSON.stringify([PERSON_SCHEMA, WEBSITE_SCHEMA]);
 </html>
 
 <style>
-	@import url("https://fonts.googleapis.com/css2?family=Just+Another+Hand&display=swap");
 	html {
 		margin: 0;
 		width: 100%;
