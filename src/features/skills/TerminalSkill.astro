@@ -67,13 +67,13 @@ const { skills } = Astro.props;
 							(data) =>
 								data.display && (
 									<div class="flex flex-col items-center justify-center text-center transition hover:scale-110">
-									<img
-										loading="lazy"
-										src={`skills/${skill["id"]}/${data["id"]}.webp`}
-										class="w-8 h-8"
-										alt=""
-										aria-hidden="true"
-									/>
+										<img
+											loading="lazy"
+											src={`skills/${skill["id"]}/${data["id"]}.webp`}
+											class="w-8 h-8"
+											alt=""
+											aria-hidden="true"
+										/>
 										<p class="text-sm font-light">{data["name"]}</p>
 									</div>
 								),
@@ -84,7 +84,7 @@ const { skills } = Astro.props;
 		}
 		<p
 			id="helpSeleccion"
-			class="text-[12px] md:text-[16px] font-main font-extralight italic text-white/50"
+			class="text-[12px] md:text-[16px] font-main font-extralight italic! text-white/50"
 			data-translate="skills.window-select"
 		>
 			{t("skills.window-select")}
@@ -139,16 +139,16 @@ const { skills } = Astro.props;
 			button.addEventListener("click", () => {
 				$helpSeleccion?.remove();
 				const $divContents = document.querySelectorAll("div[id^='div-']");
-						$divContents.forEach((div) => {
-							const isCurrentDiv = div.id === `div-${SKILLS[index]["id"]}`;
-							div.classList.toggle("open", isCurrentDiv && !div.classList.contains("open"));
-							div.classList.toggle("close", !isCurrentDiv || div.classList.contains("open"));
-							const relatedButton = document.querySelector(
-								`button[aria-controls='${div.id}']`,
-							) as HTMLButtonElement | null;
-							relatedButton?.setAttribute("aria-expanded", String(div.classList.contains("open")));
-						});
-					});
+				$divContents.forEach((div) => {
+					const isCurrentDiv = div.id === `div-${SKILLS[index]["id"]}`;
+					div.classList.toggle("open", isCurrentDiv && !div.classList.contains("open"));
+					div.classList.toggle("close", !isCurrentDiv || div.classList.contains("open"));
+					const relatedButton = document.querySelector(
+						`button[aria-controls='${div.id}']`,
+					) as HTMLButtonElement | null;
+					relatedButton?.setAttribute("aria-expanded", String(div.classList.contains("open")));
 				});
+			});
+		});
 	});
 </script>
