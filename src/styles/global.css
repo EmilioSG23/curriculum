@@ -93,11 +93,6 @@
 	border-radius: 10px;
 }
 
-html {
-	-ms-overflow-style: none;
-	scrollbar-width: none;
-}
-
 .info-normal {
 	@apply text-[20px] xxs:text-[24px] xs:text-[36px] lg:text-[48px];
 }
