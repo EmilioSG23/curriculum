@@ -9,7 +9,7 @@
 	font-style: normal;
 	font-weight: 400;
 	font-display: swap;
-	src: url("./fonts/JetBrainsMono-Regular.ttf") format("truetype");
+	src: url("/curriculum/fonts/JetBrainsMono-Regular.ttf") format("truetype");
 }
 
 @font-face {
@@ -17,7 +17,7 @@
 	font-style: italic;
 	font-weight: 400;
 	font-display: swap;
-	src: url("./fonts/JetBrainsMono-Italic.woff2") format("woff2");
+	src: url("/curriculum/fonts/JetBrainsMono-Italic.woff2") format("woff2");
 }
 
 @font-face {
@@ -25,7 +25,7 @@
 	font-style: normal;
 	font-weight: 700;
 	font-display: swap;
-	src: url("./fonts/JetBrainsMono-Bold.ttf") format("truetype");
+	src: url("/curriculum/fonts/JetBrainsMono-Bold.ttf") format("truetype");
 }
 
 @font-face {
@@ -33,7 +33,7 @@
 	font-style: normal;
 	font-weight: 400;
 	font-display: swap;
-	src: url("./fonts/JustAnotherHand-Regular.woff2") format("woff2");
+	src: url("/curriculum/fonts/JustAnotherHand-Regular.woff2") format("woff2");
 }
 
 @layer base {
