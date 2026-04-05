@@ -132,7 +132,9 @@ const schemas = JSON.stringify([PERSON_SCHEMA, getWebsiteSchema(seoDefaultLangua
 			}
 
 			const initScrollAnimations = () => {
-				const animatedElements = Array.from(document.querySelectorAll<HTMLElement>("[data-aos]"));
+				const animatedElements = Array.from(document.querySelectorAll("[data-aos]")).filter(
+					(element) => element instanceof HTMLElement,
+				);
 				if (animatedElements.length === 0) return;
 
 				let ticking = false;
