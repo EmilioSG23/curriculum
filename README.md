@@ -1,48 +1,61 @@
-# Astro Starter Kit: Basics
+# Personal Website — Curriculum
 
-```sh
-npm create astro@latest -- --template basics
+This repository contains my personal website (curriculum) built with Astro and Tailwind CSS. It is designed to showcase experience, projects, skills and contact information, with built-in i18n support (English/Spanish).
+
+## Highlights
+
+- **Framework:** Astro
+- **Styling:** Tailwind CSS
+- **Localization data:** `public/languages`
+
+## Key structure
+
+- `src/pages` — site pages (e.g. `index.astro`)
+- `src/components` — reusable components (Header, Footer, sections)
+- `src/features` — content modules (projects, skills, experience)
+- `public` — public assets (images, fonts, language files)
+
+## Requirements
+
+- Node.js 18+ (recommended)
+- npm or pnpm
+
+## Install & Run (development)
+
+```bash
+npm install
+npm run dev
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+Open `http://localhost:4321/curriculum` (or the port shown by Astro) to preview locally.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Build & Preview (production)
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+npm run build
+npm run preview
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+Production output is generated in `dist/` and can be deployed to Vercel, Netlify or any static host.
 
-## 🧞 Commands
+## Content editing
 
-All commands are run from the root of the project, from a terminal:
+- Translations: `public/languages/en.json` and `public/languages/es.json`.
+- Projects, experience and skills: edit `src/features/*/data.ts`.
+- Visual components: `src/components` and `src/components/sections`.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Language (README)
 
-## 👀 Want to learn more?
+This `README.md` is the English version. A Spanish version is available in `README.es.md`.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Socials
+
+- GitHub: https://github.com/EmilioSG23
+- GitLab: https://gitlab.com/EmilioSG23
+- LinkedIn: https://www.linkedin.com/in/emilio-s%C3%A1enz-g%C3%B3mez-4205b02b9/
+
+## Contributing
+
+If you want to suggest changes or improvements, open an issue or send a pull request. If you'd like me to add sections (e.g., blog, CV download), tell me and I'll add them.
+
+---
