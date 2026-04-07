@@ -1,0 +1,183 @@
+---
+interface Props {
+	/** Unique identifier — used to wire prev/next/dots to the right track. */
+	id: string;
+	/**
+	 * Half the width of each item at the sm breakpoint.
+	 * Used to keep the active item centred in the track.
+	 * Defaults to "9rem" which matches `sm:w-72` (18rem / 2).
+	 */
+	itemHalfWidth?: string;
+}
+
+const { id, itemHalfWidth = "9rem" } = Astro.props;
+---
+
+<div class="carousel-root" style={`--item-half-w: ${itemHalfWidth}`}>
+	<!-- Wrapper with arrows -->
+	<div data-carousel={id} class="carousel-wrapper relative" data-aos="fade">
+		<button
+			data-carousel-prev
+			type="button"
+			aria-label="Anterior"
+			class="carousel-arrow hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10
+				items-center justify-center size-8 rounded-full
+				bg-background border border-neon text-neon hover:bg-hover cursor-pointer"
+		>
+			<svg viewBox="0 0 24 24" fill="none" class="size-4" aria-hidden="true">
+				<path
+					d="M15 18l-6-6 6-6"
+					stroke="currentColor"
+					stroke-width="2.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"></path>
+			</svg>
+		</button>
+
+		<div
+			data-carousel-track
+			class="carousel-track flex gap-4 overflow-x-auto snap-x snap-mandatory px-2 py-1"
+		>
+			<slot />
+		</div>
+
+		<button
+			data-carousel-next
+			type="button"
+			aria-label="Siguiente"
+			class="carousel-arrow hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10
+				items-center justify-center size-8 rounded-full
+				bg-background border border-neon text-neon hover:bg-hover cursor-pointer"
+		>
+			<svg viewBox="0 0 24 24" fill="none" class="size-4" aria-hidden="true">
+				<path
+					d="M9 18l6-6-6-6"
+					stroke="currentColor"
+					stroke-width="2.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"></path>
+			</svg>
+		</button>
+	</div>
+
+	<!-- Dots — populated by the script at runtime -->
+	<div data-carousel-dots={id} class="flex justify-center gap-2 mt-4"></div>
+</div>
+
+<style>
+	.carousel-track {
+		scroll-behavior: smooth;
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+	}
+	.carousel-track::-webkit-scrollbar {
+		display: none;
+	}
+
+	@media (min-width: 640px) {
+		.carousel-track {
+			padding-inline: calc(50% - var(--item-half-w));
+			scroll-padding-inline: calc(50% - var(--item-half-w));
+		}
+	}
+
+	/* Arrows: only visible on wrapper hover */
+	.carousel-arrow {
+		opacity: 0;
+		transition:
+			opacity 200ms ease,
+			background-color 150ms ease;
+	}
+	.carousel-wrapper:hover .carousel-arrow {
+		opacity: 1;
+	}
+
+	/* Dots */
+	:global(.carousel-dot) {
+		width: 0.5rem;
+		height: 0.5rem;
+		border-radius: 9999px;
+		background-color: var(--color-neon);
+		opacity: 0.35;
+		cursor: pointer;
+		transition:
+			width 300ms ease,
+			opacity 300ms ease;
+	}
+	:global(.carousel-dot[data-active="true"]) {
+		width: 1.25rem;
+		opacity: 1;
+	}
+</style>
+
+<script>
+	function initCarousel(wrapper: HTMLElement) {
+		const track = wrapper.querySelector<HTMLElement>("[data-carousel-track]");
+		if (!track) return;
+
+		const prevBtn = wrapper.querySelector<HTMLElement>("[data-carousel-prev]");
+		const nextBtn = wrapper.querySelector<HTMLElement>("[data-carousel-next]");
+		const carouselId = wrapper.dataset.carousel!;
+		const dotsContainer = document.querySelector<HTMLElement>(
+			`[data-carousel-dots="${carouselId}"]`,
+		);
+
+		const items = Array.from(track.querySelectorAll<HTMLElement>(":scope > *"));
+		let currentIndex = 0;
+
+		// Build dots dynamically from the actual number of items
+		if (items.length > 1 && dotsContainer) {
+			items.forEach((_, i) => {
+				const dot = document.createElement("button");
+				dot.type = "button";
+				dot.className = "carousel-dot";
+				dot.dataset.active = i === 0 ? "true" : "false";
+				dot.setAttribute("aria-label", `Ir al elemento ${i + 1}`);
+				dot.addEventListener("click", () => goTo(i));
+				dotsContainer.appendChild(dot);
+			});
+		}
+
+		function getDots() {
+			return dotsContainer
+				? Array.from(dotsContainer.querySelectorAll<HTMLElement>(".carousel-dot"))
+				: [];
+		}
+
+		function getItemWidth(): number {
+			const first = items[0];
+			if (!first) return 0;
+			return first.getBoundingClientRect().width + 16; // 16px = gap-4
+		}
+
+		function goTo(index: number) {
+			currentIndex = Math.max(0, Math.min(index, items.length - 1));
+			track!.scrollTo({ left: currentIndex * getItemWidth(), behavior: "smooth" });
+			syncDots(currentIndex);
+		}
+
+		function syncDots(active: number) {
+			getDots().forEach((dot, i) => {
+				dot.dataset.active = i === active ? "true" : "false";
+			});
+		}
+
+		prevBtn?.addEventListener("click", () => goTo(currentIndex - 1));
+		nextBtn?.addEventListener("click", () => goTo(currentIndex + 1));
+
+		let scrollTimer: ReturnType<typeof setTimeout>;
+		track.addEventListener("scroll", () => {
+			clearTimeout(scrollTimer);
+			scrollTimer = setTimeout(() => {
+				const iw = getItemWidth();
+				if (iw > 0) {
+					const idx = Math.round(track.scrollLeft / iw);
+					currentIndex = Math.max(0, Math.min(idx, items.length - 1));
+					syncDots(currentIndex);
+				}
+			}, 50);
+		});
+	}
+
+	document.querySelectorAll<HTMLElement>("[data-carousel]").forEach(initCarousel);
+</script>
