@@ -1,24 +1,17 @@
 ---
 import Section from "@/components/sections/Section.astro";
+import { PERSONAL_SKILLS } from "@/data/personal-skills";
+import { SKILLS } from "@/data/skills";
 import PersonalSkills from "@/features/skills/PersonalSkills.astro";
 import TerminalSkill from "@/features/skills/TerminalSkill.astro";
-import { SKILLS } from "@/features/skills/data";
 import { useT } from "@/i18n/utils";
 
 const t = useT();
-
-const HABILIDADES_PERSONALES = [
-	"skills.personal-skill-1",
-	"skills.personal-skill-2",
-	"skills.personal-skill-3",
-	"skills.personal-skill-4",
-	"skills.personal-skill-5",
-];
 ---
 
 <Section id="skills">
 	<div class="flex flex-col justify-center w-full gap-10 my-5 mt-20 lg:flex-row">
 		<TerminalSkill skills={SKILLS} />
-		<PersonalSkills skills={HABILIDADES_PERSONALES} />
+		<PersonalSkills skills={PERSONAL_SKILLS} />
 	</div>
 </Section>

@@ -1,10 +1,8 @@
 ---
 import ProjectItem from "@/features/projects/ProjectItem.astro";
-import Arrow from "@/components/sections/Arrow.astro";
-import HeaderSection from "@/components/sections/HeaderSection.astro";
-import { PROJECTS } from "@/features/projects/data";
 import { useT } from "@/i18n/utils";
 import Section from "@/components/sections/Section.astro";
+import { PROJECTS } from "@/data/projects";
 const t = useT();
 ---
 
@@ -79,9 +77,15 @@ const t = useT();
 		const descriptionButtons = Array.from(
 			document.querySelectorAll<HTMLButtonElement>("[data-project-info-button]"),
 		);
-		const descriptionProjects = Array.from(document.querySelectorAll<HTMLElement>("div[id$='-description']"));
-		const descriptionImages = Array.from(document.querySelectorAll<HTMLElement>("img[id$='-image']"));
-		const languageProjects = Array.from(document.querySelectorAll<HTMLElement>("[data-language-project]"));
+		const descriptionProjects = Array.from(
+			document.querySelectorAll<HTMLElement>("div[id$='-description']"),
+		);
+		const descriptionImages = Array.from(
+			document.querySelectorAll<HTMLElement>("img[id$='-image']"),
+		);
+		const languageProjects = Array.from(
+			document.querySelectorAll<HTMLElement>("[data-language-project]"),
+		);
 		const languageNames = Array.from(
 			document.querySelectorAll<HTMLElement>("[data-language-span-content]"),
 		);
