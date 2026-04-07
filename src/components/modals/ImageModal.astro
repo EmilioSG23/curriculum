@@ -1,0 +1,93 @@
+---
+import Modal from "@/components/modals/Modal.astro";
+
+interface Props {
+	id: string;
+	/** Atributo data-* en los botones disparadores, ej: "data-rec-image" */
+	triggerAttr?: string;
+	/** Atributo data-* con el texto alternativo, ej: "data-rec-title" */
+	titleAttr?: string;
+}
+
+const { id, triggerAttr = "data-image-src", titleAttr = "data-image-title" } = Astro.props;
+---
+
+<Modal id={id} ariaLabel="Imagen ampliada">
+	<img
+		id={`${id}-img`}
+		src=""
+		alt=""
+		class="max-w-[90vw] max-h-[90dvh] object-contain rounded-lg shadow-2xl
+			origin-center cursor-zoom-in"
+		style="touch-action: pinch-zoom;"
+		draggable="false"
+	/>
+</Modal>
+
+<!-- Animación de entrada: is:global para salvar el scope de slots -->
+<style is:global>
+	dialog[data-modal][open] img {
+		animation: img-modal-in 250ms ease forwards;
+	}
+	@keyframes img-modal-in {
+		from {
+			transform: scale(0.92);
+			opacity: 0;
+		}
+		to {
+			transform: scale(1);
+			opacity: 1;
+		}
+	}
+</style>
+
+<script define:vars={{ id, triggerAttr, titleAttr }}>
+	var dialog = document.getElementById(id);
+	var img = document.getElementById(id + "-img");
+
+	function openImageModal(src, alt) {
+		if (!dialog || !img) return;
+		img.src = src;
+		img.alt = alt;
+		img.style.transform = "scale(1)";
+		img.style.cursor = "zoom-in";
+		dialog.showModal();
+		document.body.style.overflow = "hidden";
+	}
+
+	// Disparadores: cualquier elemento con el atributo triggerAttr
+	document.querySelectorAll("[" + triggerAttr + "]").forEach(function (btn) {
+		btn.addEventListener("click", function () {
+			openImageModal(btn.getAttribute(triggerAttr) || "", btn.getAttribute(titleAttr) || "");
+		});
+	});
+
+	// ── Zoom con rueda del ratón (desktop) ──────────────────────────────────
+	var zoomLevel = 1;
+	var MIN_ZOOM = 1;
+	var MAX_ZOOM = 4;
+
+	if (dialog) {
+		dialog.addEventListener(
+			"wheel",
+			function (e) {
+				e.preventDefault();
+				zoomLevel = Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, zoomLevel - e.deltaY * 0.002));
+				if (img) {
+					img.style.transform = "scale(" + zoomLevel + ")";
+					img.style.cursor = zoomLevel > 1 ? "zoom-out" : "zoom-in";
+				}
+			},
+			{ passive: false },
+		);
+
+		// Resetear zoom al cerrar
+		dialog.addEventListener("close", function () {
+			zoomLevel = 1;
+			if (img) {
+				img.style.transform = "scale(1)";
+				img.style.cursor = "zoom-in";
+			}
+		});
+	}
+</script>

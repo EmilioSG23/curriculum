@@ -4,3 +4,10 @@ export interface Experience {
 	time: string;
 	description: string;
 }
+
+export interface Recognition {
+	image: string;
+	titleKey: string;
+	issuerKey: string;
+	dateKey: string;
+}

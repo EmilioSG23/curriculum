@@ -1,0 +1,198 @@
+---
+import RecognitionItem from "@/features/experience/RecognitionItem.astro";
+import ImageModal from "@/components/modals/ImageModal.astro";
+import { RECOGNITIONS } from "@/features/experience/data";
+import { useT } from "@/i18n/utils";
+
+const t = useT();
+---
+
+<div class="w-full max-w-4xl mt-12" data-aos="fade">
+	<!-- Cabecera con separador -->
+	<div class="flex items-center gap-4 mb-6 px-2">
+		<div class="h-px flex-1 bg-neon opacity-30"></div>
+		<h2
+			class="font-main text-[18px] sm:text-[20px] font-bold text-neon uppercase tracking-widest"
+			data-translate="experience.recognitions.title"
+		>
+			{t("experience.recognitions.title")}
+		</h2>
+		<div class="h-px flex-1 bg-neon opacity-30"></div>
+	</div>
+
+	<!-- Wrapper del carousel -->
+	<div id="rec-carousel" class="relative">
+		<!-- Flecha izquierda (solo desktop) -->
+		<button
+			id="rec-prev"
+			type="button"
+			aria-label="Reconocimiento anterior"
+			class="rec-arrow hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10
+				items-center justify-center size-8 rounded-full
+				bg-background border border-neon text-neon hover:bg-hover cursor-pointer"
+		>
+			<svg viewBox="0 0 24 24" fill="none" class="size-4" aria-hidden="true">
+				<path
+					d="M15 18l-6-6 6-6"
+					stroke="currentColor"
+					stroke-width="2.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"></path>
+			</svg>
+		</button>
+
+		<!-- Track desplazable -->
+		<div id="rec-track" class="flex gap-4 overflow-x-auto snap-x snap-mandatory px-2 pb-1">
+			{
+				RECOGNITIONS.map(({ image, titleKey, issuerKey, dateKey }) => (
+					<div class="snap-center shrink-0 w-[min(300px,_calc(100%-1rem))] sm:w-72">
+						<RecognitionItem
+							image={image}
+							titleKey={titleKey}
+							issuerKey={issuerKey}
+							dateKey={dateKey}
+						/>
+					</div>
+				))
+			}
+		</div>
+
+		<!-- Flecha derecha (solo desktop) -->
+		<button
+			id="rec-next"
+			type="button"
+			aria-label="Reconocimiento siguiente"
+			class="rec-arrow hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10
+				items-center justify-center size-8 rounded-full
+				bg-background border border-neon text-neon hover:bg-hover cursor-pointer"
+		>
+			<svg viewBox="0 0 24 24" fill="none" class="size-4" aria-hidden="true">
+				<path
+					d="M9 18l6-6-6-6"
+					stroke="currentColor"
+					stroke-width="2.5"
+					stroke-linecap="round"
+					stroke-linejoin="round"></path>
+			</svg>
+		</button>
+	</div>
+
+	<!-- Indicadores de puntos -->
+	{
+		RECOGNITIONS.length > 1 && (
+			<div id="rec-dots" class="flex justify-center gap-2 mt-4">
+				{RECOGNITIONS.map((_, i) => (
+					<button
+						type="button"
+						class="rec-dot h-2 rounded-full cursor-pointer"
+						data-index={String(i)}
+						data-active={i === 0 ? "true" : "false"}
+						aria-label={`Ir al reconocimiento ${i + 1}`}
+					/>
+				))}
+			</div>
+		)
+	}
+</div>
+
+<style>
+	#rec-track {
+		scroll-behavior: smooth;
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+	}
+	/* Centrado: cada ítem puede quedar centrado al snappear */
+	@media (min-width: 640px) {
+		#rec-track {
+			padding-inline: calc(50% - 9rem); /* 9rem = 144px = mitad de sm:w-72 */
+			scroll-padding-inline: calc(50% - 9rem);
+		}
+	}
+	#rec-track::-webkit-scrollbar {
+		display: none;
+	}
+
+	/* Flechas: visibles solo al hacer hover sobre el carousel */
+	.rec-arrow {
+		opacity: 0;
+		transition: opacity 200ms ease;
+	}
+	#rec-carousel:hover .rec-arrow {
+		opacity: 1;
+	}
+
+	/* Flechas: transición propia de bg */
+	.rec-arrow {
+		transition:
+			opacity 200ms ease,
+			background-color 150ms ease;
+	}
+
+	/* Puntos indicadores */
+	.rec-dot {
+		width: 0.5rem;
+		background-color: var(--color-neon);
+		opacity: 0.35;
+		transition:
+			width 300ms ease,
+			opacity 300ms ease;
+	}
+	.rec-dot[data-active="true"] {
+		width: 1.25rem;
+		opacity: 1;
+	}
+</style>
+
+<script>
+	const track = document.getElementById("rec-track") as HTMLElement | null;
+	const prevBtn = document.getElementById("rec-prev");
+	const nextBtn = document.getElementById("rec-next");
+	const dots = document.querySelectorAll<HTMLElement>(".rec-dot");
+
+	if (!track) throw new Error("rec-track no encontrado");
+
+	const items = Array.from(track.querySelectorAll<HTMLElement>(":scope > div"));
+	let currentIndex = 0;
+
+	function getItemWidth(): number {
+		const first = items[0];
+		if (!first) return 0;
+		// ancho del item + gap (gap-4 = 16px)
+		return first.getBoundingClientRect().width + 16;
+	}
+
+	function goTo(index: number) {
+		currentIndex = Math.max(0, Math.min(index, items.length - 1));
+		track!.scrollTo({ left: currentIndex * getItemWidth(), behavior: "smooth" });
+		syncDots(currentIndex);
+	}
+
+	function syncDots(active: number) {
+		dots.forEach((dot, i) => {
+			dot.dataset.active = i === active ? "true" : "false";
+		});
+	}
+
+	prevBtn?.addEventListener("click", () => goTo(currentIndex - 1));
+	nextBtn?.addEventListener("click", () => goTo(currentIndex + 1));
+
+	dots.forEach((dot) => {
+		dot.addEventListener("click", () => goTo(Number(dot.dataset.index)));
+	});
+
+	// Sincronizar puntos al hacer scroll manual/táctil
+	let scrollTimer: ReturnType<typeof setTimeout>;
+	track.addEventListener("scroll", () => {
+		clearTimeout(scrollTimer);
+		scrollTimer = setTimeout(() => {
+			const iw = getItemWidth();
+			if (iw > 0) {
+				const idx = Math.round(track.scrollLeft / iw);
+				currentIndex = Math.max(0, Math.min(idx, items.length - 1));
+				syncDots(currentIndex);
+			}
+		}, 50);
+	});
+</script>
+
+<ImageModal id="rec-recognition-modal" triggerAttr="data-rec-image" titleAttr="data-rec-title" />

@@ -1,0 +1,62 @@
+---
+interface Props {
+	id: string;
+	ariaLabel?: string;
+}
+
+const { id, ariaLabel = "Modal" } = Astro.props;
+---
+
+<dialog
+	id={id}
+	data-modal
+	class="bg-transparent border-0 p-0 outline-none max-w-none max-h-none
+		w-screen h-[100dvh] overflow-hidden flex items-center justify-center
+		backdrop:bg-black/40 backdrop:backdrop-blur-sm"
+	aria-label={ariaLabel}
+>
+	<button
+		type="button"
+		data-modal-close
+		aria-label="Cerrar"
+		class="absolute top-4 right-4 z-50 flex items-center justify-center size-9 rounded-full
+			bg-background/80 border border-neon text-neon hover:bg-hover cursor-pointer
+			transition-colors duration-150"
+	>
+		<i class="fas fa-times text-sm" aria-hidden="true"></i>
+	</button>
+
+	<slot />
+</dialog>
+
+<style>
+	dialog[data-modal] {
+		position: fixed;
+		inset: 0;
+		margin: auto;
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity 250ms ease;
+	}
+	dialog[data-modal][open] {
+		opacity: 1;
+		pointer-events: auto;
+	}
+</style>
+
+<script>
+	document.querySelectorAll<HTMLDialogElement>("dialog[data-modal]").forEach((dialog) => {
+		const closeBtn = dialog.querySelector<HTMLButtonElement>("[data-modal-close]");
+
+		function closeModal() {
+			dialog.close();
+			document.body.style.overflow = "";
+		}
+
+		closeBtn?.addEventListener("click", closeModal);
+		dialog.addEventListener("click", (e) => {
+			if (e.target === dialog) closeModal();
+		});
+		dialog.addEventListener("cancel", closeModal);
+	});
+</script>

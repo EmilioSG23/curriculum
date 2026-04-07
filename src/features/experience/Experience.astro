@@ -1,5 +1,6 @@
 ---
 import ExperienceItem from "@/features/experience/ExperienceItem.astro";
+import Recognitions from "@/features/experience/Recognitions.astro";
 import Arrow from "@/components/sections/Arrow.astro";
 import HeaderSection from "@/components/sections/HeaderSection.astro";
 import { useT } from "@/i18n/utils";
@@ -57,6 +58,7 @@ const t = useT();
 		</div>
 		<span id="span-btn-experience-list"> Mostrar más </span>
 	</button>
+	<Recognitions />
 </Section>
 
 <style>
@@ -138,10 +140,9 @@ const t = useT();
 			$arrow?.classList.add("-rotate-90");
 			collapsedList = true;
 		}
-		(document.querySelector("#btn-experience-list-collapse") as HTMLButtonElement | null)?.setAttribute(
-			"aria-expanded",
-			String(!collapsedList),
-		);
+		(
+			document.querySelector("#btn-experience-list-collapse") as HTMLButtonElement | null
+		)?.setAttribute("aria-expanded", String(!collapsedList));
 		updateToggleButtonText();
 	}
 
