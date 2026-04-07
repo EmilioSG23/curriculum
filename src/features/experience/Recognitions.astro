@@ -7,9 +7,9 @@ import { useT } from "@/i18n/utils";
 const t = useT();
 ---
 
-<div class="w-full max-w-4xl mt-12" data-aos="fade">
+<div class="w-full max-w-4xl mt-12">
 	<!-- Cabecera con separador -->
-	<div class="flex items-center gap-4 mb-6 px-2">
+	<div class="flex items-center gap-4 mb-6 px-2" data-aos="fade">
 		<div class="h-px flex-1 bg-neon opacity-30"></div>
 		<h2
 			class="font-main text-[18px] sm:text-[20px] font-bold text-neon uppercase tracking-widest"
@@ -21,8 +21,7 @@ const t = useT();
 	</div>
 
 	<!-- Wrapper del carousel -->
-	<div id="rec-carousel" class="relative">
-		<!-- Flecha izquierda (solo desktop) -->
+	<div id="rec-carousel" class="relative" data-aos="fade">
 		<button
 			id="rec-prev"
 			type="button"
@@ -41,8 +40,7 @@ const t = useT();
 			</svg>
 		</button>
 
-		<!-- Track desplazable -->
-		<div id="rec-track" class="flex gap-4 overflow-x-auto snap-x snap-mandatory px-2 pb-1">
+		<div id="rec-track" class="flex gap-4 overflow-x-auto snap-x snap-mandatory px-2 py-1">
 			{
 				RECOGNITIONS.map(({ image, titleKey, issuerKey, dateKey }) => (
 					<div class="snap-center shrink-0 w-[min(300px,_calc(100%-1rem))] sm:w-72">
@@ -57,7 +55,6 @@ const t = useT();
 			}
 		</div>
 
-		<!-- Flecha derecha (solo desktop) -->
 		<button
 			id="rec-next"
 			type="button"

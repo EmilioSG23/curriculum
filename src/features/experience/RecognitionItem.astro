@@ -8,7 +8,6 @@ const { image, titleKey, issuerKey, dateKey } = Astro.props;
 <button
 	type="button"
 	class="recognition-card group flex flex-col rounded-lg overflow-hidden border bg-background cursor-pointer w-full h-full text-left"
-	data-aos="fade-up"
 	data-rec-image={image}
 	data-rec-title={t(titleKey as keyof typeof t)}
 	aria-label={`Ver certificado: ${t(titleKey as keyof typeof t)}`}
