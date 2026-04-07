@@ -1,6 +1,9 @@
 import type { Experience, Recognition } from "@/features/experience/types";
 
 /* eslint-disable */
+
+// Lista de experiencias laborales/académicas ordenadas de más reciente a más antigua.
+// Los campos `position`, `time` y `description` son claves i18n resueltas en runtime.
 export const EXPERIENCE: Experience[] = [
 	{
 		place: "PackVip S.A.S.",
@@ -30,17 +33,19 @@ export const EXPERIENCE: Experience[] = [
 
 import { BASE_URL } from "@/config";
 
+// Lista de reconocimientos y certificados obtenidos.
+// El campo `image` usa BASE_URL para ser compatible con el path base de GitHub Pages.
 export const RECOGNITIONS: Recognition[] = [
 	{
 		image: `${BASE_URL}titles/Finalista-5min-Pitch-Emilio-Saenz.webp`,
-		titleKey: "experience.rec-1.title",
-		issuerKey: "experience.rec-1.issuer",
-		dateKey: "experience.rec-1.date",
+		title: "experience.rec-1.title",
+		issuer: "ESPOL",
+		date: "2026",
 	},
 	{
 		image: `${BASE_URL}titles/ReconocimientoPracticasComunitarias-Emilio-Saenz.webp`,
-		titleKey: "experience.rec-2.title",
-		issuerKey: "experience.rec-2.issuer",
-		dateKey: "experience.rec-2.date",
+		title: "experience.rec-2.title",
+		issuer: "ESPOL",
+		date: "2025",
 	},
 ];

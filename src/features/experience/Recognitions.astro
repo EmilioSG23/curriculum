@@ -23,14 +23,9 @@ const t = useT();
 
 	<Carrousel id="recognitions" itemHalfWidth="9rem">
 		{
-			RECOGNITIONS.map(({ image, titleKey, issuerKey, dateKey }) => (
+			RECOGNITIONS.map(({ image, title, issuer, date }) => (
 				<div class="snap-center shrink-0 w-[min(300px,_calc(100%-1rem))] sm:w-72">
-					<RecognitionItem
-						image={image}
-						titleKey={titleKey}
-						issuerKey={issuerKey}
-						dateKey={dateKey}
-					/>
+					<RecognitionItem image={image} title={title} issuer={issuer} date={date} />
 				</div>
 			))
 		}
