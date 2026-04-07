@@ -1,6 +1,6 @@
 /* eslint-disable */
-import esContent from "../../public/languages/es.json";
-import enContent from "../../public/languages/en.json";
+import enContent from "@/languages/en.json";
+import esContent from "@/languages/es.json";
 
 export const languages = {
 	en: "English",
