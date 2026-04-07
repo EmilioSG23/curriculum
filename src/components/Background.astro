@@ -1,10 +1,18 @@
+---
+import { BASE_URL } from "@/config";
+---
+
 <div class="fixed inset-0 bg-background -z-10 pointer-events-none transition">
-	<div id="stars" class="fixed inset-0 -z-9"></div>
+	<div
+		id="stars"
+		class="fixed inset-0 -z-9"
+		style={`background-image: url("${BASE_URL}stars.webp")`}
+	>
+	</div>
 </div>
 
 <style>
 	#stars {
-		background-image: url("/curriculum/stars.webp");
 		object-fit: cover;
 		background-size: 80%;
 		filter: brightness(0) saturate(100%) contrast(100%);

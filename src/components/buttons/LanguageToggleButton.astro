@@ -1,5 +1,5 @@
 ---
-
+import { BASE_URL } from "@/config";
 ---
 
 <button
@@ -12,7 +12,7 @@
 >
 	<img
 		id="spanishToggle"
-		src="/curriculum/flags/es.webp"
+		src={`${BASE_URL}flags/es.webp`}
 		data-language="es"
 		class="activeToggle"
 		alt=""
@@ -20,7 +20,7 @@
 	/>
 	<img
 		id="englishToggle"
-		src="/curriculum/flags/en.webp"
+		src={`${BASE_URL}flags/en.webp`}
 		data-language="en"
 		class="inactiveToggle"
 		alt=""

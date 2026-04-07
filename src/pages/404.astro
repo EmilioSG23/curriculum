@@ -2,6 +2,7 @@
 import { useT } from "@/i18n/utils";
 import { ui } from "@/i18n/ui";
 import Layout from "@/layouts/Layout.astro";
+import { BASE_URL } from "@/config";
 
 const t = useT();
 const seoText = ui.en;
@@ -24,8 +25,7 @@ const seo = {
 				>
 					<i
 						class="fas fa-exclamation-triangle text-red-500 border-content text-[80px] sm:text-[128px]"
-						aria-hidden="true"
-					></i>
+						aria-hidden="true"></i>
 					<span class="text-[40px] sm:text-[64px]">Error 404</span>
 				</div>
 				<div class="flex flex-col text-center justify-center items-center">
@@ -36,7 +36,7 @@ const seo = {
 						{t("404.go-back")}
 					</p>
 					<a
-						href="/curriculum/"
+						href={BASE_URL}
 						class="mt-10 cursor-pointer bg-neon text-background rounded-[15px] p-2 m-2 text-center w-[75%] sm:w-1/2 flex items-center justify-center
 										gap-x-2 sm:text-[28px]
 										hover:brightness-125 hover:text-background transition"

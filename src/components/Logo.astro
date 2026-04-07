@@ -1,6 +1,7 @@
 ---
+import { BASE_URL } from "@/config";
 const toPath = (path: string) => {
-	return Astro.url.pathname !== "/curriculum/" ? "/curriculum/" : path;
+	return Astro.url.pathname !== BASE_URL ? BASE_URL : path;
 };
 ---
 
@@ -11,6 +12,11 @@ const toPath = (path: string) => {
         scale-[1.5] hover:scale-[1.75] sm:scale-[2] sm:hover:scale-[2.25] md:scale-[2.25] md:hover:scale-[2.5] lg:scale-[2.5] hover:lg:scale-[2.75]
         translate-y-1 sm:translate-y-2 md:translate-y-1 lg:translate-y-3"
 >
-	<img class="absolute top-0 left-0" src="/curriculum/logo-background.webp" alt="" aria-hidden="true" />
+	<img
+		class="absolute top-0 left-0"
+		src={`${BASE_URL}logo-background.webp`}
+		alt=""
+		aria-hidden="true"
+	/>
 	<p class="relative flex z-30 font-bold items-center">E<span class="text-[25px]">S</span>G</p>
 </a>

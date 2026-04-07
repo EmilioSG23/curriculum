@@ -4,14 +4,16 @@ import LanguageToogleButton from "@/components/buttons/LanguageToggleButton.astr
 import ThemeToggleButton from "@/components/buttons/ThemeToggleButton.astro";
 import Logo from "@/components/Logo.astro";
 
+import { BASE_URL } from "@/config";
+
 const t = useT();
 
 const toPath = (path: string) => {
-	return Astro.url.pathname !== "/curriculum/" ? "/curriculum/" : path;
+	return Astro.url.pathname !== BASE_URL ? BASE_URL : path;
 };
 ---
 
-	<header class=`text-white sticky top-0 left-0 right-0 z-10 backdrop-blur-[3px]`>
+<header class=`text-white sticky top-0 left-0 right-0 z-10 backdrop-blur-[3px]`>
 	<nav class="font-main bg-primary/50" aria-label="Navegacion principal">
 		<div
 			id="mobileContainer"
@@ -93,14 +95,19 @@ const toPath = (path: string) => {
 		});
 
 		anchors.forEach((anchor) => {
-			anchor.classList.toggle("active", activeId !== "info" && anchor.getAttribute("href") === `#${activeId}`);
+			anchor.classList.toggle(
+				"active",
+				activeId !== "info" && anchor.getAttribute("href") === `#${activeId}`,
+			);
 		});
 	}
 
 	function setupHeaderInteractions() {
 		const menu = document.getElementById("menu");
 		const menuButton = document.getElementById("menuButton");
-		const anchors = Array.from(document.querySelectorAll<HTMLAnchorElement>('#menu a, a[href^="#"]'));
+		const anchors = Array.from(
+			document.querySelectorAll<HTMLAnchorElement>('#menu a, a[href^="#"]'),
+		);
 
 		moveToggleButton();
 		updateActiveSection();

@@ -4,38 +4,6 @@
 
 @tailwind utilities;
 
-@font-face {
-	font-family: "JetBrains Mono";
-	font-style: normal;
-	font-weight: 400;
-	font-display: swap;
-	src: url("/curriculum/fonts/JetBrainsMono-Regular.ttf") format("truetype");
-}
-
-@font-face {
-	font-family: "JetBrains Mono";
-	font-style: italic;
-	font-weight: 400;
-	font-display: swap;
-	src: url("/curriculum/fonts/JetBrainsMono-Italic.woff2") format("woff2");
-}
-
-@font-face {
-	font-family: "JetBrains Mono";
-	font-style: normal;
-	font-weight: 700;
-	font-display: swap;
-	src: url("/curriculum/fonts/JetBrainsMono-Bold.ttf") format("truetype");
-}
-
-@font-face {
-	font-family: "Just Another Hand";
-	font-style: normal;
-	font-weight: 400;
-	font-display: swap;
-	src: url("/curriculum/fonts/JustAnotherHand-Regular.woff2") format("woff2");
-}
-
 @layer base {
 	:root {
 		--color-primary: #00245a;
