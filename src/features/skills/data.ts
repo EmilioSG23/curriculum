@@ -1,6 +1,10 @@
 import type { Skill } from "@/features/skills/types";
 
 /* eslint-disable */
+
+// Catálogo completo de habilidades técnicas agrupadas por categoría.
+// Cada SkillValue con display:false está aprendido pero se omite en la UI para no saturarla.
+// El `id` de cada valor debe coincidir con el nombre del archivo en /public/skills/<categoria>/<id>.webp
 export const SKILLS: Skill[] = [
 	{
 		id: "languages",

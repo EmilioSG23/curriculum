@@ -33,9 +33,18 @@ const t = useT();
 </Section>
 
 <script>
+	// Índices del proyecto cuya descripción o tecnología está activa en modo táctil.
+	// -1 significa que ninguno está activo.
 	let activeLanguageIndex = -1;
 	let activeDescriptionIndex = -1;
 
+	/**
+	 * Calcula las clases de delay para la animación de entrada de cada tarjeta de proyecto.
+	 * Escalone las tarjetas con delays distintos según el número de columnas por breakpoint:
+	 * - Base (1 col): sin delay.
+	 * - md (2 cols): alterna delay-0 / delay-150.
+	 * - lg (3 cols): rota entre delay-0 / delay-150 / delay-300.
+	 */
 	function delayClass(index: number): string {
 		const base = "delay-0";
 
@@ -48,6 +57,7 @@ const t = useT();
 		return `${base} ${md} ${lg}`;
 	}
 
+	/** Aplica las clases de delay calculadas a cada artículo de proyecto en el DOM. */
 	function applyDelayClass() {
 		const $projectArticles = document.querySelectorAll("article.project-item");
 
@@ -56,6 +66,13 @@ const t = useT();
 		});
 	}
 
+	/**
+	 * Configura la interactividad táctil de los proyectos.
+	 * En dispositivos con puntero fino (ratón) se omite porque el hover de CSS ya gestiona
+	 * la visibilidad de la descripción y los iconos.
+	 * En táctil, un tap en el botón info alterna la descripción visible y
+	 * un tap en la imagen de tecnología muestra su nombre.
+	 */
 	function setupProjectInteractions() {
 		if (window.matchMedia("(pointer: fine)").matches) return;
 
@@ -73,21 +90,25 @@ const t = useT();
 		);
 
 		descriptionButtons.forEach((button, index) => {
+			// Hace visible el botón en modo táctil (en desktop está oculto por defecto).
 			button.classList.remove("hidden");
 			button.onclick = () => {
 				descriptionProjects.forEach((description, currentIndex) => {
+					// Activa solo la descripción del proyecto clicado; desactiva las demás.
 					const isCurrent = currentIndex === index && activeDescriptionIndex !== index;
 					description.classList.toggle("opacity-100", isCurrent);
 					description.classList.toggle("pointer-events-auto", isCurrent);
 					descriptionImages[currentIndex]?.classList.toggle("scale-110", isCurrent);
 				});
 
+				// Guarda el índice activo; si se vuelve a clicar el mismo, lo desactiva (-1 → ninguno).
 				activeDescriptionIndex = activeDescriptionIndex === index ? -1 : index;
 			};
 		});
 
 		languageProjects.forEach((image, index) => {
 			image.onclick = () => {
+				// Alterna la visibilidad de la flecha y el nombre de la tecnología seleccionada.
 				const nextIndex = activeLanguageIndex === index ? -1 : index;
 				languageArrows.forEach((arrow, currentIndex) => {
 					arrow.classList.toggle("opacity-100", currentIndex === nextIndex);
@@ -100,6 +121,7 @@ const t = useT();
 		});
 	}
 
+	/** Punto de entrada: aplica delays de animación y configura la interactividad táctil. */
 	function initProjects() {
 		applyDelayClass();
 		setupProjectInteractions();

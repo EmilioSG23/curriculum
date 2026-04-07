@@ -1,11 +1,14 @@
 ---
+/**
+ * Props del carrusel.
+ */
 interface Props {
-	/** Unique identifier — used to wire prev/next/dots to the right track. */
+	/** Identificador único — usado para enlazar prev/next/dots con la pista correspondiente. */
 	id: string;
 	/**
-	 * Half the width of each item at the sm breakpoint.
-	 * Used to keep the active item centred in the track.
-	 * Defaults to "9rem" which matches `sm:w-72` (18rem / 2).
+	 * Mitad del ancho de cada elemento en el breakpoint `sm`.
+	 * Se usa para mantener el elemento activo centrado en la pista.
+	 * Por defecto "9rem" que coincide con `sm:w-72` (18rem / 2).
 	 */
 	itemHalfWidth?: string;
 }
@@ -14,7 +17,7 @@ const { id, itemHalfWidth = "9rem" } = Astro.props;
 ---
 
 <div class="carousel-root" style={`--item-half-w: ${itemHalfWidth}`}>
-	<!-- Wrapper with arrows -->
+	<!-- Contenedor con flechas -->
 	<div data-carousel={id} class="carousel-wrapper relative" data-aos="fade">
 		<button
 			data-carousel-prev
@@ -60,7 +63,7 @@ const { id, itemHalfWidth = "9rem" } = Astro.props;
 		</button>
 	</div>
 
-	<!-- Dots — populated by the script at runtime -->
+	<!-- Puntos (dots) — poblados dinámicamente por el script en tiempo de ejecución -->
 	<div data-carousel-dots={id} class="flex justify-center gap-2 mt-4"></div>
 </div>
 
@@ -81,7 +84,7 @@ const { id, itemHalfWidth = "9rem" } = Astro.props;
 		}
 	}
 
-	/* Arrows: only visible on wrapper hover */
+	/* Flechas: visibles solo al hacer hover sobre el contenedor */
 	.carousel-arrow {
 		opacity: 0;
 		transition:
@@ -92,7 +95,7 @@ const { id, itemHalfWidth = "9rem" } = Astro.props;
 		opacity: 1;
 	}
 
-	/* Dots */
+	/* Puntos (dots) */
 	:global(.carousel-dot) {
 		width: 0.5rem;
 		height: 0.5rem;
@@ -111,6 +114,11 @@ const { id, itemHalfWidth = "9rem" } = Astro.props;
 </style>
 
 <script>
+	/**
+	 * Inicializa un carrusel dado su elemento wrapper.
+	 * Genera los dots de navegación dinámicamente según el número de ítems,
+	 * y registra los listeners de prev/next y scroll para sincronizar el índice activo.
+	 */
 	function initCarousel(wrapper: HTMLElement) {
 		const track = wrapper.querySelector<HTMLElement>("[data-carousel-track]");
 		if (!track) return;
@@ -125,7 +133,7 @@ const { id, itemHalfWidth = "9rem" } = Astro.props;
 		const items = Array.from(track.querySelectorAll<HTMLElement>(":scope > *"));
 		let currentIndex = 0;
 
-		// Build dots dynamically from the actual number of items
+		// Genera botones de punto de navegación para cada ítem del carrusel.
 		if (items.length > 1 && dotsContainer) {
 			items.forEach((_, i) => {
 				const dot = document.createElement("button");
@@ -138,24 +146,34 @@ const { id, itemHalfWidth = "9rem" } = Astro.props;
 			});
 		}
 
+		/** Devuelve los dots actuales del contenedor (se recalcula para evitar referencias stale). */
 		function getDots() {
 			return dotsContainer
 				? Array.from(dotsContainer.querySelectorAll<HTMLElement>(".carousel-dot"))
 				: [];
 		}
 
+		/**
+		 * Calcula el ancho de un ítem incluyendo el gap (gap-4 = 16px).
+		 * Usado para calcular el offset de scroll por índice.
+		 */
 		function getItemWidth(): number {
 			const first = items[0];
 			if (!first) return 0;
 			return first.getBoundingClientRect().width + 16; // 16px = gap-4
 		}
 
+		/**
+		 * Navega al ítem en la posición `index`, haciendo scroll suave y sincronizando los dots.
+		 * Clampea el índice entre 0 y el último ítem.
+		 */
 		function goTo(index: number) {
 			currentIndex = Math.max(0, Math.min(index, items.length - 1));
 			track!.scrollTo({ left: currentIndex * getItemWidth(), behavior: "smooth" });
 			syncDots(currentIndex);
 		}
 
+		/** Marca el dot activo y desactiva los demás según el índice recibido. */
 		function syncDots(active: number) {
 			getDots().forEach((dot, i) => {
 				dot.dataset.active = i === active ? "true" : "false";
@@ -166,6 +184,9 @@ const { id, itemHalfWidth = "9rem" } = Astro.props;
 		nextBtn?.addEventListener("click", () => goTo(currentIndex + 1));
 
 		let scrollTimer: ReturnType<typeof setTimeout>;
+
+		// Detecta el ítem centrado tras el scroll nativo (swipe o scroll de teclado)
+		// con un debounce de 50ms para no ejecutarse en cada pixel de movimiento.
 		track.addEventListener("scroll", () => {
 			clearTimeout(scrollTimer);
 			scrollTimer = setTimeout(() => {
@@ -179,5 +200,6 @@ const { id, itemHalfWidth = "9rem" } = Astro.props;
 		});
 	}
 
+	// Inicializa cada carrusel encontrado en la página.
 	document.querySelectorAll<HTMLElement>("[data-carousel]").forEach(initCarousel);
 </script>

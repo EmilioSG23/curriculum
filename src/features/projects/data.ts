@@ -1,6 +1,10 @@
 import type { Project } from "@/features/projects/types";
 
 /*eslint-disable */
+
+// Lista de proyectos del portafolio ordenados de más a menos reciente.
+// Los campos `name` y `description` son claves i18n resueltas en runtime.
+// El campo `technologies` contiene IDs que coinciden con los de SKILLS (para mostrar iconos).
 export const PROJECTS: Project[] = [
 	{
 		id: "laberinto_encantado",

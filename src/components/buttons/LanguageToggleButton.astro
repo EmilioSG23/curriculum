@@ -34,6 +34,11 @@ import { BASE_URL } from "@/config";
 	const $spanishToggle = document.getElementById("spanishToggle") as HTMLImageElement;
 	const $englishToggle = document.getElementById("englishToggle") as HTMLImageElement;
 
+	/**
+	 * Lee el idioma persistido en localStorage.
+	 * Si no existe o no es válido, infiere el idioma del navegador.
+	 * Devuelve "es" si el navegador está en español, "en" en cualquier otro caso.
+	 */
 	const getStoredLanguage = () => {
 		const storedLanguage = localStorage.getItem("language");
 		if (storedLanguage === "es" || storedLanguage === "en") return storedLanguage;
@@ -42,6 +47,10 @@ import { BASE_URL } from "@/config";
 
 	const initialLang = getStoredLanguage();
 
+	/**
+	 * Actualiza el estado visual del toggle (clases active/inactive) y
+	 * dispara el cambio de idioma en el documento.
+	 */
 	function toggleLanguage(language: string) {
 		const isSpanish = language === "es";
 		$spanishToggle.classList.toggle("activeToggle", isSpanish);
@@ -51,26 +60,43 @@ import { BASE_URL } from "@/config";
 		changeLanguage(language);
 	}
 
+	/**
+	 * Cambia el idioma activo en toda la página sin recargarla.
+	 * 1. Persiste la selección en localStorage.
+	 * 2. Actualiza el atributo lang del <html>.
+	 * 3. Descarga el JSON de traducciones y reemplaza todos los textos marcados con data-translate.
+	 * 4. Emite el evento personalizado "languagechange" para que otros componentes reaccionen.
+	 */
 	async function changeLanguage(language: string) {
 		localStorage.setItem("language", language);
 		document.documentElement.lang = language;
+
+		// Obtiene las traducciones del idioma seleccionado desde los archivos públicos.
 		const request = await fetch(`languages/${language}.json`);
 		const texts = await request.json();
+
+		// Actualiza todos los elementos que tienen el atributo data-translate.
 		const textsToChange = document.querySelectorAll("[data-translate]");
 		textsToChange.forEach((textToChange) => {
 			const key = (textToChange as HTMLElement).dataset.translate;
+			// Interpola {{age}} con la edad calculada dinámicamente.
 			if (key) textToChange.innerHTML = texts[key].replace("{{age}}", String(getAge()));
 		});
+
+		// Notifica a otros componentes (ej. Layout SEO) que el idioma cambió.
 		const event = new CustomEvent("languagechange", { detail: { language } });
 		document.dispatchEvent(event);
 	}
 
+	// Al hacer click, cambia al idioma que actualmente está inactivo.
 	document.getElementById("languageToggle")?.addEventListener("click", () => {
 		toggleLanguage(
 			document.querySelector("#languageToggle .inactiveToggle")?.getAttribute("data-language") ||
 				initialLang,
 		);
 	});
+
+	// Aplica el idioma inicial al cargar la página.
 	toggleLanguage(initialLang);
 </script>
 

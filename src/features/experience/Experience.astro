@@ -76,8 +76,15 @@ const t = useT();
 </style>
 
 <script>
+	// Estado del colapso de la lista de experiencias (true = colapsada por defecto).
 	let collapsedList: boolean = true;
 
+	/**
+	 * Calcula las clases de delay para la animación de entrada de cada ítem de experiencia.
+	 * El orden es inverso al de Projects para que las tarjetas entren desde el lado opuesto:
+	 * - md (2 cols): par→delay-150, impar→delay-0.
+	 * - lg (3 cols): primero→delay-300, segundo→delay-150, tercero→delay-0.
+	 */
 	function delayClass(index: number): string {
 		const base = "delay-0";
 
@@ -90,6 +97,7 @@ const t = useT();
 		return `${base} ${md} ${lg}`;
 	}
 
+	/** Aplica clases de delay calculadas a cada div de experiencia en el DOM. */
 	function applyDelayClass() {
 		const $experienceArticles = document.querySelectorAll("div.experience-item");
 
@@ -98,6 +106,10 @@ const t = useT();
 		});
 	}
 
+	/**
+	 * Actualiza el texto del botón "Mostrar más/menos" según el idioma activo y el estado actual.
+	 * Lee el idioma directamente del atributo lang del <html> para sincronizarse con el toggle.
+	 */
 	function updateToggleButtonText() {
 		const $span = document.querySelector("#span-btn-experience-list");
 		const lang = document.documentElement.lang || "en";
@@ -117,6 +129,11 @@ const t = useT();
 		}
 	}
 
+	/**
+	 * Alterna el estado expandido/colapsado de la lista de experiencias.
+	 * Actualiza las clases CSS del contenedor, el degradado de fade, la flecha del botón
+	 * y el atributo aria-expanded para accesibilidad.
+	 */
 	function toggleCollapse() {
 		const $containerList = document.querySelector("#experience-list");
 		const $fade = document.querySelector("#experience-list-fade");
@@ -159,6 +176,7 @@ const t = useT();
 		}
 	});
 
+	// Actualiza el texto del botón al cambiar de idioma (evento emitido por LanguageToggleButton).
 	document.addEventListener("languagechange", (event: any) => {
 		updateToggleButtonText();
 	});

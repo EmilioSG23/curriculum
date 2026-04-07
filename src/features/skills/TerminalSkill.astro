@@ -132,17 +132,24 @@ const { skills } = Astro.props;
 <script>
 	import { SKILLS } from "@/features/skills/data";
 
+	// Referencia al texto de ayuda que se elimina al hacer la primera selección.
 	const $helpSeleccion = document.getElementById("helpSeleccion");
 
 	document.addEventListener("DOMContentLoaded", () => {
+		// Recorre todos los botones de categoría de skills y les asigna el comportamiento de acordeón.
 		document.querySelectorAll("button#toogleContent").forEach((button, index) => {
 			button.addEventListener("click", () => {
+				// Elimina el hint de ayuda la primera vez que se interactúa.
 				$helpSeleccion?.remove();
+
 				const $divContents = document.querySelectorAll("div[id^='div-']");
 				$divContents.forEach((div) => {
+					// Abre el div de la categoría clicada; cierra los demás (comportamiento acordeón).
 					const isCurrentDiv = div.id === `div-${SKILLS[index]["id"]}`;
 					div.classList.toggle("open", isCurrentDiv && !div.classList.contains("open"));
 					div.classList.toggle("close", !isCurrentDiv || div.classList.contains("open"));
+
+					// Sincroniza aria-expanded con el estado visual del acordeón.
 					const relatedButton = document.querySelector(
 						`button[aria-controls='${div.id}']`,
 					) as HTMLButtonElement | null;

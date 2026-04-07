@@ -1,11 +1,19 @@
+// Dominio raíz donde está desplegado el sitio (GitHub Pages).
 export const SITE_URL = "https://emiliosg23.github.io";
+
+// Ruta base del repositorio dentro de GitHub Pages.
 export const SITE_BASE_PATH = "/curriculum/";
+
+// Nombre canónico del autor/sitio, usado en títulos y schemas.
 export const SITE_NAME = "Emilio Saenz";
+
+// Mapa de idiomas soportados a sus códigos de locale estándar BCP 47 / Open Graph.
 export const SEO_LOCALES = {
 	es: "es_ES",
 	en: "en_US",
 } as const;
 
+// Valores SEO por defecto usados cuando la página no especifica los suyos.
 export const DEFAULT_SEO = {
 	title: SITE_NAME,
 	description:
@@ -14,6 +22,7 @@ export const DEFAULT_SEO = {
 	type: "website",
 } as const;
 
+// Schema.org de tipo Person: describe al autor para buscadores y rich-results.
 export const PERSON_SCHEMA = {
 	"@context": "https://schema.org",
 	"@type": "Person",
@@ -22,6 +31,7 @@ export const PERSON_SCHEMA = {
 	jobTitle: "Full Stack Developer",
 	url: `${SITE_URL}${SITE_BASE_PATH}`,
 	image: `${SITE_URL}${SITE_BASE_PATH}perfil.webp`,
+	// Perfiles oficiales del autor en plataformas externas.
 	sameAs: [
 		"https://github.com/EmilioSG23",
 		"https://gitlab.com/EmilioSG23",
@@ -29,6 +39,8 @@ export const PERSON_SCHEMA = {
 	],
 } as const;
 
+// Schema.org de tipo WebSite estático (idioma español por defecto).
+// Para schemas dinámicos por idioma, usar getWebsiteSchema().
 export const WEBSITE_SCHEMA = {
 	"@context": "https://schema.org",
 	"@type": "WebSite",
@@ -38,10 +50,18 @@ export const WEBSITE_SCHEMA = {
 	description: DEFAULT_SEO.description,
 } as const;
 
+/**
+ * Devuelve el código de locale Open Graph (ej. "es_ES") para el idioma dado.
+ * Si el idioma no existe en el mapa, hace fallback al español.
+ */
 export function getLocaleCode(language: keyof typeof SEO_LOCALES) {
 	return SEO_LOCALES[language] || SEO_LOCALES.es;
 }
 
+/**
+ * Genera un objeto schema.org WebSite con el idioma especificado.
+ * Permite inyectar el schema correcto en cada cambio de idioma del cliente.
+ */
 export function getWebsiteSchema(language: keyof typeof SEO_LOCALES = "es") {
 	return {
 		"@context": "https://schema.org",
@@ -53,10 +73,18 @@ export function getWebsiteSchema(language: keyof typeof SEO_LOCALES = "es") {
 	} as const;
 }
 
+/**
+ * Construye la URL canónica absoluta para un pathname relativo.
+ * Usada en la etiqueta `<link rel="canonical">`.
+ */
 export function getCanonicalUrl(pathname: string) {
 	return new URL(pathname, SITE_URL).toString();
 }
 
+/**
+ * Construye una URL absoluta para un pathname relativo (assets, imágenes, etc.).
+ * Equivalente a getCanonicalUrl pero semánticamente distingue recursos de páginas.
+ */
 export function getAbsoluteUrl(pathname: string) {
 	return new URL(pathname, SITE_URL).toString();
 }

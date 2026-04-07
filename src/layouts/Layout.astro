@@ -82,11 +82,20 @@ const schemas = JSON.stringify([PERSON_SCHEMA, getWebsiteSchema(seoDefaultLangua
 				seoDefaultLanguage,
 			}}
 		>
+			/**
+			 * Obtiene el código de idioma a usar para el SEO.
+			 * Lee localStorage; si no hay valor guardado, usa el idioma por defecto del servidor.
+			 */
 			const getSeoLanguage = () => {
 				const lang = localStorage.getItem("language") || seoDefaultLanguage;
 				return lang in seoLocaleMap ? lang : "es";
 			};
 
+			/**
+			 * Actualiza de forma dinámica todas las meta-tags SEO y el JSON-LD
+			 * para reflejar el idioma activo sin recargar la página.
+			 * Se llama al cargar y cada vez que el usuario cambia el idioma.
+			 */
 			const applySeo = async (language) => {
 				const response = await fetch(`${seoBasePath}languages/${language}.json`);
 				if (!response.ok) return;
@@ -132,6 +141,12 @@ const schemas = JSON.stringify([PERSON_SCHEMA, getWebsiteSchema(seoDefaultLangua
 				document.documentElement.lang = storedLanguage;
 			}
 
+			/**
+			 * Inicializa las animaciones de scroll basadas en el atributo data-aos.
+			 * Usa requestAnimationFrame para no bloquear el hilo principal durante el scroll.
+			 * Los elementos se marcan con "aos-animate" cuando cruzan la línea de disparo
+			 * (viewport inferior menos el offset configurado por data-aos-offset).
+			 */
 			const initScrollAnimations = () => {
 				const animatedElements = Array.from(document.querySelectorAll("[data-aos]")).filter(
 					(element) => element instanceof HTMLElement,
@@ -156,6 +171,7 @@ const schemas = JSON.stringify([PERSON_SCHEMA, getWebsiteSchema(seoDefaultLangua
 				};
 
 				const requestUpdate = () => {
+					// Evita encolar múltiples frames si el scroll llega antes de que se pinte el anterior.
 					if (ticking) return;
 					ticking = true;
 					window.requestAnimationFrame(updateAnimations);
@@ -167,7 +183,10 @@ const schemas = JSON.stringify([PERSON_SCHEMA, getWebsiteSchema(seoDefaultLangua
 				document.addEventListener("languagechange", requestUpdate);
 			};
 
+			// Aplica el SEO del idioma almacenado al cargar la página.
 			applySeo(getSeoLanguage());
+
+			// Re-aplica el SEO cuando el usuario cambia el idioma mediante el toggle.
 			document.addEventListener("languagechange", (event) => {
 				const language = event.detail?.language;
 				if (language === "es" || language === "en") {
@@ -175,6 +194,7 @@ const schemas = JSON.stringify([PERSON_SCHEMA, getWebsiteSchema(seoDefaultLangua
 				}
 			});
 
+			// Si el DOM aún está cargando, espera DOMContentLoaded; si ya cargó, ejecuta directamente.
 			if (document.readyState === "loading") {
 				document.addEventListener("DOMContentLoaded", initScrollAnimations, { once: true });
 			} else {

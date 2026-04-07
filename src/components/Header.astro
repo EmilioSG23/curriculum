@@ -71,6 +71,11 @@ const toPath = (path: string) => {
 </header>
 
 <script>
+	/**
+	 * Mueve el botón de togglear tema al contenedor correcto según el ancho de pantalla.
+	 * En móvil (<768px) lo coloca en mobileContainer; en desktop lo coloca en mobileDesktop.
+	 * Se llama al cargar y en cada resize para reflejar el breakpoint actual.
+	 */
 	function moveToggleButton() {
 		const mobileContainer = document.getElementById("mobileContainer");
 		const mobileDesktop = document.getElementById("mobileDesktop");
@@ -82,6 +87,11 @@ const toPath = (path: string) => {
 		}
 	}
 
+	/**
+	 * Resalta el enlace de navegación correspondiente a la sección visible en pantalla.
+	 * Calcula la sección activa comparando el scroll actual con los offsetTop de cada sección.
+	 * La sección "info" se excluye del marcado activo (es la sección hero principal).
+	 */
 	function updateActiveSection() {
 		const sections = Array.from(document.querySelectorAll<HTMLElement>("section"));
 		const anchors = Array.from(document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]'));
@@ -102,6 +112,12 @@ const toPath = (path: string) => {
 		});
 	}
 
+	/**
+	 * Registra todos los event listeners del header:
+	 * - Click en el botón hamburguesa para abrir/cerrar el menú móvil.
+	 * - Click en cualquier enlace de ancla para hacer scroll suave y cerrar el menú.
+	 * Se llama una sola vez en DOMContentLoaded.
+	 */
 	function setupHeaderInteractions() {
 		const menu = document.getElementById("menu");
 		const menuButton = document.getElementById("menuButton");
@@ -119,16 +135,19 @@ const toPath = (path: string) => {
 
 		anchors.forEach((anchor) => {
 			anchor.onclick = (event) => {
+				// Cierra el menú móvil al navegar.
 				menu?.classList.remove("open");
 				menuButton?.setAttribute("aria-expanded", "false");
 
 				const href = anchor.getAttribute("href");
+				// Solo intercepta enlaces de ancla (empiezan con #).
 				if (!href?.startsWith("#")) return;
 
 				event.preventDefault();
 				const targetElement = document.getElementById(href.slice(1));
 				if (!targetElement) return;
 
+				// Scroll suave restando el alto del header fijo (~100px).
 				window.scrollTo({
 					top: targetElement.offsetTop - 100,
 					behavior: "smooth",
