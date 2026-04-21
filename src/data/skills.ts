@@ -47,9 +47,12 @@ export const SKILLS: Skill[] = [
 		values: [
 			{ id: "express", name: "Express", color: "#838383", text: "white", display: true },
 			{ id: "nodejs", name: "NodeJS", color: "#52b05c", text: "black", display: true },
+			{ id: "nestjs", name: "NestJS", color: "#e0234e", text: "white", display: false },
 			{ id: "django", name: "Django", color: "white", text: "black", display: false },
 			{ id: "springboot", name: "Springboot", color: "#8bc34a", text: "white", display: true },
 			{ id: "socketio", name: "SocketIO", color: "white", text: "black", display: false },
+			{ id: "webrtc", name: "WebRTC", color: "#0099ff", text: "white", display: false },
+			{ id: "websockets", name: "WebSockets", color: "#0099ff", text: "white", display: false },
 		],
 	},
 	{
@@ -74,6 +77,7 @@ export const SKILLS: Skill[] = [
 			},
 			{ id: "render", name: "OnRender", color: "#191919", text: "white", display: false },
 			{ id: "vercel", name: "Vercel", color: "#242424", text: "white", display: false },
+			{ id: "docker", name: "Docker", color: "#2496ed", text: "white", display: true },
 		],
 	},
 ];
