@@ -1,6 +1,7 @@
 ---
 import Carrousel from "@/components/Carrousel.astro";
 import ImageModal from "@/components/modals/ImageModal.astro";
+import Subsection from "@/components/sections/Subsection.astro";
 import { CERTIFICATIONS } from "@/data/certifications";
 import CertificationItem from "@/features/skills/CertificationItem.astro";
 import { useT } from "@/i18n/utils";
@@ -8,19 +9,7 @@ import { useT } from "@/i18n/utils";
 const t = useT();
 ---
 
-<div class="w-full max-w-4xl mt-12">
-	<!-- Cabecera con separador -->
-	<div class="flex items-center gap-4 mb-6 px-2" data-aos="fade">
-		<div class="h-px flex-1 bg-neon opacity-30"></div>
-		<h2
-			class="font-main text-[18px] sm:text-[20px] font-bold text-neon uppercase tracking-widest"
-			data-translate="skills.certifications.title"
-		>
-			{t("skills.certifications.title")}
-		</h2>
-		<div class="h-px flex-1 bg-neon opacity-30"></div>
-	</div>
-
+<Subsection title="skills.certifications.title">
 	<Carrousel id="certifications" itemHalfWidth="9rem">
 		{
 			CERTIFICATIONS.map(({ image, title, issuer, date, verifyUrl }) => (
@@ -36,6 +25,6 @@ const t = useT();
 			))
 		}
 	</Carrousel>
-</div>
+</Subsection>
 
 <ImageModal id="cert-modal" triggerAttr="data-cert-image" titleAttr="data-cert-title" />

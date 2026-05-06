@@ -1,0 +1,21 @@
+---
+import { useT } from "@/i18n/utils";
+const { title } = Astro.props;
+const t = useT();
+---
+
+<div class="w-full max-w-4xl mt-12">
+	<!-- Cabecera con separador -->
+	<div class="flex items-center gap-4 mb-6 px-2" data-aos="fade">
+		<div class="h-px flex-1 bg-neon opacity-30"></div>
+		<h2
+			class="font-main text-[18px] sm:text-[20px] font-bold text-neon uppercase tracking-widest"
+			data-translate={title}
+		>
+			{t(title as keyof typeof t)}
+		</h2>
+		<div class="h-px flex-1 bg-neon opacity-30"></div>
+	</div>
+
+	<slot />
+</div>

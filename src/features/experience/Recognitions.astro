@@ -1,6 +1,7 @@
 ---
 import Carrousel from "@/components/Carrousel.astro";
 import ImageModal from "@/components/modals/ImageModal.astro";
+import Subsection from "@/components/sections/Subsection.astro";
 import { RECOGNITIONS } from "@/data/recognition";
 import RecognitionItem from "@/features/experience/RecognitionItem.astro";
 import { useT } from "@/i18n/utils";
@@ -8,19 +9,7 @@ import { useT } from "@/i18n/utils";
 const t = useT();
 ---
 
-<div class="w-full max-w-4xl mt-12">
-	<!-- Cabecera con separador -->
-	<div class="flex items-center gap-4 mb-6 px-2" data-aos="fade">
-		<div class="h-px flex-1 bg-neon opacity-30"></div>
-		<h2
-			class="font-main text-[18px] sm:text-[20px] font-bold text-neon uppercase tracking-widest"
-			data-translate="experience.recognitions.title"
-		>
-			{t("experience.recognitions.title")}
-		</h2>
-		<div class="h-px flex-1 bg-neon opacity-30"></div>
-	</div>
-
+<Subsection title="experience.recognitions.title">
 	<Carrousel id="recognitions" itemHalfWidth="9rem">
 		{
 			RECOGNITIONS.map(({ image, title, issuer, date }) => (
@@ -30,6 +19,6 @@ const t = useT();
 			))
 		}
 	</Carrousel>
-</div>
+</Subsection>
 
 <ImageModal id="rec-recognition-modal" triggerAttr="data-rec-image" titleAttr="data-rec-title" />
