@@ -1,0 +1,67 @@
+---
+import { useT } from "@/i18n/utils";
+
+const t = useT();
+const { image, title, issuer, date, verifyUrl } = Astro.props;
+---
+
+<button
+	type="button"
+	class="cert-card group flex flex-col rounded-lg overflow-hidden border bg-background cursor-pointer w-full h-full text-left"
+	data-cert-image={image}
+	data-cert-title={t(title as keyof typeof t)}
+	aria-label={`Ver certificado: ${t(title as keyof typeof t)}`}
+>
+	<div class="relative overflow-hidden">
+		<img
+			src={image}
+			alt={t(title as keyof typeof t)}
+			class="w-full aspect-video object-contain p-3 transition-transform duration-300 group-hover:scale-[1.03]"
+			loading="lazy"
+		/>
+		<div
+			class="absolute inset-0 flex items-end justify-end p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+		>
+			<span
+				class="bg-neon text-background font-main text-[10px] px-2 py-0.5 rounded flex items-center gap-1"
+			>
+				<i class="fas fa-expand" aria-hidden="true"></i>
+				<span data-translate="skills.cert.view-certificate">
+					{t("skills.cert.view-certificate")}
+				</span>
+			</span>
+		</div>
+	</div>
+	<div class="px-4 pt-3 pb-4 font-content border-t border-neon/20 flex flex-col gap-0.5">
+		<h3 class="font-bold text-neon text-[15px] leading-snug" data-translate={title}>
+			{t(title as keyof typeof t)}
+		</h3>
+		<p class="text-[13px] opacity-75">{issuer}</p>
+		<small class="text-[12px] opacity-50">{date}</small>
+		<a
+			href={verifyUrl}
+			target="_blank"
+			rel="noopener noreferrer"
+			class="verify-link mt-2 self-start flex items-center gap-1 text-[11px] font-main text-neon/70 hover:text-neon transition-colors duration-200"
+			onclick="event.stopPropagation()"
+		>
+			<i class="fas fa-external-link-alt text-[10px]" aria-hidden="true"></i>
+			<span data-translate="skills.cert.verify">
+				{t("skills.cert.verify")}
+			</span>
+		</a>
+	</div>
+</button>
+
+<style>
+	.cert-card {
+		border-color: color-mix(in srgb, var(--color-neon) 35%, transparent);
+		transition:
+			border-color 300ms ease-in-out,
+			background-color 100ms ease-in-out;
+	}
+	.cert-card:hover {
+		border-color: color-mix(in srgb, var(--color-neon) 100%, transparent);
+		background-color: var(--color-hover);
+	}
+</style>

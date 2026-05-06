@@ -12,6 +12,20 @@ export interface SkillValue {
 	display: boolean;
 }
 
+/** Representa un certificado o curso obtenido, con opción de verificación externa. */
+export interface Certification {
+	/** Ruta a la imagen del certificado. */
+	image: string;
+	/** Clave i18n del nombre del curso/certificado. */
+	title: string;
+	/** Institución emisora del certificado (literal). */
+	issuer: string;
+	/** Fecha o año de obtención (literal). */
+	date: string;
+	/** URL para verificar la autenticidad del certificado. */
+	verifyUrl: string;
+}
+
 /** Agrupa varias habilidades relacionadas bajo una categoría (ej. "Frontend"). */
 export interface Skill {
 	/** Identificador único de la categoría. */

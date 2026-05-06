@@ -2,6 +2,7 @@
 import Section from "@/components/sections/Section.astro";
 import { PERSONAL_SKILLS } from "@/data/personal-skills";
 import { SKILLS } from "@/data/skills";
+import Certifications from "@/features/skills/Certifications.astro";
 import PersonalSkills from "@/features/skills/PersonalSkills.astro";
 import TerminalSkill from "@/features/skills/TerminalSkill.astro";
 import { useT } from "@/i18n/utils";
@@ -13,5 +14,8 @@ const t = useT();
 	<div class="flex flex-col justify-center w-full gap-10 my-5 mt-20 lg:flex-row">
 		<TerminalSkill skills={SKILLS} />
 		<PersonalSkills skills={PERSONAL_SKILLS} />
+	</div>
+	<div class="flex flex-col items-center w-full">
+		<Certifications />
 	</div>
 </Section>
