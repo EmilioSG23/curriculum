@@ -51,6 +51,23 @@ const t = useT();
 		}
 	}
 	//window.onload = animateText;
+
+	const cvFiles: Record<string, string> = {
+		en: "CurriculumVitae - Emilio Saenz - EN.pdf",
+		es: "CurriculumVitae - Emilio Saenz.pdf",
+	};
+
+	function updateCvLink(language: string) {
+		const link = document.getElementById("cv-download-link") as HTMLAnchorElement | null;
+		if (!link) return;
+		const file = cvFiles[language] ?? cvFiles["es"];
+		link.href = file;
+		link.download = file;
+	}
+
+	document.addEventListener("languagechange", (e) => {
+		updateCvLink((e as CustomEvent<{ language: string }>).detail.language);
+	});
 </script>
 
 <section id="info" class="my-5 text-content font-main">
@@ -74,8 +91,8 @@ const t = useT();
 			class="h-full flex-1 md:flex-[3] md:mr-5 flex-col w-[80%] text-center justify-center items-center md:text-left md:justify-start"
 		>
 			<p class="sr-only normal-case">
-				Portafolio profesional de Emilio Saenz, desarrollador full stack especializado en desarrollo web,
-				aplicaciones moviles, interfaces responsivas, backend y despliegue de software.
+				Portafolio profesional de Emilio Saenz, desarrollador full stack especializado en desarrollo
+				web, aplicaciones moviles, interfaces responsivas, backend y despliegue de software.
 			</p>
 			<span id="ani-1" class="info-normal" data-translate="info.ani-1">{t("info.ani-1")}</span><br
 			/>
@@ -100,6 +117,7 @@ const t = useT();
 			</div>
 			<div class="flex items-center justify-center w-full mt-10">
 				<a
+					id="cv-download-link"
 					href="CurriculumVitae - Emilio Saenz.pdf"
 					download="CurriculumVitae - Emilio Saenz.pdf"
 					aria-label="Descargar curriculum vitae de Emilio Saenz"
@@ -132,4 +150,3 @@ const t = useT();
 		}
 	}
 </style>
-
