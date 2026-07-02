@@ -4,6 +4,12 @@ import type { Experience } from "@/features/experience/types";
 // Los campos `position`, `time` y `description` son claves i18n resueltas en runtime.
 export const EXPERIENCE: Experience[] = [
 	{
+		place: "Escuela Superior Politécnica del Litoral (ESPOL)",
+		position: "experience.exp-5.rol",
+		time: "experience.exp-5.time",
+		description: "experience.exp-5.description",
+	},
+	{
 		place: "PackVip S.A.S.",
 		position: "experience.exp-4.rol",
 		time: "experience.exp-4.time",
