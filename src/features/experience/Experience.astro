@@ -15,15 +15,18 @@ const t = useT();
 			class="flex flex-col items-center w-full gap-5 mt-10 collapsed overflow-hidden transition-all p-6"
 		>
 			{
-				EXPERIENCE.map(({ place, position, time, description }, index) => (
-					<ExperienceItem
-						index={index}
-						place={place}
-						position={position}
-						time={time}
-						description={description}
-					/>
-				))
+				EXPERIENCE.filter((exp) => exp.show !== false).map(
+					({ logo, place, position, time, description }, index) => (
+						<ExperienceItem
+							index={index}
+							logo={logo}
+							place={place}
+							position={position}
+							time={time}
+							description={description}
+						/>
+					),
+				)
 			}
 		</div>
 		<div

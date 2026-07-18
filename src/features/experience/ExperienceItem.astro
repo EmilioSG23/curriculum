@@ -2,7 +2,7 @@
 import { useT } from "@/i18n/utils";
 
 const t = useT();
-const { place, position, time, description, className = "", dataIndex } = Astro.props;
+const { logo, place, position, time, description, className = "", dataIndex } = Astro.props;
 ---
 
 <div class="w-full flex gap-x-8" data-aos="fade-right">
@@ -16,7 +16,10 @@ const { place, position, time, description, className = "", dataIndex } = Astro.
 															hover:bg-hover transition font-content h-full gap-y-4 py-4 px-6"
 		>
 			<div class="w-full flex flex-col">
-				<h1 class="font-bold text-neon text-[24px]">{place}</h1>
+				<div class="w-full flex items-center gap-x-4">
+					{logo && <img src={logo} alt={place} class="size-12 rounded-lg object-cover bg-white" />}
+					<h1 class="font-bold text-neon text-[24px]">{place}</h1>
+				</div>
 				<h2 class="text-[20px] font-bold" data-translate={position}>
 					{t(position as keyof typeof t)}
 				</h2>

@@ -2,12 +2,16 @@
 export interface Experience {
 	/** Nombre de la empresa u organización. */
 	place: string;
+	/** Ruta relativa al logo de la empresa u organización. */
+	logo?: string;
 	/** Clave i18n que resuelve el cargo o rol desempeñado. */
 	position: string;
 	/** Clave i18n que resuelve el periodo de tiempo (ej. "2022 - 2023"). */
 	time: string;
 	/** Clave i18n que resuelve la descripción de las tareas realizadas. */
 	description: string;
+	/** Determina si la experiencia debe mostrarse en el timeline. */
+	show?: boolean;
 }
 
 /** Representa un reconocimiento, certificado o título obtenido. */
