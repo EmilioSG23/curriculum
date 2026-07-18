@@ -63,21 +63,45 @@ const { skills } = Astro.props;
 						id={"div-" + skill["id"]}
 						class="grid justify-around grid-cols-3 gap-3 py-2 skill-content closed sm:grid-cols-4 md:grid-cols-5"
 					>
-						{skill["values"].map(
-							(data) =>
-								data.display && (
-									<div class="flex flex-col items-center justify-center text-center transition hover:scale-110">
-										<img
-											loading="lazy"
-											src={`skills/${skill["id"]}/${data["id"]}.webp`}
-											class="w-8 h-8"
-											alt=""
-											aria-hidden="true"
-										/>
-										<p class="text-sm font-light">{data["name"]}</p>
-									</div>
-								),
-						)}
+						{skill["values"]
+							.sort(
+								(a, b) =>
+									(b.especialized ? 1 : 0) - (a.especialized ? 1 : 0) ||
+									a.name.localeCompare(b.name),
+							)
+							.map(
+								(data) =>
+									data.display && (
+										<div
+											class={`flex flex-col items-center justify-center text-center
+												transition relative hover:scale-110
+												${data.especialized ? " duration-300 drop-shadow-[0_0_12px_rgba(212,175,55,0.6)]" : ""}`}
+										>
+											{data.especialized && (
+												<div
+													class="hidden xs:block absolute top-2 right-1/6
+												-transform -translate-x-1/2 size-3
+												bg-gold rounded-full animate-pulse border border-gold/50"
+												/>
+											)}
+											<div class={`flex items-center justify-center rounded-lg transition-all`}>
+												<img
+													loading="lazy"
+													src={`skills/${skill["id"]}/${data["id"]}.webp`}
+													class={`transition-all size-8`}
+													alt=""
+													aria-hidden="true"
+												/>
+											</div>
+											<p
+												class={`text-sm mt-2 transition-colors
+												${data.especialized ? "text-gold font-semibold" : "text-white/90 font-light"}`}
+											>
+												{data["name"]}
+											</p>
+										</div>
+									),
+							)}
 					</div>
 				</div>
 			))
@@ -89,6 +113,23 @@ const { skills } = Astro.props;
 		>
 			{t("skills.window-select")}
 		</p>
+		<div class="flex flex-col justify-center mt-4
+			absolute bottom-4 gap-y-1 text-left">
+			<div class="flex items-center gap-x-2">
+				<div class="size-3 bg-gold rounded-full animate-pulse border border-gold/50"></div>
+				<span class="text-gold text-[8px] md:text-[10px]"
+					><span class="font-semibold text-[10px] md:text-[12px]">Especializada:</span> He usado este
+					lenguaje/herramienta regularmente y en proyectos importantes.</span
+				>
+			</div>
+			<div class="flex items-center gap-x-2">
+				<div class="size-3 bg-white rounded-full animate-pulse border border-gold/50"></div>
+				<span class="text-white/90 font-light text-[8px] md:text-[10px]"
+					><span class="font-semibold text-[10px] md:text-[12px]">Normal:</span> He usado este lenguaje/herramienta
+					ocasionalmente.</span
+				>
+			</div>
+		</div>
 	</div>
 </div>
 

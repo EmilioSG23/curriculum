@@ -10,6 +10,8 @@ export interface SkillValue {
 	text: string;
 	/** Si es false, el skill se oculta en la interfaz (conocimiento secundario). */
 	display: boolean;
+	/** Indica si el skill está especializado. */
+	especialized?: boolean;
 }
 
 /** Representa un certificado o curso obtenido, con opción de verificación externa. */
