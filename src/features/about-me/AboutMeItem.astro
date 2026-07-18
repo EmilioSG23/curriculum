@@ -2,7 +2,7 @@
 import { useT } from "@/i18n/utils";
 
 const t = useT();
-const { icon, title, description, hasButton, age } = Astro.props;
+const { icon, title, description, onButton, age } = Astro.props;
 ---
 
 <div class="min-h-[256px] w-[90%] md:w-[70%] lg:w-[45%] m-5" data-aos="flip-right">
@@ -28,16 +28,17 @@ const { icon, title, description, hasButton, age } = Astro.props;
 				>{t(description as keyof typeof t, { age })}</span
 			>
 			{
-				hasButton && (
+				onButton && (
 					<div class="flex items-center justify-center">
-						<span
-							aria-disabled="true"
-							class="rounded-[5px] border-2 border-content my-3 py-2 text-center w-full sm:w-1/2 h-full flex items-center justify-center
-														normal-case text-[12px] sm:text-[14px] opacity-50"
+						<button
+							class="rounded-[5px] border-2 border-content my-3 py-2 text-center
+							w-full sm:w-1/2 h-full flex items-center justify-center normal-case text-[12px] sm:text-[14px]
+							cursor-pointer hover:bg-hover transition"
 							data-translate="about-me.contact"
+							data-action="open-contact-modal"
 						>
 							{t("about-me.contact")}
-						</span>
+						</button>
 					</div>
 				)
 			}

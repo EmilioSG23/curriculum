@@ -1,0 +1,139 @@
+---
+import { useT } from "@/i18n/utils";
+import Modal from "./Modal.astro";
+
+const t = useT();
+---
+
+<Modal id="contact-modal" ariaLabel="Formulario de contacto">
+	<div
+		class="w-full max-w-2xl rounded-2xl bg-white
+        border border-primary/30 shadow-2xl
+        p-8 text-content"
+	>
+		<div class="mb-8">
+			<h2 class="font-title text-3xl font-bold text-primary" data-translate="about-me.contact">
+				{t("about-me.contact")}
+			</h2>
+
+			<span class="mt-2 text-sm opacity-70 text-primary" data-translate="contact-form.description">
+				{t("contact-form.description")}
+			</span>
+		</div>
+
+		<form action="https://api.web3forms.com/submit" method="POST" class="space-y-5">
+			<input type="hidden" name="access_key" value="14db6a36-b762-49a2-9e32-ea49bb740ec0" />
+			<div>
+				<label class="mb-2 block text-sm font-medium text-primary">
+					{t("contact-form.name")}
+				</label>
+
+				<input
+					type="text"
+					name="name"
+					required
+					placeholder={t("contact-form.name")}
+					class="w-full rounded-lg border border-primary/20
+                    bg-background/10
+                    px-4 py-3
+                    transition-all duration-200
+                    outline-none
+                    focus:border-primary
+                    focus:ring-2 focus:ring-neon/20"
+				/>
+			</div>
+
+			<div>
+				<label class="mb-2 block text-sm font-medium text-primary">
+					{t("contact-form.email")}
+				</label>
+
+				<input
+					type="email"
+					name="_replyto"
+					required
+					placeholder={t("contact-form.email")}
+					class="w-full rounded-lg border border-primary/20
+                    bg-background/10
+                    px-4 py-3
+                    transition-all duration-200
+                    outline-none
+                    focus:border-primary
+                    focus:ring-2 focus:ring-neon/20"
+				/>
+			</div>
+
+			<div>
+				<label class="mb-2 block text-sm font-medium text-primary">
+					{t("contact-form.subject")}
+				</label>
+
+				<input
+					type="text"
+					name="subject"
+					required
+					placeholder={t("contact-form.subject")}
+					class="w-full rounded-lg border border-primary/20
+                    bg-background/10
+                    px-4 py-3
+                    transition-all duration-200
+                    outline-none
+                    focus:border-primary
+                    focus:ring-2 focus:ring-neon/20"
+				/>
+			</div>
+
+			<div>
+				<label class="mb-2 block text-sm font-medium text-primary">
+					{t("contact-form.message")}
+				</label>
+
+				<textarea
+					rows="6"
+					name="message"
+					required
+					placeholder={t("contact-form.message")}
+					class="w-full resize-none rounded-lg
+                    border border-primary/20
+                    bg-background/10
+                    px-4 py-3
+                    transition-all duration-200
+                    outline-none
+                    focus:border-primary
+                    focus:ring-2 focus:ring-neon/20"
+				></textarea>
+			</div>
+
+			<button
+				type="submit"
+				class="mt-4 w-full rounded-lg
+                bg-[#5ae1ff] px-5 py-3
+                font-semibold text-primary
+                transition-all duration-200
+                hover:shadow-lg
+								hover:bg-gold
+                active:scale-100
+								cursor-pointer"
+			>
+				{t("contact-form.send")}
+			</button>
+		</form>
+	</div>
+</Modal>
+
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+		const contactModal = document.getElementById("contact-modal") as HTMLDialogElement;
+		if (contactModal) {
+			contactModal.addEventListener("close", () => {
+				document.body.style.overflow = "";
+			});
+
+			contactModal.addEventListener("click", (event) => {
+				if (event.target === contactModal) {
+					contactModal.close();
+				}
+			});
+		}
+	});
+</script>
