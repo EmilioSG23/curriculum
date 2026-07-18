@@ -21,11 +21,11 @@ function findSkill(id: string) {
 	class=`project-item flex flex-col border-2 border-neon transition w-[90%] sm:w-[70%] md:w-[45%] lg:w-[31%] mx-2 xl:mx-0`
 	data-aos="fade-up"
 >
-	<div class="relative w-full h-full overflow-hidden group">
+	<div class="relative w-full h-[256px] overflow-hidden group flex items-center justify-center">
 		<button
 			type="button"
 			id={`project-${index}-image-button`}
-			class="w-full h-full cursor-zoom-in"
+			class="w-full h-full flex items-center justify-center cursor-zoom-in"
 			data-proj-image={`projects/${id}.webp`}
 			data-proj-title={t(name as keyof typeof t)}
 			aria-label={`Ver imagen del proyecto: ${t(name as keyof typeof t)}`}
@@ -33,7 +33,7 @@ function findSkill(id: string) {
 			<img
 				id={`project-${index}-image`}
 				loading="lazy"
-				class="w-[600px] h-[250px] object-cover transition"
+				class="w-full h-full object-cover transition"
 				src={`projects/${id}.webp`}
 				alt={name}
 			/>

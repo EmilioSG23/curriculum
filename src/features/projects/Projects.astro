@@ -96,11 +96,11 @@ const t = useT();
 				descriptionProjects.forEach((description, currentIndex) => {
 					// Activa solo la descripción del proyecto clicado; desactiva las demás.
 					const isCurrent = currentIndex === index && activeDescriptionIndex !== index;
-					description.classList.toggle("opacity-100", isCurrent);
-					description.classList.toggle("pointer-events-auto", isCurrent);
+					description.classList.toggle("opacity-100!", isCurrent);
+					description.classList.toggle("pointer-events-auto!", isCurrent);
 					descriptionImages[currentIndex]?.classList.toggle("scale-110", isCurrent);
 					descriptionImagesButtons[currentIndex].disabled = isCurrent;
-					descriptionImagesButtons[currentIndex].classList.toggle("cursor-default!", isCurrent);
+					descriptionImagesButtons[currentIndex].classList.toggle("cursor-zoom-in!", !isCurrent);
 				});
 
 				// Guarda el índice activo; si se vuelve a clicar el mismo, lo desactiva (-1 → ninguno).
