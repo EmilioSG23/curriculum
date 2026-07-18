@@ -118,15 +118,27 @@ const { skills } = Astro.props;
 			<div class="flex items-center gap-x-2">
 				<div class="size-3 bg-gold rounded-full animate-pulse border border-gold/50"></div>
 				<span class="text-gold text-[8px] md:text-[10px]"
-					><span class="font-semibold text-[10px] md:text-[12px]">Especializada:</span> He usado este
-					lenguaje/herramienta regularmente y en proyectos importantes.</span
+					><span
+						class="font-semibold text-[10px] md:text-[12px]"
+						data-translate="skills.specialized-skill-indicator.title"
+						>{t("skills.specialized-skill-indicator.title")}</span
+					>
+					<span data-translate="skills.specialized-skill-indicator.description"
+						>{t("skills.specialized-skill-indicator.description")}</span
+					></span
 				>
 			</div>
 			<div class="flex items-center gap-x-2">
 				<div class="size-3 bg-white rounded-full animate-pulse border border-gold/50"></div>
 				<span class="text-white/90 font-light text-[8px] md:text-[10px]"
-					><span class="font-semibold text-[10px] md:text-[12px]">Normal:</span> He usado este lenguaje/herramienta
-					ocasionalmente.</span
+					><span
+						class="font-semibold text-[10px] md:text-[12px]"
+						data-translate="skills.normal-skill-indicator.title"
+						>{t("skills.normal-skill-indicator.title")}</span
+					>
+					<span data-translate="skills.normal-skill-indicator.description"
+						>{t("skills.normal-skill-indicator.description")}</span
+					></span
 				>
 			</div>
 		</div>

@@ -68,16 +68,10 @@ export const SKILLS: Skill[] = [
 			{ id: "vs-code", name: "Visual Studio Code", color: "#007acf", text: "white", display: true },
 			{ id: "netbeans", name: "NetBeans", color: "white", text: "#0091ec", display: false },
 			{ id: "javafx", name: "JavaFX", color: "white", text: "#5382a1", display: false },
-			{
-				id: "scene-builder",
-				name: "Scene Builder",
-				color: "#ff8b00",
-				text: "white",
-				display: false,
-			},
+			{id: "scene-builder",name: "Scene Builder",color: "#ff8b00",text: "white",display: false,},
 			{ id: "render", name: "OnRender", color: "#191919", text: "white", display: false },
 			{ id: "vercel", name: "Vercel", color: "#242424", text: "white", display: false },
-			{ id: "docker", name: "Docker", color: "#2496ed", text: "white", display: true },
+			{ id: "docker", name: "Docker", color: "#2496ed", text: "white", display: true, especialized: true },
 		],
 	},
 ];
