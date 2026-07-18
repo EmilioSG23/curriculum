@@ -3,6 +3,7 @@ import ProjectItem from "@/features/projects/ProjectItem.astro";
 import { useT } from "@/i18n/utils";
 import Section from "@/components/sections/Section.astro";
 import { PROJECTS } from "@/data/projects";
+import ImageModal from "@/components/modals/ImageModal.astro";
 const t = useT();
 ---
 
@@ -29,6 +30,8 @@ const t = useT();
 		</div>
 	</div>
 </Section>
+
+<ImageModal id="project-modal" triggerAttr="data-proj-image" titleAttr="data-proj-title" />
 
 <script>
 	// Índices del proyecto cuya descripción o tecnología está activa en modo táctil.
@@ -72,17 +75,42 @@ const t = useT();
 	 * un tap en la imagen de tecnología muestra su nombre.
 	 */
 	function setupProjectInteractions() {
-		if (window.matchMedia("(pointer: fine)").matches) return;
-
-		const descriptionButtons = Array.from(
-			document.querySelectorAll<HTMLButtonElement>("[data-project-info-button]"),
-		);
+		// Elementos que necesitaremos tanto en móvil como en escritorio
 		const descriptionProjects = Array.from(
 			document.querySelectorAll<HTMLElement>("div[id$='-description']"),
 		);
 		const descriptionImages = Array.from(
 			document.querySelectorAll<HTMLElement>("img[id$='-image']"),
 		);
+		const descriptionImagesButtons = Array.from(
+			document.querySelectorAll<HTMLButtonElement>("button[id$='-image-button']"),
+		);
+
+		// Botón de info: debe funcionar en móvil y en escritorio
+		const descriptionButtons = Array.from(
+			document.querySelectorAll<HTMLButtonElement>("[data-project-info-button]"),
+		);
+
+		descriptionButtons.forEach((button, index) => {
+			button.onclick = () => {
+				descriptionProjects.forEach((description, currentIndex) => {
+					// Activa solo la descripción del proyecto clicado; desactiva las demás.
+					const isCurrent = currentIndex === index && activeDescriptionIndex !== index;
+					description.classList.toggle("opacity-100", isCurrent);
+					description.classList.toggle("pointer-events-auto", isCurrent);
+					descriptionImages[currentIndex]?.classList.toggle("scale-110", isCurrent);
+					descriptionImagesButtons[currentIndex].disabled = isCurrent;
+					descriptionImagesButtons[currentIndex].classList.toggle("cursor-default!", isCurrent);
+				});
+
+				// Guarda el índice activo; si se vuelve a clicar el mismo, lo desactiva (-1 → ninguno).
+				activeDescriptionIndex = activeDescriptionIndex === index ? -1 : index;
+			};
+		});
+
+		// Las interacciones específicas de "táctil" (mostrar nombres/flechas) solo sí son táctiles
+		if (window.matchMedia("(pointer: fine)").matches) return;
+
 		const languageProjects = Array.from(
 			document.querySelectorAll<HTMLElement>("[data-language-project]"),
 		);
@@ -92,23 +120,6 @@ const t = useT();
 		const languageArrows = Array.from(
 			document.querySelectorAll<HTMLElement>("[data-language-span-arrow]"),
 		);
-
-		descriptionButtons.forEach((button, index) => {
-			// Hace visible el botón en modo táctil (en desktop está oculto por defecto).
-			button.classList.remove("hidden");
-			button.onclick = () => {
-				descriptionProjects.forEach((description, currentIndex) => {
-					// Activa solo la descripción del proyecto clicado; desactiva las demás.
-					const isCurrent = currentIndex === index && activeDescriptionIndex !== index;
-					description.classList.toggle("opacity-100", isCurrent);
-					description.classList.toggle("pointer-events-auto", isCurrent);
-					descriptionImages[currentIndex]?.classList.toggle("scale-110", isCurrent);
-				});
-
-				// Guarda el índice activo; si se vuelve a clicar el mismo, lo desactiva (-1 → ninguno).
-				activeDescriptionIndex = activeDescriptionIndex === index ? -1 : index;
-			};
-		});
 
 		languageProjects.forEach((image, index) => {
 			image.onclick = () => {

@@ -22,18 +22,26 @@ function findSkill(id: string) {
 	data-aos="fade-up"
 >
 	<div class="relative w-full h-full overflow-hidden group">
-		<img
-			id={`project-${index}-image`}
-			loading="lazy"
-			class="w-[600px] h-[250px] object-cover group-hover:scale-110 transition"
-			src={`projects/${id}.webp`}
-			alt={name}
-		/>
+		<button
+			type="button"
+			id={`project-${index}-image-button`}
+			class="w-full h-full cursor-zoom-in"
+			data-proj-image={`projects/${id}.webp`}
+			data-proj-title={t(name as keyof typeof t)}
+			aria-label={`Ver imagen del proyecto: ${t(name as keyof typeof t)}`}
+		>
+			<img
+				id={`project-${index}-image`}
+				loading="lazy"
+				class="w-[600px] h-[250px] object-cover transition"
+				src={`projects/${id}.webp`}
+				alt={name}
+			/>
+		</button>
 		<div
 			id={`project-${index}-description`}
 			class="absolute inset-0 flex items-center justify-center p-2 pointer-events-none
-			transition-opacity duration-300 opacity-0 bg-primary/75
-			group-hover:opacity-100 group-hover:pointer-events-auto"
+			transition-opacity duration-300 opacity-0 bg-primary/75"
 		>
 			<span
 				set:html={t(description as keyof typeof t)}
@@ -52,7 +60,7 @@ function findSkill(id: string) {
 				data-project-index={index}
 				type="button"
 				aria-label={`Mostrar descripcion del proyecto ${name}`}
-				class="hidden translate-y-[2px] cursor-pointer size-5 text-[8px] rounded-full border border-neon text-neon"
+				class="translate-y-[2px] cursor-pointer size-5 text-[8px] rounded-full border border-neon text-neon"
 				><i class="fas fa-info" aria-hidden="true"></i>
 			</button>
 		</div>
