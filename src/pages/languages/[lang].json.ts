@@ -4,6 +4,8 @@ import type { APIRoute, GetStaticPaths } from "astro";
 
 const languages: Record<string, object> = { es, en };
 
+export const prerender = true;
+
 export const getStaticPaths: GetStaticPaths = () =>
 	Object.keys(languages).map((lang) => ({ params: { lang } }));
 

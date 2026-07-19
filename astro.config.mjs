@@ -1,12 +1,14 @@
 // @ts-check
 /* eslint-disable */
-import { defineConfig } from "astro/config";
+import vercel from "@astrojs/vercel";
 import tailwindcss from "@tailwindcss/vite";
+import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://emiliosg23.github.io/curriculum",
-	base: "/curriculum/",
+	output: "server",
+	adapter: vercel(),
+	site: process.env.PUBLIC_SITE_URL ?? "https://emiliosg23.vercel.app",
 	vite: {
 		plugins: [tailwindcss()],
 	},

@@ -23,20 +23,31 @@ This repository contains my personal website (curriculum) built with Astro and T
 ## Install & Run (development)
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
-Open `http://localhost:4321/curriculum` (or the port shown by Astro) to preview locally.
+Open `http://localhost:4321/` (or the port shown by Astro) to preview locally.
 
 ## Build & Preview (production)
 
 ```bash
-npm run build
-npm run preview
+pnpm build
+pnpm preview
 ```
 
-Production output is generated in `dist/` and can be deployed to Vercel, Netlify or any static host.
+The project uses the Astro Vercel adapter in server mode because the contact form is exposed as an API route. Vercel detects the build automatically from `package.json` and runs `pnpm build`.
+
+## Vercel deployment
+
+1. Import this repository into Vercel and select the `curriculum` directory as the project root if the repository contains multiple projects.
+2. Keep the build command as `pnpm build` and the output setting as the framework default.
+3. Add these environment variables in the Vercel project settings for every environment that should send contact messages:
+   - `RESEND_API_KEY`: API key from Resend.
+   - `CONTACT_EMAIL`: inbox that receives contact messages.
+   - `PUBLIC_SITE_URL`: public URL used for canonical SEO URLs, for example `https://emiliosg23.vercel.app`.
+
+The default canonical URL is `https://emiliosg23.vercel.app`. Set `PUBLIC_SITE_URL` to the actual Vercel URL if the project receives a different name or a custom domain. The contact endpoint is available at `/api/send-contact-me` after deployment.
 
 ## Content editing
 

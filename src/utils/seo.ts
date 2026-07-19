@@ -1,8 +1,8 @@
-// Dominio raíz donde está desplegado el sitio (GitHub Pages).
-export const SITE_URL = "https://emiliosg23.github.io";
+// URL pública del sitio; se puede reemplazar con PUBLIC_SITE_URL en Vercel.
+export const SITE_URL = import.meta.env.PUBLIC_SITE_URL ?? "https://emiliosg23.vercel.app";
 
-// Ruta base del repositorio dentro de GitHub Pages.
-export const SITE_BASE_PATH = "/curriculum/";
+// El proyecto se sirve desde la raíz del dominio en Vercel.
+export const SITE_BASE_PATH = "/";
 
 // Nombre canónico del autor/sitio, usado en títulos y schemas.
 export const SITE_NAME = "Emilio Saenz";
