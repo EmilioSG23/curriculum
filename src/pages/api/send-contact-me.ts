@@ -1,10 +1,13 @@
 import { BASE_URL, CONTACT_EMAIL, RESEND_API_KEY } from "@/config";
 import { validateEmail } from "@/validator/validateEmail";
-import type { APIRoute } from "astro";
+import type { APIContext, APIRoute } from "astro";
 import { Resend } from "resend";
 
 const resend = new Resend(RESEND_API_KEY);
 
+/**
+ * Error messages for contact form submission failures.
+ */
 const errorMessages = {
 	"missing-fields": "Required contact fields are missing.",
 	"invalid-email": "The provided email address is invalid.",
@@ -15,11 +18,23 @@ const errorMessages = {
 
 type ContactError = keyof typeof errorMessages;
 
-const errorRedirect = (reason: ContactError, redirect: APIRoute["redirect"]) => {
+/**
+ * Handles redirection in case of contact form submission errors.
+ * @param reason - The reason for the error.
+ * @param redirect - The redirect function from the API context.
+ * @returns A redirection response to the contact form with an error query parameter.
+ */
+const errorRedirect = (reason: ContactError, redirect: APIContext["redirect"]) => {
 	console.error(`Contact form error: ${errorMessages[reason]}`);
 	return redirect(`${BASE_URL}?contact=error&reason=${reason}`, 303);
 };
 
+/**
+ * Handles the POST request for the contact form submission.
+ * @param request - The incoming request object.
+ * @param redirect - The redirect function from the API context.
+ * @returns A redirection response based on the success or failure of the contact form submission.
+ */
 export const POST: APIRoute = async ({ request, redirect }) => {
 	try {
 		const form = await request.formData();

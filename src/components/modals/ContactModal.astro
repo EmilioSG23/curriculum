@@ -146,6 +146,7 @@ const t = useT();
 	} as const;
 
 	const getErrorKey = (reason: string | null) => {
+		if (!reason) return errorKeys.unexpected;
 		if (reason === "missing-fields") return errorKeys.required;
 		if (reason in errorKeys) return errorKeys[reason as keyof typeof errorKeys];
 		return "contact-form.error";
