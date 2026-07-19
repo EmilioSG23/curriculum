@@ -1,5 +1,6 @@
 ---
 import ContactModal from "@/components/modals/ContactModal.astro";
+import MessageModal from "@/components/modals/MessageModal.astro";
 import Section from "@/components/sections/Section.astro";
 import AboutMeItem from "@/features/about-me/AboutMeItem.astro";
 import { getAge, useT } from "@/i18n/utils";
@@ -45,6 +46,7 @@ const aboutMe = [
 </Section>
 
 <ContactModal />
+<MessageModal />
 
 <script>
 	document.addEventListener("DOMContentLoaded", () => {

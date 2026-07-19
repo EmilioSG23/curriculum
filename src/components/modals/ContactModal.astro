@@ -1,11 +1,12 @@
 ---
 import { useT } from "@/i18n/utils";
+import { BASE_URL } from "@/config";
 import Modal from "./Modal.astro";
 
 const t = useT();
 ---
 
-<Modal id="contact-modal" ariaLabel="Formulario de contacto">
+<Modal id="contact-modal" ariaLabel={t("contact-form.title")} closeLabel={t("contact-form.close")}>
 	<div
 		class="w-full max-w-2xl rounded-2xl bg-white
         border border-primary/30 shadow-2xl
@@ -23,9 +24,15 @@ const t = useT();
 				{t("contact-form.description")}
 			</span>
 		</div>
+		<p
+			data-contact-error
+			class="mb-4 rounded-lg border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-700"
+			role="alert"
+			hidden
+		>
+		</p>
 
-		<form action="https://api.web3forms.com/submit" method="POST" class="space-y-5">
-			<input type="hidden" name="access_key" value="14db6a36-b762-49a2-9e32-ea49bb740ec0" />
+		<form action={`${BASE_URL}api/send-contact-me`} method="POST" class="space-y-5">
 			<div class="max-h-[40vh] overflow-y-auto flex flex-col gap-2 px-2">
 				<div>
 					<label class="mb-2 block text-sm font-medium text-primary">
@@ -127,18 +134,64 @@ const t = useT();
 </Modal>
 
 <script>
-	document.addEventListener("DOMContentLoaded", () => {
-		const contactModal = document.getElementById("contact-modal") as HTMLDialogElement;
-		if (contactModal) {
-			contactModal.addEventListener("close", () => {
-				document.body.style.overflow = "";
-			});
+	const contactModal = document.getElementById("contact-modal") as HTMLDialogElement | null;
+	const contactError = contactModal?.querySelector<HTMLElement>("[data-contact-error]");
 
-			contactModal.addEventListener("click", (event) => {
-				if (event.target === contactModal) {
-					contactModal.close();
-				}
-			});
-		}
+	const errorKeys = {
+		required: "contact-form.error-required",
+		"invalid-email": "contact-form.error-email",
+		"field-too-long": "contact-form.error-length",
+		"email-service": "contact-form.error-service",
+		unexpected: "contact-form.error-unexpected",
+	} as const;
+
+	const getErrorKey = (reason: string | null) => {
+		if (reason === "missing-fields") return errorKeys.required;
+		if (reason in errorKeys) return errorKeys[reason as keyof typeof errorKeys];
+		return "contact-form.error";
+	};
+
+	const updateContactError = async (language: string, reason: string | null) => {
+		if (!contactError) return;
+		const response = await fetch(new URL(`languages/${language}.json`, document.baseURI));
+		if (!response.ok) return;
+
+		const texts = await response.json();
+		contactError.textContent = texts[getErrorKey(reason)];
+	};
+
+	const initializeContactError = () => {
+		const params = new URLSearchParams(window.location.search);
+		if (params.get("contact") !== "error" || !contactModal || !contactError) return;
+
+		const reason = params.get("reason");
+		contactModal.dataset.contactErrorReason = reason || "";
+		contactError.hidden = false;
+		contactModal.showModal();
+		document.body.style.overflow = "hidden";
+		void updateContactError(document.documentElement.lang || "es", reason);
+
+		const url = new URL(window.location.href);
+		url.searchParams.delete("contact");
+		url.searchParams.delete("reason");
+		window.history.replaceState({}, "", `${url.pathname}${url.search}${url.hash}`);
+	};
+
+	document.addEventListener("languagechange", (event) => {
+		const language = (event as CustomEvent<{ language?: string }>).detail?.language;
+		if (language !== "es" && language !== "en") return;
+
+		const reason = contactModal?.dataset.contactErrorReason || null;
+		void updateContactError(language, reason);
+	});
+
+	if (document.readyState === "loading") {
+		document.addEventListener("DOMContentLoaded", initializeContactError, { once: true });
+	} else {
+		initializeContactError();
+	}
+
+	contactModal?.addEventListener("close", () => {
+		document.body.style.overflow = "";
 	});
 </script>
